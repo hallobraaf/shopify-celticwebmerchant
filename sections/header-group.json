@@ -18,7 +18,7 @@
           "type": "usp",
           "settings": {
             "text": "Gratis boven € 75 (NL/BE)",
-            "link": "shopify://pages/wereldwijde-verzending",
+            "link": "",
             "title": "Gratis boven € 75 (NL/BE)",
             "icon": "truck"
           }
@@ -27,7 +27,7 @@
           "type": "usp",
           "settings": {
             "text": "Voor 20:30 verzonden (PostNL, DPD, GLS)",
-            "link": "shopify://pages/wereldwijde-verzending",
+            "link": "",
             "title": "Voor 20:30 verzonden (PostNL, DPD, GLS)",
             "icon": "stopwatch"
           }
@@ -36,7 +36,7 @@
           "type": "usp",
           "settings": {
             "text": "17.000 items op voorraad",
-            "link": "shopify://collections/all",
+            "link": "",
             "title": "17.000 items op voorraad",
             "icon": "cart"
           }
@@ -45,7 +45,7 @@
           "type": "usp",
           "settings": {
             "text": "Laagste prijs garantie",
-            "link": "https://celticwebmerchant.zendesk.com/hc/en-us/articles/4422423278866-Lowest-price-guarantee-and-best-service-guarantee",
+            "link": "",
             "title": "Laagste prijs garantie",
             "icon": "price-tag"
           }

@@ -20,6 +20,20 @@ DEPENDENCIES:
 ============================================================================
 {%- endcomment -%}
 
+{{ 'block-marketing-promo.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-promo {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
+
 <div class="block-marketing-promo__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	<div class="block-marketing-promo__inner block-marketing-promo__inner--{{ section.settings.layout }}">
 		{%- if section.settings.heading != blank -%}
@@ -85,84 +99,6 @@ DEPENDENCIES:
 	</div>
 </div>
 
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-promo {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__inner--boxed {
-		background-color: rgba(0, 0, 0, 0.03);
-		padding: 2em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__inner--bordered {
-		border: 2px solid rgba(0, 0, 0, 0.1);
-		padding: 2em;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-headline {
-		text-align: center;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__countdown {
-		margin-block-start: 1.5em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__text {
-		margin-block-start: 1.5em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__actions {
-		margin-block-start: 0em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__usp {
-		display: flex;
-		justify-content: center;
-		gap: 2em;
-		flex-wrap: wrap;
-		list-style: none;
-		margin: 0;
-		margin-block-start: 2em;
-		padding: 0;
-		padding-block-start: 2em;
-		border-top: 1px solid rgba(0, 0, 0, 0.1);
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__usp-item {
-		display: flex;
-		align-items: center;
-		gap: 0.5em;
-		margin: 0;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__usp-icon {
-		width: 1.5em;
-		height: 1.5em;
-		flex-shrink: 0;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__usp-icon svg {
-		width: 100%;
-		height: 100%;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-promo__usp-text {
-		font-size: 0.875em;
-		font-weight: 600;
-	}
-
-	@media (max-width: 40em) {
-		#shopify-section-{{ section.id }} .block-marketing-promo__usp {
-			flex-direction: column;
-			align-items: center;
-			gap: 1em;
-		}
-	}
-{% endstyle %}
-
 {% schema %}
 {
 	"name": "Marketing promo",
@@ -192,10 +128,6 @@ DEPENDENCIES:
 			"label": "Description"
 		},
 		{
-			"type": "header",
-			"content": "Button"
-		},
-		{
 			"type": "text",
 			"id": "cta_text",
 			"label": "Button text",
@@ -219,7 +151,18 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Countdown"
+			"content": "Display"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"label": "Style",
+			"options": [
+				{ "value": "default", "label": "Default" },
+				{ "value": "boxed", "label": "Boxed" },
+				{ "value": "bordered", "label": "Bordered" }
+			],
+			"default": "default"
 		},
 		{
 			"type": "checkbox",
@@ -266,10 +209,6 @@ DEPENDENCIES:
 			"default": "large"
 		},
 		{
-			"type": "header",
-			"content": "Trust badges"
-		},
-		{
 			"type": "checkbox",
 			"id": "show_usp",
 			"label": "Show trust badges",
@@ -293,17 +232,6 @@ DEPENDENCIES:
 			"default": "is-align-wide"
 		},
 		{
-			"type": "select",
-			"id": "layout",
-			"label": "Style",
-			"options": [
-				{ "value": "default", "label": "Default" },
-				{ "value": "boxed", "label": "Boxed" },
-				{ "value": "bordered", "label": "Bordered" }
-			],
-			"default": "default"
-		},
-		{
 			"type": "range",
 			"id": "padding_block",
 			"label": "Vertical padding",
@@ -312,6 +240,18 @@ DEPENDENCIES:
 			"step": 0.5,
 			"default": 3,
 			"unit": "em"
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "header",
@@ -339,19 +279,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add trust badge blocks with an icon and text. Enable the countdown timer and set an end date to create urgency."
 		}
 	],
 	"blocks": [

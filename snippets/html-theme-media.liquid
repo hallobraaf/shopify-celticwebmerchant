@@ -107,16 +107,18 @@ Simple (known size):
 		FIXED SRCSET LADDER
 		========================================
 		Browser combines sizes + device pixel ratio to pick best option.
-		These widths cover most use cases efficiently.
+		w4=700 fills the gap between 600 and 800 for 1.75x DPR devices
+		(e.g. Moto G Power @ 390px slot needs ~682px, picks 700 instead of 780).
 	endcomment
 	assign w1 = 200
 	assign w2 = 400
 	assign w3 = 600
-	assign w4 = 800
-	assign w5 = 1000
-	assign w6 = 1200
-	assign w7 = 1600
-	assign w8 = 2000
+	assign w4 = 700
+	assign w5 = 800
+	assign w6 = 1000
+	assign w7 = 1200
+	assign w8 = 1600
+	assign w9 = 2000
 
 	comment
 		========================================
@@ -196,8 +198,9 @@ Simple (known size):
 
 		comment
 			MOBILE (default)
+			390 = realistic phone viewport (iPhone 14 = 393px, most Android ~390px) minus 2×1em page-padding
 		endcomment
-		assign mobile_viewport = 480
+		assign mobile_viewport = 390
 		assign mobile_gaps = cols_mobile | minus: 1 | times: gap_px
 		assign mobile_available = mobile_viewport | minus: mobile_gaps
 		assign mobile_image = mobile_available | divided_by: cols_mobile | times: layout_mult | round
@@ -206,6 +209,25 @@ Simple (known size):
 			Build sizes attribute
 		endcomment
 		assign img_sizes = '(min-width: 60em) ' | append: desktop_image | append: 'px, (min-width: 40em) ' | append: tablet_image | append: 'px, ' | append: mobile_image | append: 'px'
+
+		comment
+			Max srcset width = largest display size × 2 (for 2× DPR Retina)
+			Browser will never request an image wider than this for this context.
+		endcomment
+		assign _max_display = desktop_image
+		if tablet_image > _max_display
+			assign _max_display = tablet_image
+		endif
+		if mobile_image > _max_display
+			assign _max_display = mobile_image
+		endif
+		assign max_srcset = _max_display | times: 2
+		comment
+			Clamp to top of ladder
+		endcomment
+		if max_srcset > 2000
+			assign max_srcset = 2000
+		endif
 	endif
 
 	comment
@@ -215,6 +237,7 @@ Simple (known size):
 	endcomment
 	if sizing_mode == 'simple'
 		assign img_sizes = sizes | default: '100vw'
+		assign max_srcset = width | default: 800 | times: 2
 	endif
 
 	comment
@@ -361,75 +384,91 @@ Simple (known size):
 	if class
 		assign wrapper_class = wrapper_class | append: ' ' | append: class
 	endif
+	if strategy == 'navigation'
+		assign wrapper_class = wrapper_class | append: ' is-strategy-navigation'
+		assign nav_width = width | default: 96
+		assign nav_src = media | image_url: width: nav_width, format: 'webp'
+	endif
 -%}
 
-{%- if wrapper -%}<figure class="{{ wrapper_class }}" style="--media-ratio: {{ aspect_ratio | round: 4 }};">{%- endif -%}
+{%- if wrapper -%}
+{%- if strategy == 'navigation' -%}
+<figure class="theme-media is-strategy-navigation" data-nav-src="{{ nav_src }}" data-nav-alt="{{ alt_text | escape }}" data-nav-width="{{ nav_width }}" data-nav-height="{{ nav_width }}">
+{%- else -%}
+<figure class="{{ wrapper_class }}" style="--media-ratio: {{ aspect_ratio | round: 4 }};">
+{%- endif -%}{%- endif -%}
 	{%- case type -%}
 
 		{%- when 'image' -%}
+			{%- unless strategy == 'navigation' -%}
 			{%- render 'html-theme-media-image',
-				image: media,
-				alt: alt_text,
-				w1: w1, w2: w2, w3: w3, w4: w4, w5: w5, w6: w6, w7: w7, w8: w8,
-				aspect_ratio: aspect_ratio,
-				crop: crop_position,
-				quality: quality,
-				sizes: img_sizes,
-				image_loading: image_loading,
-				image_priority: image_priority,
-				zoom: zoom,
-				focus_x: focus_x,
-				focus_y: focus_y,
-				class: class
-			-%}
+			image: media,
+			alt: alt_text,
+			w1: w1, w2: w2, w3: w3, w4: w4, w5: w5, w6: w6, w7: w7, w8: w8, w9: w9,
+			max_srcset: max_srcset,
+			aspect_ratio: aspect_ratio,
+			crop: crop_position,
+			quality: quality,
+			sizes: img_sizes,
+			image_loading: image_loading,
+			image_priority: image_priority,
+			zoom: zoom,
+			focus_x: focus_x,
+			focus_y: focus_y,
+			class: class
+		-%}
+			{%- endunless -%}
 
 		{%- when 'video' -%}
 			{%- render 'html-theme-media-video',
-				video: media,
-				alt: alt_text,
-				w1: w1, w2: w2, w3: w3, w4: w4, w5: w5, w6: w6, w7: w7, w8: w8,
-				aspect_ratio: aspect_ratio,
-				crop: crop_position,
-				sizes: img_sizes,
-				image_loading: image_loading,
-				mode: mode,
-				controls: controls,
-				autoplay: autoplay,
-				focus_x: focus_x,
-				focus_y: focus_y,
-				class: class
-			-%}
+			video: media,
+			alt: alt_text,
+			w1: w1, w2: w2, w3: w3, w4: w4, w5: w5, w6: w6, w7: w7, w8: w8, w9: w9,
+			max_srcset: max_srcset,
+			aspect_ratio: aspect_ratio,
+			crop: crop_position,
+			sizes: img_sizes,
+			image_loading: image_loading,
+			mode: mode,
+			controls: controls,
+			autoplay: autoplay,
+			focus_x: focus_x,
+			focus_y: focus_y,
+			class: class
+		-%}
 
-		{%- when 'external_video' -%}
+			{%- when 'external_video' -%}
 			{%- render 'html-theme-media-video',
-				video: media,
-				alt: alt_text,
-				w1: w1, w2: w2, w3: w3, w4: w4, w5: w5, w6: w6, w7: w7, w8: w8,
-				aspect_ratio: aspect_ratio,
-				crop: crop_position,
-				sizes: img_sizes,
-				image_loading: image_loading,
-				mode: mode,
-				external: true,
-				host: video_host | default: media.host,
-				video_id: video_id | default: media.external_id | default: media.id,
-				autoplay: autoplay,
-				focus_x: focus_x,
-				focus_y: focus_y,
-				class: class
+			video: media,
+			alt: alt_text,
+			w1: w1, w2: w2, w3: w3, w4: w4, w5: w5, w6: w6, w7: w7, w8: w8, w9: w9,
+			max_srcset: max_srcset,
+			aspect_ratio: aspect_ratio,
+			crop: crop_position,
+			sizes: img_sizes,
+			image_loading: image_loading,
+			mode: mode,
+			external: true,
+			host: video_host | default: media.host,
+			video_id: video_id | default: media.external_id | default: media.id,
+			autoplay: autoplay,
+			focus_x: focus_x,
+			focus_y: focus_y,
+			class: class
 			-%}
 
-		{%- when 'model' -%}
+			{%- when 'model' -%}
 			{%- render 'html-theme-media-model',
-				model: media,
-				alt: alt_text,
-				w1: w1, w2: w2, w3: w3, w4: w4, w5: w5, w6: w6, w7: w7, w8: w8,
-				aspect_ratio: aspect_ratio,
-				crop: crop_position,
-				sizes: img_sizes,
-				image_loading: image_loading,
-				mode: mode,
-				class: class
+			model: media,
+			alt: alt_text,
+			w1: w1, w2: w2, w3: w3, w4: w4, w5: w5, w6: w6, w7: w7, w8: w8, w9: w9,
+			max_srcset: max_srcset,
+			aspect_ratio: aspect_ratio,
+			crop: crop_position,
+			sizes: img_sizes,
+			image_loading: image_loading,
+			mode: mode,
+			class: class
 			-%}
 
 		{%- else -%}

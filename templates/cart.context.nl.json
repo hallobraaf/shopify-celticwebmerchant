@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_banners_aL3Qr": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-e797dca97ed6834d3f93806e63053a3c": null,
+        "heading": "",
+        "subheading": "",
+        "header-4ec2c2fa9850a16c9f9324aad83a2418": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-642ca5a92231e99c1effc9fe72cdd693": null,
+        "background_color": "",
+        "text_color": "",
+        "header-807549f5d40bcb048db0af188b42a493": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_PFHWz": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Gratis verzending vanaf €75",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_PFHWz"
+      ],
+      "name": "Banners"
+    },
+    "block_marketing_products_UJAdR": {
+      "type": "block-marketing-products",
+      "disabled": false,
+      "settings": {
+        "header-48ca4d70a2287a8d66bf22299aec4261": null,
+        "collection": "altijd-nodig",
+        "heading": "Altijd nodig",
+        "header-f6473b257265842e49855c16d05aa2d4": null,
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": true,
+        "header-a0d1540db8095baea4bdbb57f2be1445": null,
+        "max_products": 12,
+        "only_available": true,
+        "header-333fef8cb7d149da58c7b98edb8297c2": null,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "header-4567f00baf031cc17967af192c398c9f": null,
+        "background_color": "",
+        "text_color": "",
+        "header-4d3f078d5535b12c836ddaa076cb6756": null,
+        "anchor": "",
+        "custom_class": "",
+        "header-7dcd100660d11b92577bfb2f18b94283": null,
+        "paragraph-01d1c35436718953f5536c9dd6215021": null
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "Products"
+    },
+    "block_marketing_testimonials_Wy9RM": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-8c79e6f81b1632da5ecf25d53a00d8ed": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-fa67a4062c56be60c4e843736a1cf4d9": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "header-f159d01a8d8eb0c78e25106e5bb8a1dc": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "header-696e5bcd4aa66dc1b5aed6ae89b435ed": null,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-0e3b42999c5f292bcf6bcca22229a29a": null,
+        "background_color": "",
+        "text_color": "",
+        "header-7a4f69ce98398bb40dadea86e5b8fac6": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "testimonial_Drpr8": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Hele mooie spullen van goede kwaliteit. Snel geleverd en netjes verpakt. Ik ben erg fan van deze site en ben van plan om in de toekomst nog meer aankopen te doen.",
+            "author": "Sanne Rietveld, NL 🇳🇱",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_bRVWw": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Received the ordered articles in a timely manner and after 4 days of wearing them at castlefest I can honestly that the quality holds up aswell.",
+            "author": "Wouter Meindertsma, NL 🇳🇱",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_Hh6wF": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Al veel besteld hier, van kledij tot zwaarden en LARP wapens. Telkens van top kwaliteit en snelle levering. Mijn favoriete webshop!",
+            "author": "Arno, NL 🇳🇱",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_Drpr8",
+        "testimonial_bRVWw",
+        "testimonial_Hh6wF"
+      ],
+      "name": "Testimonials"
+    },
+    "cart-order": {
+      "settings": {
+        "show_continue_shopping": false
+      },
+      "blocks": {}
+    }
+  },
+  "context": {
+    "market": "nl"
+  },
+  "parent": "cart.json",
+  "order": [
+    "block_marketing_banners_aL3Qr",
+    "cart-order",
+    "block_marketing_products_UJAdR",
+    "block_marketing_testimonials_Wy9RM"
+  ]
+}

@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "belgie"
+  },
+  "parent": "cart.json",
+  "sections": {
+    "block_marketing_banners_9m79i": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-b998ef7ffb8137d8efaac5c23f48d022": null,
+        "heading": "",
+        "subheading": "",
+        "header-21d64a47342a84c3af720ef3b60166ec": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-f9045cc88d62dd841b31bd9a680c1c73": null,
+        "background_color": "",
+        "text_color": "",
+        "header-d0888424feaee791c22b62e326cb9750": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_Tt47j": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Gratis verzending bij orders boven €75,-",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_Tt47j"
+      ],
+      "name": "Banners"
+    }
+  },
+  "order": [
+    "block_marketing_banners_9m79i",
+    "cart-order",
+    "block_product_recommended_yfFAdg"
+  ]
+}

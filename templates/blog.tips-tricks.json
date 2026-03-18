@@ -1,0 +1,598 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_grid_AqGxiU": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "banner_bHKjVb": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Onderhoud van staal en metaal",
+            "text": "",
+            "link_url": "shopify://blogs/tips-tricks-zwaarden-wapens/onderhoud-van-staal-en-metaal",
+            "image": "shopify://shop_images/DSC00948.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        },
+        "banner_FHqJNq": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Hoe draag je Viking beenwindsels",
+            "text": "",
+            "link_url": "shopify://blogs/tips-tricks-outfit-accessoires/hoe-draag-je-viking-beenwindsels",
+            "image": "shopify://shop_images/DSC09062-2_afa12cde-e584-4dc4-b485-4c2dbdd8642e.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        },
+        "banner_DJDqEg": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Hoe trek ik mijn harnas aan",
+            "text": "",
+            "link_url": "shopify://blogs/tips-tricks/hoe-trek-ik-mijn-harnas-aan",
+            "image": "shopify://shop_images/DSC08162_ca9871da-8948-446f-a0f9-2c9f8146cb82.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        }
+      },
+      "block_order": [
+        "banner_bHKjVb",
+        "banner_FHqJNq",
+        "banner_DJDqEg"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "",
+        "subtext": "",
+        "header_align": "left",
+        "width": "is-align-full",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "grid_gap": 0.5,
+        "padding_block": 0.5,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_blogs_4kGTB7": {
+      "type": "block-marketing-blogs",
+      "blocks": {
+        "blog_zGfEDy": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-helmen-pantser"
+          }
+        },
+        "blog_Ve3JgP": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-larp-re-enactment-kamp"
+          }
+        },
+        "blog_KxVTQJ": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-larp-cosmetica"
+          }
+        },
+        "blog_gYMpDX": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-outfit-accessoires"
+          }
+        },
+        "blog_xMPbNY": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-zwaarden-wapens"
+          }
+        }
+      },
+      "block_order": [
+        "blog_zGfEDy",
+        "blog_Ve3JgP",
+        "blog_KxVTQJ",
+        "blog_gYMpDX",
+        "blog_xMPbNY"
+      ],
+      "name": "Blogs",
+      "settings": {
+        "show_header": false,
+        "heading": "Alle tips & tricks:",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": false,
+        "image_ratio": "square",
+        "show_article_count": false,
+        "width": "is-align",
+        "columns_desktop": 5,
+        "columns_tablet": 3,
+        "columns_mobile": 1,
+        "grid_gap": 1,
+        "padding_block": 1,
+        "background_color": "#0f1f38",
+        "text_color": "#111111",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#000000",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_3UkKWA": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_kdEazJ": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-helmen-pantser"
+          }
+        },
+        "blog_JDz7gd": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-larp-cosmetica"
+          }
+        },
+        "blog_gMYfp7": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-larp-re-enactment-kamp"
+          }
+        },
+        "blog_N6chAA": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-outfit-accessoires"
+          }
+        },
+        "blog_JyYzg7": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-zwaarden-wapens"
+          }
+        }
+      },
+      "block_order": [
+        "blog_kdEazJ",
+        "blog_JDz7gd",
+        "blog_gMYfp7",
+        "blog_N6chAA",
+        "blog_JyYzg7"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Ontdek onze tips & tricks",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "horizontal",
+        "show_image": true,
+        "image_ratio": "adapt",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": true,
+        "articles_per_blog": 2,
+        "max_articles": 8,
+        "random_mode": true,
+        "width": "is-align",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1,
+        "padding_block": 3,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#f8f8f8",
+        "text_color": "",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_media_text_MA4dBU": {
+      "type": "block-marketing-media-text",
+      "blocks": {
+        "image_text_tP9EwY": {
+          "type": "image_text",
+          "settings": {
+            "image": "shopify://shop_images/DSC07168_21bb0e8e-a1d7-44e6-b61b-536b67824c40.jpg",
+            "image_height": "portrait",
+            "focus_x": 50,
+            "focus_y": 50,
+            "heading": "Roest van Maliënkolder verwijderen",
+            "text": "<p>Mocht je maliënkolder wat oppervlakteroest krijgen, dan is het belangrijk om de roest van je maliënkolder te verwijderen. Maliën ringen zijn dun, dus als je de roest laat zitten, zullen ze breken en moeten ze worden vervangen.</p><p>Er zijn twee manieren om roest van maliën te verwijderen...</p>",
+            "cta_text": "Lees verder",
+            "cta_url": "shopify://blogs/tips-tricks-helmen-pantser/roest-van-malienkolder-verwijderen",
+            "cta_style": "outline",
+            "image_position": "left",
+            "image_width": "40",
+            "vertical_alignment": "center",
+            "background_color": "",
+            "text_color": "",
+            "button_color": "#ffffff",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_text_tP9EwY"
+      ],
+      "name": "Media & text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "width": "is-align",
+        "padding_block": 0,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_GVKabp": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_CLfYay": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-helmen-pantser"
+          }
+        },
+        "blog_Vqtr6p": {
+          "type": "blog",
+          "settings": {
+            "blog": ""
+          }
+        }
+      },
+      "block_order": [
+        "blog_CLfYay",
+        "blog_Vqtr6p"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Helmen & Pantser",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": true,
+        "image_ratio": "landscape",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": true,
+        "articles_per_blog": 10,
+        "max_articles": 24,
+        "random_mode": false,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "card_background_color": "",
+        "card_text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_UEEeX9": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_YKHanY": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-larp-cosmetica"
+          }
+        }
+      },
+      "block_order": [
+        "blog_YKHanY"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Larp & Cosmetica",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": true,
+        "image_ratio": "landscape",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": true,
+        "articles_per_blog": 10,
+        "max_articles": 24,
+        "random_mode": false,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "card_background_color": "",
+        "card_text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_cover_bYEzBj": {
+      "type": "block-marketing-cover",
+      "blocks": {
+        "button_heixnK": {
+          "type": "button",
+          "settings": {
+            "text": "Ga naar het overzicht",
+            "url": "shopify://pages/blog-lookbook",
+            "style": "outline",
+            "button_color": "#ffffff",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "button_KQBTwb": {
+          "type": "button",
+          "settings": {
+            "text": "",
+            "url": "",
+            "style": "primary",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_heixnK",
+        "button_KQBTwb"
+      ],
+      "name": "Cover",
+      "settings": {
+        "subheading": "Lees onze nieuwste blogs!",
+        "heading": "",
+        "text": "",
+        "image": "shopify://shop_images/Dec2025_-_Banners_blog_detailpagina.webp",
+        "focus_x": 80,
+        "focus_y": 0,
+        "overlay": "medium",
+        "loading": "lazy",
+        "fetchpriority": "auto",
+        "width": "is-align-full",
+        "height": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_68aG3g": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_zRV34U": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-larp-re-enactment-kamp"
+          }
+        }
+      },
+      "block_order": [
+        "blog_zRV34U"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Larp & Re-enactment kamp",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": true,
+        "image_ratio": "landscape",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": true,
+        "articles_per_blog": 10,
+        "max_articles": 24,
+        "random_mode": false,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "card_background_color": "",
+        "card_text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": true,
+        "image_ratio": "landscape",
+        "show_blog_title": false,
+        "show_date": true,
+        "show_excerpt": true,
+        "show_cta": true,
+        "articles_per_page": 12,
+        "width": "alignwide",
+        "padding_block": 3,
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "grid_gap": 0.5,
+        "background_color": "#f8f8f8",
+        "text_color": "#111111",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_xTHAA7": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_3CUWLF": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-outfit-accessoires"
+          }
+        }
+      },
+      "block_order": [
+        "blog_3CUWLF"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Outfit & Accessoires",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": true,
+        "image_ratio": "landscape",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": true,
+        "articles_per_blog": 10,
+        "max_articles": 24,
+        "random_mode": false,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "card_background_color": "",
+        "card_text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_iMBAzY": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_T6LAgL": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-zwaarden-wapens"
+          }
+        }
+      },
+      "block_order": [
+        "blog_T6LAgL"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Zwaarden & Wapens",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": true,
+        "image_ratio": "landscape",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": true,
+        "articles_per_blog": 10,
+        "max_articles": 24,
+        "random_mode": false,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "card_background_color": "",
+        "card_text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "block_marketing_grid_AqGxiU",
+    "block_marketing_blogs_4kGTB7",
+    "block_marketing_articles_3UkKWA",
+    "block_marketing_media_text_MA4dBU",
+    "block_marketing_articles_GVKabp",
+    "block_marketing_articles_UEEeX9",
+    "block_marketing_cover_bYEzBj",
+    "block_marketing_articles_68aG3g",
+    "main",
+    "block_marketing_articles_xTHAA7",
+    "block_marketing_articles_iMBAzY"
+  ]
+}

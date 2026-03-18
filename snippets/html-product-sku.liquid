@@ -12,7 +12,11 @@
 
 {%- liquid
   assign v = product.selected_or_first_available_variant
-  assign display_label = show_label | default: true
+  if show_label == nil
+    assign display_label = true
+  else
+    assign display_label = show_label
+  endif
 -%}
 
 {%- if v.sku != blank -%}
@@ -24,13 +28,4 @@
   </div>
 {%- endif -%}
 
-<style>
-  .product-sku {
-    font-size: 0.875em;
-    opacity: 0.7;
-  }
 
-  .product-sku__label {
-    font-weight: 500;
-  }
-</style>

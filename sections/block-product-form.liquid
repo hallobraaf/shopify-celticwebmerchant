@@ -1,376 +1,245 @@
 {%- comment -%}
-  ============================================================================
-  BLOCK-PRODUCT-FORM
-  ============================================================================
-  Main product form section with media gallery and configurable form blocks.
-  
-  FEATURES:
-  - 2-column layout (media + form)
-  - Modular block-based form structure
-  - AJAX variant updates via Section Rendering API
-  - Fragment reconciliation with app integration support
-  
-  DEPENDENCIES:
-  - html-product-gallery snippet
-  - html-product-* snippets for each block type
-  ============================================================================
+============================================================================
+BLOCK-PRODUCT-FORM
+============================================================================
+Main product form section with media gallery and configurable form blocks.
+
+FEATURES:
+- 2-column layout (media + form)
+- Modular block-based form structure
+- AJAX variant updates via Section Rendering API
+- Fragment reconciliation with app integration support
+
+DEPENDENCIES:
+- html-product-gallery snippet
+- html-product-* snippets for each block type
+============================================================================
 {%- endcomment -%}
+
+{{ 'block-product-form.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-product-form {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+	}
+	#shopify-section-{{ section.id }} .block-product-form__wrapper,
+	#shopify-section-{{ section.id }} .block-product-form__blocks {
+		gap: {{ section.settings.block_gap }}em;
+	}
+{% endstyle %}
 
 {%- assign p = product -%}
 {%- if p == blank and section.settings.product != blank -%}
-  {%- assign p = section.settings.product -%}
+	{%- assign p = section.settings.product -%}
 {%- endif -%}
 
 {%- if p != blank -%}
-<div class="block-product-form__content {{ section.settings.width }}">
-  <div class="block-product-form__media">
-    {%- render 'html-product-gallery', product: p -%}
-  </div>
-  
-  <div class="block-product-form__form">
-    <div class="block-product-form__wrapper"
-      data-product-form
-      data-section-id="{{ section.id }}"
-      data-product-json="{{ p | json | escape }}">
-      
-      <form action="/cart/add" method="post" id="product-form-{{ section.id }}" class="block-product-form__fields" novalidate>
-        {%- assign first_variant_id = p.selected_or_first_available_variant.id -%}
-        <input type="hidden" name="id" value="{{ first_variant_id }}" data-variant-id>
-        
-        <div class="block-product-form__blocks">
-          
-          {%- for block in section.blocks -%}
-            <div class="block-product-form__block"
-              {{ block.shopify_attributes }}>
-              
-              {%- case block.type -%}
-                {%- when 'rating' -%}
-                  {%- render 'html-product-rating', product: p, scroll_target: block.settings.scroll_target, show_count: block.settings.show_count, size: block.settings.size -%}
-                  
-                {%- when 'heading' -%}
-                  {%- render 'html-product-heading', product: p, show_vendor: block.settings.show_vendor -%}
-                  
-                {%- when 'price' -%}
-                  <div data-fragment-update="price">
-                    {%- render 'html-product-price', product: p -%}
-                  </div>
-                  
-                {%- when 'description' -%}
-                  {%- render 'html-product-description', product: p, truncate: block.settings.truncate, words: block.settings.words, read_more_target: block.settings.read_more_target -%}
-                  
-                {%- when 'variant_picker' -%}
-                  {%- render 'html-product-variant_picker', product: p, threshold_dropdown: block.settings.threshold_dropdown -%}
-                  
-                {%- when 'notify' -%}
-                  {%- render 'html-product-notify', product: p -%}
-                  
-                {%- when 'stock' -%}
-                  <div data-fragment-update="stock">
-                    {%- render 'html-product-stock', product: p, show_stock_count: block.settings.show_stock_count -%}
-                  </div>
-                  
-                {%- when 'delivery' -%}
-                  <div data-fragment-update="delivery">
-                    {%- render 'html-product-delivery', product: p, show: true -%}
-                  </div>
-                  
-                {%- when 'sku' -%}
-                  <div data-fragment-update="sku">
-                    {%- render 'html-product-sku', product: p, show_label: block.settings.show_label -%}
-                  </div>
-                  
-                {%- when 'upsell' -%}
-                  {%- render 'html-product-upsell', product: p -%}
-                  
-                {%- when 'selling_plans' -%}
-                  {%- render 'html-product-selling_plans', product: p -%}
-                  
-                {%- when 'atc' -%}
-                  <div data-fragment-update="atc">
-                    {%- render 'html-product-atc', product: p, full_width: block.settings.full_width, show_quantity: block.settings.show_quantity, show_wishlist: block.settings.show_wishlist -%}
-                  </div>
-                  
-                {%- when 'trust_payments' -%}
-                  {%- render 'html-product-payments', method_1: block.settings.method_1, method_2: block.settings.method_2, method_3: block.settings.method_3, method_4: block.settings.method_4, method_5: block.settings.method_5, method_6: block.settings.method_6, method_7: block.settings.method_7, method_8: block.settings.method_8, method_9: block.settings.method_9, method_10: block.settings.method_10 -%}
-                  
-                {%- when 'dynamic_checkout' -%}
-                  {%- render 'html-product-dynamic_checkout', product: p -%}
-                  
-                {%- when 'trust_usps' -%}
-                  {%- render 'html-product-trust', product: p, item_1_text: block.settings.item_1_text, item_1_url: block.settings.item_1_url, item_2_text: block.settings.item_2_text, item_2_url: block.settings.item_2_url, item_3_text: block.settings.item_3_text, item_3_url: block.settings.item_3_url, item_4_text: block.settings.item_4_text, item_4_url: block.settings.item_4_url -%}
-                  
-                {%- when 'trust_identity' -%}
-                  {%- render 'html-product-identity', product: p, tag: block.settings.tag, message: block.settings.message, icon: block.settings.icon -%}
-                  
-                {%- when '@app' -%}
-                  {%- render block -%}
-              {%- endcase -%}
-            </div>
-          {%- endfor -%}
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+	<div class="block-product-form__content {{ section.settings.width }}">
+		<div class="block-product-form__media">
+			{%- render 'html-product-gallery', product: p -%}
+		</div>
 
+		<div class="block-product-form__form">
+			<div class="block-product-form__wrapper"
+				data-product-form
+				data-section-id="{{ section.id }}"
+				data-product-json="{{ p | json | escape }}">
+
+				<form action="{{ routes.cart_add_url }}" method="post" id="product-form-{{ section.id }}" class="block-product-form__fields" novalidate>
+					{%- assign first_variant_id = p.selected_or_first_available_variant.id -%}
+					<input type="hidden" name="id" value="{{ first_variant_id }}" data-variant-id>
+
+					<div class="block-product-form__blocks">
+
+						{%- for block in section.blocks -%}
+							<div class="block-product-form__block" {{ block.shopify_attributes }}>
+
+								{%- case block.type -%}
+									{%- when 'rating' -%}
+										{%- render 'html-product-rating', product: p, scroll_target: block.settings.scroll_target, show_count: block.settings.show_count, size: block.settings.size -%}
+
+									{%- when 'heading' -%}
+										{%- render 'html-product-heading', product: p, show_vendor: block.settings.show_vendor -%}
+
+									{%- when 'price' -%}
+										<div data-fragment-update="price">
+											{%- render 'html-product-price', product: p -%}
+										</div>
+
+									{%- when 'description' -%}
+										{%- render 'html-product-description', product: p, truncate: block.settings.truncate, words: block.settings.words, read_more_target: block.settings.read_more_target -%}
+
+									{%- when 'variant_picker' -%}
+										{%- render 'html-product-variant_picker', product: p, threshold_dropdown: block.settings.threshold_dropdown -%}
+
+									{%- when 'notify' -%}
+										{%- render 'html-product-notify', product: p -%}
+
+									{%- when 'stock' -%}
+										<div data-fragment-update="stock">
+											{%- render 'html-product-stock', product: p, show_stock_count: block.settings.show_stock_count -%}
+										</div>
+
+									{%- when 'delivery' -%}
+										<div data-fragment-update="delivery">
+											{%- render 'html-product-delivery', product: p, show: true -%}
+										</div>
+
+									{%- when 'sku' -%}
+										<div data-fragment-update="sku">
+											{%- render 'html-product-sku', product: p, show_label: block.settings.show_label -%}
+										</div>
+
+									{%- when 'upsell' -%}
+										{%- render 'html-product-upsell', product: p -%}
+
+									{%- when 'selling_plans' -%}
+										{%- render 'html-product-selling_plans', product: p -%}
+
+									{%- when 'atc' -%}
+										{%- render 'html-product-atc', product: p, full_width: block.settings.full_width, show_quantity: block.settings.show_quantity, show_wishlist: block.settings.show_wishlist -%}
+
+									{%- when 'trust_payments' -%}
+										{%- render 'html-product-payments', method_1: block.settings.method_1, method_2: block.settings.method_2, method_3: block.settings.method_3, method_4: block.settings.method_4, method_5: block.settings.method_5, method_6: block.settings.method_6, method_7: block.settings.method_7, method_8: block.settings.method_8, method_9: block.settings.method_9, method_10: block.settings.method_10 -%}
+
+									{%- when 'dynamic_checkout' -%}
+										{%- render 'html-product-dynamic_checkout', product: p -%}
+
+									{%- when 'trust_usps' -%}
+										{%- render 'html-product-trust', product: p, item_1_text: block.settings.item_1_text, item_1_url: block.settings.item_1_url, item_2_text: block.settings.item_2_text, item_2_url: block.settings.item_2_url, item_3_text: block.settings.item_3_text, item_3_url: block.settings.item_3_url, item_4_text: block.settings.item_4_text, item_4_url: block.settings.item_4_url -%}
+
+									{%- when 'trust_identity' -%}
+										{%- render 'html-product-identity', product: p, tag: block.settings.tag, message: block.settings.message, icon: block.settings.icon -%}
+
+									{%- when '@app' -%}
+										{%- render block -%}
+								{%- endcase -%}
+							</div>
+						{%- endfor -%}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 {%- else -%}
-<div class="block-product-form__empty">
-  <p>{{ 'products.product.product_unavailable' | t | default: 'Select a product in section settings.' }}</p>
-</div>
+	<div class="block-product-form__empty">
+		<p>{{ 'products.product.product_unavailable' | t | default: 'Select a product in section settings.' }}</p>
+	</div>
 {%- endif -%}
-
-<style>
-  .block-product-form {
-    background-color: {{ section.settings.background_color | default: '#ffffff' }};
-    color: {{ section.settings.text_color | default: '#111111' }};
-  }
-
-  .block-product-form__content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    justify-content: center;
-	column-gap: 2em;
-  }
-
-  .block-product-form__media {
-    position: relative;
-    z-index: 1;
-    flex-grow: 1;
-    flex-basis: 20em;
-    max-width: 58vw;
-  }
-
-  .block-product-form__form {
-    position: relative;
-    z-index: 0;
-    flex-grow: 1;
-    flex-basis: 10em;
-    background-color: var(--theme-color-white);
-  }
-
-  .block-product-form__wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: {{ section.settings.block_gap }}em;
-    padding: 2em 1em;
-  }
-
-  .block-product-form__blocks {
-    display: flex;
-    flex-direction: column;
-    gap: {{ section.settings.block_gap }}em;
-  }
-
-  .block-product-form__block:empty {
-    display: none;
-  }
-
-  /* Empty state */
-  .block-product-form__empty {
-    padding: 4em 2em;
-    text-align: center;
-    opacity: 0.6;
-  }
-
-  /* Responsive */
-  @media (max-width: 60em) {
-    .block-product-form__content {
-      flex-wrap: wrap;
-    }
-
-    .block-product-form__media {
-      flex-grow: 1;
-      flex-basis: 100%;
-      max-width: 100vw;
-    }
-
-    .block-product-form__form {
-      flex-grow: 1;
-      flex-basis: 100%;
-    }
-  }
-
-  /* Loading state */
-  [data-product-form] {
-    transition: opacity 200ms ease;
-  }
-
-  [data-product-form].is-loading {
-    opacity: 0.6;
-    pointer-events: none;
-  }
-
-  /* Smooth transitions voor fragment updates */
-  [data-fragment-update] {
-    transition: opacity 150ms ease;
-  }
-
-  /*
-    ============================================================================
-    LOADING STATE UTILITIES
-    ============================================================================
-    Het product form krijgt .is-loading tijdens variant updates.
-    Gebruik deze classes om elementen te verbergen/tonen tijdens laden.
-    
-    BESCHIKBARE STATES:
-    - [data-product-form].is-loading    → wrapper tijdens fetch
-    - [data-fragment-update]            → elementen die worden geüpdatet
-    
-    HULPKLASSEN:
-    - .hide-while-loading               → verberg element tijdens laden
-    - .show-while-loading               → toon element alleen tijdens laden
-    - .no-transition-while-loading      → voorkom transitions tijdens laden
-    
-    VOORBEELDEN:
-    
-    1. Verberg een app-knop tijdens laden:
-       <div class="wc_wl_bis_btn hide-while-loading" ...></div>
-    
-    2. Toon een loader alleen tijdens laden:
-       <div class="my-spinner show-while-loading"></div>
-    
-    3. Via specifieke selector (als je geen class kan toevoegen):
-       [data-product-form].is-loading .wc_wl_bis_btn { opacity: 0; }
-    ============================================================================
-  */
-
-  /* Verberg elementen tijdens laden */
-  [data-product-form].is-loading .hide-while-loading {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  /* Toon elementen alleen tijdens laden */
-  .show-while-loading {
-    opacity: 0;
-    pointer-events: none;
-  }
-  [data-product-form].is-loading .show-while-loading {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* Voorkom layout shift door visibility te gebruiken ipv display */
-  [data-product-form].is-loading .invisible-while-loading {
-    visibility: hidden;
-  }
-
-  /*
-    APP-SPECIFIEKE FIXES
-    Voeg hier selectors toe voor third-party apps die moeten 
-    verbergen/aanpassen tijdens variant updates.
-  */
-  
-  /* Wishlist Club - back in stock button */
-  [data-product-form].is-loading .wc_wl_bis_btn {
-    opacity: 0;
-  }
-  .wc_wl_bis_btn {
-    transition: opacity 150ms ease;
-  }
-  
-  .block-product-form__form .product-stock--low-in-stock,
-  .block-product-form__form .product-stock--low-in-stock-backorder {
-	  background-color: #f05a22; color:#fff;
-  }
-
-  /* Price sizing in product form */
-  .block-product-form__form .product-price {
-    font-size: 2em;
-  }
-</style>
 
 <script>
 (() => {
-  document.querySelectorAll('[data-product-form]').forEach(wrapper => {
-    const sectionId = wrapper.dataset.sectionId;
-    const product = JSON.parse(wrapper.dataset.productJson || '{}');
-    const form = wrapper.querySelector('form');
-    if (!sectionId || !form) return;
+	document.querySelectorAll('[data-product-form]').forEach(wrapper => {
+		const sectionId = wrapper.dataset.sectionId;
+		const product = JSON.parse(wrapper.dataset.productJson || '{}');
+		const form = wrapper.querySelector('form');
+		if (!sectionId || !form) return;
 
-    // Variant change handler
-    form.addEventListener('change', (e) => {
-      const target = e.target;
-      if (!target.matches('[data-option-select], [name^="options["]')) return;
-      
-      e.stopImmediatePropagation();
-      e.stopPropagation();
+		// Variant change handler
+		form.addEventListener('change', (e) => {
+			const target = e.target;
+			if (!target.matches('[data-option-select], [name^="options["]')) return;
 
-      // Bepaal variant uit geselecteerde opties
-      const options = (product.options || []).map((name, idx) => {
-        const select = wrapper.querySelector(`[data-option-select][data-option-index="${idx}"]`);
-        if (select) return select.value;
-        const radio = wrapper.querySelector(`input[name="options[${name}]"]:checked`);
-        return radio?.value || null;
-      });
-      
-      const variant = product.variants?.find(v => 
-        v.options.every((val, i) => val === options[i])
-      );
-      
-      if (!variant) return;
+			e.stopImmediatePropagation();
+			e.stopPropagation();
 
-      // Update hidden input
-      const variantInput = wrapper.querySelector('[data-variant-id]');
-      if (variantInput) variantInput.value = variant.id;
+			// Bepaal variant uit geselecteerde opties
+			const options = (product.options || []).map((name, idx) => {
+				const select = wrapper.querySelector(`[data-option-select][data-option-index="${idx}"]`);
+				if (select) return select.value;
+				const radio = wrapper.querySelector(`input[name="options[${name}]"]:checked`);
+				return radio?.value || null;
+			});
 
-      // Fetch nieuwe HTML (setTimeout voor isolatie van andere scripts)
-      setTimeout(async () => {
-        wrapper.classList.add('is-loading');
-        
-        try {
-          const url = new URL(window.location.href);
-          url.searchParams.set('variant', variant.id);
-          url.searchParams.set('section_id', sectionId);
-          
-          // XMLHttpRequest ipv fetch (sommige apps patchen fetch)
-          const html = await new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url.toString());
-            xhr.onload = () => resolve(xhr.responseText);
-            xhr.onerror = () => reject(new Error('XHR failed'));
-            xhr.send();
-          });
-          
-          const doc = new DOMParser().parseFromString(html, 'text/html');
-          
-          // Vervang alleen elementen met data-fragment-update
-          wrapper.querySelectorAll('[data-fragment-update]').forEach(oldEl => {
-            const key = oldEl.dataset.fragmentUpdate;
-            const newEl = doc.querySelector(`[data-fragment-update="${key}"]`);
-            if (newEl) {
-              oldEl.style.opacity = '0';
-              setTimeout(() => {
-                oldEl.innerHTML = newEl.innerHTML;
-                oldEl.style.opacity = '';
-              }, 150);
-            }
-          });
+			const variant = product.variants?.find(v =>
+				v.options.every((val, i) => val === options[i])
+			);
 
-          // Update URL
-          history.replaceState({}, '', `?variant=${variant.id}`);
+			if (!variant) return;
 
-          // Dispatch event
-          wrapper.dispatchEvent(new CustomEvent('product:updated', {
-            detail: { variantId: variant.id, variant, product },
-            bubbles: true
-          }));
-          
-        } catch (err) {
-          console.error('Variant update failed:', err);
-        } finally {
-          wrapper.classList.remove('is-loading');
-        }
-      }, 0);
-    }, true);
-  });
+			// Update hidden input
+			const variantInput = wrapper.querySelector('[data-variant-id]');
+			if (variantInput) variantInput.value = variant.id;
+
+			// Fetch nieuwe HTML (setTimeout voor isolatie van andere scripts)
+			setTimeout(async () => {
+				wrapper.classList.add('is-loading');
+
+				try {
+					const url = new URL(window.location.href);
+					url.searchParams.set('variant', variant.id);
+					url.searchParams.set('section_id', sectionId);
+
+					// XMLHttpRequest ipv fetch (sommige apps patchen fetch)
+					const html = await new Promise((resolve, reject) => {
+						const xhr = new XMLHttpRequest();
+						xhr.open('GET', url.toString());
+						xhr.onload = () => resolve(xhr.responseText);
+						xhr.onerror = () => reject(new Error('XHR failed'));
+						xhr.send();
+					});
+
+					const doc = new DOMParser().parseFromString(html, 'text/html');
+
+					// Vervang alleen elementen met data-fragment-update
+					wrapper.querySelectorAll('[data-fragment-update]').forEach(oldEl => {
+						const key = oldEl.dataset.fragmentUpdate;
+						const newEl = doc.querySelector(`[data-fragment-update="${key}"]`);
+						if (newEl) {
+							oldEl.style.opacity = '0';
+							setTimeout(() => {
+								// Preserve classes that might be on the wrapper, update innerHTML
+								oldEl.className = newEl.className;
+								oldEl.innerHTML = newEl.innerHTML;
+								oldEl.style.opacity = '';
+							}, 150);
+						}
+					});
+
+					// Update URL
+					history.replaceState({}, '', `?variant=${variant.id}`);
+					
+					// Update Doran Back in Stock via DOM-vervanging.
+					// De Doran SDK initialiseert de BIS-knop bij page load via een MutationObserver
+					// op [data-dr="back-in-stock-inline-button"]. Bij een variant-wissel updaten we
+					// data-selected-variant-id NIET in-place (Doran herkent dat niet), maar vervangen
+					// we de node volledig — dit triggert de MutationObserver opnieuw zodat Doran de
+					// nieuwe variant evalueert en de BIS-knop correct toont of verbergt.
+					const bisEl = wrapper.querySelector('[data-dr="back-in-stock-inline-button"]');
+					if (bisEl) {
+						const fresh = document.createElement('div');
+						fresh.setAttribute('data-dr', 'back-in-stock-inline-button');
+						fresh.setAttribute('data-product-id', bisEl.getAttribute('data-product-id'));
+						fresh.setAttribute('data-selected-variant-id', variant.id);
+						const styleAttr = bisEl.getAttribute('style');
+						if (styleAttr) fresh.setAttribute('style', styleAttr);
+						bisEl.parentNode.replaceChild(fresh, bisEl);
+					}
+
+					// Dispatch event
+					wrapper.dispatchEvent(new CustomEvent('product:updated', {
+						detail: { variantId: variant.id, variant, product },
+						bubbles: true
+					}));
+
+				} catch (err) {
+					console.error('Variant update failed:', err);
+				} finally {
+					wrapper.classList.remove('is-loading');
+				}
+			}, 0);
+		}, true);
+	});
 })();
 </script>
 
-{%- schema -%}
+{% schema %}
 {
 	"name": "Product form",
 	"tag": "section",
@@ -967,4 +836,4 @@
 		}
 	]
 }
-{%- endschema -%}
+{% endschema %}

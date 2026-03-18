@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_banners_Xrqmw": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-2bb60f7d45b3ae767cfac5c7d8b048cb": null,
+        "heading": "",
+        "subheading": "",
+        "header-7b20ad24f834f842a5c28b01ffd4e02e": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-68378cf9c8493f21bca8c09dedd35e99": null,
+        "background_color": "",
+        "text_color": "",
+        "header-c0bf90a0502853250dbe746dea3accef": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_qNWAc": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Gratis verzending vanaf € 75",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_qNWAc"
+      ],
+      "name": "Banners"
+    },
+    "block_marketing_products_X8JB7": {
+      "type": "block-marketing-products",
+      "disabled": false,
+      "settings": {
+        "header-ff4a74e05e27dfc6de3df74ac9ea3486": null,
+        "collection": "altijd-nodig",
+        "heading": "",
+        "header-15cb147135efd2e4530f1ab5f36e335e": null,
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_badges": false,
+        "show_rating": false,
+        "quick_add": true,
+        "header-1b515a5cbf4e01f97b14dae7c57b2200": null,
+        "max_products": 12,
+        "only_available": true,
+        "header-cac13c1bea85c23095857d66f298cb77": null,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "header-0bb9f13352682020f367ae226dd1c555": null,
+        "background_color": "",
+        "text_color": "",
+        "header-2c2ef504317ec39e44d286674171af5b": null,
+        "anchor": "",
+        "custom_class": "",
+        "header-dad6cb1a65dbb896de707f7c7003dd74": null,
+        "paragraph-da9252db32cf5ea162409d66cf7a22bb": null
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "Products"
+    },
+    "block_marketing_testimonials_DzcLe": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-8ad2cb3ec7c5cf04713206b2ac3c790d": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-1a700f2f6988f6b4b91b52f8bb74b884": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "header-e85621a094182437021a0ef233858363": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "header-5976cec88f12050fb1d9945aa17dd1a3": null,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-ea30eefd8bf2b4eea81f40d7cdba02ee": null,
+        "background_color": "",
+        "text_color": "",
+        "header-0711191796534c39d70eeccbeef0c353": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "testimonial_zwcHN": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Hier bekommt man das was der Wikinger braucht. Sehr guter Shop. Schnelle Lieferung ung sehr günstige Artikel.",
+            "author": "Edelbert von Wieding 🇩🇪",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_rXDfT": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Schnelle Lieferung, Artikel wie beschrieben, gerne wieder!!",
+            "author": "Carsten Kohring 🇩🇪",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_wpPKt": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Wie immer sehr schnell geliefert. Die Waren sind, ebenfalls wie immer, sehr schön und hochwertig.",
+            "author": "Michael Schmied 🇩🇪",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_zwcHN",
+        "testimonial_rXDfT",
+        "testimonial_wpPKt"
+      ],
+      "name": "Testimonials"
+    },
+    "cart-order": {
+      "settings": {
+        "show_continue_shopping": false
+      },
+      "blocks": {}
+    }
+  },
+  "context": {
+    "market": "duitsland"
+  },
+  "parent": "cart.json",
+  "order": [
+    "block_marketing_banners_Xrqmw",
+    "cart-order",
+    "block_marketing_products_X8JB7",
+    "block_marketing_testimonials_DzcLe"
+  ]
+}

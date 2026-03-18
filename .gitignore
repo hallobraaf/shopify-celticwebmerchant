@@ -42,3 +42,5 @@ Thumbs.db
 # DOCS #
 docs/
 docs/*
+private/
+private/*

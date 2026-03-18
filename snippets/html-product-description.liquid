@@ -14,7 +14,11 @@
 
 {%- liquid
   assign p = product
-  assign do_truncate = truncate | default: false
+  if truncate == nil
+    assign do_truncate = false
+  else
+    assign do_truncate = truncate
+  endif
   assign word_count = words | default: 30
   assign target = read_more_target | default: '#product-information'
 -%}
@@ -36,29 +40,4 @@
   </div>
 {%- endif -%}
 
-<style>
-  .product-description {
-    /* margins controlled by parent */
-  }
 
-  .product-description__content {
-    line-height: 1.6;
-  }
-
-  .product-description__content p {
-    margin: 0 0 1em;
-  }
-
-  .product-description__content p:last-child {
-    margin-bottom: 0;
-  }
-
-  .product-description__content a {
-    color: inherit;
-  }
-
-  .product-description__more {
-    color: inherit;
-    font-weight: 500;
-  }
-</style>

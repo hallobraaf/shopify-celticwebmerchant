@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "index.json",
+  "context": {
+    "market": "belgie"
+  },
+  "sections": {
+    "block_marketing_grid_eKTaaA": {
+      "settings": {},
+      "blocks": {
+        "banner_PH6hGr": {
+          "settings": {
+            "text": "<p>Enkel voor leden</p>"
+          }
+        },
+        "banner_9aKPPM": {
+          "settings": {
+            "text": "<p>Koop nu voor het te laat is!</p>"
+          }
+        },
+        "banner_gMVXQH": {
+          "settings": {
+            "heading": "Opnieuw op voorraad!",
+            "text": "<p>Bestel nu!</p>"
+          }
+        },
+        "banner_qUNK67": {
+          "settings": {
+            "heading": "Solden!"
+          }
+        },
+        "banner_8pmcRb": {
+          "settings": {
+            "heading": "Reserveer nu al"
+          }
+        }
+      }
+    },
+    "best-products": {
+      "settings": {
+        "collection": "middeleeuwse-kleding",
+        "heading": "Populaire kledij"
+      },
+      "blocks": {}
+    },
+    "block_marketing_grid_93tkDC": {
+      "settings": {},
+      "blocks": {
+        "banner_6PNJpD": {
+          "settings": {
+            "heading": "Laat je vrienden voelen dat ze geliefd zijn",
+            "text": "<p>Ontdek onze cadeautips!</p>"
+          }
+        },
+        "banner_9A6wwJ": {
+          "settings": {
+            "heading": "Stel je outfit samen",
+            "text": "<p>Gebruik de tijdperkfilter!</p>"
+          }
+        },
+        "banner_nPEhgz": {
+          "settings": {
+            "text": "<p>Ga naar onze DIY-pagina!</p>"
+          }
+        },
+        "banner_nKKc7L": {
+          "settings": {
+            "heading": "Gebruik de keuzehulp!",
+            "text": "<p>Samengesteld door onze stylisten</p>",
+            "image": "shopify://shop_images/burgundian_knight1.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_products_EaRW4A": {
+      "settings": {
+        "heading": "Onze populairste zwaarden"
+      },
+      "blocks": {}
+    },
+    "block_marketing_products_pXat79": {
+      "settings": {
+        "heading": "Populairste pantsers"
+      },
+      "blocks": {}
+    },
+    "block_marketing_media_text_iDhD8j": {
+      "settings": {},
+      "blocks": {
+        "image_text_G9gzXM": {
+          "settings": {
+            "heading": "Ontvang een kortingscode en maak maandelijks kans op €100 shoptegoed",
+            "text": "<p>Schrijf je gratis in op onze nieuwsbrief!</p>"
+          }
+        }
+      }
+    },
+    "block_marketing_media_text_mEgbKY": {
+      "settings": {},
+      "blocks": {
+        "image_text_aJBEwL": {
+          "settings": {
+            "image": "shopify://shop_images/Bouillon.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_articles_HAGXAT": {
+      "settings": {
+        "heading": "Deze blogs zijn nu populair bij anderen:"
+      },
+      "blocks": {}
+    },
+    "block_marketing_media_text_eUmREH": {
+      "settings": {},
+      "blocks": {
+        "image_text_xddkDV": {
+          "settings": {
+            "image": "shopify://shop_images/Gallier.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_articles_wJ9gkm": {
+      "settings": {
+        "heading": "Tips & tricks:"
+      },
+      "blocks": {}
+    },
+    "block_marketing_articles_qtkjtB": {
+      "settings": {
+        "heading": "Doe mee aan onze challenges"
+      },
+      "blocks": {}
+    }
+  }
+}

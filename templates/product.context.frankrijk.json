@@ -1,0 +1,40 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.json",
+  "context": {
+    "market": "frankrijk"
+  },
+  "sections": {
+    "product-form": {
+      "settings": {},
+      "blocks": {
+        "trust_payments_Lra8px": {
+          "settings": {
+            "method_1": "mastercard",
+            "method_3": "apple_pay",
+            "method_4": "paypal",
+            "method_5": "google_pay",
+            "method_6": "klarna",
+            "method_7": "unionpay",
+            "method_8": "maestro",
+            "method_9": "amex",
+            "method_10": "none"
+          }
+        },
+        "trust_usps_dMe7Mk": {
+          "settings": {
+            "item_4_text": "Livraison rapide avec GLS et DPD"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_grid_MrDdeG": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "banner_UP84Ym": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Project nr 1",
+            "text": "",
+            "link_url": "",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        },
+        "banner_yC88kJ": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Project nr 2",
+            "text": "",
+            "link_url": "",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        },
+        "banner_LdkLic": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Project nr 3",
+            "text": "",
+            "link_url": "",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        }
+      },
+      "block_order": [
+        "banner_UP84Ym",
+        "banner_yC88kJ",
+        "banner_LdkLic"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align-wide",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "creative",
+        "slider_navigation": false,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "featured_image_qUThkT": {
+          "type": "featured_image",
+          "disabled": true,
+          "settings": {
+            "image_height": "medium",
+            "focus_x": 50,
+            "focus_y": 45
+          }
+        },
+        "title": {
+          "type": "title",
+          "disabled": true,
+          "settings": {}
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "featured_image_qUThkT",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "width": "is-align-small"
+      }
+    }
+  },
+  "order": [
+    "block_marketing_grid_MrDdeG",
+    "main"
+  ]
+}

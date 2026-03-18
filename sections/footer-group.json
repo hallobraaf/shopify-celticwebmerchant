@@ -18,7 +18,7 @@
           "type": "usp",
           "settings": {
             "text": "Gratis verzending boven € 75 (NL/BE)",
-            "link": "",
+            "link": "shopify://pages/wereldwijde-verzending",
             "icon": "none"
           }
         },
@@ -33,8 +33,8 @@
         "usp-3": {
           "type": "usp",
           "settings": {
-            "text": "17.000 items op voorraad",
-            "link": "",
+            "text": "Niet goed? Binnen 30 dagen retour",
+            "link": "https://celticwebmerchant.zendesk.com/hc/nl/sections/4422369305746-Retour",
             "icon": "none"
           }
         },
@@ -42,7 +42,7 @@
           "type": "usp",
           "settings": {
             "text": "Laagste prijs garantie",
-            "link": "",
+            "link": "https://celticwebmerchant.zendesk.com/hc/nl/articles/4422423278866-Laagste-prijsgarantie-en-beste-service-garantie",
             "icon": "none"
           }
         }
@@ -65,11 +65,21 @@
     "footer-service": {
       "type": "block-footer-service",
       "blocks": {
+        "newsletter_iWfWmC": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Mis nooit meer korting!",
+            "text": "<p>Ontvang onze nieuwsbrief!</p>",
+            "placeholder": "Uw e-mailadres",
+            "use_external_form": true,
+            "external_form_code": "<div class=\"klaviyo-form-WyEYAw\"></div>"
+          }
+        },
         "service_etMkLr": {
           "type": "service",
           "settings": {
             "heading": "",
-            "text": "",
+            "text": "<p>Bekijk eerst de veelgestelde vragen. Kom je er zelf niet uit? Vul het contactformulier in en we mailen je op werkdagen binnen 24 uur terug.</p>",
             "link": "https://celticwebmerchant.zendesk.com/hc/en-us",
             "link_text": ""
           }
@@ -83,21 +93,31 @@
             "link_text": ""
           }
         },
-        "newsletter_iWfWmC": {
-          "type": "newsletter",
+        "text_Tig8n8": {
+          "type": "text",
           "settings": {
-            "heading": "Mis nooit meer korting!",
-            "text": "<p>Ontvang onze nieuwsbrief!</p>",
-            "placeholder": "Uw e-mailadres",
-            "use_external_form": true,
-            "external_form_code": "<div class=\"klaviyo-form-WyEYAw\"></div>"
+            "heading": "Portfolio",
+            "text": "<p>Celtic WebMerchant is een toonaangevende Europese specialist in re-enactment, historische reconstructies, authentieke replica’s, LARP en professioneel costuming. Met bijna 20 jaar ervaring.</p>",
+            "link": "shopify://pages/portfolio",
+            "link_text": "Zie ons portfolio"
+          }
+        },
+        "text_xT7atR": {
+          "type": "text",
+          "settings": {
+            "heading": "Bedrijfsgegevens",
+            "text": "<p>Celtic WebMerchant BV<br/>Marisstraat 8a<br/>3364 AZ Sliedrecht<br/>Nederland<br/><br/>BTW-nummer: NL864375803B01<br/>EORI-nummer: NL864375803<br/>KvK-nummer: <a href=\"https://www.kvk.nl/bestellen/#/87703211000035123672?origin=search\" target=\"_blank\" title=\"https://www.kvk.nl/bestellen/#/87703211000035123672?origin=search\">87703211</a></p><p>E-mail: info@celticwebmerchant.com</p>",
+            "link": "shopify://pages/about-us",
+            "link_text": "Over ons"
           }
         }
       },
       "block_order": [
+        "newsletter_iWfWmC",
         "service_etMkLr",
         "showroom_deinET",
-        "newsletter_iWfWmC"
+        "text_Tig8n8",
+        "text_xT7atR"
       ],
       "settings": {
         "width": "is-align",
@@ -127,9 +147,9 @@
       "type": "block-footer-copyright",
       "settings": {
         "copyright_text": "Celtic Webmerchant. Alle rechten voorbehouden.",
-        "developer_credit": "Theme ontwikkeld door HMWRK en totalli e-commerce",
+        "developer_credit": "Theme ontwikkeld door HMWRK & totalli e-commerce",
         "show_policy": true,
-        "width": "is-align-narrow",
+        "width": "is-align-small",
         "background_color": "#0f1f38",
         "text_color": "#ffffff"
       }
@@ -141,7 +161,7 @@
           "type": "popular_searches",
           "settings": {
             "heading": "",
-            "search_terms": "Whisky, Gin, Rum, Vodka"
+            "search_terms": ""
           }
         },
         "recent_searches_UjxzAj": {
@@ -155,17 +175,18 @@
           "type": "product_results",
           "settings": {
             "heading": "",
-            "limit": 6,
-            "columns": "2",
+            "limit": 10,
+            "columns": "3",
             "show_price": true,
             "show_vendor": false
           }
         },
         "collection_results_nmECJM": {
           "type": "collection_results",
+          "disabled": true,
           "settings": {
             "heading": "",
-            "limit": 4
+            "limit": 10
           }
         }
       },
@@ -184,21 +205,99 @@
     "modal-region": {
       "type": "block-modal-region",
       "blocks": {
-        "form_region_jwUkyi": {
-          "type": "form_region",
+        "region_NL": {
+          "type": "region",
+          "settings": { "title": "Nederland" }
+        },
+        "language_NL_nl": {
+          "type": "language",
           "settings": {
-            "show_language": true,
-            "show_country": true,
-            "show_search": true
+            "label": "Nederlands",
+            "language_code": "nl",
+            "country_code": "nl"
+          }
+        },
+        "language_NL_en": {
+          "type": "language",
+          "settings": {
+            "label": "English",
+            "language_code": "en",
+            "country_code": "nl"
+          }
+        },
+        "region_BE": {
+          "type": "region",
+          "settings": { "title": "België" }
+        },
+        "language_BE_nl": {
+          "type": "language",
+          "settings": {
+            "label": "Nederlands",
+            "language_code": "nl",
+            "country_code": "be"
+          }
+        },
+        "language_BE_fr": {
+          "type": "language",
+          "settings": {
+            "label": "Français",
+            "language_code": "fr",
+            "country_code": "be"
+          }
+        },
+        "region_DE": {
+          "type": "region",
+          "settings": { "title": "Deutschland" }
+        },
+        "language_DE_de": {
+          "type": "language",
+          "settings": {
+            "label": "Deutsch",
+            "language_code": "de",
+            "country_code": "de"
+          }
+        },
+        "region_FR": {
+          "type": "region",
+          "settings": { "title": "France" }
+        },
+        "language_FR_fr": {
+          "type": "language",
+          "settings": {
+            "label": "Français",
+            "language_code": "fr",
+            "country_code": "fr"
+          }
+        },
+        "region_GB": {
+          "type": "region",
+          "settings": { "title": "United Kingdom" }
+        },
+        "language_GB_en": {
+          "type": "language",
+          "settings": {
+            "label": "English",
+            "language_code": "en",
+            "country_code": "gb"
           }
         }
       },
       "block_order": [
-        "form_region_jwUkyi"
+        "region_NL",
+        "language_NL_nl",
+        "language_NL_en",
+        "region_BE",
+        "language_BE_nl",
+        "language_BE_fr",
+        "region_DE",
+        "language_DE_de",
+        "region_FR",
+        "language_FR_fr",
+        "region_GB",
+        "language_GB_en"
       ],
       "settings": {
         "show_trigger": false,
-        "auto_submit": false,
         "show_info_text": true,
         "modal_id": "region-modal"
       }
@@ -218,6 +317,7 @@
         "cart-subtotal": {
           "type": "cart_subtotal",
           "settings": {
+            "show_discount_code": false,
             "show_cart_note": false
           }
         }
@@ -255,6 +355,26 @@
         "tertiary_menu": "extra-menu",
         "show_product_thumbs": true
       }
+    },
+    "block_embed_klaviyo_x89YJD": {
+      "type": "block-embed-klaviyo",
+      "blocks": {
+        "trigger_XPaMtc": {
+          "type": "trigger",
+          "settings": {
+            "title": "Aanmelden full page popup",
+            "trigger_description": "Triggert popup van Klaviyo. Je hoeft alleen maar de anchor link te vertalen, en de Klaviyo form ID in Translate & Adapt (en dan wel de vertaalde anchor link ID gebruiken in de juiste taal).",
+            "anchor_id": "nieuwsbrief",
+            "trigger_type": "openForm",
+            "trigger_id": "Tn5P9B"
+          }
+        }
+      },
+      "block_order": [
+        "trigger_XPaMtc"
+      ],
+      "name": "Klaviyo triggers",
+      "settings": {}
     }
   },
   "order": [
@@ -267,6 +387,7 @@
     "modal-region",
     "cart-preview",
     "block_modal_share_naUyNL",
-    "block_page_menu_GJpUfD"
+    "block_page_menu_GJpUfD",
+    "block_embed_klaviyo_x89YJD"
   ]
 }

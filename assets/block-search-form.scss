@@ -1,0 +1,31 @@
+/* ==========================================================================
+   BLOCK-SEARCH-FORM
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-search-form {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__form {
+    width: 100%;
+  }
+
+  &__count {
+    font-size: 0.9em;
+    opacity: 0.7;
+    margin: 0;
+    text-align: center;
+  }
+}

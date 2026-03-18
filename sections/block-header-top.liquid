@@ -17,8 +17,15 @@
   ============================================================================
 {% endcomment %}
 
+{%- style -%}
+	#shopify-section-{{ section.id }}.block-header-top {
+		background-color: {{ section.settings.background_color | default: '#2e130d' }};
+		color: {{ section.settings.text_color | default: '#ffffff' }};
+	}
+{%- endstyle -%}
+
 <div class="block-header-top__content {{ section.settings.width }}">
-	
+
 	{%- if section.blocks.size > 0 -%}
 		<nav class="block-header-top__usps">
 			<div class="swiper block-header-top__slider" data-usps-slider>
@@ -58,98 +65,12 @@
 			{% render 'html-button-region' %}
 		</nav>
 	{%- endif -%}
+
 </div>
-
-{%- style -%}
-	.block-header-top {
-		background-color: {{ section.settings.background_color | default: '#2e130d' }};
-		color: {{ section.settings.text_color | default: '#ffffff' }};
-	}
-
-	.block-header-top__content {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		height: var(--header-top-height, 2.5em);
-		gap: 1em;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.block-header-top__usps {
-		flex: 1 1 auto;
-		overflow: hidden;
-		min-width: 0;
-	}
-
-	.block-header-top__slider {
-		overflow: hidden;
-	}
-
-	.block-header-top__slider .swiper-wrapper {
-		display: flex;
-		align-items: center;
-	}
-
-	.block-header-top__slider .swiper-slide {
-		width: auto;
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		padding-right: 2em;
-	}
-
-	.block-header-top__slider a,
-	.block-header-top__usp {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5em;
-		color: inherit;
-		text-decoration: none;
-		opacity: 0.75;
-		transition: opacity var(--theme-transition-fast);
-		white-space: nowrap;
-	}
-
-	.block-header-top__slider a:hover {
-		opacity: 1;
-	}
-
-	.block-header-top__icon {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
-	}
-
-	.block-header-top__slider span {
-		font-size: 0.75em;
-		letter-spacing: var(--theme-letter-spacing);
-	}
-
-	.block-header-top__menu {
-		flex: 0 0 auto;
-		display: flex;
-		align-items: center;
-		gap: 1em;
-	}
-	
-	.button-region {
-		font-size:0.8em;
-	}
-
-	/* Mobile: enable autoplay sliding */
-	@media (max-width: 40em) {
-		.block-header-top__slider .swiper-slide {
-			padding-right: 3em;
-		}
-	}
-{%- endstyle -%}
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
-		const slider = document.querySelector('[data-usps-slider]');
+		var slider = document.querySelector('[data-usps-slider]');
 		if (slider && typeof Swiper !== 'undefined') {
 			new Swiper(slider, {
 				slidesPerView: 'auto',
@@ -158,7 +79,7 @@
 				speed: 4000,
 				autoplay: {
 					delay: 5000,
-					disableOnInteraction: false,
+					disableOnInteraction: false
 				},
 				freeMode: true,
 				freeModeMomentum: false,
@@ -167,7 +88,7 @@
 						loop: false,
 						autoplay: false,
 						freeMode: true,
-						slidesPerView: 'auto',
+						slidesPerView: 'auto'
 					}
 				}
 			});
@@ -187,7 +108,7 @@
 	"settings": [
 		{
 			"type": "header",
-			"content": "Region"
+			"content": "Display"
 		},
 		{
 			"type": "checkbox",

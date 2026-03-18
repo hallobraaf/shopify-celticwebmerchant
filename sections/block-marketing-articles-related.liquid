@@ -21,18 +21,18 @@ DEPENDENCIES:
 	if heading_text == blank
 		assign heading_text = 'product.related_blogs_heading' | t
 	endif
-	
+
 	assign max_articles = section.settings.max_articles | default: 4
 	assign current_handle = article.handle
 	assign current_tags = article.tags
-	
+
 	comment
 		Collect related articles based on matching tags
 		Build as comma-separated handles, then fetch articles
 	endcomment
 	assign related_handles = ''
 	assign related_count = 0
-	
+
 	if current_tags.size > 0
 		for blog_article in blog.articles
 			if blog_article.handle != current_handle and related_count < max_articles
@@ -43,7 +43,7 @@ DEPENDENCIES:
 						break
 					endif
 				endfor
-				
+
 				if has_matching_tag
 					if related_handles == ''
 						assign related_handles = blog_article.handle
@@ -55,7 +55,7 @@ DEPENDENCIES:
 			endif
 		endfor
 	endif
-	
+
 	comment
 		Fallback: if not enough related articles, fill with recent from same blog
 	endcomment
@@ -73,106 +73,77 @@ DEPENDENCIES:
 			endif
 		endfor
 	endif
-	
+
 	assign related_handles_array = related_handles | split: ','
 -%}
 
 {%- if related_count > 0 -%}
-	<div class="block-marketing-articles-related__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
-		<header class="block-marketing-articles-related__header">
-			<h2 class="block-marketing-articles-related__title">{{ heading_text }}</h2>
-			{%- if section.settings.subheading != blank -%}
-				<p class="block-marketing-articles-related__subheading">{{ section.settings.subheading }}</p>
-			{%- endif -%}
-		</header>
 
-		<ul class="block-marketing-articles-related__grid" style="--grid-columns: {{ section.settings.columns_desktop | default: 4 }}; --grid-columns-tablet: {{ section.settings.columns_tablet | default: 3 }}; --grid-columns-mobile: {{ section.settings.columns_mobile | default: 1 }}; --grid-gap: {{ section.settings.grid_gap | default: 0.5 }}em;">
-			{%- for handle in related_handles_array -%}
-				{%- for blog_article in blog.articles -%}
-					{%- if blog_article.handle == handle -%}
-						<li class="block-marketing-articles-related__item">
-							{%- render 'html-theme-card',
-								article: blog_article,
-								blog_title: blog.title,
-								layout: section.settings.card_layout,
-								image_ratio: section.settings.image_ratio,
-								columns_desktop: section.settings.columns_desktop,
-								columns_tablet: section.settings.columns_tablet,
-								columns_mobile: section.settings.columns_mobile,
-								columns_width: section.settings.width,
-								columns_gap: section.settings.grid_gap,
-								image_loading: 'lazy',
-								show_image: section.settings.show_image,
-								show_blog: section.settings.show_blog_title,
-								show_date: section.settings.show_date,
-								show_excerpt: section.settings.show_excerpt,
-								show_cta: section.settings.show_cta
-							-%}
-						</li>
-						{%- break -%}
-					{%- endif -%}
-				{%- endfor -%}
-			{%- endfor -%}
-		</ul>
-	</div>
-{%- endif -%}
+{{ 'block-marketing-articles-related.min.css' | asset_url | stylesheet_tag }}
 
 {% style %}
 	#shopify-section-{{ section.id }}.block-marketing-articles-related {
+		{%- if section.settings.background_color != blank %}
 		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
 		color: {{ section.settings.text_color }};
+		{%- endif %}
 		padding-block: {{ section.settings.padding_block }}em;
 	}
-
-	/* Card colors */
 	#shopify-section-{{ section.id }} .card {
-		--card-bg: {{ section.settings.card_background_color | default: 'transparent' }};
-		--card-text: {{ section.settings.card_text_color | default: 'inherit' }};
+		{%- if section.settings.card_background_color != blank %}
+		--card-bg: {{ section.settings.card_background_color }};
+		{%- endif %}
+		{%- if section.settings.card_text_color != blank %}
+		--card-text: {{ section.settings.card_text_color }};
+		{%- endif %}
 	}
-
 	#shopify-section-{{ section.id }} .block-marketing-articles-related__header {
 		margin-bottom: 2em;
 		text-align: {{ section.settings.text_align | default: 'center' }};
 	}
-
-	.block-marketing-articles-related__title {
-		font-family: var(--theme-font-family-serif);
-		font-size: clamp(1.6em, 4vw, 2em);
-		font-weight: 400;
-		margin: 0;
-	}
-
-	.block-marketing-articles-related__subheading {
-		margin: 0.5em 0 0;
-		opacity: 0.8;
-	}
-
-	.block-marketing-articles-related__grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
-		gap: var(--grid-gap, 0.5em);
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.block-marketing-articles-related__item {
-		display: flex;
-		min-width: 0;
-	}
-
-	@media (max-width: 60em) {
-		.block-marketing-articles-related__grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		.block-marketing-articles-related__grid {
-			grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
-		}
-	}
 {% endstyle %}
+
+<div class="block-marketing-articles-related__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
+	<header class="block-marketing-articles-related__header">
+		<h2 class="block-marketing-articles-related__title">{{ heading_text }}</h2>
+		{%- if section.settings.subheading != blank -%}
+			<p class="block-marketing-articles-related__subheading">{{ section.settings.subheading }}</p>
+		{%- endif -%}
+	</header>
+
+	<ul class="block-marketing-articles-related__grid" style="--grid-columns: {{ section.settings.columns_desktop | default: 4 }}; --grid-columns-tablet: {{ section.settings.columns_tablet | default: 3 }}; --grid-columns-mobile: {{ section.settings.columns_mobile | default: 1 }}; --grid-gap: {{ section.settings.grid_gap | default: 0.5 }}em;">
+		{%- for handle in related_handles_array -%}
+			{%- for blog_article in blog.articles -%}
+				{%- if blog_article.handle == handle -%}
+					<li class="block-marketing-articles-related__item">
+						{%- render 'html-theme-card',
+							article: blog_article,
+							blog_title: blog.title,
+							layout: section.settings.card_layout,
+							image_ratio: section.settings.image_ratio,
+							columns_desktop: section.settings.columns_desktop,
+							columns_tablet: section.settings.columns_tablet,
+							columns_mobile: section.settings.columns_mobile,
+							columns_width: section.settings.width,
+							columns_gap: section.settings.grid_gap,
+							image_loading: 'lazy',
+							show_image: section.settings.show_image,
+							show_blog: section.settings.show_blog_title,
+							show_date: section.settings.show_date,
+							show_excerpt: section.settings.show_excerpt,
+							show_cta: section.settings.show_cta
+						-%}
+					</li>
+					{%- break -%}
+				{%- endif -%}
+			{%- endfor -%}
+		{%- endfor -%}
+	</ul>
+</div>
+
+{%- endif -%}
 
 {% schema %}
 {
@@ -209,8 +180,23 @@ DEPENDENCIES:
 			"default": "center"
 		},
 		{
+			"type": "range",
+			"id": "max_articles",
+			"label": "Maximum articles",
+			"min": 2,
+			"max": 8,
+			"step": 1,
+			"default": 4
+		},
+		{
+			"type": "checkbox",
+			"id": "show_fallback",
+			"label": "Show recent articles if no tag matches",
+			"default": true
+		},
+		{
 			"type": "header",
-			"content": "Article card"
+			"content": "Display"
 		},
 		{
 			"type": "select",
@@ -264,25 +250,6 @@ DEPENDENCIES:
 			"id": "show_cta",
 			"label": "Show read more link",
 			"default": false
-		},
-		{
-			"type": "header",
-			"content": "Filters"
-		},
-		{
-			"type": "range",
-			"id": "max_articles",
-			"label": "Maximum articles",
-			"min": 2,
-			"max": 8,
-			"step": 1,
-			"default": 4
-		},
-		{
-			"type": "checkbox",
-			"id": "show_fallback",
-			"label": "Show recent articles if no tag matches",
-			"default": true
 		},
 		{
 			"type": "header",
@@ -349,6 +316,18 @@ DEPENDENCIES:
 			"unit": "em"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -374,19 +353,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Only renders on article pages. Shows articles from the same blog that share tags with the current article. Falls back to recent articles if no tag matches and fallback is enabled."
 		}
 	],
 	"presets": [

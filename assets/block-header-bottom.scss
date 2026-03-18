@@ -1,0 +1,366 @@
+/* =============================================================================
+   BLOCK-HEADER-BOTTOM.SCSS
+   Desktop mega-menu navigation
+   ============================================================================= */
+
+.block-header-bottom {
+  &__wrapper {
+    display: block;
+  }
+
+  // SEO: visually hidden link list, crawlable by search engines
+  &__seo-links {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  &__nav {
+    position: relative;
+
+    @media (max-width: 60em) {
+      display: none;
+    }
+
+    // Backdrop overlay — shown when a panel is open
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 150ms ease, visibility 150ms ease;
+      pointer-events: none;
+    }
+
+    &.has-panel-open::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  // Top-level menu list
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Top-level item links
+  &__item {
+    > a {
+      display: inline-flex;
+      align-items: center;
+      height: var(--header-bottom-height, 3.5em);
+      padding: 0;
+      color: inherit;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+
+      span {
+        font-size: 0.9em;
+        white-space: nowrap;
+        letter-spacing: -0.02em;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    // Caret indicator below items that have a dropdown
+    &.has-dropdown > a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0.25em;
+      transform: translateX(-50%);
+      width: 1em;
+      height: 1em;
+      opacity: 0.4;
+      background-color: currentColor;
+      mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: 100%;
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: 100%;
+    }
+  }
+
+  // =============================================================================
+  // DROPDOWN PANEL
+  // =============================================================================
+
+  &__dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    width: 100%;
+    background-color: var(--theme-color-grey);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.5em);
+    transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+    pointer-events: none;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    // Nested dropdown: overlays the main panel
+    &--nested {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      min-height: 100%;
+      z-index: 3;
+      transform: none;
+    }
+  }
+
+  // Nested dropdown open state — toggled by JS via is-selected on <li>
+  li.has-dropdown.is-selected > &__dropdown--nested {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &__dropdown-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1.5em;
+    padding-block: 2em;
+  }
+
+  // =============================================================================
+  // LINKS SECTION
+  // =============================================================================
+
+  &__links {
+    flex: 1 1 auto;
+
+    > ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
+      gap: 0.2em;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      > li {
+        position: static;
+        background-color: var(--theme-color-white);
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75em;
+    width: 100%;
+    height: 100%;
+    min-height: 4.5em;
+    padding: 0.75em;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 150ms ease, color 150ms ease;
+
+    &:hover {
+      background-color: var(--theme-color-blue);
+      color: var(--theme-color-white);
+    }
+
+    span {
+      font-size: 0.85em;
+      line-height: 1.3;
+    }
+
+    // Back link (nested → parent)
+    &--back {
+      background-color: var(--theme-color-white);
+      color: var(--theme-color-blue);
+
+      span { order: 1; }
+      i    { order: 0; }
+
+      i svg { transform: rotate(180deg); }
+    }
+
+    // "All" link (view all in category)
+    &--all {
+      background-color: var(--theme-color-blue);
+      color: var(--theme-color-white);
+    }
+  }
+
+  // Thumbnail image inside a link
+  &__link-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4.5em;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+
+    .theme-media,
+    .theme-media__picture,
+    .theme-media__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Push label text past the image
+    + span {
+      padding-inline-start: 5.25em;
+    }
+  }
+
+  // Caret icon for items with sub-dropdowns
+  &__caret {
+    flex: 0 0 1em;
+    line-height: 1;
+
+    svg {
+      transform: rotate(-90deg);
+    }
+  }
+
+  // Navigate row: "view all" / "back" buttons at bottom of grid
+  &__navigate {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: transparent !important;
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding-top: 0.5em;
+
+    &--top {
+      display: none;
+    }
+
+    .block-header-bottom__link {
+      width: auto;
+      height: auto;
+      min-height: auto;
+      display: inline-flex;
+    }
+  }
+
+  // =============================================================================
+  // ASSIST PANEL
+  // =============================================================================
+
+  &__assist {
+    flex: 0 0 16.25em;
+  }
+
+  &__assist-item {
+    position: relative;
+    width: 100%;
+    height: 18.6em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: var(--theme-color-blue);
+
+    &:hover .block-header-bottom__assist-image .theme-media__img {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+  }
+
+  &__assist-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  &__assist-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+
+    .theme-media,
+    .theme-media__picture,
+    .theme-media__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+  }
+
+  &__assist-content {
+    position: relative;
+    z-index: 1;
+    padding: 1em;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+
+    h3 {
+      font-family: var(--theme-font-family-serif);
+      font-size: 1.25em;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 0.5em 0;
+    }
+  }
+
+  &__assist-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.4em 0.75em;
+    background-color: var(--theme-color-blue);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 150ms ease, color 150ms ease;
+
+    &:hover {
+      background-color: #fff;
+      color: var(--theme-color-blue);
+    }
+
+    i {
+      width: 1em;
+      height: 1em;
+      line-height: 1;
+    }
+  }
+}

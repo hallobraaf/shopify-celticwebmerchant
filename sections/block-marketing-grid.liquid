@@ -22,6 +22,43 @@ DEPENDENCIES:
 ============================================================================
 {%- endcomment -%}
 
+{{ 'block-marketing-grid.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-grid {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+
+	#shopify-section-{{ section.id }} .block-marketing-grid__header {
+		text-align: {{ section.settings.header_align | default: 'center' }};
+		{%- if section.settings.header_align == 'center' -%}
+		margin-inline: auto;
+		{%- endif -%}
+	}
+	{%- if section.settings.display_mode == 'slider' -%}
+	{%- comment -%} Pre-init slide widths — prevents CLS when Swiper loads deferred {%- endcomment -%}
+	#shopify-section-{{ section.id }} .swiper:not(.swiper-initialized) .swiper-slide {
+		width: calc(100% / {{ section.settings.columns_desktop | default: 3 }});
+	}
+	@media (max-width: 60em) {
+		#shopify-section-{{ section.id }} .swiper:not(.swiper-initialized) .swiper-slide {
+			width: calc(100% / {{ section.settings.columns_tablet | default: 2 }});
+		}
+	}
+	@media (max-width: 40em) {
+		#shopify-section-{{ section.id }} .swiper:not(.swiper-initialized) .swiper-slide {
+			width: calc(100% / {{ section.settings.columns_mobile | default: 1 }});
+		}
+	}
+	{%- endif -%}
+{% endstyle %}
+
 {%- liquid
 	assign has_heading = false
 	if section.settings.heading != blank or section.settings.subtext != blank
@@ -121,62 +158,62 @@ DEPENDENCIES:
 							{%- case block.type -%}
 								{%- when 'banner' -%}
 									{%- render 'html-marketing-grid-banner',
-									image: block.settings.image,
-									focus_x: block.settings.focus_x,
-									focus_y: block.settings.focus_y,
-									overlay: block.settings.overlay,
-									label: block.settings.label,
-									heading: block.settings.heading,
-									text: block.settings.text,
-									link_url: block.settings.link_url,
-									design: block.settings.design,
-									block_id: block.id,
-									columns_desktop: section.settings.columns_desktop,
-									columns_tablet: section.settings.columns_tablet,
-									columns_mobile: section.settings.columns_mobile,
-									columns_width: section.settings.width,
-									columns_gap: section.settings.grid_gap
+										image: block.settings.image,
+										focus_x: block.settings.focus_x,
+										focus_y: block.settings.focus_y,
+										overlay: block.settings.overlay,
+										label: block.settings.label,
+										heading: block.settings.heading,
+										text: block.settings.text,
+										link_url: block.settings.link_url,
+										design: block.settings.design,
+										block_id: block.id,
+										columns_desktop: section.settings.columns_desktop,
+										columns_tablet: section.settings.columns_tablet,
+										columns_mobile: section.settings.columns_mobile,
+										columns_width: section.settings.width,
+										columns_gap: section.settings.grid_gap
 									-%}
-									{%- when 'video' -%}
+								{%- when 'video' -%}
 									{%- render 'html-marketing-grid-video',
-									video: block.settings.video,
-									cover_image: block.settings.cover_image,
-									focus_x: block.settings.focus_x,
-									focus_y: block.settings.focus_y,
-									label: block.settings.label,
-									heading: block.settings.heading,
-									text: block.settings.text,
-									design: block.settings.design,
-									block_id: block.id,
-									columns_desktop: section.settings.columns_desktop,
-									columns_tablet: section.settings.columns_tablet,
-									columns_mobile: section.settings.columns_mobile,
-									columns_width: section.settings.width,
-									columns_gap: section.settings.grid_gap
+										video: block.settings.video,
+										cover_image: block.settings.cover_image,
+										focus_x: block.settings.focus_x,
+										focus_y: block.settings.focus_y,
+										label: block.settings.label,
+										heading: block.settings.heading,
+										text: block.settings.text,
+										design: block.settings.design,
+										block_id: block.id,
+										columns_desktop: section.settings.columns_desktop,
+										columns_tablet: section.settings.columns_tablet,
+										columns_mobile: section.settings.columns_mobile,
+										columns_width: section.settings.width,
+										columns_gap: section.settings.grid_gap
 									-%}
-									{%- when 'product' -%}
+								{%- when 'product' -%}
 									{%- render 'html-marketing-grid-product',
-									product: block.settings.product,
-									show_secondary_image: block.settings.second_image,
-									design: block.settings.design,
-									block_id: block.id,
-									columns_desktop: section.settings.columns_desktop,
-									columns_tablet: section.settings.columns_tablet,
-									columns_mobile: section.settings.columns_mobile,
-									columns_width: section.settings.width,
-									columns_gap: section.settings.grid_gap
+										product: block.settings.product,
+										show_secondary_image: block.settings.second_image,
+										design: block.settings.design,
+										block_id: block.id,
+										columns_desktop: section.settings.columns_desktop,
+										columns_tablet: section.settings.columns_tablet,
+										columns_mobile: section.settings.columns_mobile,
+										columns_width: section.settings.width,
+										columns_gap: section.settings.grid_gap
 									-%}
-									{%- when 'collection' -%}
+								{%- when 'collection' -%}
 									{%- render 'html-marketing-grid-collection',
-									collection: block.settings.collection,
-									show_description: block.settings.show_description,
-									design: block.settings.design,
-									block_id: block.id,
-									columns_desktop: section.settings.columns_desktop,
-									columns_tablet: section.settings.columns_tablet,
-									columns_mobile: section.settings.columns_mobile,
-									columns_width: section.settings.width,
-									columns_gap: section.settings.grid_gap
+										collection: block.settings.collection,
+										show_description: block.settings.show_description,
+										design: block.settings.design,
+										block_id: block.id,
+										columns_desktop: section.settings.columns_desktop,
+										columns_tablet: section.settings.columns_tablet,
+										columns_mobile: section.settings.columns_mobile,
+										columns_width: section.settings.width,
+										columns_gap: section.settings.grid_gap
 									-%}
 							{%- endcase -%}
 						</div>
@@ -209,435 +246,6 @@ DEPENDENCIES:
 	{%- endcase -%}
 </div>
 
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-grid {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__header {
-		text-align: {{ section.settings.header_align | default: 'center' }};
-		max-width: 800px;
-		{%- if section.settings.header_align == 'center' -%}
-		margin-inline: auto;
-		{%- endif -%}
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__title {
-		font-family: var(--theme-font-family-serif);
-		font-size: clamp(1.6em, 4vw, 2em);
-		font-weight: 400;
-		margin: 0 0 0.5em;
-		line-height: 1.2;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__subtitle {
-		font-size: 1em;
-		opacity: 0.8;
-		margin: 0;
-		line-height: 1.5;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__subtitle p {
-		margin: 0;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.has-heading {
-		margin-block-start: 2em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__item {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		min-width: 0;
-		margin: 0;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__item > * {
-		width: 100%;
-		height: 100%;
-	}
-
-	/* ==========================================
-	   GRID MODE - Regular responsive grid
-	   ========================================== */
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns, 3), 1fr);
-		gap: var(--grid-gap, 0.5em);
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-grid .block-marketing-grid__item {
-		aspect-ratio: 2/3;
-		min-height: 0;
-	}
-
-	@media (max-width: 60em) {
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-grid {
-			grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
-		}
-	}
-
-	/* ==========================================
-	   CREATIVE MODE - Asymmetric layouts
-	   ========================================== */
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative {
-		display: grid;
-		gap: var(--grid-gap, 0.5em);
-		min-height: 500px;
-	}
-
-	/* 1 item - Full width */
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-1 {
-		grid-template-columns: 1fr;
-		min-height: 600px;
-	}
-
-	/* 2 items - Side by side */
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-2 {
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: 1fr;
-	}
-
-	/* 3 items - Large left, stacked right */
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-3 {
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(2, 1fr);
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-3 > .block-marketing-grid__item:nth-child(1) {
-		grid-area: 1 / 1 / 3 / 2;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-3 > .block-marketing-grid__item:nth-child(2) {
-		grid-area: 1 / 2 / 2 / 3;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-3 > .block-marketing-grid__item:nth-child(3) {
-		grid-area: 2 / 2 / 3 / 3;
-	}
-
-	/* 4 items - Large left, 3 on right */
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-4 {
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(2, 1fr);
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-4 > .block-marketing-grid__item:nth-child(1) {
-		grid-area: 1 / 1 / 3 / 2;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-4 > .block-marketing-grid__item:nth-child(2) {
-		grid-area: 1 / 2 / 2 / 3;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-4 > .block-marketing-grid__item:nth-child(3) {
-		grid-area: 1 / 3 / 2 / 4;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-4 > .block-marketing-grid__item:nth-child(4) {
-		grid-area: 2 / 2 / 3 / 4;
-	}
-
-	/* 5 items - Large left, 4 on right */
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-5 {
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(2, 1fr);
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-5 > .block-marketing-grid__item:nth-child(1) {
-		grid-area: 1 / 1 / 3 / 2;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-5 > .block-marketing-grid__item:nth-child(2) {
-		grid-area: 1 / 2 / 2 / 3;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-5 > .block-marketing-grid__item:nth-child(3) {
-		grid-area: 1 / 3 / 2 / 4;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-5 > .block-marketing-grid__item:nth-child(4) {
-		grid-area: 2 / 2 / 3 / 3;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-5 > .block-marketing-grid__item:nth-child(5) {
-		grid-area: 2 / 3 / 3 / 4;
-	}
-
-	/* 6+ items - Regular 3-column grid */
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-6,
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-7,
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-8,
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-9,
-	#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-10 {
-		grid-template-columns: repeat(3, 1fr);
-		grid-auto-rows: 1fr;
-	}
-
-	/* Creative mode tablet */
-	@media (max-width: 60em) {
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-4,
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-5,
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-6,
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-7,
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-8,
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-9,
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-10 {
-			grid-template-columns: repeat(2, 1fr);
-			grid-auto-rows: 1fr;
-		}
-
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-4 > .block-marketing-grid__item,
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative.has-items-5 > .block-marketing-grid__item {
-			grid-area: auto;
-		}
-	}
-
-	/* Creative mode mobile - always 2 columns with first item spanning 2 rows */
-	@media (max-width: 40em) {
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative {
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: repeat(2, auto);
-			grid-auto-rows: auto;
-			min-height: auto;
-		}
-
-		/* First item spans 2 rows */
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative > .block-marketing-grid__item:nth-child(1) {
-			grid-area: 1 / 1 / 3 / 2;
-		}
-
-		/* Second item: row 1, column 2 */
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative > .block-marketing-grid__item:nth-child(2) {
-			grid-area: 1 / 2 / 2 / 3;
-		}
-
-		/* Third item: row 2, column 2 */
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative > .block-marketing-grid__item:nth-child(3) {
-			grid-area: 2 / 2 / 3 / 3;
-		}
-
-		/* Remaining items: auto-flow in 2 columns */
-		#shopify-section-{{ section.id }} .block-marketing-grid__list.is-creative > .block-marketing-grid__item:nth-child(n+4) {
-			grid-area: auto;
-		}
-	}
-
-	/* ==========================================
-	   SLIDER MODE - Uses global .swiper utilities
-	   ========================================== */
-	#shopify-section-{{ section.id }} .block-marketing-grid__slider .swiper-slide {
-		aspect-ratio: 2/3;
-	}
-
-	/* ==========================================
-	   MARKETING CARD - Overlay variant
-	   Full-bleed image with content overlay
-	   ========================================== */
-	.is-marketing-card {
-		position: relative;
-		isolation: isolate;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		align-items: center;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
-		background-color: #f5f5f5;
-	}
-
-	.is-marketing-card__link {
-		position: absolute;
-		inset: 0;
-		z-index: 5;
-		display: block;
-	}
-
-	.is-marketing-card__image {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		background-color: #000;
-	}
-
-	.is-marketing-card__image .theme-media,
-	.is-marketing-card__image .theme-media__picture {
-		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
-		margin: 0;
-	}
-
-	.is-marketing-card__image img,
-	.is-marketing-card__image .theme-media__img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transition: transform 175ms ease;
-	}
-
-	.is-marketing-card:hover .is-marketing-card__image img,
-	.is-marketing-card:hover .is-marketing-card__image .theme-media__img {
-		transform: scale(1.02);
-	}
-
-	.is-marketing-card__overlay {
-		position: absolute;
-		inset: 0;
-		z-index: 1;
-		background-color: #000;
-		pointer-events: none;
-	}
-
-	.is-marketing-card.is-overlay-none .is-marketing-card__overlay { opacity: 0; }
-	.is-marketing-card.is-overlay-light .is-marketing-card__overlay { opacity: 0.2; }
-	.is-marketing-card.is-overlay-medium .is-marketing-card__overlay { opacity: 0.4; }
-	.is-marketing-card.is-overlay-dark .is-marketing-card__overlay { opacity: 0.6; }
-
-	.is-marketing-card__content {
-		position: relative;
-		z-index: 2;
-		width: 100%;
-		padding: 1.5em;
-		color: #fff;
-		text-align: center;
-		pointer-events: none;
-	}
-
-	.is-marketing-card__label {
-		display: inline-block;
-		font-size: 0.75em;
-		font-weight: 500;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin-bottom: 0.5rem;
-		opacity: 0.9;
-	}
-
-	.is-marketing-card__title {
-		color: inherit;
-		font-size: 1.5em;
-		font-weight: 500;
-		line-height: 1.2;
-		margin: 0 0 0.5rem;
-	}
-
-	.is-marketing-card__text {
-		color: inherit;
-		font-size: 1em;
-		line-height: 1.5;
-		opacity: 0.95;
-	}
-
-	.is-marketing-card__text p {
-		margin: 0;
-	}
-
-	/* Design variants - Celtic decorative borders */
-	.is-marketing-card[class*="is-design-"] .is-marketing-card__content {
-		position: relative;
-		isolation: isolate;
-		padding-bottom: 2.5em;
-		background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) calc(100% - 1em));
-	}
-
-	.is-marketing-card[class*="is-design-"] .is-marketing-card__content::before {
-		content: '';
-		position: absolute;
-		z-index: -1;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		height: 1em;
-	}
-
-	/* Blue design - diagonal lines */
-	.is-marketing-card.is-design-blue .is-marketing-card__content::before {
-		background: var(--theme-color-blue, #1e40af);
-	}
-
-	.is-marketing-card.is-design-blue .is-marketing-card__content::after {
-		content: '';
-		position: absolute;
-		z-index: -2;
-		left: 0;
-		top: 1em;
-		right: 0;
-		bottom: 0;
-		background: var(--theme-color-blue, #1e40af);
-		transform: scaleX(-1);
-		mask-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 4" stroke-width="0.5"><line stroke="black" x1="0" y1="0" x2="4" y2="4"/><line stroke="black" x1="-0.4" y1="3.6" x2="0.4" y2="4.4"/><line stroke="black" x1="3.6" y1="-0.4" x2="4.4" y2="0.4"/></svg>');
-		mask-repeat: repeat;
-		mask-size: 16px;
-	}
-
-	/* Red design - triangles */
-	.is-marketing-card.is-design-red .is-marketing-card__content::before {
-		background: var(--theme-color-red, #dc2626);
-	}
-
-	.is-marketing-card.is-design-red .is-marketing-card__content::after {
-		content: '';
-		position: absolute;
-		z-index: -2;
-		left: 0;
-		right: 0;
-		bottom: 1em;
-		height: 1em;
-		background: var(--theme-color-red, #dc2626);
-		mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 8"><polygon points="8.5 0 0 8 17 8 8.5 0"/></svg>');
-		mask-repeat: repeat-x;
-		mask-size: 41px;
-		mask-position: calc(50% - 30px) bottom;
-	}
-
-	/* Green design - slashes */
-	.is-marketing-card.is-design-green .is-marketing-card__content::before {
-		background: var(--theme-color-green, #16a34a);
-	}
-
-	.is-marketing-card.is-design-green .is-marketing-card__content::after {
-		content: '';
-		position: absolute;
-		z-index: 0;
-		left: 0;
-		right: 0;
-		bottom: 1em;
-		height: 8px;
-		background: var(--theme-color-green, #16a34a);
-		mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 8"><line stroke="black" stroke-width="4" x1="-.98" y1="11.78" x2="9.17" y2="2.22"/></svg>');
-		mask-repeat: repeat-x;
-		mask-size: 11px;
-	}
-
-	@media (max-width: 40em) {
-		.is-marketing-card__title {
-			font-size: 1.25em;
-		}
-		
-		.is-marketing-card__text {
-			font-size: 0.875em;
-		}
-	}
-{% endstyle %}
-
 {%- if section.settings.display_mode == 'slider' -%}
 <script>
 	(function() {
@@ -647,14 +255,9 @@ DEPENDENCIES:
 			
 			if (swiperEl.swiper) swiperEl.swiper.destroy();
 
-			// Convert em to px using computed font-size
-			const fontSize = parseFloat(getComputedStyle(swiperEl).fontSize);
-			const gapEm = parseFloat('{{ section.settings.grid_gap | default: 0.5 }}');
-			const gapPx = gapEm * fontSize;
-
 			const config = {
 				slidesPerView: {{ section.settings.columns_mobile | default: 1 }},
-				spaceBetween: gapPx,
+				spaceBetween: {{ section.settings.grid_gap | default: 0.5 | times: 16 }},
 				{%- if section.settings.slider_navigation -%}
 				navigation: {
 					prevEl: swiperEl.querySelector('.swiper-nav--prev'),
@@ -758,6 +361,54 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
+			"content": "Display"
+		},
+		{
+			"type": "select",
+			"id": "display_mode",
+			"label": "Display mode",
+			"options": [
+				{ "value": "grid", "label": "Grid" },
+				{ "value": "slider", "label": "Slider" },
+				{ "value": "creative", "label": "Creative" }
+			],
+			"default": "creative",
+			"info": "Grid: regular columns. Slider: horizontal scroll. Creative: asymmetric layouts."
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_navigation",
+			"label": "Show navigation",
+			"info": "Slider only",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_pagination",
+			"label": "Show pagination",
+			"info": "Slider only",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_autoplay",
+			"label": "Autoplay",
+			"info": "Slider only. Includes rewind.",
+			"default": false
+		},
+		{
+			"type": "range",
+			"id": "slider_autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Slider only",
+			"min": 2,
+			"max": 10,
+			"step": 1,
+			"default": 5,
+			"unit": "s"
+		},
+		{
+			"type": "header",
 			"content": "Layout"
 		},
 		{
@@ -824,52 +475,16 @@ DEPENDENCIES:
 			"unit": "em"
 		},
 		{
-			"type": "header",
-			"content": "Display"
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
 		},
 		{
-			"type": "select",
-			"id": "display_mode",
-			"label": "Display mode",
-			"options": [
-				{ "value": "grid", "label": "Grid" },
-				{ "value": "slider", "label": "Slider" },
-				{ "value": "creative", "label": "Creative" }
-			],
-			"default": "creative",
-			"info": "Grid: regular columns. Slider: horizontal scroll. Creative: asymmetric layouts."
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_navigation",
-			"label": "Show navigation",
-			"info": "Slider only",
-			"default": true
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_pagination",
-			"label": "Show pagination",
-			"info": "Slider only",
-			"default": true
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_autoplay",
-			"label": "Autoplay",
-			"info": "Slider only. Includes rewind.",
-			"default": false
-		},
-		{
-			"type": "range",
-			"id": "slider_autoplay_speed",
-			"label": "Autoplay speed",
-			"info": "Slider only",
-			"min": 2,
-			"max": 10,
-			"step": 1,
-			"default": 5,
-			"unit": "s"
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "header",
@@ -887,19 +502,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add banner, video, product or collection blocks. Creative mode auto-applies asymmetric layouts based on item count."
 		}
 	],
 	"blocks": [

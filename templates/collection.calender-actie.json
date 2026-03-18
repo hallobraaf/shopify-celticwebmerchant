@@ -1,0 +1,168 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_cover_X3E4gU": {
+      "type": "block-marketing-cover",
+      "blocks": {
+        "button_GxA6Lp": {
+          "type": "button",
+          "settings": {
+            "text": "",
+            "url": "",
+            "style": "primary",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_GxA6Lp"
+      ],
+      "name": "Cover",
+      "settings": {
+        "subheading": "",
+        "heading": "Maart is knutselmaand",
+        "text": "<p>10% korting op alle doe-het-zelf producten. </p><p>Code <strong>CRAFTING2026<br/>* </strong><em>Vul je code in bij het afrekenen</em></p>",
+        "image": "shopify://shop_images/Banner_Volva_Dali_Feb2026_3.jpg",
+        "focus_x": 0,
+        "focus_y": 45,
+        "overlay": "medium",
+        "loading": "lazy",
+        "fetchpriority": "auto",
+        "width": "is-align-full",
+        "height": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "breadcrumbs": {
+      "type": "block-page-breadcrumbs",
+      "settings": {
+        "ancestor_1": "",
+        "ancestor_2": "",
+        "ancestor_3": "",
+        "menu": "",
+        "width": "is-align-wide",
+        "text_align": "center",
+        "padding_block": 1,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "collection-top": {
+      "type": "block-collection-top",
+      "disabled": true,
+      "settings": {
+        "show_image": false,
+        "show_meta_description": true,
+        "show_excerpt": true,
+        "show_count": false,
+        "width": "is-align-narrow",
+        "text_align": "center",
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": ""
+      }
+    },
+    "collection-banners": {
+      "type": "block-collection-banners",
+      "settings": {
+        "menu": "",
+        "card_layout": "horizontal",
+        "image_ratio": "portrait",
+        "show_product_count": false,
+        "card_text_align": "left",
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 1,
+        "grid_gap": 0.2,
+        "padding_block": 2,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#ffffff",
+        "text_color": "",
+        "card_background_color": "#0f1f38",
+        "card_text_color": "#ffffff",
+        "anchor": ""
+      }
+    },
+    "collection-products": {
+      "type": "block-collection-products",
+      "settings": {
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_rating": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "quick_add": false,
+        "products_per_page": 24,
+        "show_filter": true,
+        "show_sort": true,
+        "show_result_count": true,
+        "show_filter_counts": true,
+        "hide_empty_values": false,
+        "max_preview_filters": 8,
+        "auto_fill_preview": true,
+        "collapse_bar_mobile": true,
+        "auto_submit": false,
+        "width": "is-align-wide",
+        "grid_columns": 4,
+        "grid_columns_tablet": 3,
+        "grid_columns_mobile": 2,
+        "grid_gap": 0.2,
+        "background_color": "#f8f8f8",
+        "text_color": "#111111",
+        "anchor": ""
+      }
+    },
+    "collection-info": {
+      "type": "block-collection-info",
+      "settings": {
+        "title": "Gerelateerde blogs",
+        "read_more_text": "",
+        "width": "is-align",
+        "background_color": "#f8f8f8",
+        "text_color": "#111111",
+        "knowledge_background_color": "#0f1f38",
+        "knowledge_text_color": "#ffffff",
+        "anchor": ""
+      }
+    },
+    "collection-bottom": {
+      "type": "block-collection-bottom",
+      "settings": {
+        "show_title": false,
+        "heading_tag": "h2",
+        "width": "is-align-small",
+        "text_align": "center",
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": ""
+      }
+    }
+  },
+  "order": [
+    "block_marketing_cover_X3E4gU",
+    "breadcrumbs",
+    "collection-top",
+    "collection-banners",
+    "collection-products",
+    "collection-info",
+    "collection-bottom"
+  ]
+}

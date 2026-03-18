@@ -1,0 +1,152 @@
+/* ==========================================================================
+   THEME-UX-APPS
+   Third-party app overrides and minor theme tweaks.
+   Replaces theme-maurits.css — loaded globally via theme.liquid preload.
+
+   Sections:
+     1. Theme token overrides
+     2. Drawer overlay
+     3. Cart tweaks
+     4. APP: Klaviyo
+     5. APP: Swym wishlist
+     6. APP: Shop the look
+     7. APP: Tax exemption
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. THEME TOKEN OVERRIDES
+   ========================================================================== */
+
+:root {
+  --theme-color-success: rgba(208, 255, 194, 0.3);
+  --theme-bgcolor-success: #d0ffc2;
+}
+
+
+/* ==========================================================================
+   2. DRAWER OVERLAY
+   ========================================================================== */
+
+// Ensure drawer overlay sits above all app overlays
+body > .dr-overlay {
+  z-index: 999999 !important;
+}
+
+
+/* ==========================================================================
+   3. CART TWEAKS
+   ========================================================================== */
+
+.block-cart-order {
+  &__content input.cart-subtotal__discount-input {
+    border: 1px solid var(--theme-color-blue);
+  }
+
+  &__form .cart-subtotal__discount {
+    color: var(--theme-color-blue);
+    border: 1px solid var(--theme-color-blue);
+    padding: 0.2em 0.5em;
+  }
+}
+
+
+/* ==========================================================================
+   4. APP: KLAVIYO
+   Embed footer form — feedback text color overrides
+   ========================================================================== */
+
+footer {
+  .klaviyo-form.klaviyo-form.form-version-cid-1 h1 span {
+    color: var(--theme-color-white) !important;
+    background: rgb(69, 93, 132);
+    font-size: initial !important;
+    display: inline-block;
+    padding: 0.5em;
+  }
+
+  .needsclick.kl-private-reset-css-Xuajs1 p span {
+    color: var(--theme-color-white) !important;
+    font-size: initial !important;
+  }
+}
+
+
+/* ==========================================================================
+   5. APP: SWYM WISHLIST
+   ========================================================================== */
+
+#swym-storefront-layout-section-container {
+  .swym-storefront-layout-collection-list-content.swym-storefront-layout-scrollable {
+    overflow-y: scroll !important;
+  }
+
+  .swym-storefront-layout-collection-carousel-title,
+  .swym-storefront-layout-default-list-title {
+    font-size: inherit;
+  }
+
+  .swym-storefront-layout-grid-item a.swym-storefront-layout-grid-item-title {
+    font-size: initial;
+  }
+}
+
+
+/* ==========================================================================
+   6. APP: SHOP THE LOOK
+   ========================================================================== */
+
+.shopthelook-section-v2 {
+  .ctl-title {
+    font-size: 38px !important;
+    text-transform: initial !important;
+  }
+
+  button.btn--primary.stl__btn-primary.shopthelook_add-to-cart {
+    background-color: var(--theme-color-green) !important;
+    border-radius: 0;
+    padding: 0.85em 1em;
+  }
+}
+
+.shopthelook_variants {
+  margin: 0.5em 0;
+  background-color: var(--theme-color-grey);
+}
+
+.glide-page-dots .glide__bullets {
+  .glide__bullet {
+    border-radius: 0;
+    width: 24px;
+    height: 24px;
+
+    &.glide__bullet--active {
+      background-color: var(--theme-color-green);
+    }
+
+    &:hover {
+      background-color: transparent;
+      border-color: var(--theme-color-green);
+    }
+  }
+}
+
+
+/* ==========================================================================
+   7. APP: TAX EXEMPTION (00)
+   ========================================================================== */
+
+.auto-tax-exemption {
+  #oo-tax-exemption {
+    padding: 0;
+
+    p {
+      line-height: 1.2;
+    }
+  }
+}
+
+.oo-tax-succes {
+  padding: 0 1em;
+  background-color: rgba(208, 255, 194, 0.5);
+}

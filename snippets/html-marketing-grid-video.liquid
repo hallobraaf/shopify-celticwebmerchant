@@ -88,7 +88,7 @@ DEPENDENCIES:
 	assign tablet_image = tablet_available | divided_by: columns_tablet | round
 	
 	assign mobile_gaps = columns_mobile | minus: 1 | times: gap_px
-	assign mobile_available = 480 | minus: mobile_gaps
+	assign mobile_available = 390 | minus: mobile_gaps
 	assign mobile_image = mobile_available | divided_by: columns_mobile | round
 	
 	comment
@@ -97,24 +97,28 @@ DEPENDENCIES:
 	assign img_sizes = '(min-width: 60em) ' | append: desktop_image | append: 'px, (min-width: 40em) ' | append: tablet_image | append: 'px, ' | append: mobile_image | append: 'px'
 	
 	comment
-		Srcset widths based on desktop (largest display)
-		Provides 1x, 1.5x, 2x, 2.5x, 3x for retina
+		Srcset: base on largest needed (desktop or mobile, whichever is bigger).
+		Provides 1x–3x for retina at all breakpoints.
 	endcomment
 	assign base = desktop_image
+	if mobile_image > base
+		assign base = mobile_image
+	endif
 	if base < 200
 		assign base = 200
 	endif
 	
 	assign w1 = base | round
 	assign w2 = base | times: 1.5 | round
-	assign w3 = base | times: 2 | round
-	assign w4 = base | times: 2.5 | round
-	assign w5 = base | times: 3 | round
+	assign w3 = base | times: 1.75 | round
+	assign w4 = base | times: 2 | round
+	assign w5 = base | times: 2.5 | round
+	assign w6 = base | times: 3 | round
+	if w6 > 2048
+		assign w6 = 2048
+	endif
 	if w5 > 2048
 		assign w5 = 2048
-	endif
-	if w4 > 2048
-		assign w4 = 2048
 	endif
 -%}
 
@@ -125,18 +129,19 @@ DEPENDENCIES:
 			{%- if cover_image != blank -%}
 				<div class="is-marketing-card__image">
 					{%- render 'html-theme-media-image',
-						image: cover_image,
-						alt: heading | default: 'Video',
-						w1: w1,
-						w2: w2,
-						w3: w3,
-						w4: w4,
-						w5: w5,
-						sizes: img_sizes,
-						image_loading: 'lazy',
-						focus_x: focus_x,
-						focus_y: focus_y
-					-%}
+					image: cover_image,
+					alt: heading | default: 'Video',
+					w1: w1,
+					w2: w2,
+					w3: w3,
+					w4: w4,
+					w5: w5,
+					w6: w6,
+					sizes: img_sizes,
+					image_loading: 'lazy',
+					focus_x: focus_x,
+					 focus_y: focus_y
+				-%}
 				</div>
 			{%- endif -%}
 
@@ -212,113 +217,3 @@ DEPENDENCIES:
 	{%- endif -%}
 </div>
 
-<style>
-.marketing-grid-video {
-	background-color: #000;
-}
-
-.marketing-grid-video__cover {
-	position: absolute;
-	inset: 0;
-	z-index: 2;
-	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	align-items: center;
-}
-
-.marketing-grid-video__cover .is-marketing-card__image {
-	z-index: 0;
-}
-
-.marketing-grid-video__play-button {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 3;
-	background: none;
-	border: none;
-	cursor: pointer;
-	padding: 0;
-	width: 80px;
-	height: 80px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: transform 200ms ease;
-}
-
-.marketing-grid-video.has-content .marketing-grid-video__play-button {
-	top: calc(50% - 3em);
-}
-
-.marketing-grid-video__play-button:hover {
-	transform: translate(-50%, -50%) scale(1.1);
-}
-
-.marketing-grid-video.has-content .marketing-grid-video__play-button:hover {
-	transform: translate(-50%, -50%) scale(1.1);
-}
-
-.marketing-grid-video__play-icon {
-	display: flex;
-	width: 80px;
-	height: 80px;
-	background-color: rgba(255, 255, 255, 0.95);
-	border-radius: 50%;
-	align-items: center;
-	justify-content: center;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-	color: #000;
-}
-
-.marketing-grid-video__player {
-	position: absolute;
-	inset: 0;
-}
-
-.marketing-grid-video__video {
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-.marketing-grid-video__placeholder {
-	position: absolute;
-	inset: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--theme-color-grey, #f5f5f5);
-	color: var(--theme-color-foreground-subtle, #999);
-	text-align: center;
-	padding: 2rem;
-}
-
-.marketing-grid-video__placeholder p {
-	margin-top: 1rem;
-	font-size: 0.875rem;
-}
-
-@media (max-width: 40em) {
-	.marketing-grid-video__play-button {
-		width: 60px;
-		height: 60px;
-	}
-
-	.marketing-grid-video__play-icon {
-		width: 60px;
-		height: 60px;
-	}
-
-	.marketing-grid-video__play-icon svg {
-		width: 24px;
-		height: 24px;
-	}
-}
-</style>

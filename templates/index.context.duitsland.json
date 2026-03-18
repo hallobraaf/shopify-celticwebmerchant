@@ -1,0 +1,50 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "duitsland"
+  },
+  "parent": "index.json",
+  "sections": {
+    "block_marketing_media_text_mEgbKY": {
+      "settings": {
+        "padding_block": 0
+      },
+      "blocks": {
+        "image_text_aJBEwL": {
+          "settings": {
+            "image": "shopify://shop_images/DSC03875.jpg",
+            "image_height": "fill",
+            "vertical_alignment": "center"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "block_marketing_cover_EyVVzr",
+    "block_marketing_grid_eKTaaA",
+    "block_marketing_collections_KLibTG",
+    "best-products",
+    "block_marketing_grid_93tkDC",
+    "block_marketing_products_EaRW4A",
+    "block_marketing_products_pXat79",
+    "block_marketing_media_text_iDhD8j",
+    "17653968662b835c7e",
+    "block_marketing_articles_mcEqQJ",
+    "block_marketing_articles_HAGXAT",
+    "block_marketing_media_text_mEgbKY",
+    "block_marketing_articles_wJ9gkm",
+    "block_marketing_media_text_eUmREH",
+    "block_marketing_articles_qtkjtB",
+    "block_marketing_brands_small_gekrHy",
+    "1765396664e68351eb"
+  ]
+}

@@ -12,6 +12,12 @@
     "product-form": {
       "type": "block-product-form",
       "blocks": {
+        "heading_RX6EDQ": {
+          "type": "heading",
+          "settings": {
+            "show_vendor": false
+          }
+        },
         "rating_CMxGnn": {
           "type": "rating",
           "settings": {
@@ -20,21 +26,23 @@
             "size": 16
           }
         },
-        "heading_RX6EDQ": {
-          "type": "heading",
+        "variant_picker_FRRdBk": {
+          "type": "variant_picker",
           "settings": {
-            "show_vendor": true
+            "threshold_dropdown": 10
           }
         },
         "price_zBizDd": {
           "type": "price",
           "settings": {}
         },
-        "variant_picker_FRRdBk": {
-          "type": "variant_picker",
-          "settings": {
-            "threshold_dropdown": 10
-          }
+        "discount_mixer_countdown_block_RM9jfi": {
+          "type": "shopify://apps/discount-mixer/blocks/countdown-block/791c666a-e939-4fd3-bdd3-b122066bb588",
+          "settings": {}
+        },
+        "rockit_sales_manager_timer_wMjnzc": {
+          "type": "shopify://apps/rockit-discounts-sales/blocks/timer/f347a9bf-00bf-4eeb-9f4d-159bb9b1cead",
+          "settings": {}
         },
         "stock_P8dwNk": {
           "type": "stock",
@@ -46,16 +54,25 @@
           "type": "delivery",
           "settings": {}
         },
-        "notify_Ta47NL": {
-          "type": "notify",
-          "settings": {}
-        },
         "atc_LyVFKC": {
           "type": "atc",
           "settings": {
             "full_width": true,
             "show_quantity": true,
             "show_wishlist": true
+          }
+        },
+        "trust_usps_dMe7Mk": {
+          "type": "trust_usps",
+          "settings": {
+            "item_1_text": "Klarna: Koop nu, Betaal later!",
+            "item_1_url": "",
+            "item_2_text": "Niet goed? Geld terug binnen 2 werkdagen",
+            "item_2_url": "",
+            "item_3_text": "Levenslange garantie op onze producten",
+            "item_3_url": "",
+            "item_4_text": "",
+            "item_4_url": ""
           }
         },
         "trust_payments_Lra8px": {
@@ -65,42 +82,36 @@
             "method_2": "visa",
             "method_3": "mastercard",
             "method_4": "google_pay",
-            "method_5": "apple_pay"
+            "method_5": "apple_pay",
+            "method_6": "klarna",
+            "method_7": "visa",
+            "method_8": "none",
+            "method_9": "none",
+            "method_10": "none"
           }
         },
         "trust_identity_CTE9dt": {
           "type": "trust_identity",
+          "disabled": true,
           "settings": {
-            "tag": "ID check",
+            "tag": "compliance:leeftijdsverificatie",
             "message": "Dit artikel wordt alleen verkocht aan 18+. We versturen je bestelling na ID verificatie."
-          }
-        },
-        "trust_usps_dMe7Mk": {
-          "type": "trust_usps",
-          "settings": {
-            "item_1_text": "Niet goed? Geld terug binnen 2 werkdagen",
-            "item_1_url": "shopify://pages/niet-goed-geld-terug",
-            "item_2_text": "Wij verzenden wereldwijd",
-            "item_2_url": "shopify://pages/wereldwijde-verzending",
-            "item_3_text": "Levenslange garantie op onze producten",
-            "item_3_url": "shopify://pages/footer-usp-4",
-            "item_4_text": "",
-            "item_4_url": ""
           }
         }
       },
       "block_order": [
-        "rating_CMxGnn",
         "heading_RX6EDQ",
-        "price_zBizDd",
+        "rating_CMxGnn",
         "variant_picker_FRRdBk",
+        "price_zBizDd",
+        "discount_mixer_countdown_block_RM9jfi",
+        "rockit_sales_manager_timer_wMjnzc",
         "stock_P8dwNk",
         "delivery_iLH8jX",
-        "notify_Ta47NL",
         "atc_LyVFKC",
+        "trust_usps_dMe7Mk",
         "trust_payments_Lra8px",
-        "trust_identity_CTE9dt",
-        "trust_usps_dMe7Mk"
+        "trust_identity_CTE9dt"
       ],
       "settings": {
         "product": "",
@@ -131,17 +142,17 @@
       "name": "Recommended products",
       "settings": {
         "heading": "",
-        "max_products": 8,
+        "max_products": 4,
         "hide_out_of_stock": true,
         "card_layout": "horizontal",
         "image_ratio": "portrait",
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_rating": false,
         "show_vendor": false,
-        "show_badges": false,
+        "show_badges": true,
         "quick_add": true,
-        "width": "is-align-wide",
-        "grid_columns": 3,
+        "width": "is-align-full",
+        "grid_columns": 6,
         "grid_columns_tablet": 3,
         "grid_columns_mobile": 1,
         "padding_block": 4,
@@ -192,9 +203,9 @@
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_secondary_image": true,
-        "show_rating": false,
+        "show_rating": true,
         "show_vendor": false,
-        "show_badges": false,
+        "show_badges": true,
         "quick_add": false,
         "width": "is-align-wide",
         "grid_columns": 4,

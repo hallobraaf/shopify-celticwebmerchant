@@ -27,6 +27,26 @@ DEPENDENCIES:
 ============================================================================
 {%- endcomment -%}
 
+{{ 'block-marketing-gallery.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-gallery {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+	{%- if ratio %}
+	#shopify-section-{{ section.id }} .block-marketing-gallery__item .theme-media__img {
+		aspect-ratio: {{ ratio }};
+		object-fit: cover;
+	}
+	{%- endif %}
+{% endstyle %}
+
 {%- liquid
 	assign has_heading = false
 	if section.settings.heading != blank or section.settings.subheading != blank or section.settings.text != blank
@@ -95,7 +115,7 @@ DEPENDENCIES:
 	assign tablet_image = tablet_available | divided_by: columns_tablet | round
 	
 	assign mobile_gaps = columns_mobile | minus: 1 | times: gap_px
-	assign mobile_available = 480 | minus: mobile_gaps
+	assign mobile_available = 390 | minus: mobile_gaps
 	assign mobile_image = mobile_available | divided_by: columns_mobile | round
 	
 	comment
@@ -104,10 +124,13 @@ DEPENDENCIES:
 	assign img_sizes = '(min-width: 60em) ' | append: desktop_image | append: 'px, (min-width: 40em) ' | append: tablet_image | append: 'px, ' | append: mobile_image | append: 'px'
 	
 	comment
-		Srcset widths based on desktop (largest display)
-		Provides 1x, 1.5x, 2x, 2.5x, 3x for retina
+		Srcset: base on largest needed (desktop or mobile, whichever is bigger).
+		Provides 1x–3x for retina at all breakpoints.
 	endcomment
 	assign base = desktop_image
+	if mobile_image > base
+		assign base = mobile_image
+	endif
 	if base < 200
 		assign base = 200
 	endif
@@ -158,34 +181,34 @@ DEPENDENCIES:
 									{%- endif -%}
 									
 									{%- render 'html-theme-media-image',
-									image: block.settings.image,
-									alt: block.settings.image.alt | default: block.settings.caption,
-									w1: w1,
-									w2: w2,
-									w3: w3,
-									w4: w4,
-									w5: w5,
-									sizes: img_sizes,
-									image_loading: 'lazy'
+										image: block.settings.image,
+										alt: block.settings.image.alt | default: block.settings.caption,
+										w1: w1,
+										w2: w2,
+										w3: w3,
+										w4: w4,
+										w5: w5,
+										sizes: img_sizes,
+										image_loading: 'lazy'
 									-%}
 									
 									{%- if block.settings.caption != blank and section.settings.show_captions -%}
-									<span class="block-marketing-gallery__caption">{{ block.settings.caption | escape }}</span>
+										<span class="block-marketing-gallery__caption">{{ block.settings.caption | escape }}</span>
 									{%- endif -%}
 									
 									{%- if section.settings.enable_lightbox or block.settings.link -%}
-									</a>
+										</a>
 									{%- endif -%}
-									{%- else -%}
+								{%- else -%}
 									<div class="block-marketing-gallery__placeholder">
-									{{ 'image' | placeholder_svg_tag }}
+										{{ 'image' | placeholder_svg_tag }}
 									</div>
-									{%- endif -%}
-									</div>
-									{%- endif -%}
-									{%- endfor -%}
-									</div>
-									{%- if section.settings.slider_navigation -%}
+								{%- endif -%}
+							</div>
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+				{%- if section.settings.slider_navigation -%}
 					<button class="swiper-nav swiper-nav--prev swiper-nav--chevron" aria-label="{{ 'accessibility.previous' | t }}">
 						{%- render 'html-theme-icons', icon: 'chevron-left' -%}
 					</button>
@@ -211,34 +234,34 @@ DEPENDENCIES:
 								{%- endif -%}
 								
 								{%- render 'html-theme-media-image',
-								image: block.settings.image,
-								alt: block.settings.image.alt | default: block.settings.caption,
-								w1: w1,
-								w2: w2,
-								w3: w3,
-								w4: w4,
-								w5: w5,
-								sizes: img_sizes,
-								image_loading: 'lazy'
+									image: block.settings.image,
+									alt: block.settings.image.alt | default: block.settings.caption,
+									w1: w1,
+									w2: w2,
+									w3: w3,
+									w4: w4,
+									w5: w5,
+									sizes: img_sizes,
+									image_loading: 'lazy'
 								-%}
 								
 								{%- if block.settings.caption != blank and section.settings.show_captions -%}
-								<span class="block-marketing-gallery__caption">{{ block.settings.caption | escape }}</span>
+									<span class="block-marketing-gallery__caption">{{ block.settings.caption | escape }}</span>
 								{%- endif -%}
 								
 								{%- if section.settings.enable_lightbox or block.settings.link -%}
-								</a>
+									</a>
 								{%- endif -%}
-								{%- else -%}
+							{%- else -%}
 								<div class="block-marketing-gallery__placeholder">
-								{{ 'image' | placeholder_svg_tag }}
+									{{ 'image' | placeholder_svg_tag }}
 								</div>
-								{%- endif -%}
-								</li>
-								{%- endif -%}
-								{%- endfor -%}
-								</ul>
-								{%- endif -%}
+							{%- endif -%}
+						</li>
+					{%- endif -%}
+				{%- endfor -%}
+			</ul>
+		{%- endif -%}
 	{%- endif -%}
 	
 	{%- if has_button -%}
@@ -253,125 +276,6 @@ DEPENDENCIES:
 	{%- endif -%}
 </div>
 
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-gallery {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-gallery__grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns, 3), 1fr);
-		gap: var(--grid-gap, 0.5em);
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.block-marketing-gallery__grid--has-heading,
-	.block-marketing-gallery__slider--has-heading {
-		margin-block-start: 2em;
-	}
-
-	.block-marketing-gallery__grid--has-button,
-	.block-marketing-gallery__slider--has-button {
-		margin-block-end: 2em;
-	}
-
-	.block-marketing-gallery__item {
-		position: relative;
-		overflow: hidden;
-		margin: 0;
-	}
-
-	.block-marketing-gallery__link {
-		display: block;
-		position: relative;
-	}
-
-	.block-marketing-gallery__item .theme-media__img {
-		width: 100%;
-		height: 100%;
-		display: block;
-		transition: transform 200ms ease;
-		{%- if ratio -%}
-			aspect-ratio: {{ ratio }};
-			object-fit: cover;
-		{%- endif -%}
-	}
-
-	.block-marketing-gallery__link:hover .theme-media__img {
-		transform: scale(1.05);
-	}
-
-	.block-marketing-gallery__caption {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		padding: 1em;
-		background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-		color: #fff;
-		font-size: 0.875em;
-	}
-
-	.block-marketing-gallery__placeholder {
-		width: 100%;
-		aspect-ratio: 1 / 1;
-		background-color: rgba(0, 0, 0, 0.05);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.block-marketing-gallery__placeholder svg {
-		width: 50%;
-		height: auto;
-		opacity: 0.2;
-	}
-
-	.block-marketing-gallery__actions {
-		text-align: center;
-	}
-
-	@media (max-width: 60em) {
-		#shopify-section-{{ section.id }} .block-marketing-gallery__grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		#shopify-section-{{ section.id }} .block-marketing-gallery__grid {
-			grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
-		}
-	}
-
-	/* Slider styles */
-	.block-marketing-gallery__slider {
-		position: relative;
-		overflow: hidden;
-	}
-
-	.block-marketing-gallery__slider .swiper-wrapper {
-		align-items: stretch;
-	}
-
-	.block-marketing-gallery__slider .swiper-slide {
-		height: auto;
-	}
-
-	/* When all slides fit: center and hide controls */
-	.block-marketing-gallery__slider.swiper--all-visible .swiper-wrapper {
-		justify-content: center;
-	}
-
-	.block-marketing-gallery__slider.swiper--all-visible .swiper-nav,
-	.block-marketing-gallery__slider.swiper--all-visible .swiper-pagination {
-		display: none;
-	}
-{% endstyle %}
-
 {%- if is_slider -%}
 <script>
 	(function() {
@@ -381,14 +285,9 @@ DEPENDENCIES:
 			
 			if (swiperEl.swiper) swiperEl.swiper.destroy();
 
-			// Convert em to px using computed font-size
-			const fontSize = parseFloat(getComputedStyle(swiperEl).fontSize);
-			const gapEm = parseFloat('{{ layout_gap_em }}');
-			const gapPx = gapEm * fontSize;
-
 			const config = {
 				slidesPerView: {{ columns_mobile }},
-				spaceBetween: gapPx,
+				spaceBetween: {{ layout_gap_em | times: 16 }},
 				{%- if section.settings.slider_navigation -%}
 				navigation: {
 					prevEl: swiperEl.querySelector('.swiper-nav--prev'),
@@ -508,7 +407,7 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Image"
+			"content": "Media"
 		},
 		{
 			"type": "select",
@@ -533,6 +432,52 @@ DEPENDENCIES:
 			"id": "enable_lightbox",
 			"label": "Enable lightbox",
 			"default": false
+		},
+		{
+			"type": "header",
+			"content": "Display"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"label": "Display mode",
+			"options": [
+				{ "value": "grid", "label": "Grid" },
+				{ "value": "slider", "label": "Slider" }
+			],
+			"default": "grid"
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_navigation",
+			"label": "Show navigation",
+			"info": "Slider only",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_pagination",
+			"label": "Show pagination",
+			"info": "Slider only",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_autoplay",
+			"label": "Autoplay",
+			"info": "Slider only. Includes rewind.",
+			"default": false
+		},
+		{
+			"type": "range",
+			"id": "slider_autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Slider only",
+			"min": 2,
+			"max": 10,
+			"step": 1,
+			"default": 5,
+			"unit": "s"
 		},
 		{
 			"type": "header",
@@ -599,50 +544,16 @@ DEPENDENCIES:
 			"unit": "em"
 		},
 		{
-			"type": "header",
-			"content": "Display"
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
 		},
 		{
-			"type": "select",
-			"id": "layout",
-			"label": "Display mode",
-			"options": [
-				{ "value": "grid", "label": "Grid" },
-				{ "value": "slider", "label": "Slider" }
-			],
-			"default": "grid"
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_navigation",
-			"label": "Show navigation",
-			"info": "Slider only",
-			"default": true
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_pagination",
-			"label": "Show pagination",
-			"info": "Slider only",
-			"default": false
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_autoplay",
-			"label": "Autoplay",
-			"info": "Slider only. Includes rewind.",
-			"default": false
-		},
-		{
-			"type": "range",
-			"id": "slider_autoplay_speed",
-			"label": "Autoplay speed",
-			"info": "Slider only",
-			"min": 2,
-			"max": 10,
-			"step": 1,
-			"default": 5,
-			"unit": "s"
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "header",
@@ -660,19 +571,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add image blocks to build your gallery. Optionally enable lightbox for full-screen view, or links per image."
 		}
 	],
 	"blocks": [

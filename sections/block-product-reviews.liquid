@@ -1,16 +1,30 @@
 {%- comment -%}
-  ============================================================================
-  BLOCK-PRODUCT-REVIEWS
-  ============================================================================
-  Container section for product review app blocks.
+============================================================================
+BLOCK-PRODUCT-REVIEWS
+============================================================================
+Container section for product review app blocks.
 
-  FEATURES:
-  - Renders review app blocks (e.g. Doran, Judge.me)
-  - Anchor link support for scroll-to-reviews
-  - Width alignment options
-  - Color customization
-  ============================================================================
+FEATURES:
+- Renders review app blocks (e.g. Doran, Judge.me)
+- Anchor link support for scroll-to-reviews
+- Width alignment options
+- Color customization
+============================================================================
 {%- endcomment -%}
+
+{{ 'block-product-reviews.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-product-reviews {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {% if section.blocks.size > 0 %}{{ section.settings.padding_block }}em{% else %}0{% endif %};
+	}
+{% endstyle %}
 
 <div class="block-product-reviews__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	{%- for block in section.blocks -%}
@@ -22,18 +36,6 @@
 		{%- endcase -%}
 	{%- endfor -%}
 </div>
-
-{% style %}
-	#shopify-section-{{ section.id }}.block-product-reviews {
-		background-color: {{ section.settings.background_color | default: '#f8f8f8' }};
-		color: {{ section.settings.text_color | default: '#111111' }};
-		padding-block: {% if section.blocks.size > 0 %}{{ section.settings.padding_block }}em{% else %}0{% endif %};
-	}
-
-	#shopify-section-{{ section.id }} .block-product-reviews__content {
-		scroll-margin-top: 100px;
-	}
-{% endstyle %}
 
 {% schema %}
 {
@@ -72,6 +74,19 @@
 			"unit": "em"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"default": "reviews",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -84,23 +99,6 @@
 			"type": "color",
 			"id": "text_color",
 			"label": "Text"
-		},
-		{
-			"type": "header",
-			"content": "Advanced"
-		},
-		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"default": "reviews",
-			"info": "ID for anchor links (e.g. #reviews)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "header",

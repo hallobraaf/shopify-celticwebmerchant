@@ -1,0 +1,100 @@
+{%- comment -%}
+  ============================================================================
+  MAIN-PAGE-TOKI
+  ============================================================================
+  Toki loyalty program page section.
+
+  Features:
+  - Login required: shows login prompt for guests
+  - Renders Toki app blocks for logged-in customers
+  - Customizable heading, text, and button for login prompt
+  ============================================================================
+{%- endcomment -%}
+
+{{ 'main-page-toki.min.css' | asset_url | stylesheet_tag }}
+
+{%- if customer -%}
+  <div class="main-page-toki__content {{ section.settings.width }}">
+    {%- for block in section.blocks -%}
+      <div class="main-page-toki__block" {{ block.shopify_attributes }}>
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+        {%- endcase -%}
+      </div>
+    {%- endfor -%}
+  </div>
+{%- else -%}
+  <div class="main-page-toki__content {{ section.settings.width }}">
+    <div class="main-page-toki__login">
+      {%- if section.settings.login_heading != blank -%}
+        <h1 class="main-page-toki__heading">{{ section.settings.login_heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.login_text != blank -%}
+        <div class="main-page-toki__text">{{ section.settings.login_text }}</div>
+      {%- endif -%}
+
+      <a href="{{ routes.storefront_login_url }}?return_url={{ page.url }}" class="main-page-toki__button button button--primary">
+        {%- if section.settings.login_button != blank -%}
+          {{ section.settings.login_button }}
+        {%- else -%}
+          {{ 'customer.log_in' | t }}
+        {%- endif -%}
+      </a>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Toki loyalty",
+  "tag": "section",
+  "class": "main-page-toki",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "login_heading",
+      "label": "Heading",
+      "default": "Log in om je beloningen te bekijken"
+    },
+    {
+      "type": "richtext",
+      "id": "login_text",
+      "label": "Text",
+      "default": "<p>Log in op je account om je spaarpunten te bekijken, beloningen te verzilveren en je voortgang te volgen.</p>"
+    },
+    {
+      "type": "text",
+      "id": "login_button",
+      "label": "Button text",
+      "info": "Leave empty to use locale default."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "is-align-small", "label": "Small" },
+        { "value": "is-align", "label": "Regular" },
+        { "value": "is-align-wide", "label": "Wide" },
+        { "value": "is-align-full", "label": "Full" }
+      ],
+      "default": "is-align-wide"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

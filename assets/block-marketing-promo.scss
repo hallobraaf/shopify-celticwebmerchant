@@ -1,0 +1,76 @@
+/* ==========================================================================
+   BLOCK-MARKETING-PROMO
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-marketing-promo {
+  &__inner {
+    &--boxed {
+      background-color: rgba(0, 0, 0, 0.03);
+      padding: 2em;
+    }
+
+    &--bordered {
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      padding: 2em;
+    }
+  }
+
+  .marketing-headline {
+    text-align: center;
+  }
+
+  &__countdown {
+    margin-block-start: 1.5em;
+  }
+
+  &__text {
+    margin-block-start: 1.5em;
+  }
+
+  &__actions {
+    margin-block-start: 0;
+  }
+
+  &__usp {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    margin-block-start: 2em;
+    padding: 0;
+    padding-block-start: 2em;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 40em) {
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
+  }
+
+  &__usp-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+  }
+
+  &__usp-icon {
+    width: 1.5em;
+    height: 1.5em;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__usp-text {
+    font-size: 0.875em;
+    font-weight: 600;
+  }
+}

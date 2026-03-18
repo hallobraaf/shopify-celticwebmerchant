@@ -18,6 +18,30 @@ DEPENDENCIES:
 ============================================================================
 {%- endcomment -%}
 
+{{ 'block-marketing-media-usps.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-media-usps {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+	{%- if section.settings.icon_background != blank or section.settings.icon_color != blank %}
+	#shopify-section-{{ section.id }} .media-usps__icon {
+		{%- if section.settings.icon_background != blank %}
+		background-color: {{ section.settings.icon_background }};
+		{%- endif %}
+		{%- if section.settings.icon_color != blank %}
+		color: {{ section.settings.icon_color }};
+		{%- endif %}
+	}
+	{%- endif %}
+{% endstyle %}
+
 {%- liquid
 	assign has_heading = false
 	if section.settings.heading != blank or section.settings.text != blank
@@ -89,20 +113,20 @@ DEPENDENCIES:
 						{%- if section.settings.image != blank -%}
 							<div class="media-usps__poster">
 								{%- render 'html-theme-media-image',
-								image: section.settings.image,
-								alt: section.settings.image.alt | default: section.settings.heading,
-								w1: w1,
-								w2: w2,
-								w3: w3,
-								w4: w4,
-								w5: w5,
-								sizes: img_sizes,
-								image_loading: 'lazy',
-								focus_x: focus_x,
-								focus_y: focus_y
+									image: section.settings.image,
+									alt: section.settings.image.alt | default: section.settings.heading,
+									w1: w1,
+									w2: w2,
+									w3: w3,
+									w4: w4,
+									w5: w5,
+									sizes: img_sizes,
+									image_loading: 'lazy',
+									focus_x: focus_x,
+									focus_y: focus_y
 								-%}
-								</div>
-								{%- endif -%}
+							</div>
+						{%- endif -%}
 						<video
 							class="media-usps__video"
 							autoplay
@@ -190,236 +214,6 @@ DEPENDENCIES:
 		</div>
 	</article>
 </div>
-
-{% style %}
-#shopify-section-{{ section.id }}.block-marketing-media-usps {
-	background-color: {{ section.settings.background_color }};
-	color: {{ section.settings.text_color }};
-	padding-block: {{ section.settings.padding_block }}em;
-}
-
-/* ===========================================
-   Media + USPs Layout
-   =========================================== */
-
-.media-usps {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 2em;
-}
-
-.media-usps > * {
-	min-width: 0;
-}
-
-/* Desktop: side-by-side */
-@media (min-width: 40em) {
-	.media-usps {
-		gap: 3em;
-	}
-	
-	/* Width variations */
-	.media-usps--width-40 { grid-template-columns: 40% 1fr; }
-	.media-usps--width-50 { grid-template-columns: 50% 1fr; }
-	.media-usps--width-60 { grid-template-columns: 60% 1fr; }
-	
-	/* Position right: media moves to second column via order */
-	.media-usps--right .media-usps__media { order: 2; }
-	.media-usps--right .media-usps__body { order: 1; }
-	
-	/* Flip grid columns when media is on right */
-	.media-usps--right.media-usps--width-40 { grid-template-columns: 1fr 40%; }
-	.media-usps--right.media-usps--width-60 { grid-template-columns: 1fr 60%; }
-}
-
-/* Vertical alignment */
-.media-usps--align-top { align-items: flex-start; }
-.media-usps--align-center { align-items: center; }
-.media-usps--align-bottom { align-items: flex-end; }
-
-/* Fill mode: stretch both columns */
-.media-usps--fill { align-items: stretch; }
-
-/* ===========================================
-   Media Container
-   =========================================== */
-
-.media-usps__media {
-	position: relative;
-	width: 100%;
-	overflow: hidden;
-}
-
-.media-usps__figure {
-	margin: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.media-usps__figure .theme-media__img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-/* Height: adapt (natural aspect ratio) */
-.media-usps__media--adapt .theme-media__img {
-	height: auto;
-	object-fit: contain;
-}
-
-/* Height: fill (stretch to content height) */
-.media-usps__media--fill {
-	min-height: 20em;
-}
-
-.media-usps__media--fill .media-usps__figure,
-.media-usps__media--fill .media-usps__video-wrapper {
-	position: absolute;
-	inset: 0;
-}
-
-/* Height: fixed ratios */
-.media-usps__media--square { aspect-ratio: 1 / 1; }
-.media-usps__media--portrait { aspect-ratio: 2 / 3; }
-.media-usps__media--landscape { aspect-ratio: 3 / 2; }
-
-/* ===========================================
-   Video
-   =========================================== */
-
-.media-usps__video-wrapper {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	background-color: #111;
-}
-
-.media-usps__poster {
-	position: absolute;
-	inset: 0;
-	z-index: 1;
-	transition: opacity 0.3s ease;
-}
-
-.media-usps__poster .theme-media__img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-.media-usps__video-wrapper.is-playing .media-usps__poster {
-	opacity: 0;
-	pointer-events: none;
-}
-
-.media-usps__video {
-	position: relative;
-	z-index: 2;
-	width: 100%;
-	height: 100%;
-	display: block;
-	object-fit: cover;
-}
-
-/* ===========================================
-   Body Content
-   =========================================== */
-
-.media-usps__body {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.media-usps__title {
-	font-family: var(--theme-font-family-serif);
-	font-size: clamp(1.6em, 4vw, 2.25em);
-	font-weight: 400;
-	margin: 0;
-	line-height: 1.2;
-}
-
-.media-usps__text {
-	margin-top: 1em;
-	font-size: 1em;
-	line-height: 1.6;
-	opacity: 0.8;
-}
-
-/* ===========================================
-   USP List
-   =========================================== */
-
-.media-usps__list {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5em;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.media-usps__list--has-heading {
-	margin-block-start: 2em;
-}
-
-.media-usps__item {
-	display: flex;
-	gap: 1em;
-	align-items: flex-start;
-	margin: 0;
-}
-
-.media-usps__icon {
-	flex-shrink: 0;
-	width: 2em;
-	height: 2em;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: {{ section.settings.icon_background | default: 'rgba(0, 0, 0, 0.05)' }};
-	border-radius: 50%;
-	color: {{ section.settings.icon_color | default: 'currentColor' }};
-}
-
-.media-usps__icon svg {
-	width: 1em;
-	height: 1em;
-}
-
-.media-usps__item-content {
-	flex: 1;
-	min-width: 0;
-}
-
-.media-usps__item-title {
-	font-family: var(--theme-font-family-sans);
-	font-size: 1.1em;
-	font-weight: 600;
-	margin: 0;
-	line-height: 1.3;
-}
-
-.media-usps__item-text {
-	margin: 0.25em 0 0;
-	font-size: 0.9375em;
-	line-height: 1.5;
-	opacity: 0.75;
-}
-
-/* ===========================================
-   Actions
-   =========================================== */
-
-.media-usps__actions {
-	margin-block-start: 2em;
-}
-
-.media-usps__actions .marketing-cta {
-	padding: 0;
-}
-{% endstyle %}
 
 <script>
 (function() {
@@ -590,6 +384,18 @@ DEPENDENCIES:
 			"unit": "em"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -625,19 +431,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add USP blocks with an icon, heading and description. Media is shared across all USPs."
 		}
 	],
 	"blocks": [

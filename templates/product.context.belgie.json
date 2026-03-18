@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "belgie"
+  },
+  "parent": "product.json",
+  "sections": {
+    "product-form": {
+      "settings": {},
+      "blocks": {
+        "trust_payments_Lra8px": {
+          "settings": {
+            "method_1": "bancontact",
+            "method_4": "maestro",
+            "method_6": "google_pay",
+            "method_7": "klarna",
+            "method_9": "none",
+            "method_10": "none",
+            "method_8": "paypal"
+          }
+        },
+        "trust_usps_dMe7Mk": {
+          "settings": {
+            "item_1_text": "Klarna: Nu kopen, later betalen!",
+            "item_2_text": "Niet tevreden? Geld binnen 2 werkdagen terug"
+          }
+        },
+        "trust_identity_CTE9dt": {
+          "settings": {
+            "message": "Dit artikel wordt enkel verkocht aan 18+. We verzenden je bestelling na ID-verificatie."
+          }
+        }
+      }
+    },
+    "product-information": {
+      "settings": {
+        "anchor": "Productinformatie"
+      }
+    }
+  }
+}

@@ -14,6 +14,19 @@
   ============================================================================
 {%- endcomment -%}
 
+{{ 'block-footer-links.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-footer-links {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+	}
+{% endstyle %}
+
 <div class="block-footer-links__content {{ section.settings.width }}">
 	{%- assign footer_menu = section.settings.footer_menu -%}
 	{%- if footer_menu != blank and linklists[footer_menu].links.size > 0 -%}
@@ -29,37 +42,7 @@
 	{%- endif -%}
 </div>
 
-{% style %}
-	.block-footer-links {
-		background-color: {{ section.settings.background_color | default: '#0f1f38' }};
-		color: {{ section.settings.text_color | default: '#ffffff' }};
-		padding: 1.5em 0;
-	}
 
-	.block-footer-links__list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5em 1.5em;
-	}
-
-	.block-footer-links__link {
-		color: inherit;
-		text-decoration: none;
-		font-size: 0.85em;
-		letter-spacing: var(--theme-letter-spacing);
-		transition: opacity 150ms ease;
-	}
-
-	.block-footer-links__link:hover {
-		opacity: 0.7;
-	}
-{% endstyle %}
 
 {% schema %}
 {

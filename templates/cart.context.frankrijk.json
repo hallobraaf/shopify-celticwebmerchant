@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_banners_YBJBC": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-29828494b18e0ac8d54015a10f5013fc": null,
+        "heading": "",
+        "subheading": "",
+        "header-76dd8a4e37ca0df142ec7bf58106e442": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-0c25d3278de74a5477671ae1b8904c72": null,
+        "background_color": "",
+        "text_color": "",
+        "header-acb073f5c106205b08f42eb42eb4a50c": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_xkBD6": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Livraison gratuite à partir de € 75",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_xkBD6"
+      ],
+      "name": "Banners"
+    },
+    "block_marketing_products_RG4BG": {
+      "type": "block-marketing-products",
+      "disabled": false,
+      "settings": {
+        "header-04f3b96558545a5fdbb6ea79b564a8c9": null,
+        "collection": "altijd-nodig",
+        "heading": "Toujours nécessaire",
+        "header-616d802a2437d544aea23ad4df3f4621": null,
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_badges": false,
+        "show_rating": false,
+        "quick_add": true,
+        "header-864692808be96752da85d7651cb90f8b": null,
+        "max_products": 12,
+        "only_available": true,
+        "header-758458059a6021b4ba00e027e91a7d68": null,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "header-18edb4997d6bf008409bac4f78285c14": null,
+        "background_color": "",
+        "text_color": "",
+        "header-b5247fa8b06cb98d81d8e9c2480021fa": null,
+        "anchor": "",
+        "custom_class": "",
+        "header-c15dc3f6052f66803c54c7b601fc153a": null,
+        "paragraph-796429eefd556a6933cd532d9f89c26d": null
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "Products"
+    },
+    "block_marketing_testimonials_tAYta": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-845397730b633038d428c997c977b084": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-183cc5c5c83ba7f94096b46310b4a3ca": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "header-861691e2c3fa4aae8a41eb84d070e828": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "header-f7ee4416bbdd56678599f187cd5f0efa": null,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-401c7a90cc3b010f884813e64a09e5c4": null,
+        "background_color": "",
+        "text_color": "",
+        "header-fe4ec50aaef6d8f1a5937778a1c6e7ca": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "testimonial_C7Lyd": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Nikel! Un seul soucis avec un colis arrivé abîmé et ils ont remboursé ce qui a été perdu, donc commerçant totalement honnête !! Pour les autres commandes, tout est toujours arrivé vite et sans rien avoir a dire.",
+            "author": "gael Docquier, France 🇫🇷",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_cfPLf": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Tout s est très bien déroulé, y compris le remboursement de la marchandise qui ne convenait pas.",
+            "author": "Elsa L, France 🇫🇷",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_nTrTM": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "La livraison est arrive en excellent etat et dans un delai appréciable.\nLa qualite de la toile est incroyable.\nJe recommande",
+            "author": "Paul Michel Dreuillet, France 🇫🇷",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_C7Lyd",
+        "testimonial_cfPLf",
+        "testimonial_nTrTM"
+      ],
+      "name": "Testimonials"
+    },
+    "cart-order": {
+      "settings": {
+        "show_continue_shopping": false
+      },
+      "blocks": {}
+    }
+  },
+  "context": {
+    "market": "frankrijk"
+  },
+  "parent": "cart.json",
+  "order": [
+    "block_marketing_banners_YBJBC",
+    "cart-order",
+    "block_marketing_products_RG4BG",
+    "block_marketing_testimonials_tAYta"
+  ]
+}

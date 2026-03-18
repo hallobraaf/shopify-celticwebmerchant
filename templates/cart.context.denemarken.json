@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "denemarken"
+  },
+  "parent": "cart.json",
+  "sections": {
+    "block_marketing_banners_pQyfb": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-838774024620166387c67840fe7c9ff0": null,
+        "heading": "",
+        "subheading": "",
+        "header-83785adf82d25c7d16b898514054c0c8": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-c16701c28e4d3e56ea8161a637c3bf40": null,
+        "background_color": "",
+        "text_color": "",
+        "header-25b31440d6b9e47840d704c09498fc30": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_BNR3N": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Gratis fragt fra 570 kr.",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_BNR3N"
+      ],
+      "name": "Banners"
+    }
+  },
+  "order": [
+    "block_marketing_banners_pQyfb",
+    "cart-order",
+    "block_product_recommended_yfFAdg"
+  ]
+}

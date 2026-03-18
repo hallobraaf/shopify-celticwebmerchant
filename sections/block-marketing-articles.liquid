@@ -140,7 +140,32 @@ DEPENDENCIES:
 	{%- assign sorted_entries = all_articles | split: ',' | sort | reverse -%}
 	{%- assign has_articles = sorted_entries.size -%}
 
-	{%- if has_articles > 0 -%}
+	{{ 'block-marketing-articles.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+#shopify-section-{{ section.id }}.block-marketing-articles {
+	{%- if section.settings.background_color != blank %}
+	background-color: {{ section.settings.background_color }};
+	{%- endif %}
+	{%- if section.settings.text_color != blank %}
+	color: {{ section.settings.text_color }};
+	{%- endif %}
+	padding-block: {{ section.settings.padding_block }}em;
+}
+#shopify-section-{{ section.id }} .card {
+	{%- if section.settings.card_background_color != blank %}
+	--card-bg: {{ section.settings.card_background_color }};
+	{%- endif %}
+	{%- if section.settings.card_text_color != blank %}
+	--card-text: {{ section.settings.card_text_color }};
+	{%- endif %}
+}
+#shopify-section-{{ section.id }} .block-marketing-articles__header {
+	text-align: {{ section.settings.text_align | default: 'center' }};
+}
+{% endstyle %}
+
+{%- if has_articles > 0 -%}
 		{%- if is_slider -%}
 			{%- comment -%} Slider mode: use divs (Swiper manipulates DOM) {%- endcomment -%}
 			<div class="block-marketing-articles__slider swiper" id="swiper-{{ section.id }}" style="--grid-gap: {{ section.settings.grid_gap | default: 0.5 }}em;">
@@ -270,78 +295,6 @@ DEPENDENCIES:
 	{%- endif -%}
 </div>
 
-{% style %}
-#shopify-section-{{ section.id }}.block-marketing-articles {
-	background-color: {{ section.settings.background_color }};
-	color: {{ section.settings.text_color }};
-	padding-block: {{ section.settings.padding_block }}em;
-}
-
-/* Card colors */
-#shopify-section-{{ section.id }} .card {
-	--card-bg: {{ section.settings.card_background_color | default: 'transparent' }};
-	--card-text: {{ section.settings.card_text_color | default: 'inherit' }};
-}
-
-#shopify-section-{{ section.id }} .block-marketing-articles__header {
-	margin-bottom: 2em;
-	text-align: {{ section.settings.text_align | default: 'center' }};
-}
-
-.block-marketing-articles__title {
-	font-family: var(--theme-font-family-serif);
-	font-size: clamp(1.6em, 4vw, 2em);
-	font-weight: 400;
-	margin: 0;
-}
-
-.block-marketing-articles__subheading {
-	margin: 0.5em 0 0;
-	opacity: 0.8;
-}
-
-.block-marketing-articles__grid {
-	display: grid;
-	grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
-	gap: var(--grid-gap, 0.5em);
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.block-marketing-articles__item {
-	display: flex;
-	min-width: 0;
-}
-
-.block-marketing-articles__empty {
-	text-align: center;
-	opacity: 0.6;
-	padding: 3em 1em;
-}
-
-@media (max-width: 60em) {
-	.block-marketing-articles__grid {
-		grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
-	}
-}
-
-@media (max-width: 40em) {
-	.block-marketing-articles__grid {
-		grid-template-columns: repeat(var(--grid-columns-mobile, 2), 1fr);
-	}
-}
-
-/* Slider */
-.block-marketing-articles__slider .swiper-wrapper {
-	align-items: stretch;
-}
-
-.block-marketing-articles__slider .swiper-slide {
-	height: auto;
-}
-{% endstyle %}
-
 {%- if is_slider -%}
 <script>
 (function() {
@@ -463,7 +416,49 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Article card"
+			"content": "Display"
+		},
+		{
+			"type": "select",
+			"id": "display_mode",
+			"label": "Display mode",
+			"options": [
+				{ "value": "grid", "label": "Grid" },
+				{ "value": "slider", "label": "Slider" }
+			],
+			"default": "grid"
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_navigation",
+			"label": "Show navigation",
+			"info": "Slider only",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_pagination",
+			"label": "Show pagination",
+			"info": "Slider only",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_autoplay",
+			"label": "Autoplay",
+			"info": "Slider only. Includes rewind.",
+			"default": false
+		},
+		{
+			"type": "range",
+			"id": "slider_autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Slider only",
+			"min": 2,
+			"max": 10,
+			"step": 1,
+			"default": 5,
+			"unit": "s"
 		},
 		{
 			"type": "select",
@@ -552,6 +547,18 @@ DEPENDENCIES:
 			"content": "Layout"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "select",
 			"id": "width",
 			"label": "Width",
@@ -613,52 +620,6 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Display"
-		},
-		{
-			"type": "select",
-			"id": "display_mode",
-			"label": "Display mode",
-			"options": [
-				{ "value": "grid", "label": "Grid" },
-				{ "value": "slider", "label": "Slider" }
-			],
-			"default": "grid"
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_navigation",
-			"label": "Show navigation",
-			"info": "Slider only",
-			"default": true
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_pagination",
-			"label": "Show pagination",
-			"info": "Slider only",
-			"default": false
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_autoplay",
-			"label": "Autoplay",
-			"info": "Slider only. Includes rewind.",
-			"default": false
-		},
-		{
-			"type": "range",
-			"id": "slider_autoplay_speed",
-			"label": "Autoplay speed",
-			"info": "Slider only",
-			"min": 2,
-			"max": 10,
-			"step": 1,
-			"default": 5,
-			"unit": "s"
-		},
-		{
-			"type": "header",
 			"content": "Colors"
 		},
 		{
@@ -683,19 +644,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add blog feeds using blocks. Articles from all selected blogs are merged and sorted by date. Use grid or slider display mode."
 		}
 	],
 	"blocks": [

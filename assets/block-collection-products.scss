@@ -1,0 +1,66 @@
+/* ==========================================================================
+   BLOCK-COLLECTION-PRODUCTS
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-collection-products {
+  padding-block-start: 2em;
+  padding-block-end: 4em;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
+    gap: var(--grid-gap, 0.2em);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @media (max-width: 60em) {
+      grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
+    }
+
+    @media (max-width: 40em) {
+      grid-template-columns: repeat(var(--grid-columns-mobile, 2), 1fr);
+    }
+
+    html.is-loading & {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  &__item {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 4em 2em;
+    opacity: 0.6;
+  }
+
+  .pagination {
+    margin-block-start: 2em;
+  }
+}
+
+html.is-loading {
+  cursor: progress;
+}
+
+.product-filter {
+  position: relative;
+  display: block;
+  padding-block-end: 2em;
+
+  .facet {
+    position: relative;
+    z-index: 20;
+  }
+}
+
+.facets__resultcount {
+  letter-spacing: -0.02em;
+}

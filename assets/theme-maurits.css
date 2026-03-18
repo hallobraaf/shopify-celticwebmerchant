@@ -1,5 +1,5 @@
 /* totalli */
-/* v2025-11-27 */
+/* v2026-01-22 */
 /*
 --theme-color-black: #111111;
 	--theme-color-brown: #2e130d;
@@ -27,145 +27,55 @@
     --theme-bgcolor-success: #d0ffc2;
     /*--theme-color-grey: #d0ffc2;*/
 }
-
-/* = APP: WC Wishlist Club */
-.wishlistClubPage {
-    /* font-family: 'Absara Sans Pro', sans-serif !important; */
-    /* font-size: clamp(
-        calc(var(--theme-font-size-min) * 1px),
-        calc((var(--theme-font-size-min) * 1px) + (var(--theme-font-size-max) - var(--theme-font-size-min)) * ((100vw - (var(--theme-font-view-min) * 1px)) / var(--theme-font-view-max))),
-        calc(var(--theme-font-size-max) * 1px)
-    )!important;  */
-}
-.wishlistClubPage .WishlistClubContainer {
-    padding: 1em 0 2em;
-    letter-spacing: -0.02em;
-
-}
-.WishlistClubContainer .wcButton {
-    font-size: inherit;
-}
-.wcButton.wcFull {
-    padding: 0.5em 1em;
-    color: #fff;
-    background-color: var(--theme-color-green);
-
-}
-.wcProductList .wcProduct_gridView .wcButton {
-    font-size: inherit;
-    border-radius: 0 !important;
-}
-.wcProduct_gridView .wcButton {
-    font-size: inherit;
-    border-radius: 0 !important;
+body > .dr-overlay {
+    z-index: 999999 !important;
 }
 
-.WishlistClubTabs .wcCategoryNav {
-    padding: .5em 0;
-    border-radius: 0 !important;
+/* = cart */
+.block-cart-order__content input.cart-subtotal__discount-input {
+    border: 1px solid var(--theme-color-blue);
 }
-.wcProductCard .wcPcContent h4 a { /* product title */
+.block-cart-order__form .cart-subtotal__discount {
+    /* color: var(--theme-color-white);
+    background: var(--theme-color-blue);  */
+    color: var(--theme-color-blue);
+    border: 1px solid var(--theme-color-blue);
+    padding: 0.2em .5em;
+}
+
+/* Aanmeldformulier embed footer: feedback texts */
+footer .needsclick.kl-private-reset-css-Xuajs1 {
+    /* background:rgb(69, 93, 132); */
+}
+
+footer .klaviyo-form.klaviyo-form.form-version-cid-1 h1 span {
+    color: var(--theme-color-white) !important;
+    background:rgb(69, 93, 132);
+    font-size: initial !important;
+    /* border-top: 1px solid var(--theme-color-white);
+    border-bottom: 1px solid var(--theme-color-white); */
+    /* border-left: 1px solid var(--theme-color-white); */
     display: inline-block;
-    /* font-size: 17px; */
-    font-size: .7em !important;
-
+    padding: .5em;
 }
-
-.wcProductCard .wcPcPrice span { /* price */
+footer .needsclick.kl-private-reset-css-Xuajs1 p span {
+    color: var(--theme-color-white) !important;
     font-size: initial !important;
 }
 
-.wishlistClubPage select.wcPcSelector, .wcWishlistModal .wcWishlistModal_body .wcBisInfo select  {
-    background-color: var(--theme-color-grey) !important;
-    min-height: 32px;
+/* = APP: Swym wishlist */
+#swym-storefront-layout-section-container .swym-storefront-layout-collection-list-content.swym-storefront-layout-scrollable {
+    overflow-y: scroll !important;
 }
-.pform__form .wc_wishlistBox {
-    /*left: auto;*/
-    /*right: 0;*/
-    min-width: 250px;
-    top: 48px;
-}
-.block-product-form__blocks .wc_wishlistBox {
-    left: auto;
-    right: 0;
-    min-width: 250px;
-    top: 48px;
+#swym-storefront-layout-section-container .swym-storefront-layout-collection-carousel-title {
+    font-size: inherit;
 }
 
-.wc_wishlistBox .wc_wishlistContent {
-    font-size: .9em;
+#swym-storefront-layout-section-container .swym-storefront-layout-default-list-title {
+    font-size: inherit;
 }
-.wc_wishlistBox .wc_wishlistContent, .wc_wishlistBox .wc_wishlistRemonve {
-    align-items: flex-start;
-}
-.wc_wishlistBox .wc_wishlistContent input.wc_wishlistCheckbox, .wc_wishlistBox .wc_wishlistRemonve {
-    top: 5px;
-}
-.wc_wishlistBox .wc_wishlistContent input.wc_wishlistCheckbox {
-    top: 3px;
-    position: relative;
-}
-.wc_wishlistBox .wc_wishlistContent, .wc_wishlistBox .wc_wishlistRemonve {
-    align-items: flex-start;
-}
-.wc_wishlistBox .wc_wishlistContent input.wc_wishlistCheckbox, .wc_wishlistBox .wc_wishlistRemonve {
-    top: 5px;
-}
-.wc_wishlistBox .wc_wishlistContent input.wc_wishlistCheckbox {
-    top: 3px;
-    position: relative;
-}
-/* back-in-stock-notification */
-.wc_wl_bis_btn .bis_product {
-    background-color: #f5f5dc !important;
-    border: none;
-    padding: 1em 10px;
-}
-.product-atc__submit button.product-atc__btn[disabled] {
-    display: none;
-}
-/* hide order button when back-in-stock */
-/*.pform__block[data-block-key="notify_aprMUM"] + .pform__block {*/
-/*    display: none !important;*/
-/*}*/
-/*.pform__segments .pform__block[data-block-key="notify_aprMUM"]:first-of-type + .pform__block {*/
-
-/*}*/
-/* .pform__block[data-fragment="stock"] {
-    background-color: yellow;
-} */
-#app a.s2kwpi1{
-    text-decoration: none !important;
-}
-
-/* Modals */
-.Polaris-Box {
-    padding: 1em;
-}
-.wcWishlistModal .wcWishlistModal_content {
-    padding: 1em;
-    border-radius: 0px;
-    border: 1px solid #e6e6e6;
-}
-.wcWishlistModal .wcWishlistModal_header p {
+#swym-storefront-layout-section-container .swym-storefront-layout-grid-item a.swym-storefront-layout-grid-item-title {
     font-size: initial;
-}
-.wcWishlistModal .wcWishlistModal_body .wcBisInfo h4 {
-    font-size: .9em;
-    line-height: 1.2;
-}
-.wcWishlistModal .wcWishlistCreate label {
-    font-size: initial;
-}
-
-/* notify button */
-.wcBisContain button.wcBisBtn, button.bis_product {
-    background-color: var(--theme-color-blue) !important;
-    margin: 0;
-}
-.bis_product .wcBsiNotifyText {
-    font-size: initial;
-    /*line-height: 20px;*/
 }
 
 /* = APP: Shop the look */

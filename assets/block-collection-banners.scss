@@ -1,0 +1,66 @@
+/* ==========================================================================
+   BLOCK-COLLECTION-BANNERS
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-collection-banners {
+  &__wrapper {
+    display: block;
+  }
+
+  // Horizontal card: center content vertically
+  .card--horizontal .card__content {
+    justify-content: center;
+  }
+
+  // Grid layout
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
+    gap: var(--grid-gap, 0.2em);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 60em) {
+      grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
+    }
+
+    @media (max-width: 40em) {
+      grid-template-columns: repeat(var(--grid-columns-mobile, 2), 1fr);
+    }
+  }
+
+  &__item {
+    display: flex;
+    min-width: 0;
+  }
+
+  // Slider layout
+  &__slider {
+    position: relative;
+    overflow: hidden;
+
+    .swiper-slide {
+      height: auto;
+    }
+
+    // When all slides fit: center and hide controls
+    &.swiper--all-visible {
+      .swiper-wrapper {
+        justify-content: center;
+      }
+
+      .swiper-nav,
+      .swiper-pagination {
+        display: none;
+      }
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    align-items: stretch;
+  }
+}

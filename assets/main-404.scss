@@ -1,0 +1,38 @@
+/* ==========================================================================
+   MAIN-404
+   Structural styles — dynamic per-section values stay in {% style %} block
+   ========================================================================== */
+
+.main-404 {
+  &__container {
+    text-align: center;
+  }
+
+  &__subtext {
+    font-size: 1.2em;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  &__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(2em, 6vw, 4em);
+    font-weight: 400;
+    margin: 0.5em 0;
+  }
+
+  &__button {
+    display: inline-block;
+    margin-block-start: 1.5em;
+    padding: 0.8em 2em;
+    background: var(--theme-color-primary, #111111);
+    color: var(--theme-color-background, #ffffff);
+    text-decoration: none;
+    border-radius: 0.25em;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}

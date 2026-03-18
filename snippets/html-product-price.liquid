@@ -39,7 +39,9 @@ PARAMETERS:
 		endif
 	endif
 	
-	assign show_unit_price = show_unit_price | default: true
+	if show_unit_price == nil
+    assign show_unit_price = true
+  endif
 	assign extra_class = class | default: ''
 	assign currency_symbol = cart.currency.symbol | default: localization.country.currency.symbol | default: '€'
 -%}

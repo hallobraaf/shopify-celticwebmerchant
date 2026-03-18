@@ -1,25 +1,39 @@
 {%- comment -%}
-	============================================================================
-	BLOCK-SEARCH-FORM
-	============================================================================
-	Search form for search template.
-	
-	FEATURES:
-	- Uses html-form-search snippet (consistent with overlay)
-	- Results count display
-	- Responsive design
-	
-	DEPENDENCIES:
-	- html-form-search snippet
-	- Locale keys: search.*
-	============================================================================
+============================================================================
+BLOCK-SEARCH-FORM
+============================================================================
+Search form for search template.
+
+FEATURES:
+- Uses html-form-search snippet (consistent with overlay)
+- Results count display
+- Responsive design
+
+DEPENDENCIES:
+- html-form-search snippet
+- Locale keys: search.*
+============================================================================
 {%- endcomment -%}
+
+{{ 'block-search-form.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-search-form {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
 
 <div class="block-search-form__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	<h1 class="block-search-form__title">{{ 'search.title' | t }}</h1>
 
 	<div class="block-search-form__form">
-		{%- render 'html-form-search', 
+		{%- render 'html-form-search',
 			input_id: 'search-page-input',
 			enable_predictive: false,
 			autofocus: true,
@@ -37,39 +51,6 @@
 		</p>
 	{%- endif -%}
 </div>
-
-<style>
-	#shopify-section-{{ section.id }}.block-search-form {
-		background-color: {{ section.settings.background_color | default: 'transparent' }};
-		color: {{ section.settings.text_color | default: 'inherit' }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	#shopify-section-{{ section.id }} .block-search-form__content {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-	}
-
-	#shopify-section-{{ section.id }} .block-search-form__title {
-		font-family: var(--theme-font-family-serif);
-		font-size: 1.5em;
-		font-weight: 400;
-		margin: 0;
-		text-align: center;
-	}
-
-	#shopify-section-{{ section.id }} .block-search-form__form {
-		width: 100%;
-	}
-
-	#shopify-section-{{ section.id }} .block-search-form__count {
-		font-size: 0.9em;
-		opacity: 0.7;
-		margin: 0;
-		text-align: center;
-	}
-</style>
 
 {% schema %}
 {
@@ -109,6 +90,18 @@
 			"unit": "em"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -121,22 +114,6 @@
 			"type": "color",
 			"id": "text_color",
 			"label": "Text"
-		},
-		{
-			"type": "header",
-			"content": "Advanced"
-		},
-		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class"
 		},
 		{
 			"type": "header",

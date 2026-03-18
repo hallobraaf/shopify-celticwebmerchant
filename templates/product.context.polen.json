@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "polen"
+  },
+  "parent": "product.json",
+  "sections": {
+    "product-form": {
+      "settings": {},
+      "blocks": {
+        "trust_payments_Lra8px": {
+          "settings": {
+            "method_1": "blik",
+            "method_4": "maestro",
+            "method_6": "google_pay",
+            "method_7": "paypal"
+          }
+        }
+      }
+    }
+  }
+}

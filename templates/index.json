@@ -16,7 +16,7 @@
           "type": "button",
           "settings": {
             "text": "Shop nu",
-            "url": "shopify://collections/all",
+            "url": "shopify://collections/kleding",
             "style": "outline",
             "button_color": "#ffffff",
             "button_text_color": ""
@@ -28,13 +28,13 @@
       ],
       "name": "Cover",
       "settings": {
-        "subheading": "Discover",
-        "heading": "The new Celtic WebMerchant",
+        "subheading": "Alleen deze week!",
+        "heading": "Korting op kleding",
         "text": "",
-        "video": "shopify://files/videos/Home Banner.mp4",
-        "focus_x": 50,
-        "focus_y": 50,
-        "overlay": "light",
+        "image": "shopify://shop_images/Banner_Volva_Dali_Feb2026_4.webp",
+        "focus_x": 30,
+        "focus_y": 15,
+        "overlay": "medium",
         "loading": "eager",
         "fetchpriority": "high",
         "width": "is-align-full",
@@ -45,59 +45,73 @@
         "custom_class": ""
       }
     },
-    "block_marketing_grid_93tkDC": {
+    "block_marketing_grid_eKTaaA": {
       "type": "block-marketing-grid",
       "blocks": {
-        "banner_Hriiii": {
+        "banner_PH6hGr": {
           "type": "banner",
           "settings": {
             "label": "",
-            "heading": "Ontsnap aan The Matrix",
-            "text": "<p>Ga naar onze blog & kennisbank</p>",
-            "link_url": "shopify://pages/blog-lookbook",
-            "image": "shopify://shop_images/DSC07683_163ea61f-c4a6-4c1f-a7d9-c9783ce9c453.jpg",
+            "heading": "Maak je outfit compleet",
+            "text": "<p>Tribe korting op leren pantser</p>",
+            "link_url": "shopify://collections/tribe-sale-members-only",
+            "image": "shopify://shop_images/DSC04277.webp",
             "focus_x": 50,
             "focus_y": 50,
-            "overlay": "light",
-            "design": "green"
+            "overlay": "medium",
+            "design": "red"
           }
         },
-        "banner_VqjtKq": {
-          "type": "banner",
-          "settings": {
-            "label": "Nieuw!",
-            "heading": "Join the Tribe",
-            "text": "<p>Welkom bij de community</p>",
-            "link_url": "shopify://pages/the-tribe",
-            "image": "shopify://shop_images/DSC04048_482e352a-7582-44f6-b68f-34a6fd09da78.jpg",
-            "focus_x": 50,
-            "focus_y": 50,
-            "overlay": "light",
-            "design": "green"
-          }
-        },
-        "banner_KjHxcU": {
+        "banner_9aKPPM": {
           "type": "banner",
           "settings": {
             "label": "",
-            "heading": "Schrijf je in voor onze nieuwsbrief!",
-            "text": "<p>Ontvang een kortingscode & maandelijks kans op € 100 shoptegoed</p>",
-            "link_url": "shopify://blogs/algemeen",
-            "image": "shopify://shop_images/DSC09467_1.jpg",
+            "heading": "Bijna uitverkocht",
+            "text": "<p>Koop voor het te laat is!</p>",
+            "link_url": "shopify://collections/bijna-uitverkocht-koop-snel",
+            "image": "shopify://shop_images/DSC08128_014dc76d-a5a5-45a7-b278-7520695b396f.jpg",
             "focus_x": 50,
             "focus_y": 50,
             "overlay": "light",
-            "design": "green"
+            "design": "red"
           }
         },
-        "banner_UngyJ4": {
+        "banner_gMVXQH": {
           "type": "banner",
           "settings": {
             "label": "",
-            "heading": "Pagan & lifestyle",
-            "text": "<p>Leef het natuurlijke leven met jouw goden en voorouders. Ontdek onze collectie.</p>",
-            "link_url": "shopify://collections/middeleeuwse-viking-decoratie",
-            "image": "shopify://shop_images/DSC03162_809185a0-b605-4735-ad31-b04743fa8e7e.jpg",
+            "heading": "Terug op voorraad!",
+            "text": "<p>Koop nu!</p>",
+            "link_url": "shopify://collections/weer-op-voorraad",
+            "image": "shopify://shop_images/DSC08115.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "light",
+            "design": "red"
+          }
+        },
+        "banner_qUNK67": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Uitverkoop!",
+            "text": "<p>Op=Op!!!</p>",
+            "link_url": "shopify://collections/uitverkoop",
+            "image": "shopify://shop_images/DSCfff07918_72fe22e6-20e3-41b1-b228-ca7093a8f2de.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "red"
+          }
+        },
+        "banner_8pmcRb": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Alvast reserveren",
+            "text": "<p>Wees er als eerste bij!</p>",
+            "link_url": "shopify://collections/alvast-reserveren",
+            "image": "shopify://shop_images/DSC09458_df169916-a621-42ee-b8ad-5f1054bbb869.jpg",
             "focus_x": 50,
             "focus_y": 50,
             "overlay": "light",
@@ -106,26 +120,26 @@
         }
       },
       "block_order": [
-        "banner_Hriiii",
-        "banner_VqjtKq",
-        "banner_KjHxcU",
-        "banner_UngyJ4"
+        "banner_PH6hGr",
+        "banner_9aKPPM",
+        "banner_gMVXQH",
+        "banner_qUNK67",
+        "banner_8pmcRb"
       ],
       "name": "Marketing Grid",
       "settings": {
         "heading": "",
         "subtext": "",
-        "width": "is-align-wide",
         "header_align": "center",
+        "width": "is-align-wide",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "columns_mobile": 1,
         "grid_gap": 0.5,
-        "padding_block": 0.5,
+        "padding_block": 1,
         "display_mode": "slider",
         "slider_navigation": true,
         "slider_pagination": true,
-        "slider_loop": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
         "background_color": "#f8f8f8",
@@ -153,12 +167,6 @@
           "type": "collection",
           "settings": {
             "collection": "kleding"
-          }
-        },
-        "collection_pyGpQ6": {
-          "type": "collection",
-          "settings": {
-            "collection": "pauldrons"
           }
         },
         "collection_GehP6L": {
@@ -190,7 +198,6 @@
         "collection_fdRdrt",
         "collection_cNpndW",
         "collection_dqeer8",
-        "collection_pyGpQ6",
         "collection_GehP6L",
         "collection_PGiGfP",
         "collection_CjaJ7i",
@@ -200,6 +207,7 @@
       "settings": {
         "heading": "",
         "subheading": "",
+        "text_align": "center",
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_product_count": false,
@@ -208,8 +216,7 @@
         "sort": "alphabetical",
         "hide_empty_collections": false,
         "hide_all_collection": false,
-        "width": "is-align",
-        "text_align": "center",
+        "width": "is-align-wide",
         "columns_desktop": 6,
         "columns_tablet": 3,
         "columns_mobile": 3,
@@ -217,7 +224,6 @@
         "display_mode": "slider",
         "slider_navigation": true,
         "slider_pagination": false,
-        "slider_loop": true,
         "slider_autoplay": true,
         "slider_autoplay_speed": 5,
         "background_color": "#f8f8f8",
@@ -228,60 +234,21 @@
         "custom_class": ""
       }
     },
-    "block_marketing_media_text_Hm8CcF": {
-      "type": "block-marketing-media-text",
-      "blocks": {
-        "image_text_xUKR96": {
-          "type": "image_text",
-          "settings": {
-            "image": "shopify://shop_images/DSC08032.jpg",
-            "image_height": "square",
-            "focus_x": 25,
-            "focus_y": 30,
-            "heading": "Laat vrienden voelen dat ze geliefd zijn, geef elkaar cadeautjes!",
-            "text": "",
-            "cta_text": "Bekijk onze cadeautips!",
-            "cta_url": "shopify://collections/cadeaus",
-            "cta_style": "outline",
-            "image_position": "left",
-            "image_width": "40",
-            "vertical_alignment": "center",
-            "background_color": "#0f1f38",
-            "text_color": "#f8f8f8",
-            "button_color": "#ffffff",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_text_xUKR96"
-      ],
-      "name": "Media & text",
-      "settings": {
-        "heading": "",
-        "subheading": "",
-        "width": "is-align",
-        "padding_block": 3,
-        "background_color": "#ffffff",
-        "text_color": "#111111",
-        "anchor": "",
-        "custom_class": ""
-      }
-    },
     "best-products": {
       "type": "block-marketing-products",
       "settings": {
         "collection": "kleding",
-        "heading": "",
+        "heading": "Populaire kleding",
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_secondary_image": true,
         "show_vendor": false,
-        "show_rating": true,
+        "show_badges": true,
+        "show_rating": false,
         "quick_add": false,
         "max_products": 4,
-        "only_available": false,
-        "width": "is-align-wide",
+        "only_available": true,
+        "width": "is-align",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "columns_mobile": 2,
@@ -296,71 +263,89 @@
         "custom_class": ""
       }
     },
-    "block_marketing_articles_xMBTMb": {
-      "type": "block-marketing-articles",
+    "block_marketing_grid_93tkDC": {
+      "type": "block-marketing-grid",
       "blocks": {
-        "blog_xMzMGR": {
-          "type": "blog",
+        "banner_6PNJpD": {
+          "type": "banner",
           "settings": {
-            "blog": "challenges"
+            "label": "",
+            "heading": "Laat vrienden voelen dat ze geliefd zijn.",
+            "text": "<p>Bekijk onze cadeautips!<br/><br/><br/></p>",
+            "link_url": "shopify://collections/cadeaus",
+            "image": "shopify://shop_images/DSC08231_ae76eebc-9239-494d-82e3-dd384f1944fc.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        },
+        "banner_9A6wwJ": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Stel jouw unieke outfit samen",
+            "text": "<p>Gebruik onze tijdperkfilter!</p>",
+            "link_url": "shopify://collections/tijdperk",
+            "image": "shopify://shop_images/Tijdlijn.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        },
+        "banner_nPEhgz": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Maak je outfit uniek",
+            "text": "<p>– ga naar onze DIY-pagina!</p>",
+            "link_url": "shopify://collections/zelf-reenactment-spullen-maken",
+            "image": "shopify://shop_images/DSC07841_d0dc4600-e9d2-4298-bd97-beeaf0d41428.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
+          }
+        },
+        "banner_nKKc7L": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Ontdek de keuzehulp!",
+            "text": "<p>– samengesteld door onze stylisten</p>",
+            "link_url": "shopify://pages/kies-je-outfit",
+            "image": "shopify://shop_images/DSC07992_89b0abe9-557c-4cbd-bb74-d51590c7013e.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "blue"
           }
         }
       },
       "block_order": [
-        "blog_xMzMGR"
+        "banner_6PNJpD",
+        "banner_9A6wwJ",
+        "banner_nPEhgz",
+        "banner_nKKc7L"
       ],
-      "name": "Articles",
+      "name": "Marketing Grid",
       "settings": {
-        "heading": "Doe mee met onze challenges",
-        "subheading": "",
-        "card_layout": "horizontal",
-        "show_image": true,
-        "image_ratio": "adapt",
-        "show_blog_title": true,
-        "show_date": false,
-        "show_excerpt": true,
-        "show_cta": true,
-        "articles_per_blog": 3,
-        "max_articles": 8,
-        "random_mode": true,
-        "width": "is-align",
-        "text_align": "center",
-        "columns_desktop": 3,
-        "columns_tablet": 2,
+        "heading": "",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align-wide",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
         "columns_mobile": 1,
         "grid_gap": 0.5,
-        "padding_block": 3,
-        "display_mode": "grid",
-        "slider_navigation": false,
-        "slider_pagination": false,
-        "slider_loop": false,
-        "slider_autoplay": false,
+        "padding_block": 1,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": true,
         "slider_autoplay_speed": 5,
-        "background_color": "#0f1f38",
-        "text_color": "#ffffff",
-        "card_background_color": "#ffffff",
-        "card_text_color": "#111111",
-        "anchor": "",
-        "custom_class": ""
-      }
-    },
-    "17653968662b835c7e": {
-      "type": "apps",
-      "blocks": {
-        "klaviyo_email_marketing_sms_form_embed_block_FXLUc7": {
-          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
-          "settings": {
-            "formId": ""
-          }
-        }
-      },
-      "block_order": [
-        "klaviyo_email_marketing_sms_form_embed_block_FXLUc7"
-      ],
-      "settings": {
-        "width": "align",
-        "padding_block": 0,
-        "background_color": "#ffffff",
+        "background_color": "#f8f8f8",
         "text_color": "#111111",
         "anchor": "",
         "custom_class": ""
@@ -370,16 +355,46 @@
       "type": "block-marketing-products",
       "settings": {
         "collection": "zwaard-kopen",
-        "heading": "",
+        "heading": "Populaire zwaarden",
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_secondary_image": true,
         "show_vendor": false,
-        "show_rating": true,
+        "show_badges": true,
+        "show_rating": false,
         "quick_add": false,
         "max_products": 4,
         "only_available": false,
-        "width": "is-align-wide",
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_pXat79": {
+      "type": "block-marketing-products",
+      "settings": {
+        "collection": "pantser",
+        "heading": "Populaire pantsers",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 4,
+        "only_available": false,
+        "width": "is-align",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "columns_mobile": 2,
@@ -407,7 +422,7 @@
             "heading": "Ontvang een kortingscode & maandelijks kans op € 100 shoptegoed",
             "text": "<p>Schrijf je gratis in voor onze nieuwsbrief!</p>",
             "cta_text": "Meld me aan!",
-            "cta_url": "https://shopify.com/89128927560/account/orders?locale=nl&region_country=NO",
+            "cta_url": "#nieuwsbrief",
             "cta_style": "outline",
             "image_position": "right",
             "image_width": "40",
@@ -426,6 +441,7 @@
       "settings": {
         "heading": "",
         "subheading": "",
+        "text_align": "center",
         "width": "is-align",
         "padding_block": 3,
         "background_color": "#ffffff",
@@ -434,27 +450,109 @@
         "custom_class": ""
       }
     },
-    "block_marketing_products_pXat79": {
-      "type": "block-marketing-products",
+    "17653968662b835c7e": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_FXLUc7": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": ""
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_FXLUc7"
+      ],
       "settings": {
-        "collection": "pantser",
+        "width": "align",
+        "padding_block": 0,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_mcEqQJ": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_NF9tcC": {
+          "type": "blog",
+          "settings": {
+            "blog": "community"
+          }
+        }
+      },
+      "block_order": [
+        "blog_NF9tcC"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Nieuws uit de community",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "horizontal",
+        "show_image": true,
+        "image_ratio": "adapt",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": true,
+        "show_cta": true,
+        "articles_per_blog": 3,
+        "max_articles": 8,
+        "random_mode": true,
+        "width": "is-align",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "grid",
+        "slider_navigation": false,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_media_text_mEgbKY": {
+      "type": "block-marketing-media-text",
+      "blocks": {
+        "image_text_aJBEwL": {
+          "type": "image_text",
+          "settings": {
+            "image": "shopify://shop_images/DSC04039_1_9c2a0b18-df7b-4dd9-acb8-b75947fc5c73.jpg",
+            "image_height": "portrait",
+            "focus_x": 25,
+            "focus_y": 30,
+            "heading": "Verbind je met de geschiedenis van je voorouders",
+            "text": "<p>Duik in meer dan 500 pagina’s vol verhalen, kennis en geschiedenis.<br/></p>",
+            "cta_text": "Bekijk onze blog!",
+            "cta_url": "shopify://pages/blog-lookbook",
+            "cta_style": "outline",
+            "image_position": "left",
+            "image_width": "40",
+            "vertical_alignment": "center",
+            "background_color": "#0f1f38",
+            "text_color": "#f8f8f8",
+            "button_color": "#ffffff",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_text_aJBEwL"
+      ],
+      "name": "Media & text",
+      "settings": {
         "heading": "",
-        "card_layout": "vertical",
-        "image_ratio": "portrait",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "quick_add": false,
-        "max_products": 4,
-        "only_available": false,
-        "width": "is-align-wide",
-        "columns_desktop": 4,
-        "columns_tablet": 3,
-        "columns_mobile": 2,
-        "grid_gap": 0.2,
-        "visible_rows": 1,
-        "show_more_text": "",
-        "show_less_text": "",
+        "subheading": "",
+        "text_align": "center",
+        "width": "is-align",
         "padding_block": 3,
         "background_color": "#ffffff",
         "text_color": "#111111",
@@ -462,19 +560,249 @@
         "custom_class": ""
       }
     },
+    "block_marketing_articles_HAGXAT": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_hfqd7D": {
+          "type": "blog",
+          "settings": {
+            "blog": "middeleeuwen"
+          }
+        },
+        "blog_nFwMLE": {
+          "type": "blog",
+          "settings": {
+            "blog": "vikingen"
+          }
+        },
+        "blog_Uza3UN": {
+          "type": "blog",
+          "settings": {
+            "blog": "oudheid-romeinen"
+          }
+        }
+      },
+      "block_order": [
+        "blog_hfqd7D",
+        "blog_nFwMLE",
+        "blog_Uza3UN"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Deze blogs lezen anderen nu:",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "horizontal",
+        "show_image": true,
+        "image_ratio": "portrait",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": false,
+        "articles_per_blog": 5,
+        "max_articles": 8,
+        "random_mode": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 1,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "card_background_color": "",
+        "card_text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_media_text_eUmREH": {
+      "type": "block-marketing-media-text",
+      "blocks": {
+        "image_text_xddkDV": {
+          "type": "image_text",
+          "settings": {
+            "image": "shopify://shop_images/DSC05320_dde1478e-00fb-4085-bf37-ae6f9f68a80d.jpg",
+            "image_height": "portrait",
+            "focus_x": 25,
+            "focus_y": 30,
+            "heading": "Word lid van de Tribe",
+            "text": "<p>Word lid van de Tribe! Sluit je aan bij onze wereldwijde community, spaar korting en geniet van exclusieve voordelen.</p>",
+            "cta_text": "Word nu gratis lid!",
+            "cta_url": "shopify://pages/the-tribe",
+            "cta_style": "outline",
+            "image_position": "left",
+            "image_width": "40",
+            "vertical_alignment": "center",
+            "background_color": "#0f1f38",
+            "text_color": "#f8f8f8",
+            "button_color": "#ffffff",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_text_xddkDV"
+      ],
+      "name": "Media & text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "width": "is-align",
+        "padding_block": 3,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_wJ9gkm": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_fJGdDR": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-zwaarden-wapens"
+          }
+        },
+        "blog_bnEegy": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-outfit-accessoires"
+          }
+        },
+        "blog_dXBrwh": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-helmen-pantser"
+          }
+        },
+        "blog_mCmnyf": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-larp-re-enactment-kamp"
+          }
+        },
+        "blog_xrW6Ee": {
+          "type": "blog",
+          "settings": {
+            "blog": "tips-tricks-larp-cosmetica"
+          }
+        }
+      },
+      "block_order": [
+        "blog_fJGdDR",
+        "blog_bnEegy",
+        "blog_dXBrwh",
+        "blog_mCmnyf",
+        "blog_xrW6Ee"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Tips & trics:",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "horizontal",
+        "show_image": true,
+        "image_ratio": "portrait",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": false,
+        "articles_per_blog": 5,
+        "max_articles": 8,
+        "random_mode": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 1,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "card_background_color": "",
+        "card_text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_articles_qtkjtB": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_GkAtND": {
+          "type": "blog",
+          "settings": {
+            "blog": "challenges"
+          }
+        }
+      },
+      "block_order": [
+        "blog_GkAtND"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Doe mee met onze challenges",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "horizontal",
+        "show_image": true,
+        "image_ratio": "adapt",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": true,
+        "show_cta": true,
+        "articles_per_blog": 3,
+        "max_articles": 8,
+        "random_mode": true,
+        "width": "is-align",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "grid",
+        "slider_navigation": false,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
     "block_marketing_brands_small_gekrHy": {
       "type": "block-marketing-brands-small",
       "blocks": {
-        "brand_dxMjWa": {
-          "type": "brand",
-          "settings": {
-            "collection": "burgschneider"
-          }
-        },
         "brand_HyXWrW": {
           "type": "brand",
           "settings": {
             "collection": "deepeeka"
+          }
+        },
+        "brand_JmVz9V": {
+          "type": "brand",
+          "settings": {
+            "collection": "epic-armoury"
+          }
+        },
+        "brand_dxMjWa": {
+          "type": "brand",
+          "settings": {
+            "collection": "burgschneider"
           }
         },
         "brand_4A7fPM": {
@@ -521,8 +849,9 @@
         }
       },
       "block_order": [
-        "brand_dxMjWa",
         "brand_HyXWrW",
+        "brand_JmVz9V",
+        "brand_dxMjWa",
         "brand_4A7fPM",
         "brand_3kAF6b",
         "brand_yecnzk",
@@ -550,7 +879,6 @@
         "display_mode": "grid",
         "slider_navigation": true,
         "slider_pagination": false,
-        "slider_loop": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
         "background_color": "#f8f8f8",
@@ -575,15 +903,20 @@
   },
   "order": [
     "block_marketing_cover_EyVVzr",
-    "block_marketing_grid_93tkDC",
+    "block_marketing_grid_eKTaaA",
     "block_marketing_collections_KLibTG",
-    "block_marketing_media_text_Hm8CcF",
     "best-products",
-    "block_marketing_articles_xMBTMb",
-    "17653968662b835c7e",
+    "block_marketing_grid_93tkDC",
     "block_marketing_products_EaRW4A",
-    "block_marketing_media_text_iDhD8j",
     "block_marketing_products_pXat79",
+    "block_marketing_media_text_iDhD8j",
+    "17653968662b835c7e",
+    "block_marketing_articles_mcEqQJ",
+    "block_marketing_media_text_mEgbKY",
+    "block_marketing_articles_HAGXAT",
+    "block_marketing_media_text_eUmREH",
+    "block_marketing_articles_wJ9gkm",
+    "block_marketing_articles_qtkjtB",
     "block_marketing_brands_small_gekrHy",
     "1765396664e68351eb"
   ]

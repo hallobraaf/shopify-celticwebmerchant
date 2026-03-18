@@ -1,0 +1,688 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_cover_cNKBer": {
+      "type": "block-marketing-cover",
+      "blocks": {
+        "button_iJPbzj": {
+          "type": "button",
+          "settings": {
+            "text": "",
+            "url": "",
+            "style": "primary",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_iJPbzj"
+      ],
+      "name": "Cover",
+      "settings": {
+        "subheading": "Bekijk onze collectie voor",
+        "heading": "Carnaval",
+        "text": "",
+        "video": "shopify://files/videos/Banner_Carnaval_Jan2026-2.mp4",
+        "focus_x": 70,
+        "focus_y": 50,
+        "overlay": "light",
+        "loading": "eager",
+        "fetchpriority": "high",
+        "width": "is-align-full",
+        "height": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_mEpeQx": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "carnaval",
+        "heading": "Onze selectie:",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 24,
+        "only_available": true,
+        "width": "is-align-wide",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#f8f8f8",
+        "text_color": "#000000",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_grid_G4YbJR": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "collection_9BQcfM": {
+          "type": "collection",
+          "settings": {
+            "collection": "piraten-kleding",
+            "show_description": true,
+            "design": "green"
+          }
+        },
+        "product_Ec6Qrf": {
+          "type": "product",
+          "settings": {
+            "product": "tricorn-charles-zwart",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_6YbpQY": {
+          "type": "product",
+          "settings": {
+            "product": "17de-eeuws-matrozenvest-black",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_gy8EWR": {
+          "type": "product",
+          "settings": {
+            "product": "piraten-hemd-jean-hennep-kleur",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_MwgzfQ": {
+          "type": "product",
+          "settings": {
+            "product": "piratenjas-teach-bruin",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_RejAYz": {
+          "type": "product",
+          "settings": {
+            "product": "larp-ready-for-battle-sword-pirate",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_d8nTCG": {
+          "type": "product",
+          "settings": {
+            "product": "piratenbandelier-bruin",
+            "second_image": false,
+            "design": "blue"
+          }
+        }
+      },
+      "block_order": [
+        "collection_9BQcfM",
+        "product_Ec6Qrf",
+        "product_6YbpQY",
+        "product_gy8EWR",
+        "product_MwgzfQ",
+        "product_RejAYz",
+        "product_d8nTCG"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "Piraat",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_grid_ihdRQi": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "product_W3rMHJ": {
+          "type": "product",
+          "settings": {
+            "product": "viking-jurk-valdis-blauw",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_QJrG9E": {
+          "type": "product",
+          "settings": {
+            "product": "tuniek-halbard-groen",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_kkMFhn": {
+          "type": "product",
+          "settings": {
+            "product": "vikingbroek-dublin-bruin",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_ne49C8": {
+          "type": "product",
+          "settings": {
+            "product": "beenwindsels-met-visgraatmotief",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_kX9JJ6": {
+          "type": "product",
+          "settings": {
+            "product": "9de-eeuwse-vikingriem-1",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_RtghJM": {
+          "type": "product",
+          "settings": {
+            "product": "drinkhoorn-0-05-l",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "collection_MmtJ6w": {
+          "type": "collection",
+          "settings": {
+            "collection": "viking-kleding",
+            "show_description": false,
+            "design": "green"
+          }
+        }
+      },
+      "block_order": [
+        "product_W3rMHJ",
+        "product_QJrG9E",
+        "product_kkMFhn",
+        "product_ne49C8",
+        "product_kX9JJ6",
+        "product_RtghJM",
+        "collection_MmtJ6w"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "Viking",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_grid_jPLkpp": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "product_6mkLeQ": {
+          "type": "product",
+          "settings": {
+            "product": "franciscaanse-habijt-monnikspij",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_Hgq9jK": {
+          "type": "product",
+          "settings": {
+            "product": "monniks-habijt-franciscaan-van-de-derde-orde",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_LcTKh8": {
+          "type": "product",
+          "settings": {
+            "product": "cistercienzer-habijt-monnikspij",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_EdfGhW": {
+          "type": "product",
+          "settings": {
+            "product": "benedictijnse-habijt-monnikspij-zwart",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_P8CPhn": {
+          "type": "product",
+          "settings": {
+            "product": "monnikshabijt-dominicaanse-orde",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "collection_bwWkGJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "monnikspij",
+            "show_description": false,
+            "design": "green"
+          }
+        }
+      },
+      "block_order": [
+        "product_6mkLeQ",
+        "product_Hgq9jK",
+        "product_LcTKh8",
+        "product_EdfGhW",
+        "product_P8CPhn",
+        "collection_bwWkGJ"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "Monnik",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_grid_FVHipy": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "product_bJDMKe": {
+          "type": "product",
+          "settings": {
+            "product": "annabelle-corset-lijfje-groen",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_ANjDX9": {
+          "type": "product",
+          "settings": {
+            "product": "renaissanceblouse-elizabeth-natural",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_HVy3EQ": {
+          "type": "product",
+          "settings": {
+            "product": "middeleeuwse-rok-melisende-rood",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_Jy8rgt": {
+          "type": "product",
+          "settings": {
+            "product": "middeleeuwse-rok-elise-blauw",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_ppGHTJ": {
+          "type": "product",
+          "settings": {
+            "product": "hoed-guthrie-bruin",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_PYGwbH": {
+          "type": "product",
+          "settings": {
+            "product": "renaissancerok-rood",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_p6LqDV": {
+          "type": "product",
+          "settings": {
+            "product": "damesvest-marian-bruin",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_AbRxLd": {
+          "type": "product",
+          "settings": {
+            "product": "piraten-blouse-felice-naturel",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "collection_E3cQLi": {
+          "type": "collection",
+          "settings": {
+            "collection": "fantasy-larp-kleding",
+            "show_description": false,
+            "design": "green"
+          }
+        }
+      },
+      "block_order": [
+        "product_bJDMKe",
+        "product_ANjDX9",
+        "product_HVy3EQ",
+        "product_Jy8rgt",
+        "product_ppGHTJ",
+        "product_PYGwbH",
+        "product_p6LqDV",
+        "product_AbRxLd",
+        "collection_E3cQLi"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "Middeleeuws geinspireerd",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "#000000",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_grid_89tjgj": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "product_rDzLQx": {
+          "type": "product",
+          "settings": {
+            "product": "tempeliersoverkleed",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_DVALgY": {
+          "type": "product",
+          "settings": {
+            "product": "mantel-tempelier",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_GMUGw4": {
+          "type": "product",
+          "settings": {
+            "product": "onderarmbeschermers-balthasar",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_cnbTWa": {
+          "type": "product",
+          "settings": {
+            "product": "kruis-cuthert-van-lindisfarne-tin",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_echM43": {
+          "type": "product",
+          "settings": {
+            "product": "malienkap-met-vierkante-hals-verzinkt-8-mm",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "collection_h6kpbU": {
+          "type": "collection",
+          "settings": {
+            "collection": "pauldrons",
+            "show_description": false,
+            "design": "green"
+          }
+        }
+      },
+      "block_order": [
+        "product_rDzLQx",
+        "product_DVALgY",
+        "product_GMUGw4",
+        "product_cnbTWa",
+        "product_echM43",
+        "collection_h6kpbU"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "Tempelier",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_grid_9z6PaX": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "product_DLGAqX": {
+          "type": "product",
+          "settings": {
+            "product": "venetiaans-masker-vos",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_3F6tY6": {
+          "type": "product",
+          "settings": {
+            "product": "leren-masker-nessa-rood",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_arVYmb": {
+          "type": "product",
+          "settings": {
+            "product": "beestachtig-orkmasker-groen",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_j4Eqq7": {
+          "type": "product",
+          "settings": {
+            "product": "leren-masker-vogel",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "product_83Q8Jx": {
+          "type": "product",
+          "settings": {
+            "product": "leren-masker-pestdokter-zwart",
+            "second_image": false,
+            "design": "blue"
+          }
+        },
+        "collection_mjK38a": {
+          "type": "collection",
+          "settings": {
+            "collection": "kostuum-masker-waaier-kroon",
+            "show_description": true,
+            "design": "green"
+          }
+        }
+      },
+      "block_order": [
+        "product_DLGAqX",
+        "product_3F6tY6",
+        "product_arVYmb",
+        "product_j4Eqq7",
+        "product_83Q8Jx",
+        "collection_mjK38a"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "Maskers",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "#000000",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_wjK74V": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "fantasy-larp-mantels-jassen",
+        "heading": "Mantels & Capes",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 12,
+        "only_available": true,
+        "width": "is-align-wide",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_zg4bPh": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "castlefest",
+        "heading": "Meer kleding",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 12,
+        "only_available": true,
+        "width": "is-align-wide",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "",
+        "text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "block_marketing_cover_cNKBer",
+    "block_marketing_products_mEpeQx",
+    "block_marketing_grid_G4YbJR",
+    "block_marketing_grid_ihdRQi",
+    "block_marketing_grid_jPLkpp",
+    "block_marketing_grid_FVHipy",
+    "block_marketing_grid_89tjgj",
+    "block_marketing_grid_9z6PaX",
+    "block_marketing_products_wjK74V",
+    "block_marketing_products_zg4bPh"
+  ]
+}

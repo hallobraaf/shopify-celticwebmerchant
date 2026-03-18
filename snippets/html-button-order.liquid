@@ -69,7 +69,7 @@
   {%- else -%}
     <form 
       method="post" 
-      action="/cart/add" 
+      action="{{ routes.cart_add_url }}" 
       class="button-order__form"
       data-button-order-form="{{ unique_id }}"
     >
@@ -124,7 +124,7 @@
                 items: [{ id: parseInt(variantId), quantity: quantity }]
               });
             } else {
-              var response = await fetch('/cart/add.js', {
+              var response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ items: [{ id: variantId, quantity: quantity }] })
@@ -132,7 +132,7 @@
               
               if (!response.ok) throw new Error('Failed to add to cart');
               
-              var cartResponse = await fetch('/cart.js');
+              var cartResponse = await fetch(window.Shopify.routes.root + 'cart.js');
               cartData = await cartResponse.json();
               
               if (window.CartEvents) {
@@ -175,100 +175,3 @@
   </span>
 {%- endif -%}
 
-<style>
-  .button-order {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    padding: 0.75em 1.25em;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: 600;
-    line-height: 1.2;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background-color 200ms ease, opacity 200ms ease, transform 100ms ease;
-  }
-
-  .button-order:active {
-    transform: scale(0.98);
-  }
-
-  .button-order__form {
-    display: contents;
-  }
-
-  .button-order--primary {
-    background-color: var(--theme-color-green, #000);
-    color: var(--theme-color-white, #fff);
-  }
-
-  .button-order--primary:hover {
-    opacity: 0.9;
-  }
-
-  .button-order--secondary {
-    background-color: transparent;
-    color: inherit;
-    border: 1px solid currentColor;
-  }
-
-  .button-order--secondary:hover {
-    background-color: var(--theme-color-foreground, #000);
-    color: var(--theme-color-background, #fff);
-  }
-
-  .button-order--minimal {
-    background-color: transparent;
-    color: inherit;
-    padding: 0.5em;
-  }
-
-  .button-order--minimal:hover {
-    opacity: 0.7;
-  }
-
-  .button-order--soldout {
-    background-color: var(--theme-color-grey-light, #f5f5f5);
-    color: var(--theme-color-grey, #666);
-    cursor: not-allowed;
-    opacity: 0.7;
-  }
-
-  .button-order__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .button-order__text {
-    font-size: 0.8em;
-  }
-
-  .button-order__text--loading,
-  .button-order__text--success,
-  .button-order__text--error {
-    display: none;
-  }
-
-  .button-order.is-loading [data-button-text] { display: none; }
-  .button-order.is-loading [data-button-loader] { display: inline; }
-  .button-order.is-loading { pointer-events: none; }
-  .button-order.is-loading .button-order__icon { animation: button-spin 800ms linear infinite; }
-
-  .button-order.is-success [data-button-text] { display: none; }
-  .button-order.is-success [data-button-success] { display: inline; }
-  .button-order.is-success { background-color: var(--theme-color-green, #4caf50); color: #fff; }
-
-  .button-order.is-error [data-button-text] { display: none; }
-  .button-order.is-error [data-button-error] { display: inline; }
-  .button-order.is-error { background-color: var(--theme-color-red, #f44336); color: #fff; }
-
-  @keyframes button-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-</style>

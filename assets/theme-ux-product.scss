@@ -1,0 +1,1033 @@
+// ============================================================================
+// THEME-UX-PRODUCT.SCSS
+// Celtic Webmerchant — Product Snippet Styles
+// ============================================================================
+//
+// Consolidated CSS for product-related html-product-* snippets.
+// Previously duplicated inline via <style> tags on every snippet render.
+// Loaded once via stylesheet_tag in each layout — Shopify deduplicates.
+//
+// Note: Price, stock, delivery, volume pricing and card product styles
+// already live in theme-ux.scss (section 7a). Only snippets with their
+// own inline <style> blocks are migrated here.
+//
+// TABLE OF CONTENTS:
+//  1.  Product Rating          (.product-rating)
+//  2.  Product Heading         (.product-heading)
+//  3.  Product Description     (.product-description)
+//  4.  Product SKU             (.product-sku)
+//  5.  Product Identity        (.product-identity)
+//  6.  Product Variant Picker  (.product-variants)
+//  7.  Product ATC             (.product-atc)
+//  8.  Product Dynamic Checkout (.product-dynamic-checkout)
+//  9.  Product Selling Plans   (.product-selling-plans)
+//  10. Product Payments        (.product-payments)
+//  11. Product Trust           (.product-trust)
+//  12. Product Gallery         (.product-gallery)
+//
+// ============================================================================
+
+
+// ============================================================================
+// 1. PRODUCT RATING
+// ============================================================================
+// Used in html-product-rating.liquid
+// Conditional snippet — only rendered when review_count > 0
+
+.product-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 150ms ease;
+
+  &:hover { opacity: 0.8; }
+
+  &__stars {
+    display: inline-flex;
+    gap: 0.1em;
+    color: #f5a623;
+  }
+
+  &__star {
+    width: var(--star-size, 16px);
+    height: var(--star-size, 16px);
+    flex-shrink: 0;
+  }
+
+  &__count {
+    font-size: 0.875em;
+    opacity: 0.7;
+  }
+}
+
+
+// ============================================================================
+// 2. PRODUCT HEADING
+// ============================================================================
+// Used in html-product-heading.liquid
+
+.product-heading {
+  // margins controlled by parent
+
+  &__vendor {
+    font-size: 0.875em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+    margin: 0 0 0.25em;
+  }
+
+  &__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: 2.6em;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: var(--theme-letter-spacing);
+    margin: 0;
+  }
+}
+
+
+// ============================================================================
+// 3. PRODUCT DESCRIPTION
+// ============================================================================
+// Used in html-product-description.liquid
+
+.product-description {
+  // margins controlled by parent
+
+  &__content {
+    line-height: 1.6;
+
+    p {
+      margin: 0 0 1em;
+
+      &:last-child { margin-bottom: 0; }
+    }
+
+    a { color: inherit; }
+  }
+
+  &__more {
+    color: inherit;
+    font-weight: 500;
+  }
+}
+
+
+// ============================================================================
+// 4. PRODUCT SKU
+// ============================================================================
+// Used in html-product-sku.liquid
+
+.product-sku {
+  font-size: 0.875em;
+  opacity: 0.7;
+
+  &__label { font-weight: 500; }
+}
+
+
+// ============================================================================
+// 5. PRODUCT IDENTITY
+// ============================================================================
+// Used in html-product-identity.liquid
+// Conditional snippet — only rendered when product has ID-check tag
+
+.product-identity {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+  padding: 1em 0;
+  // margins controlled by parent
+
+  &__icon {
+    flex-shrink: 0;
+    color: red;
+
+    img,
+    svg {
+      display: block;
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__message {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: inherit;
+    padding-top: 0.25em;
+  }
+}
+
+
+// ============================================================================
+// 6. PRODUCT VARIANT PICKER
+// ============================================================================
+// Used in html-product-variant_picker.liquid
+
+.product-variants {
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  &__group {
+    margin-bottom: 1em;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+  }
+
+  // Dropdown
+  &__select {
+    width: 100%;
+    max-width: 20em;
+  }
+
+  // Swatches
+  &__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+
+  &__swatch {
+    position: relative;
+
+    // Sold out state
+    &.is-sold-out {
+      opacity: 0.5;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: calc(100% - 1em);
+        height: 2px;
+        background-color: var(--theme-color-blue);
+        transform: translate(-50%, -50%) rotate(-12deg);
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+
+    &:checked + .product-variants__swatch-label {
+      border-color: var(--theme-color-blue);
+    }
+
+    &:focus-visible + .product-variants__swatch-label {
+      outline: 2px solid var(--theme-color-blue);
+      outline-offset: 2px;
+    }
+  }
+
+  &__swatch-label {
+    display: block;
+    padding: 0.5em 1em;
+    font-weight: 500;
+    color: var(--theme-color-blue);
+    background-color: var(--theme-color-grey);
+    border: 2px solid var(--theme-color-grey);
+    cursor: pointer;
+    transition: border-color 150ms ease, background-color 150ms ease;
+
+    &:hover { border-color: var(--theme-color-blue); }
+  }
+}
+
+
+// ============================================================================
+// 7. PRODUCT ATC
+// ============================================================================
+// Used in html-product-atc.liquid
+
+.product-atc {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5em;
+
+  // Form: quantity + button
+  &__form {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5em;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  // Quantity
+  &__quantity {
+    flex: 0 0 auto;
+    flex-basis: 80px;
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--theme-color-grey, #ddd);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__qty-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    padding: 0;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1;
+    color: inherit;
+    background: var(--theme-color-grey-light, #f5f5f5);
+    border: none;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+
+    &:hover { background: var(--theme-color-grey, #e5e5e5); }
+  }
+
+  &__qty-input {
+    width: 2.5em;
+    padding: 0.5em 0.25em;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align: center;
+    color: inherit;
+    background: transparent;
+    border: none;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  // Submit button
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    padding: 0.75em 1.5em;
+    min-height: 3em;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    background-color: var(--theme-color-green, #22c55e);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 150ms ease, opacity 150ms ease;
+
+    &--full { width: 100%; }
+
+    &:hover:not([disabled]) { background-color: var(--theme-color-green-dark, #16a34a); }
+
+    &[disabled] {
+      background-color: var(--theme-color-orange, #f59e0b);
+      cursor: not-allowed;
+    }
+  }
+
+  // Notify: back in stock
+  &__notify {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    #custom-notify-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 100%;
+      padding: 0.75em 1.5em;
+      min-height: 3em;
+      font-family: inherit;
+      font-size: 1em;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      background-color: var(--theme-color-blue, #3b82f6);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 150ms ease;
+
+      &::after {
+        font-family: "swym-font";
+        margin-left: 0.5em;
+        font-size: 0.8em !important;
+        line-height: inherit !important;
+      }
+
+      &:hover { background-color: var(--theme-color-blue-dark, #2563eb); }
+    }
+  }
+
+  // Wishlist
+  &__wishlist {
+    flex: 0 0 auto;
+    flex-basis: 42px;
+
+    #custom-wishlist-button {
+      display: block !important;
+      background: transparent !important;
+      color: #000 !important;
+      padding: 0.5em !important;
+      margin: 0 !important;
+      font-size: 1em !important;
+      height: auto !important;
+
+      &.swym-added svg { fill: #000 !important; }
+    }
+  }
+
+  // Availability states (sibling selectors)
+  &__form.is-available {
+    display: flex;
+
+    & ~ .product-atc__notify { display: none; }
+  }
+
+  &__form:not(.is-available) {
+    display: none;
+
+    & ~ .product-atc__notify { display: block; }
+  }
+}
+
+// Suppress Swym floating button container
+body > .swym-btn-container { display: none !important; }
+
+// Hide Swym ATC button in gallery
+.product-gallery__media .swym-atw-btn-wrapper-for-img { display: none !important; }
+
+
+// ============================================================================
+// 8. PRODUCT DYNAMIC CHECKOUT
+// ============================================================================
+// Used in html-product-dynamic_checkout.liquid
+
+.product-dynamic-checkout {
+  // margins controlled by parent
+
+  .shopify-payment-button { margin-top: 0; }
+
+  .shopify-payment-button__button--unbranded {
+    background-color: var(--theme-color-blue);
+    border-radius: 4px;
+    padding: 0.75em 1.5em;
+    min-height: 3em;
+  }
+
+  .shopify-payment-button__more-options {
+    margin-top: 0.75em;
+    font-size: 0.875em;
+  }
+}
+
+
+// ============================================================================
+// 9. PRODUCT SELLING PLANS
+// ============================================================================
+// Used in html-product-selling_plans.liquid
+
+.product-selling-plans {
+  // margins controlled by parent
+
+  &__group {
+    margin-bottom: 1em;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+  }
+
+  &__select {
+    width: 100%;
+    max-width: 20em;
+  }
+}
+
+
+// ============================================================================
+// 10. PRODUCT PAYMENTS
+// ============================================================================
+// Used in html-product-payments.liquid
+
+.product-payments {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    height: 24px;
+    width: auto;
+    border-radius: 3px;
+  }
+}
+
+
+// ============================================================================
+// 11. PRODUCT TRUST
+// ============================================================================
+// Used in html-product-trust.liquid
+
+.product-trust {
+  padding: 1em;
+  background-color: var(--theme-color-grey, #f5f5f5);
+  border-radius: 4px;
+  // margins controlled by parent
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  &__link {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75em;
+    color: inherit;
+    text-decoration: none;
+
+    &:is(a):hover { text-decoration: underline; }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1em;
+    color: var(--theme-color-green, #22c55e);
+  }
+
+  &__text {
+    font-size: 0.9em;
+    letter-spacing: -0.01em;
+    color: var(--theme-color-green, #22c55e);
+  }
+}
+
+
+// ============================================================================
+// 12. PRODUCT GALLERY
+// ============================================================================
+// Used in html-product-gallery.liquid
+
+.product-gallery {
+  --thumb-size: 80px;
+
+  position: sticky;
+  top: calc(var(--header-height, 80px) + 1em);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  // Main slider
+  &__main {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+  }
+
+  // Slides
+  &__slides {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__slide {
+    flex-shrink: 0;
+    width: 100%;
+    min-width: 0;
+  }
+
+  // Media figure
+  &__media {
+    width: 100%;
+    margin: 0;
+
+    .theme-media__picture {
+      display: block;
+      width: 100%;
+    }
+
+    .theme-media__img {
+      aspect-ratio: 2 / 3;
+      object-fit: contain;
+    }
+
+    .theme-media__video-wrapper {
+      aspect-ratio: 2 / 3;
+
+      .theme-media__poster,
+      .theme-media__video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__main .theme-media__img {
+    width: 100%;
+    height: auto;
+  }
+
+  // Thumbs
+  &__thumbs {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__slide--thumb {
+    flex: 0 0 var(--thumb-size);
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover,
+    &.swiper-slide-thumb-active { opacity: 1; }
+  }
+
+  &__thumb {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    .theme-media__img {
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+  }
+
+  &__thumb-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  // Navigation
+  &__nav {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--theme-color-border, rgba(0, 0, 0, 0.1));
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover { background: #fff; }
+
+    &--prev {
+      top: 50%;
+      left: 0.5em;
+      transform: translateY(-50%);
+    }
+
+    &--next {
+      top: 50%;
+      right: 0.5em;
+      transform: translateY(-50%);
+    }
+
+    &:disabled,
+    &.swiper-button-disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  // Action buttons
+  &__fullscreen-btn,
+  &__share-btn {
+    position: absolute;
+    z-index: 3;
+    right: 0.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--theme-color-grey, #ddd);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover { background: #fff; }
+  }
+
+  &__fullscreen-btn { bottom: 0.75em; }
+  &__share-btn { bottom: calc(0.75em + 48px); }
+
+  &__fullscreen-close { display: none; }
+
+  // ----------------------------------------
+  // Tablet (30em – 60em): continuous slides
+  // ----------------------------------------
+  @media (min-width: 30em) and (max-width: 59.99em) {
+    max-height: 70vh;
+
+    &__main { height: 100%; }
+
+    &__slide {
+      width: auto;
+      height: 100%;
+    }
+
+    &__media {
+      height: 60vh;
+      width: auto;
+      aspect-ratio: 2 / 3;
+
+      .theme-media__picture,
+      .theme-media__video-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__main .theme-media__img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+    }
+  }
+
+  // ----------------------------------------
+  // Desktop (60em+): vertical slider, thumbs left
+  // ----------------------------------------
+  @media (min-width: 60em) {
+    flex-direction: row;
+    height: min(80vh, 800px);
+
+    &__main {
+      order: 1;
+      flex: 1;
+      width: 100%;
+      margin-left: 0;
+      height: 100%;
+
+      .product-gallery__slides {
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .product-gallery__slide {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .product-gallery__media {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .theme-media__picture {
+          max-width: 100%;
+          height: 100%;
+        }
+      }
+
+      .theme-media__img {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+      }
+    }
+
+    // Vertical nav
+    &__nav {
+      &--prev {
+        top: 0.5em;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+
+        svg { transform: rotate(90deg); }
+      }
+
+      &--next {
+        top: auto;
+        bottom: 0.5em;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+
+        svg { transform: rotate(90deg); }
+      }
+    }
+
+    &__thumbs {
+      order: 0;
+      flex: 0 0 var(--thumb-size);
+      width: var(--thumb-size);
+      height: 100%;
+
+      .product-gallery__slides {
+        flex-direction: column;
+        height: 100%;
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // Fullscreen mode
+  // ----------------------------------------
+  &.is-fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999999995;
+    display: flex;
+    gap: 0.5em;
+    padding: 0.5em;
+    height: 100dvh;
+    max-height: none;
+    background: rgba(0, 0, 0, 0.95);
+
+    &__main {
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 0;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: hidden;
+
+      .product-gallery__slides { height: 100%; }
+
+      .product-gallery__slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      .product-gallery__media {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0;
+
+        .theme-media__picture {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-width: 100%;
+          max-height: 100%;
+        }
+
+        .theme-media__img {
+          display: block;
+          width: auto;
+          height: auto;
+          max-width: 100%;
+          max-height: 100%;
+          margin: 0;
+          aspect-ratio: auto;
+          object-fit: contain;
+          background: transparent;
+        }
+      }
+    }
+
+    .product-gallery__fullscreen-btn,
+    .product-gallery__share-btn { display: none; }
+
+    .product-gallery__fullscreen-close {
+      display: flex;
+      position: absolute;
+      z-index: 10;
+      top: 0.5em;
+      right: 0.5em;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    // Fullscreen horizontal (< 60em)
+    @media (max-width: 59.99em) {
+      flex-direction: column;
+
+      .product-gallery__main {
+        order: 0;
+
+        .product-gallery__slides { flex-direction: row; }
+      }
+
+      .product-gallery__thumbs {
+        order: 1;
+        width: 100%;
+        height: var(--thumb-size);
+
+        .product-gallery__slides { flex-direction: row; }
+      }
+
+      .product-gallery__nav {
+        &--prev {
+          top: 50%;
+          left: 0.5em;
+          right: auto;
+          bottom: auto;
+          transform: translateY(-50%);
+
+          svg { transform: none; }
+        }
+
+        &--next {
+          top: 50%;
+          right: 0.5em;
+          left: auto;
+          bottom: auto;
+          transform: translateY(-50%);
+
+          svg { transform: none; }
+        }
+      }
+    }
+
+    // Fullscreen vertical (60em+)
+    @media (min-width: 60em) {
+      flex-direction: row;
+
+      .product-gallery__main {
+        order: 1;
+
+        .product-gallery__slides { flex-direction: column; }
+      }
+
+      .product-gallery__thumbs {
+        order: 0;
+        width: var(--thumb-size);
+        height: 100%;
+
+        .product-gallery__slides {
+          flex-direction: column;
+          height: 100%;
+        }
+      }
+
+      .product-gallery__nav {
+        &--prev {
+          top: 0.5em;
+          left: 50%;
+          right: auto;
+          bottom: auto;
+          transform: translateX(-50%);
+
+          svg { transform: rotate(90deg); }
+        }
+
+        &--next {
+          top: auto;
+          bottom: 0.5em;
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%);
+
+          svg { transform: rotate(90deg); }
+        }
+      }
+    }
+  }
+}
+
+body.has-gallery-fullscreen {
+  overflow: hidden;
+
+  // Suppress header layering in fullscreen
+  .shopify-section-header,
+  [class*="header"],
+  header { z-index: 0 !important; }
+}
+
+
+// ============================================================================
+// END OF THEME-UX-PRODUCT.SCSS
+// ============================================================================

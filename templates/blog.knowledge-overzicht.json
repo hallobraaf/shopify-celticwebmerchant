@@ -1,0 +1,174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_page_breadcrumbs_C9x68D": {
+      "type": "block-page-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "ancestor_1": "shopify://blogs/kennisbank",
+        "ancestor_2": "",
+        "ancestor_3": "",
+        "menu": "",
+        "width": "is-align-wide",
+        "text_align": "center",
+        "padding_block": 1,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "horizontal",
+        "show_image": true,
+        "image_ratio": "adapt",
+        "show_blog_title": false,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": true,
+        "articles_per_page": 12,
+        "width": "is-align",
+        "padding_block": 3,
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1,
+        "background_color": "#f8f8f8",
+        "text_color": "#111111",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_blogs_4kGTB7": {
+      "type": "block-marketing-blogs",
+      "blocks": {
+        "blog_XGQpEV": {
+          "type": "blog",
+          "settings": {
+            "blog": "larp-re-enactment-kamp"
+          }
+        },
+        "blog_8HHmqH": {
+          "type": "blog",
+          "settings": {
+            "blog": "over-larp-cosmetica"
+          }
+        },
+        "blog_UNkBHN": {
+          "type": "blog",
+          "settings": {
+            "blog": "over-outfit-accessoires"
+          }
+        },
+        "blog_QfyxyN": {
+          "type": "blog",
+          "settings": {
+            "blog": "over-zwaarden-wapens"
+          }
+        },
+        "blog_NrWxhW": {
+          "type": "blog",
+          "settings": {
+            "blog": "over-helmen-pantser"
+          }
+        }
+      },
+      "block_order": [
+        "blog_XGQpEV",
+        "blog_8HHmqH",
+        "blog_UNkBHN",
+        "blog_QfyxyN",
+        "blog_NrWxhW"
+      ],
+      "name": "Blogs",
+      "settings": {
+        "show_header": true,
+        "heading": "Alle kennisbanken",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": false,
+        "image_ratio": "landscape",
+        "show_article_count": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_cover_icRfmH": {
+      "type": "block-marketing-cover",
+      "blocks": {
+        "button_fGgzKX": {
+          "type": "button",
+          "settings": {
+            "text": "Ga naar het overzicht",
+            "url": "shopify://pages/blog-lookbook",
+            "style": "outline",
+            "button_color": "#ffffff",
+            "button_text_color": ""
+          }
+        },
+        "button_LXAVPy": {
+          "type": "button",
+          "settings": {
+            "text": "",
+            "url": "",
+            "style": "primary",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_fGgzKX",
+        "button_LXAVPy"
+      ],
+      "name": "Cover",
+      "settings": {
+        "subheading": "Lees onze nieuwste blogs!",
+        "heading": "",
+        "text": "",
+        "image": "shopify://shop_images/Dec2025_-_Banners_blog_detailpagina.webp",
+        "focus_x": 80,
+        "focus_y": 0,
+        "overlay": "medium",
+        "loading": "lazy",
+        "fetchpriority": "auto",
+        "width": "is-align-full",
+        "height": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "anchor": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "block_page_breadcrumbs_C9x68D",
+    "main",
+    "block_marketing_blogs_4kGTB7",
+    "block_marketing_cover_icRfmH"
+  ]
+}

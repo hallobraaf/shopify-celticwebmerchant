@@ -1,0 +1,18 @@
+/* ==========================================================================
+   MAIN-POLICY
+   Structural styles — no dynamic per-section values; no {% style %} block needed
+   ========================================================================== */
+
+.main-policy {
+  background-color: #ffffff;
+  color: #111111;
+  padding-block: 3em;
+
+  &__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.8em, 4vw, 2.5em);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 1em;
+  }
+}

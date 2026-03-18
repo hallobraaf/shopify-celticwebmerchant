@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "oostenrijk"
+  },
+  "parent": "cart.json",
+  "sections": {
+    "block_marketing_banners_HjayP": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-dbbedce18999cf9599179e491af6d7c6": null,
+        "heading": "",
+        "subheading": "",
+        "header-1a1913e72563032f61e1749a538a54e0": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-4c342c9576b3cf3240740a5cf6799c40": null,
+        "background_color": "",
+        "text_color": "",
+        "header-6ace1eed53d6ab7b9f35bacee1a6bcbf": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_zhMXX": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Kostenloser Versand ab 99 €",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_zhMXX"
+      ],
+      "name": "Banners"
+    }
+  },
+  "order": [
+    "block_marketing_banners_HjayP",
+    "cart-order",
+    "block_product_recommended_yfFAdg"
+  ]
+}

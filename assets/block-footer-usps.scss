@@ -1,0 +1,119 @@
+/* ==========================================================================
+   BLOCK-FOOTER-USPS
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-footer-usps {
+  padding: 1.5em 0;
+
+  &__content {
+    display: block;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+
+    &.has-overflow {
+      .block-footer-usps__nav {
+        display: flex;
+      }
+
+      .block-footer-usps__list {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  &__slider {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    width: auto !important;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em;
+
+    @media (max-width: 40em) {
+      flex: 0 0 100%;
+      justify-content: center;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25em;
+    height: 1.25em;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__text {
+    font-size: 0.8em;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  &__nav {
+    flex: 0 0 auto;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--prev svg {
+      transform: rotate(90deg);
+    }
+
+    &--next svg {
+      transform: rotate(-90deg);
+    }
+  }
+}

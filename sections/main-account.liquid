@@ -1,0 +1,194 @@
+{%- comment -%}
+  ============================================================================
+  MAIN-ACCOUNT
+  ============================================================================
+  Customer account dashboard — order history and default address.
+  Displays on /account.
+  ============================================================================
+{%- endcomment -%}
+
+{{ 'main-account.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }}.main-account {
+    {%- if section.settings.background_color != blank %}
+    --account-background: {{ section.settings.background_color }};
+    background-color: {{ section.settings.background_color }};
+    {%- endif %}
+    {%- if section.settings.text_color != blank %}
+    --account-text: {{ section.settings.text_color }};
+    --account-border: {{ section.settings.text_color | color_modify: 'alpha', 0.2 }};
+    color: {{ section.settings.text_color }};
+    {%- endif %}
+    padding-block: {{ section.settings.padding_block }}em;
+  }
+{% endstyle %}
+
+<div
+  class="main-account__container {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"
+  {% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}"{% endif %}
+>
+  <header class="main-account__header">
+    <h1 class="main-account__title">{{ 'customer.account.title' | t }}</h1>
+    <a href="{{ routes.account_logout_url }}" class="main-account__logout">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      {{ 'customer.log_out' | t }}
+    </a>
+  </header>
+
+  <div class="main-account__content">
+    <section class="main-account__orders">
+      <h2 class="main-account__section-title">{{ 'customer.orders.title' | t }}</h2>
+
+      {%- paginate customer.orders by 20 -%}
+        {%- if customer.orders.size > 0 -%}
+          <div class="main-account__table-wrapper">
+            <table class="main-account__table" role="table">
+              <caption class="visually-hidden">{{ 'customer.orders.title' | t }}</caption>
+              <thead>
+                <tr>
+                  <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for order in customer.orders -%}
+                  <tr>
+                    <td data-label="{{ 'customer.orders.order_number' | t }}">
+                      <a href="{{ order.customer_url }}" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">
+                        {{ order.name }}
+                      </a>
+                    </td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">
+                      {{ order.created_at | time_tag: format: 'date' }}
+                    </td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">
+                      <span class="main-account__status main-account__status--{{ order.financial_status }}">
+                        {{ order.financial_status_label }}
+                      </span>
+                    </td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">
+                      <span class="main-account__status main-account__status--{{ order.fulfillment_status }}">
+                        {{ order.fulfillment_status_label }}
+                      </span>
+                    </td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">
+                      {{ order.total_net_amount | money_with_currency }}
+                    </td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+        {%- else -%}
+          <p class="main-account__empty">{{ 'customer.orders.none' | t }}</p>
+        {%- endif -%}
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="main-account__pagination" role="navigation" aria-label="{{ 'pagination.label' | t }}">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" class="main-account__pagination-arrow" aria-label="{{ 'pagination.previous' | t }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              </a>
+            {%- endif -%}
+            <span class="main-account__pagination-info">
+              {{ 'pagination.page_of' | t: current: paginate.current_page, total: paginate.pages }}
+            </span>
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" class="main-account__pagination-arrow" aria-label="{{ 'pagination.next' | t }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            {%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </section>
+
+    <section class="main-account__details">
+      <h2 class="main-account__section-title">{{ 'customer.account.details' | t }}</h2>
+
+      {%- if customer.default_address -%}
+        <address class="main-account__address">
+          {{ customer.default_address | format_address }}
+        </address>
+      {%- endif -%}
+
+      <a href="{{ routes.account_addresses_url }}" class="main-account__addresses-link">
+        {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+      </a>
+    </section>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Account dashboard",
+  "tag": "section",
+  "class": "main-account",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID",
+      "info": "ID for scroll links (without #)."
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "is-align-narrow", "label": "Narrow" },
+        { "value": "is-align-small", "label": "Small" },
+        { "value": "is-align", "label": "Regular" },
+        { "value": "is-align-wide", "label": "Wide" },
+        { "value": "is-align-full", "label": "Full" }
+      ],
+      "default": "is-align-wide"
+    },
+    {
+      "type": "range",
+      "id": "padding_block",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 6,
+      "step": 0.5,
+      "default": 4,
+      "unit": "em"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Howto"
+    },
+    {
+      "type": "paragraph",
+      "content": "Customer account dashboard showing order history and default address. Displays on /account."
+    }
+  ]
+}
+{% endschema %}

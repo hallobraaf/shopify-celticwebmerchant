@@ -14,7 +14,7 @@
 
 {%- liquid
   assign show_notice = false
-  assign check_tag = tag | default: 'ID check'
+  assign check_tag = tag | default: 'ID-check'
   
   for t in product.tags
     if t == check_tag
@@ -48,35 +48,4 @@
   </div>
 {%- endif -%}
 
-<style>
-  .product-identity {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5em;
-    padding: 1em 0em;
-    background-color: transparent;
-    border: none;
-    border-radius: 4px;
-    /* margins controlled by parent */
-  }
 
-  .product-identity__icon {
-    flex-shrink: 0;
-    color: red;
-  }
-
-  .product-identity__icon img,
-  .product-identity__icon svg {
-    display: block;
-    width: 48px;
-    height: 48px;
-  }
-
-  .product-identity__message {
-    margin: 0;
-    font-size: 0.9em;
-    line-height: 1.4;
-    color: inherit;
-    padding-top: 0.25em;
-  }
-</style>

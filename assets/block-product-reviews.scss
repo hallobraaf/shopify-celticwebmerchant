@@ -1,0 +1,10 @@
+/* ==========================================================================
+   BLOCK-PRODUCT-REVIEWS
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-product-reviews {
+  &__content {
+    scroll-margin-top: 100px;
+  }
+}

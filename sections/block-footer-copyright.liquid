@@ -15,6 +15,19 @@
   ============================================================================
 {%- endcomment -%}
 
+{{ 'block-footer-copyright.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-footer-copyright {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+	}
+{% endstyle %}
+
 <div class="block-footer-copyright__content {{ section.settings.width }}">
 	<small class="block-footer-copyright__text">
 		&copy; {{ 'now' | date: '%Y' }} {{ section.settings.copyright_text }}
@@ -39,57 +52,7 @@
 	{%- endif -%}
 </div>
 
-{% style %}
-	.block-footer-copyright {
-		background-color: {{ section.settings.background_color | default: '#0f1f38' }};
-		color: {{ section.settings.text_color | default: '#ffffff' }};
-		padding: 1.5em 0;
-	}
 
-	.block-footer-copyright__content {
-		text-align: center;
-	}
-
-	.block-footer-copyright__text,
-	.block-footer-copyright__credit {
-		display: block;
-		font-size: 0.75em;
-		line-height: 1.5;
-		opacity: 0.5;
-	}
-
-	.block-footer-copyright__text {
-		margin-bottom: 0.25em;
-	}
-
-	.block-footer-copyright__credit {
-		margin-bottom: 1em;
-	}
-
-	.block-footer-copyright__policies {
-		list-style: none;
-		padding: 0;
-		margin: 1em 0 0;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5em 1em;
-	}
-
-	.block-footer-copyright__policy a {
-		color: inherit;
-		text-decoration: none;
-		font-size: 0.75em;
-		opacity: 0.5;
-		transition: opacity 150ms ease;
-	}
-
-	.block-footer-copyright__policy a:hover {
-		opacity: 1;
-	}
-{% endstyle %}
 
 {% schema %}
 {

@@ -26,7 +26,13 @@
         "columns_desktop": 6,
         "columns_tablet": 4,
         "columns_mobile": 3,
+        "grid_gap": 0.5,
         "padding_block": 3,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "background_color": "#ffffff",
         "text_color": "#111111",
         "button_color": "",
@@ -37,6 +43,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "width": "align"
       }

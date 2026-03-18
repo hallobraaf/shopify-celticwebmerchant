@@ -7,6 +7,20 @@
   ============================================================================
 {%- endcomment -%}
 
+{{ 'block-marketing-faq.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-faq {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
+
 <div class="block-marketing-faq__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	{%- if section.settings.heading != blank -%}
 		<h2 class="block-marketing-faq__heading">{{ section.settings.heading }}</h2>
@@ -35,65 +49,6 @@
 	{%- endif -%}
 </div>
 
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-faq {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__heading {
-		font-size: clamp(1.5em, 3vw, 2em);
-		margin: 0 0 0.5em;
-		font-weight: 500;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__text {
-		font-size: 1.1em;
-		line-height: 1.6;
-		margin-bottom: 2em;
-		opacity: 0.8;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__items {
-		max-width: 100%;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__item {
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__question {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1em;
-		padding: 1.25em 0;
-		font-weight: 500;
-		cursor: pointer;
-		list-style: none;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__question::-webkit-details-marker {
-		display: none;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__icon {
-		flex-shrink: 0;
-		transition: transform 200ms ease;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__item[open] .block-marketing-faq__icon {
-		transform: rotate(180deg);
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-faq__answer {
-		padding: 0 0 1.5em;
-		line-height: 1.6;
-		opacity: 0.8;
-	}
-{% endstyle %}
-
 {% schema %}
 {
 	"name": "FAQ",
@@ -121,6 +76,18 @@
 		{
 			"type": "header",
 			"content": "Layout"
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "select",
@@ -161,19 +128,11 @@
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add question blocks to build your FAQ. Each item expands on click."
 		}
 	],
 	"blocks": [

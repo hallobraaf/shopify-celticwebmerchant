@@ -1,0 +1,35 @@
+/* ==========================================================================
+   MAIN-PAGE-TOKI
+   Structural styles — no dynamic per-section values; no {% style %} block needed
+   ========================================================================== */
+
+.main-page-toki {
+  padding-block: 3em;
+
+  &__block + &__block {
+    margin-block-start: 2em;
+  }
+
+  &__login {
+    text-align: center;
+    padding: 4em 2em;
+  }
+
+  &__heading {
+    font-size: clamp(1.5em, 4vw, 2.5em);
+    margin: 0 0 0.5em;
+    font-weight: 500;
+  }
+
+  &__text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 40em;
+    margin: 0 auto 1.5em;
+    opacity: 0.8;
+  }
+
+  &__button {
+    display: inline-block;
+  }
+}

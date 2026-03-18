@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "belgie"
+  },
+  "parent": "header-group.json",
+  "sections": {
+    "header-top": {
+      "settings": {},
+      "blocks": {
+        "usp-1": {
+          "settings": {
+            "text": "Gratis boven € 75,-",
+            "title": "Gratis boven € 75,-"
+          }
+        },
+        "usp-2": {
+          "settings": {
+            "text": "Voor 20:30 verzonden (DPD, GLS)"
+          }
+        }
+      }
+    }
+  }
+}

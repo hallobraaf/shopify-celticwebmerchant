@@ -1,0 +1,451 @@
+// =============================================================================
+// THEME-UX-FORMS
+// =============================================================================
+// CSS for form components and UI elements.
+// Compiled to theme-ux-forms.min.css and loaded globally.
+//
+// SECTIONS:
+// 1. Search form (html-form-search)
+// 2. Region form (html-form-region)
+// 3. Languages form (html-form-languages)
+// 4. Currencies form (html-form-currencies)
+// 5. Pagination (html-theme-pagination)
+// =============================================================================
+
+
+// =============================================================================
+// 1. SEARCH FORM (html-form-search)
+// =============================================================================
+
+.search-form {
+  position: relative;
+  width: 100%;
+}
+
+.search-form__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--color-background, #fff);
+  border: 1px solid var(--color-border, #e5e5e5);
+  border-radius: 4px;
+  padding: 0.25rem;
+}
+
+.search-form__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  padding: 0.35rem 0.5rem;
+  outline: none;
+}
+
+.search-form__input::placeholder {
+  color: var(--color-foreground-subtle, #666);
+}
+
+.search-form__reset,
+.search-form__submit {
+  background: transparent;
+  border: none;
+  padding: 0.35rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-foreground, #1a1a1a);
+}
+
+.search-form__reset svg,
+.search-form__submit svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.search-form__reset:hover,
+.search-form__submit:hover {
+  opacity: 0.7;
+}
+
+.search-form__reset.hidden,
+.search-form__submit.hidden {
+  display: none;
+}
+
+.search-form__reset {
+  margin-right: 0.25rem;
+}
+
+.predictive-search {
+  position: relative;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--color-background, #fff);
+  border: 1px solid var(--color-border, #e5e5e5);
+  border-radius: 4px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+  z-index: 10;
+}
+
+.predictive-search.active {
+  display: block;
+}
+
+.predictive-search__loading {
+  display: none;
+  padding: 2rem;
+  text-align: center;
+}
+
+.predictive-search__loading.active {
+  display: block;
+}
+
+.spinner {
+  width: 2rem;
+  height: 2rem;
+  animation: spin 1s linear infinite;
+}
+
+.spinner circle {
+  stroke-dasharray: 90, 150;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+// =============================================================================
+// 2. REGION FORM (html-form-region)
+// =============================================================================
+
+.form-region {
+  width: 100%;
+}
+
+.form-region__group {
+  margin-bottom: 1.5rem;
+}
+
+.form-region__group:last-child {
+  margin-bottom: 0;
+}
+
+.form-region__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.form-region__empty {
+  padding: 2rem 1.25rem;
+  text-align: center;
+  background: rgba(var(--color-foreground), 0.05);
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  border-radius: var(--border-radius, 0);
+  color: rgba(var(--color-foreground), 0.75);
+  font-size: 0.875rem;
+}
+
+.form-region__empty strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+
+// =============================================================================
+// 3. LANGUAGES FORM (html-form-languages)
+// =============================================================================
+
+.form-languages {
+  width: 100%;
+}
+
+.form-languages__select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form-languages__select {
+  appearance: none;
+  width: 100%;
+  padding: 1rem 3rem 1rem 1.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+  background: rgb(var(--color-background));
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+  border-radius: var(--border-radius, 0);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.form-languages__select:hover,
+.form-languages__select:focus {
+  border-color: rgba(var(--color-foreground), 0.4);
+}
+
+.form-languages__select:focus {
+  outline: none;
+  border-color: rgb(var(--color-foreground));
+}
+
+.form-languages__icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.form-languages__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.form-languages__notice {
+  padding: 1rem 1.25rem;
+  background: rgba(var(--color-foreground), 0.05);
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  border-radius: var(--border-radius, 0);
+  font-size: 0.875rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+
+// =============================================================================
+// 4. CURRENCIES FORM (html-form-currencies)
+// =============================================================================
+
+.form-currencies {
+  width: 100%;
+}
+
+.form-currencies__select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form-currencies__select {
+  appearance: none;
+  width: 100%;
+  padding: 1rem 3rem 1rem 1.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+  background: rgb(var(--color-background));
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+  border-radius: var(--border-radius, 0);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.form-currencies__select:hover,
+.form-currencies__select:focus {
+  border-color: rgba(var(--color-foreground), 0.4);
+}
+
+.form-currencies__select:focus {
+  outline: none;
+  border-color: rgb(var(--color-foreground));
+}
+
+.form-currencies__icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.form-currencies__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.form-currencies__search {
+  margin-bottom: 0.75rem;
+}
+
+.form-currencies__search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+  border-radius: var(--border-radius, 0);
+}
+
+.form-currencies__search-input:focus {
+  outline: none;
+  border-color: rgb(var(--color-foreground));
+}
+
+.form-currencies__option {
+  padding: 0.5rem 0.75rem;
+}
+
+.form-currencies__currency {
+  margin-left: 0.5rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.form-currencies__notice {
+  padding: 1rem 1.25rem;
+  background: rgba(var(--color-foreground), 0.05);
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  border-radius: var(--border-radius, 0);
+  font-size: 0.875rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+
+// =============================================================================
+// 5. ACCOUNT ADDRESS FORM (html-form-address)
+// =============================================================================
+
+.main-account-addresses__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.main-account-addresses__field--full {
+  grid-column: 1 / -1;
+}
+
+.main-account-addresses__field--checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  grid-column: 1 / -1;
+}
+
+.main-account-addresses__field--checkbox input[type="checkbox"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--account-text);
+}
+
+.main-account-addresses__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.main-account-addresses__input,
+.main-account-addresses__select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--account-background);
+  border-radius: 0.25rem;
+  background-color: var(--account-background);
+  color: var(--account-text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.main-account-addresses__input:focus,
+.main-account-addresses__select:focus {
+  outline: none;
+  border-color: var(--account-text);
+}
+
+.main-account-addresses__select-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.main-account-addresses__select {
+  width: 100%;
+  appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.main-account-addresses__select-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+
+// =============================================================================
+// 6. PAGINATION (html-theme-pagination)
+// =============================================================================
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination__item a,
+.pagination__current,
+.pagination__ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5em;
+  height: 2.5em;
+  padding: 0 0.5em;
+  font-size: 0.9em;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.pagination__item a {
+  color: var(--theme-color-text, currentColor);
+}
+
+.pagination__item a:hover {
+  background-color: var(--theme-color-border, #e5e5e5);
+}
+
+.pagination__current {
+  background-color: var(--theme-color-accent, #333);
+  color: var(--theme-color-white, #fff);
+  font-weight: 500;
+}
+
+.pagination__ellipsis {
+  opacity: 0.5;
+}
+
+.pagination__item--prev a,
+.pagination__item--next a {
+  min-width: 2.5em;
+  padding: 0;
+}
+
+.pagination__item svg {
+  width: 1em;
+  height: 1em;
+}

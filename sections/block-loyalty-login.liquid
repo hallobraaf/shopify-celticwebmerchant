@@ -7,6 +7,31 @@ Shown when customer is not logged in.
 ============================================================================
 {%- endcomment -%}
 
+{{ 'block-loyalty-login.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-loyalty-login {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+	{%- if section.settings.button_background_color != blank or section.settings.button_text_color != blank %}
+	#shopify-section-{{ section.id }} .block-loyalty-login__button {
+		{%- if section.settings.button_background_color != blank %}
+		background-color: {{ section.settings.button_background_color }};
+		border-color: {{ section.settings.button_background_color }};
+		{%- endif %}
+		{%- if section.settings.button_text_color != blank %}
+		color: {{ section.settings.button_text_color }};
+		{%- endif %}
+	}
+	{%- endif %}
+{% endstyle %}
+
 <div class="block-loyalty-login__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	<div class="block-loyalty-login__inner">
 		{%- if section.settings.heading != blank -%}
@@ -26,45 +51,6 @@ Shown when customer is not logged in.
 		</a>
 	</div>
 </div>
-
-{% style %}
-	#shopify-section-{{ section.id }}.block-loyalty-login {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block | default: 4 }}em;
-	}
-
-	#shopify-section-{{ section.id }} .block-loyalty-login__inner {
-		text-align: center;
-		padding: 4em 2em;
-	}
-
-	#shopify-section-{{ section.id }} .block-loyalty-login__heading {
-		font-family: var(--theme-font-family-serif);
-		font-size: clamp(1.5em, 4vw, 2.5em);
-		font-weight: 500;
-		margin: 0 0 0.5em;
-	}
-
-	#shopify-section-{{ section.id }} .block-loyalty-login__text {
-		font-size: 1.1em;
-		line-height: 1.6;
-		max-width: 40em;
-		margin: 0 auto 1.5em;
-		opacity: 0.8;
-	}
-
-	#shopify-section-{{ section.id }} .block-loyalty-login__button {
-		display: inline-block;
-		{%- if section.settings.button_background_color != blank %}
-		background-color: {{ section.settings.button_background_color }};
-		border-color: {{ section.settings.button_background_color }};
-		{%- endif %}
-		{%- if section.settings.button_text_color != blank %}
-		color: {{ section.settings.button_text_color }};
-		{%- endif %}
-	}
-{% endstyle %}
 
 {% schema %}
 {
@@ -123,6 +109,18 @@ Shown when customer is not logged in.
 			"unit": "em"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -148,18 +146,11 @@ Shown when customer is not logged in.
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class"
+			"type": "paragraph",
+			"content": "Shown automatically when a customer is not logged in on a loyalty page."
 		}
 	]
 }

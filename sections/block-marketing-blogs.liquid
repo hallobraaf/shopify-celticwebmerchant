@@ -23,6 +23,32 @@ DEPENDENCIES:
 	endif
 -%}
 
+{{ 'block-marketing-blogs.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-blogs {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+	#shopify-section-{{ section.id }} .card {
+		{%- if section.settings.card_background_color != blank %}
+		--card-bg: {{ section.settings.card_background_color }};
+		{%- endif %}
+		{%- if section.settings.card_text_color != blank %}
+		--card-text: {{ section.settings.card_text_color }};
+		{%- endif %}
+	}
+	#shopify-section-{{ section.id }} .block-marketing-blogs__header {
+		margin-bottom: 2em;
+		text-align: {{ section.settings.text_align | default: 'center' }};
+	}
+{% endstyle %}
+
 <div class="block-marketing-blogs__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	{%- if section.settings.show_header -%}
 		<header class="block-marketing-blogs__header">
@@ -61,69 +87,6 @@ DEPENDENCIES:
 		<p class="block-marketing-blogs__empty">{{ 'general.no_content' | t }}</p>
 	{%- endif -%}
 </div>
-
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-blogs {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	/* Card colors */
-	#shopify-section-{{ section.id }} .card {
-		--card-bg: {{ section.settings.card_background_color | default: 'transparent' }};
-		--card-text: {{ section.settings.card_text_color | default: 'inherit' }};
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-blogs__header {
-		margin-bottom: 2em;
-		text-align: {{ section.settings.text_align | default: 'center' }};
-	}
-
-	.block-marketing-blogs__title {
-		font-family: var(--theme-font-family-serif);
-		font-size: clamp(1.6em, 4vw, 2em);
-		font-weight: 400;
-		margin: 0;
-	}
-
-	.block-marketing-blogs__subheading {
-		margin: 0.5em 0 0;
-		opacity: 0.8;
-	}
-
-	.block-marketing-blogs__grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
-		gap: var(--grid-gap, 0.5em);
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.block-marketing-blogs__item {
-		display: flex;
-		min-width: 0;
-	}
-
-	.block-marketing-blogs__empty {
-		text-align: center;
-		opacity: 0.6;
-		padding: 3em 1em;
-	}
-
-	@media (max-width: 60em) {
-		.block-marketing-blogs__grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		.block-marketing-blogs__grid {
-			grid-template-columns: repeat(var(--grid-columns-mobile, 2), 1fr);
-		}
-	}
-{% endstyle %}
 
 {% schema %}
 {
@@ -167,7 +130,7 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Blog card"
+			"content": "Display"
 		},
 		{
 			"type": "select",
@@ -206,6 +169,18 @@ DEPENDENCIES:
 		{
 			"type": "header",
 			"content": "Layout"
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "select",
@@ -293,19 +268,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add blog blocks to display your blogs as cards. Each block selects one blog to display."
 		}
 	],
 	"blocks": [

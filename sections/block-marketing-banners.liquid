@@ -5,6 +5,20 @@
 	endif
 -%}
 
+{{ 'block-marketing-banners.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-banners {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
+
 <div class="block-marketing-banners__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	{%- if has_heading -%}
 		{%- render 'html-marketing-headline',
@@ -28,48 +42,6 @@
 		{%- endfor -%}
 	</div>
 </div>
-
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-banners {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	.block-marketing-banners__grid {
-		display: grid;
-		gap: 1em;
-	}
-
-	.block-marketing-banners__grid--has-heading {
-		margin-block-start: 2em;
-	}
-
-	.block-marketing-banners__grid--stacked {
-		grid-template-columns: 1fr;
-	}
-
-	.block-marketing-banners__grid--two-column {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	.block-marketing-banners__grid--three-column {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	@media (max-width: 60em) {
-		.block-marketing-banners__grid--three-column {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		.block-marketing-banners__grid--two-column,
-		.block-marketing-banners__grid--three-column {
-			grid-template-columns: 1fr;
-		}
-	}
-{% endstyle %}
 
 {% schema %}
 {
@@ -97,6 +69,18 @@
 		{
 			"type": "header",
 			"content": "Layout"
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "select",
@@ -148,19 +132,11 @@
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add banner blocks to display styled notification banners. Each banner can have a style, CTA button, and optional dismiss button."
 		}
 	],
 	"blocks": [

@@ -23,6 +23,13 @@
     <link rel="preload" href="{{ 'vendor-swiperjs.min.js' | asset_url }}" as="script">
     <link rel="preload" href="{{ 'theme-ui.min.css' | asset_url }}" as="style">
     <link rel="preload" href="{{ 'theme-ux.min.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'theme-ux-header.min.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'theme-ux-marketing.min.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'theme-ux-product.min.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'theme-ux-collection.min.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'theme-ux-cart.min.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'theme-ux-forms.min.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'theme-ux-apps.min.css' | asset_url }}" as="style">
 
     <title>
       {{ page_title }}
@@ -133,7 +140,13 @@
     {{ 'vendor-swiperjs.min.css' | asset_url | stylesheet_tag }}
     {{ 'theme-ui.min.css' | asset_url | stylesheet_tag }}
     {{ 'theme-ux.min.css' | asset_url | stylesheet_tag }}
-    {{ 'theme-maurits.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-ux-header.min.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-ux-marketing.min.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-ux-product.min.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-ux-collection.min.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-ux-cart.min.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-ux-forms.min.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-ux-apps.min.css' | asset_url | stylesheet_tag }}
     
     {%- comment -%} Theme Scripts {%- endcomment -%}
     <script src="{{ 'vendor-swiperjs.min.js' | asset_url }}"></script>

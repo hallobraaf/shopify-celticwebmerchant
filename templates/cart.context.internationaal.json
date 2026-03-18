@@ -1,0 +1,147 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_testimonials_abtWy": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-25d7235bbaa322e2637651a992b39fdc": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-8606518191b1e680c7624db8558a8e98": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "header-8cd4fd7a9bec11e26818935c55514395": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "header-bad09fb6ef697a4929f5099763bcea98": null,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-b7485838752ab94db47542d1387232b1": null,
+        "background_color": "",
+        "text_color": "",
+        "header-3d9ab8120b0d87db2157b6b96808f9d1": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "testimonial_86UxR": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Easy order entry, speedy fulfillment, excellent packing followed by shipping to the US in a really rapid delivery. Speaks well to ability to merchandise internationally.",
+            "author": "Robert Carlson, US 🇺🇸",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_wxWUA": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Extremely happy. Received my order very quickly . I had attempted to buy these items from shops in the USA, but your shop was able to have them in stock and shipped MUCH more quickly and at a comparable price. My son will look fantastic at my upcoming wedding. Thank you!",
+            "author": "Meg Hermance, US 🇺🇸",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_azBCW": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "The products look great and were a pleasant surprise for my wife. She's also said the material is super comfortable too!",
+            "author": "James Perry Thompson, Canada 🇨🇦",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_86UxR",
+        "testimonial_wxWUA",
+        "testimonial_azBCW"
+      ],
+      "name": "Testimonials"
+    },
+    "block_marketing_products_QGfPt": {
+      "type": "block-marketing-products",
+      "disabled": false,
+      "settings": {
+        "header-da916743444175efc1972014202893f0": null,
+        "collection": "altijd-nodig",
+        "heading": "Always needed",
+        "header-52c806eddab1d1c5705e35155ddf7d5f": null,
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_badges": false,
+        "show_rating": false,
+        "quick_add": true,
+        "header-738fd6dea7f1b9db757435504882223c": null,
+        "max_products": 12,
+        "only_available": true,
+        "header-878328aeb20f598bdfddb0090c1ced3a": null,
+        "width": "is-align-wide",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "header-af70da4bda1d6882d2a4d191a916c1a1": null,
+        "background_color": "",
+        "text_color": "",
+        "header-2dbe2ccc41940d388144165ec8af72bf": null,
+        "anchor": "",
+        "custom_class": "",
+        "header-7bca90241872c1d8feb248e9e889e4ef": null,
+        "paragraph-028e660a972cc73dbe4b6390006ecb11": null
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "Products"
+    },
+    "cart-order": {
+      "settings": {
+        "show_continue_shopping": false
+      },
+      "blocks": {
+        "oo_eu_tax_exemption_cart_tax_exemption_MDMRjm": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    }
+  },
+  "context": {
+    "market": "internationaal"
+  },
+  "parent": "cart.json",
+  "order": [
+    "cart-order",
+    "block_marketing_testimonials_abtWy",
+    "block_marketing_products_QGfPt"
+  ]
+}

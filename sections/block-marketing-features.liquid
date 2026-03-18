@@ -5,6 +5,28 @@
 	endif
 -%}
 
+{{ 'block-marketing-features.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-features {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+		--features-alignment: {{ section.settings.alignment }};
+		{%- if section.settings.alignment == 'center' -%}
+		--features-icon-margin-inline: auto;
+		{%- elsif section.settings.alignment == 'right' -%}
+		--features-icon-margin-inline: auto 0;
+		{%- else -%}
+		--features-icon-margin-inline: 0;
+		{%- endif -%}
+	}
+{% endstyle %}
+
 <div class="block-marketing-features__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	{%- if section.settings.heading != blank -%}
 		{%- render 'html-marketing-headline',
@@ -47,96 +69,6 @@
 	{%- endif -%}
 </div>
 
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-features {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-features__grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns, 3), 1fr);
-		gap: 2em;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.block-marketing-features__grid--has-heading {
-		margin-block-start: 2em;
-	}
-
-	.block-marketing-features__item {
-		text-align: {{ section.settings.alignment }};
-		margin: 0;
-	}
-
-	.block-marketing-features__icon {
-		width: 64px;
-		height: 64px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
-		margin-block-end: 1em;
-		{%- if section.settings.alignment == 'center' -%}
-			margin-inline: auto;
-		{%- elsif section.settings.alignment == 'right' -%}
-			margin-inline-start: auto;
-		{%- endif -%}
-	}
-
-	.block-marketing-features__icon svg,
-	.block-marketing-features__icon img {
-		width: 100%;
-		height: 100%;
-	}
-
-	.block-marketing-features__icon--circle {
-		border-radius: 50%;
-		background-color: rgba(0, 0, 0, 0.05);
-		padding: 1em;
-	}
-
-	.block-marketing-features__icon--square {
-		border-radius: 8px;
-		background-color: rgba(0, 0, 0, 0.05);
-		padding: 1em;
-	}
-
-	.block-marketing-features__icon--none {
-		background-color: transparent;
-		padding: 0;
-	}
-
-	.block-marketing-features__item-title {
-		font-family: var(--theme-font-family-serif);
-		font-size: 1.25em;
-		font-weight: 400;
-		margin: 0 0 0.5em;
-	}
-
-	.block-marketing-features__item-description {
-		font-size: 1em;
-		line-height: 1.6;
-		margin: 0;
-		opacity: 0.7;
-	}
-
-	@media (max-width: 60em) {
-		#shopify-section-{{ section.id }} .block-marketing-features__grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		#shopify-section-{{ section.id }} .block-marketing-features__grid {
-			grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
-		}
-	}
-{% endstyle %}
-
 {% schema %}
 {
 	"name": "Marketing features",
@@ -168,6 +100,18 @@
 		{
 			"type": "header",
 			"content": "Layout"
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "select",
@@ -257,19 +201,11 @@
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add feature blocks with an SVG icon, title, and description. Great for USP rows and product benefit lists."
 		}
 	],
 	"blocks": [

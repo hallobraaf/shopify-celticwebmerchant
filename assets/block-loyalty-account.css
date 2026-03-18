@@ -1,0 +1,12 @@
+/* ==========================================================================
+   BLOCK-LOYALTY-ACCOUNT
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-loyalty-account__content {
+  scroll-margin-top: 100px;
+}
+
+.block-loyalty-account__block + .block-loyalty-account__block {
+  margin-block-start: 2em;
+}

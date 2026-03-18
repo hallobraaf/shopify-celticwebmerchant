@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "index.json",
+  "context": {
+    "market": "ierland"
+  },
+  "sections": {
+    "block_marketing_grid_eKTaaA": {
+      "settings": {},
+      "blocks": {
+        "banner_9aKPPM": {
+          "settings": {
+            "label": "Beagnach díolta amach!"
+          }
+        },
+        "banner_gMVXQH": {
+          "settings": {
+            "label": "Ar ais i stoc, bí tapa!"
+          }
+        },
+        "banner_qUNK67": {
+          "settings": {
+            "label": "Díolachán Scaipeadh!"
+          }
+        },
+        "banner_8pmcRb": {
+          "settings": {
+            "label": "Réservez roimh ré",
+            "image": "shopify://shop_images/volva.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_grid_93tkDC": {
+      "settings": {},
+      "blocks": {
+        "banner_6PNJpD": {
+          "settings": {
+            "label": ""
+          }
+        },
+        "banner_9A6wwJ": {
+          "settings": {
+            "label": ""
+          }
+        },
+        "banner_nPEhgz": {
+          "settings": {
+            "label": ""
+          }
+        },
+        "banner_nKKc7L": {
+          "settings": {
+            "label": "",
+            "image": "shopify://shop_images/DSC09471_1_16e27bab-3752-4b10-bbb2-189c6e7bd24d.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_media_text_mEgbKY": {
+      "settings": {},
+      "blocks": {
+        "image_text_aJBEwL": {
+          "settings": {
+            "image": "shopify://shop_images/Jacobite_tribe.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_media_text_eUmREH": {
+      "settings": {},
+      "blocks": {
+        "image_text_xddkDV": {
+          "settings": {
+            "image": "shopify://shop_images/Gallier.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "text": "<p>Seachtain amháin amháin, bí tapa!</p>"
+      },
+      "blocks": {}
+    },
+    "block_marketing_collections_KLibTG": {
+      "settings": {
+        "heading": "All collections / Gach bailiúchán"
+      },
+      "blocks": {}
+    }
+  }
+}

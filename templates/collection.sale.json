@@ -40,12 +40,11 @@
         "display_mode": "slider",
         "slider_navigation": true,
         "slider_pagination": true,
-        "slider_loop": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
         "background_color": "#ffffff",
         "text_color": "",
-        "card_background_color": "#f05a22",
+        "card_background_color": "#0f1f38",
         "card_text_color": "#ffffff",
         "anchor": ""
       }

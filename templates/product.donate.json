@@ -1,0 +1,328 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product-form": {
+      "type": "block-product-form",
+      "blocks": {
+        "rating_CMxGnn": {
+          "type": "rating",
+          "settings": {
+            "scroll_target": "#reviews",
+            "show_count": true,
+            "size": 16
+          }
+        },
+        "heading_RX6EDQ": {
+          "type": "heading",
+          "settings": {
+            "show_vendor": true
+          }
+        },
+        "description_anaepP": {
+          "type": "description",
+          "settings": {
+            "truncate": false,
+            "words": 65,
+            "read_more_target": ""
+          }
+        },
+        "price_zBizDd": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_FRRdBk": {
+          "type": "variant_picker",
+          "settings": {
+            "threshold_dropdown": 10
+          }
+        },
+        "atc_LyVFKC": {
+          "type": "atc",
+          "settings": {
+            "full_width": true,
+            "show_quantity": true,
+            "show_wishlist": true
+          }
+        },
+        "trust_payments_Lra8px": {
+          "type": "trust_payments",
+          "settings": {
+            "method_1": "ideal",
+            "method_2": "visa",
+            "method_3": "mastercard",
+            "method_4": "paypal",
+            "method_5": "klarna",
+            "method_6": "none",
+            "method_7": "none",
+            "method_8": "none",
+            "method_9": "none",
+            "method_10": "none"
+          }
+        },
+        "trust_usps_dMe7Mk": {
+          "type": "trust_usps",
+          "settings": {
+            "item_1_text": "Niet goed? Geld terug binnen 2 werkdagen",
+            "item_1_url": "shopify://pages/niet-goed-geld-terug",
+            "item_2_text": "Wij verzenden wereldwijd",
+            "item_2_url": "shopify://pages/wereldwijde-verzending",
+            "item_3_text": "Levenslange garantie op onze producten",
+            "item_3_url": "shopify://pages/footer-usp-4",
+            "item_4_text": "",
+            "item_4_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "rating_CMxGnn",
+        "heading_RX6EDQ",
+        "description_anaepP",
+        "price_zBizDd",
+        "variant_picker_FRRdBk",
+        "atc_LyVFKC",
+        "trust_payments_Lra8px",
+        "trust_usps_dMe7Mk"
+      ],
+      "settings": {
+        "product": "",
+        "width": "alignwide",
+        "block_gap": 0.8,
+        "background_color": "#ffffff",
+        "text_color": "#111111"
+      }
+    },
+    "block_marketing_articles_pHGqCg": {
+      "type": "block-marketing-articles",
+      "blocks": {
+        "blog_N7H3GG": {
+          "type": "blog",
+          "settings": {
+            "blog": "vroeg-modern"
+          }
+        },
+        "blog_cBCTz4": {
+          "type": "blog",
+          "settings": {
+            "blog": "vikingen"
+          }
+        },
+        "blog_9W78JY": {
+          "type": "blog",
+          "settings": {
+            "blog": "cultuur-spiritualiteit"
+          }
+        },
+        "blog_hJMWR9": {
+          "type": "blog",
+          "settings": {
+            "blog": "keltisch-ijzertijd"
+          }
+        },
+        "blog_jDLLMA": {
+          "type": "blog",
+          "settings": {
+            "blog": "migratieperiode-germaans"
+          }
+        },
+        "blog_PB4QKD": {
+          "type": "blog",
+          "settings": {
+            "blog": "oudheid-romeinen"
+          }
+        },
+        "blog_rFc6ge": {
+          "type": "blog",
+          "settings": {
+            "blog": "steentijd-bronstijd"
+          }
+        },
+        "blog_kaaUV7": {
+          "type": "blog",
+          "settings": {
+            "blog": "steentijd-bronstijd"
+          }
+        },
+        "blog_kAPHkd": {
+          "type": "blog",
+          "settings": {
+            "blog": "middeleeuwen"
+          }
+        }
+      },
+      "block_order": [
+        "blog_N7H3GG",
+        "blog_cBCTz4",
+        "blog_9W78JY",
+        "blog_hJMWR9",
+        "blog_jDLLMA",
+        "blog_PB4QKD",
+        "blog_rFc6ge",
+        "blog_kaaUV7",
+        "blog_kAPHkd"
+      ],
+      "name": "Articles",
+      "settings": {
+        "heading": "Deze blogs zijn met behulp van jullie donaties geschreven",
+        "subheading": "",
+        "text_align": "center",
+        "card_layout": "vertical",
+        "show_image": true,
+        "image_ratio": "portrait",
+        "show_blog_title": true,
+        "show_date": false,
+        "show_excerpt": false,
+        "show_cta": true,
+        "articles_per_blog": 6,
+        "max_articles": 12,
+        "random_mode": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 1,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#2e130d",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_product_recommended_afRGwD": {
+      "type": "block-product-recommended",
+      "name": "Recommended products",
+      "settings": {
+        "heading": "",
+        "max_products": 8,
+        "hide_out_of_stock": true,
+        "card_layout": "horizontal",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_rating": false,
+        "show_vendor": false,
+        "show_badges": false,
+        "quick_add": true,
+        "width": "alignwide",
+        "grid_columns": 3,
+        "grid_columns_tablet": 3,
+        "grid_columns_mobile": 1,
+        "padding_block": 4,
+        "background_color": "#f5f5f5",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_cover_idjBhh": {
+      "type": "block-marketing-cover",
+      "blocks": {
+        "button_Dny3Vd": {
+          "type": "button",
+          "settings": {
+            "text": "",
+            "url": "",
+            "style": "primary",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_Dny3Vd"
+      ],
+      "name": "Cover",
+      "settings": {
+        "subheading": "ontdek onze blogs",
+        "heading": "Know your heritage",
+        "text": "",
+        "image": "shopify://shop_images/Dec2025_-_Banners_blog_detailpagina.webp",
+        "focus_x": 70,
+        "focus_y": 15,
+        "overlay": "medium",
+        "loading": "lazy",
+        "fetchpriority": "auto",
+        "width": "is-align-full",
+        "height": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "product-discovery": {
+      "type": "block-product-discovery",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "limit": 4,
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_rating": false,
+        "show_vendor": false,
+        "show_badges": false,
+        "quick_add": false,
+        "width": "alignwide",
+        "grid_columns": 4,
+        "grid_columns_tablet": 3,
+        "grid_columns_mobile": 2,
+        "padding_block": 3,
+        "background_color": "#f8f8f8",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "product-blog": {
+      "type": "block-product-blogs",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "read_more_text": "",
+        "width": "align",
+        "padding_block": 3,
+        "background_color": "#f8f8f8",
+        "text_color": "#111111",
+        "knowledge_background_color": "#0f1f38",
+        "knowledge_text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_product_reviews_keNkJP": {
+      "type": "block-product-reviews",
+      "name": "Reviews",
+      "settings": {
+        "width": "align",
+        "padding_block": 4,
+        "background_color": "#f8f8f8",
+        "text_color": "#111111",
+        "anchor": "reviews",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "product-form",
+    "block_marketing_articles_pHGqCg",
+    "block_product_recommended_afRGwD",
+    "block_marketing_cover_idjBhh",
+    "product-discovery",
+    "product-blog",
+    "block_product_reviews_keNkJP"
+  ]
+}

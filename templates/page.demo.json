@@ -11,46 +11,35 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "settings": {}
     },
     "block_marketing_cover_yk8iXx": {
       "type": "block-marketing-cover",
       "name": "Marketing Cover (afbeelding)",
       "settings": {
-        "image": "shopify://shop_images/bundhaube-zum-gambeson-eckwin-schwarz_5.jpg",
         "subheading": "subheading",
         "heading": "Dit is de heading (kop)",
         "text": "<p>Hier de verdere tekst.</p>",
+        "image": "shopify://shop_images/bundhaube-zum-gambeson-eckwin-schwarz_5.jpg",
         "width": "alignfull",
         "height": "medium",
-        "overlay_opacity": "medium",
         "text_position": "center",
-        "text_alignment": "center",
-        "cta_text": "Shop Now",
-        "cta_url": "shopify://collections/viking-bont-kraag",
-        "cta_style": "primary"
+        "text_alignment": "center"
       }
     },
     "block_marketing_cover_KgQqbT": {
       "type": "block-marketing-cover",
       "name": "Marketing Cover (video)",
       "settings": {
-        "image": "shopify://shop_images/bundhaube-zum-gambeson-eckwin-schwarz_5.jpg",
-        "video": "shopify://files/videos/Home Banner.mp4",
         "subheading": "Marketing Cover (video)",
         "heading": "Hier de pakkende titel",
         "text": "<p>Voeg hier de tekst in</p>",
+        "image": "shopify://shop_images/bundhaube-zum-gambeson-eckwin-schwarz_5.jpg",
+        "video": "shopify://files/videos/Home Banner.mp4",
         "width": "alignfull",
         "height": "medium",
-        "overlay_opacity": "medium",
         "text_position": "center",
-        "text_alignment": "center",
-        "cta_text": "Shop Now",
-        "cta_url": "shopify://products/middeleeuwse-jurk-elisa-naturel",
-        "cta_style": "primary"
+        "text_alignment": "center"
       }
     },
     "block_marketing_banners_BPCHck": {
@@ -181,19 +170,19 @@
       "type": "block-marketing-brands-small",
       "blocks": {
         "collection_NibbE6": {
-          "type": "collection",
+          "type": "brand",
           "settings": {
             "collection": "epic-armoury"
           }
         },
         "collection_6jjGVT": {
-          "type": "collection",
+          "type": "brand",
           "settings": {
             "collection": "ballistol-1"
           }
         },
         "collection_f6cWyh": {
-          "type": "collection",
+          "type": "brand",
           "settings": {
             "collection": "burgschneider"
           }
@@ -209,19 +198,12 @@
         "heading": "Marketing Brands Small",
         "button_text": "Bekijk alle merken",
         "button_url": "shopify://pages/onze-merken",
-        "button_background": "#000000",
-        "button_color": "#ffffff",
-        "button_border_radius": 0,
-        "columns_mobile": 2,
-        "columns_tablet": 4,
-        "columns_desktop": 4,
-        "gap": 20,
         "image_ratio": "1 / 1",
         "image_fit": "contain",
-        "border_radius": 8,
-        "container_width": 1400,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "columns_desktop": 4,
+        "columns_tablet": 4,
+        "columns_mobile": 2,
+        "button_color": "#ffffff"
       }
     },
     "block_marketing_brands_VrePbW": {
@@ -229,57 +211,11 @@
       "name": "Marketing Brands",
       "settings": {
         "heading": "Marketing Brands",
-        "columns_mobile": 3,
-        "columns_tablet": 4,
-        "columns_desktop": 6,
-        "gap": 20,
         "image_ratio": "1 / 1",
         "image_fit": "contain",
-        "border_radius": 0,
-        "container_width": 1400,
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "block_marketing_story_9cHJJT": {
-      "type": "block-marketing-story",
-      "blocks": {
-        "split_iYMbmi": {
-          "type": "split",
-          "settings": {
-            "image": "shopify://shop_images/bundhaube-zum-gambeson-eckwin-schwarz_5.jpg",
-            "heading": "Chapter One",
-            "text": "<p>Share your brand story here...</p>",
-            "cta_text": "Knoptekst",
-            "cta_url": "shopify://blogs/middeleeuwen",
-            "cta_style": "outline",
-            "background_color": ""
-          }
-        },
-        "split_4EQQp4": {
-          "type": "split",
-          "settings": {
-            "image": "shopify://shop_images/Renaissance_Tudor_kleding.webp",
-            "heading": "Chapter Two",
-            "text": "<p>Share your brand story here...</p>",
-            "cta_text": "Knoptekst",
-            "cta_url": "shopify://pages/duurzaamheid",
-            "cta_style": "outline",
-            "background_color": "#fce4e4"
-          }
-        }
-      },
-      "block_order": [
-        "split_iYMbmi",
-        "split_4EQQp4"
-      ],
-      "name": "Marketing Story",
-      "settings": {
-        "heading": "Marketing Story - titel",
-        "subheading": "Marketing Story - ondertitel",
-        "alternate": true,
-        "default_position": "left",
-        "vertical_alignment": "center"
+        "columns_desktop": 6,
+        "columns_tablet": 4,
+        "columns_mobile": 3
       }
     },
     "block_marketing_media_text_Jp3MKt": {
@@ -289,14 +225,14 @@
           "type": "image_text",
           "settings": {
             "image": "shopify://shop_images/Middeleeuwse_monnikspij.webp",
-            "image_position": "left",
-            "image_width": "40",
-            "vertical_alignment": "center",
             "heading": "Marketing Media & Text",
             "text": "<p>Add your description here...</p>",
             "cta_text": "Knoptekst",
             "cta_url": "shopify://blogs/oudheid-romeinen/de-parazonium-symbool-van-macht-in-de-romeinse-oudheid",
             "cta_style": "primary",
+            "image_position": "left",
+            "image_width": "40",
+            "vertical_alignment": "center",
             "background_color": "#ffffff"
           }
         }
@@ -319,22 +255,22 @@
         "banner_436czV": {
           "type": "banner",
           "settings": {
-            "image": "shopify://shop_images/Fantasy_helm.webp",
             "label": "New Collection",
             "heading": "Summer Collection",
             "text": "",
             "link_url": "",
+            "image": "shopify://shop_images/Fantasy_helm.webp",
             "design": "blue"
           }
         },
         "banner_3CVcPN": {
           "type": "banner",
           "settings": {
-            "image": "shopify://shop_images/Middeleeuws_overkleed_wapenrok.webp",
             "label": "New Collection",
             "heading": "Summer Collection",
             "text": "",
             "link_url": "",
+            "image": "shopify://shop_images/Middeleeuws_overkleed_wapenrok.webp",
             "design": "green"
           }
         },
@@ -355,9 +291,7 @@
       "name": "Marketing Grid",
       "settings": {
         "heading": "Marketing Grid",
-        "subtext": "Marketing Grid - subtext",
-        "view": "grid",
-        "enable_gaps": true,
+        "subtext": "<p>Marketing Grid - subtext</p>",
         "width": "alignwide",
         "background_color": "transparent"
       }
@@ -374,7 +308,6 @@
     "block_marketing_banners_w6YEx7",
     "block_marketing_brands_small_hcBWAT",
     "block_marketing_brands_VrePbW",
-    "block_marketing_story_9cHJJT",
     "block_marketing_media_text_Jp3MKt",
     "block_marketing_grid_AwWFAT"
   ]

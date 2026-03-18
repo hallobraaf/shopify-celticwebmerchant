@@ -130,6 +130,26 @@
     threshold: 0
   });
 
+  // Load navigation-deferred images (strategy: 'navigation')
+  // Call with a container element to inject images that were withheld from initial HTML.
+  // Safe to call multiple times — data-nav-src is deleted after first load.
+  const loadNavigation = (root = document) => {
+    root.querySelectorAll && root.querySelectorAll('.is-strategy-navigation[data-nav-src]').forEach(figure => {
+      //console.log('Test:',figure);
+      const img = document.createElement('img');
+      img.className = 'theme-media__img';
+      img.src = figure.dataset.navSrc;
+      img.alt = figure.dataset.navAlt || '';
+      img.width = parseInt(figure.dataset.navWidth) || '';
+      img.height = parseInt(figure.dataset.navHeight) || '';
+      img.loading = 'eager';
+      img.decoding = 'async';
+      figure.appendChild(img);
+      figure.classList.add('is-loaded');
+      delete figure.dataset.navSrc;
+    });
+  };
+
   // Scan for lazy elements
   const scan = (root = document) => {
     const elements = root.querySelectorAll ? root.querySelectorAll(SELECTOR) : [];
@@ -171,7 +191,7 @@
   }
 
   // Public API
-  const api = { scan, load, observer };
+  const api = { scan, load, loadNavigation, observer };
   window.lazyload = api;
   window.themeLazy = api;
 })();

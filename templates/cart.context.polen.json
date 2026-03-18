@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "polen"
+  },
+  "parent": "cart.json",
+  "sections": {
+    "block_marketing_banners_Fcify": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-27888292cca960adac24155ade071322": null,
+        "heading": "",
+        "subheading": "",
+        "header-290ac215ffa2225613f13cde5c1f2fea": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-c77f8fc865b2908ddf76d0b009b059f4": null,
+        "background_color": "",
+        "text_color": "",
+        "header-6277f54cf36e634cb29467e426358e12": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_PJHLU": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Darmowa wysyłka przy zamówieniach powyżej 330 zł",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_PJHLU"
+      ],
+      "name": "Banners"
+    }
+  },
+  "order": [
+    "block_marketing_banners_Fcify",
+    "cart-order",
+    "block_product_recommended_yfFAdg"
+  ]
+}

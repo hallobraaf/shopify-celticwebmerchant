@@ -1,0 +1,119 @@
+/* ==========================================================================
+   BLOCK-PRODUCT-FORM
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-product-form {
+  &__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    column-gap: 2em;
+
+    @media (max-width: 60em) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__media {
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    flex-basis: 20em;
+    max-width: 58vw;
+
+    @media (max-width: 60em) {
+      flex-grow: 1;
+      flex-basis: 100%;
+      max-width: 100vw;
+    }
+  }
+
+  &__form {
+    position: relative;
+    z-index: 0;
+    flex-grow: 1;
+    flex-basis: 10em;
+    background-color: var(--theme-color-white);
+
+    @media (max-width: 60em) {
+      flex-grow: 1;
+      flex-basis: 100%;
+    }
+
+    .product-stock--low-in-stock,
+    .product-stock--low-in-stock-backorder {
+      background-color: #f05a22;
+      color: #fff;
+    }
+
+    .product-price {
+      font-size: 2em;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 2em 1em;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__block:empty {
+    display: none;
+  }
+
+  &__empty {
+    padding: 4em 2em;
+    text-align: center;
+    opacity: 0.6;
+  }
+}
+
+// Loading state
+[data-product-form] {
+  transition: opacity 200ms ease;
+
+  &.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+
+    .hide-while-loading {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .show-while-loading {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .invisible-while-loading {
+      visibility: hidden;
+    }
+
+    .wc_wl_bis_btn {
+      opacity: 0;
+    }
+  }
+}
+
+[data-fragment-update] {
+  transition: opacity 150ms ease;
+}
+
+.show-while-loading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+// App-specific fixes
+.wc_wl_bis_btn {
+  transition: opacity 150ms ease;
+}

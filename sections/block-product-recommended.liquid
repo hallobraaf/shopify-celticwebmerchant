@@ -1,182 +1,139 @@
 {%- comment -%}
-  ============================================================================
-  BLOCK-PRODUCT-RECOMMENDED
-  ============================================================================
-  Display recommended products based on template context.
-  
-  FEATURES:
-  - Product page: recommendations from current product metafield
-  - Cart page: recommendations from all cart items
-  - Configurable product card display
-  - Responsive grid layout
-  
-  DEPENDENCIES:
-  - html-theme-card snippet
-  - Product metafield: custom.recommended-products (list of product references)
-  ============================================================================
+============================================================================
+BLOCK-PRODUCT-RECOMMENDED
+============================================================================
+Display recommended products based on template context.
+
+FEATURES:
+- Product page: recommendations from current product metafield
+- Cart page: recommendations from all cart items
+- Configurable product card display
+- Responsive grid layout
+
+DEPENDENCIES:
+- html-theme-card snippet
+- Product metafield: custom.recommended-products (list of product references)
+============================================================================
 {%- endcomment -%}
 
+{{ 'block-product-recommended.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-product-recommended {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
+
 {%- liquid
-  assign recommended_product_ids = ''
-  assign max_products = section.settings.max_products | default: 8
-  assign product_count = 0
+	assign heading_text = section.settings.heading
+	if heading_text == blank
+		assign heading_text = 'product.recommended_heading' | t
+	endif
+
+	assign recommended_product_ids = ''
+	assign max_products = section.settings.max_products
+	assign product_count = 0
 -%}
 
 {%- capture recommended_products_html -%}
-  {%- if template.name == 'product' -%}
-    {%- comment -%} Product page: get recommendations from current product {%- endcomment -%}
-    {%- if product.metafields.custom.recommended-products.value -%}
-      {%- for rec_product in product.metafields.custom.recommended-products.value -%}
-        {%- if product_count >= max_products -%}
-          {%- break -%}
-        {%- endif -%}
-        {%- unless recommended_product_ids contains rec_product.id -%}
-          {%- if section.settings.hide_out_of_stock and rec_product.available == false -%}
-            {%- continue -%}
-          {%- endif -%}
-          {%- assign recommended_product_ids = recommended_product_ids | append: rec_product.id | append: ',' -%}
-          {%- assign product_count = product_count | plus: 1 -%}
-          <li class="block-product-recommended__item">
-            {%- render 'html-theme-card', 
-              product: rec_product,
-              layout: section.settings.card_layout,
-              image_ratio: section.settings.image_ratio,
-              columns_desktop: section.settings.grid_columns,
-              columns_tablet: section.settings.grid_columns_tablet,
-              columns_mobile: section.settings.grid_columns_mobile,
-              columns_width: section.settings.width,
-              columns_gap: 0.2,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_rating: section.settings.show_rating,
-              show_vendor: section.settings.show_vendor,
-              show_price: true,
-              show_stock: true,
-              show_delivery: true,
-              show_badges: section.settings.show_badges,
-              quick_add: section.settings.quick_add
-            -%}
-          </li>
-        {%- endunless -%}
-      {%- endfor -%}
-    {%- endif -%}
+	{%- if template.name == 'product' -%}
+		{%- comment -%} Product page: get recommendations from current product {%- endcomment -%}
+		{%- if product.metafields.custom.recommended-products.value -%}
+			{%- for rec_product in product.metafields.custom.recommended-products.value -%}
+				{%- if product_count >= max_products -%}
+					{%- break -%}
+				{%- endif -%}
+				{%- unless recommended_product_ids contains rec_product.id -%}
+					{%- if section.settings.hide_out_of_stock and rec_product.available == false -%}
+						{%- continue -%}
+					{%- endif -%}
+					{%- assign recommended_product_ids = recommended_product_ids | append: rec_product.id | append: ',' -%}
+					{%- assign product_count = product_count | plus: 1 -%}
+					<li class="block-product-recommended__item">
+						{%- render 'html-theme-card',
+							product: rec_product,
+							layout: section.settings.card_layout,
+							image_ratio: section.settings.image_ratio,
+							columns_desktop: section.settings.grid_columns,
+							columns_tablet: section.settings.grid_columns_tablet,
+							columns_mobile: section.settings.grid_columns_mobile,
+							columns_width: section.settings.width,
+							columns_gap: 0.2,
+							show_secondary_image: section.settings.show_secondary_image,
+							show_rating: section.settings.show_rating,
+							show_vendor: section.settings.show_vendor,
+							show_price: true,
+							show_stock: true,
+							show_delivery: true,
+							show_badges: section.settings.show_badges,
+							quick_add: section.settings.quick_add
+						-%}
+					</li>
+				{%- endunless -%}
+			{%- endfor -%}
+		{%- endif -%}
 
-  {%- elsif template.name == 'cart' -%}
-    {%- comment -%} Cart page: get recommendations from all cart items {%- endcomment -%}
-    {%- for item in cart.items -%}
-      {%- if product_count >= max_products -%}
-        {%- break -%}
-      {%- endif -%}
-      {%- if item.product.metafields.custom.recommended-products.value -%}
-        {%- for rec_product in item.product.metafields.custom.recommended-products.value -%}
-          {%- if product_count >= max_products -%}
-            {%- break -%}
-          {%- endif -%}
-          {%- unless recommended_product_ids contains rec_product.id -%}
-            {%- if section.settings.hide_out_of_stock and rec_product.available == false -%}
-              {%- continue -%}
-            {%- endif -%}
-            {%- assign recommended_product_ids = recommended_product_ids | append: rec_product.id | append: ',' -%}
-            {%- assign product_count = product_count | plus: 1 -%}
-            <li class="block-product-recommended__item">
-              {%- render 'html-theme-card', 
-                product: rec_product,
-                layout: section.settings.card_layout,
-                image_ratio: section.settings.image_ratio,
-                columns_desktop: section.settings.grid_columns,
-                columns_tablet: section.settings.grid_columns_tablet,
-                columns_mobile: section.settings.grid_columns_mobile,
-                columns_width: section.settings.width,
-                columns_gap: 0.2,
-                show_secondary_image: section.settings.show_secondary_image,
-                show_rating: section.settings.show_rating,
-                show_vendor: section.settings.show_vendor,
-                show_price: true,
-                show_stock: true,
-                show_delivery: true,
-                show_badges: section.settings.show_badges,
-                quick_add: section.settings.quick_add
-              -%}
-            </li>
-          {%- endunless -%}
-        {%- endfor -%}
-      {%- endif -%}
-    {%- endfor -%}
-  {%- endif -%}
+	{%- elsif template.name == 'cart' -%}
+		{%- comment -%} Cart page: get recommendations from all cart items {%- endcomment -%}
+		{%- for item in cart.items -%}
+			{%- if product_count >= max_products -%}
+				{%- break -%}
+			{%- endif -%}
+			{%- if item.product.metafields.custom.recommended-products.value -%}
+				{%- for rec_product in item.product.metafields.custom.recommended-products.value -%}
+					{%- if product_count >= max_products -%}
+						{%- break -%}
+					{%- endif -%}
+					{%- unless recommended_product_ids contains rec_product.id -%}
+						{%- if section.settings.hide_out_of_stock and rec_product.available == false -%}
+							{%- continue -%}
+						{%- endif -%}
+						{%- assign recommended_product_ids = recommended_product_ids | append: rec_product.id | append: ',' -%}
+						{%- assign product_count = product_count | plus: 1 -%}
+						<li class="block-product-recommended__item">
+							{%- render 'html-theme-card',
+								product: rec_product,
+								layout: section.settings.card_layout,
+								image_ratio: section.settings.image_ratio,
+								columns_desktop: section.settings.grid_columns,
+								columns_tablet: section.settings.grid_columns_tablet,
+								columns_mobile: section.settings.grid_columns_mobile,
+								columns_width: section.settings.width,
+								columns_gap: 0.2,
+								show_secondary_image: section.settings.show_secondary_image,
+								show_rating: section.settings.show_rating,
+								show_vendor: section.settings.show_vendor,
+								show_price: true,
+								show_stock: true,
+								show_delivery: true,
+								show_badges: section.settings.show_badges,
+								quick_add: section.settings.quick_add
+							-%}
+						</li>
+					{%- endunless -%}
+				{%- endfor -%}
+			{%- endif -%}
+		{%- endfor -%}
+	{%- endif -%}
 {%- endcapture -%}
 
 {%- if recommended_products_html != blank -%}
-  <div class="block-product-recommended__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %} style="padding-block: {{ section.settings.padding_block }}em;">
-    <header class="block-product-recommended__header">
-      <h2 class="block-product-recommended__heading">
-        {%- if section.settings.heading != blank -%}
-          {{ section.settings.heading }}
-        {%- else -%}
-          {{ 'product.recommended_heading' | t }}
-        {%- endif -%}
-      </h2>
-    </header>
-    
-    <ul class="block-product-recommended__grid" style="--grid-columns: {{ section.settings.grid_columns }}; --grid-columns-tablet: {{ section.settings.grid_columns_tablet }}; --grid-columns-mobile: {{ section.settings.grid_columns_mobile }};">
-      {{ recommended_products_html }}
-    </ul>
-  </div>
+	<div class="block-product-recommended__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
+		<header class="block-product-recommended__header">
+			<h2 class="block-product-recommended__heading">{{ heading_text }}</h2>
+		</header>
+
+		<ul class="block-product-recommended__grid" style="--grid-columns: {{ section.settings.grid_columns }}; --grid-columns-tablet: {{ section.settings.grid_columns_tablet }}; --grid-columns-mobile: {{ section.settings.grid_columns_mobile }};">
+			{{ recommended_products_html }}
+		</ul>
+	</div>
 {%- endif -%}
-
-<style>
-  .block-product-recommended {
-    background-color: {{ section.settings.background_color | default: '#f8f8f8' }};
-    color: {{ section.settings.text_color | default: '#111111' }};
-    
-  }
-  
-  .block-product-recommended__content {
-    /* padding controlled by inline style */
-  }
-
-  .block-product-recommended__header {
-    margin-bottom: 2em;
-  }
-
-  .block-product-recommended__heading {
-    font-family: var(--theme-font-family-serif);
-    font-size: 2em;
-    font-weight: 400;
-    margin: 0;
-    text-align: center;
-  }
-
-  .block-product-recommended__grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.2em;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .block-product-recommended__item {
-    margin: 0;
-    min-width: 0;
-    width: calc((100% - (var(--grid-columns, 4) - 1) * 0.2em) / var(--grid-columns, 4));
-  }
-
-  @media (max-width: 60em) {
-    .block-product-recommended__item {
-      width: calc((100% - (var(--grid-columns-tablet, 3) - 1) * 0.2em) / var(--grid-columns-tablet, 3));
-    }
-  }
-
-  @media (max-width: 40em) {
-    .block-product-recommended__item {
-      width: calc((100% - (var(--grid-columns-mobile, 2) - 1) * 0.2em) / var(--grid-columns-mobile, 2));
-    }
-
-    .block-product-recommended__heading {
-      font-size: 1.5em;
-    }
-  }
-</style>
 
 {% schema %}
 {
@@ -199,7 +156,7 @@
 		},
 		{
 			"type": "header",
-			"content": "Filters"
+			"content": "Display"
 		},
 		{
 			"type": "range",
@@ -215,10 +172,6 @@
 			"id": "hide_out_of_stock",
 			"label": "Hide out of stock products",
 			"default": false
-		},
-		{
-			"type": "header",
-			"content": "Product card"
 		},
 		{
 			"type": "select",
@@ -328,6 +281,18 @@
 			"unit": "em"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -340,22 +305,6 @@
 			"type": "color",
 			"id": "text_color",
 			"label": "Text"
-		},
-		{
-			"type": "header",
-			"content": "Advanced"
-		},
-		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class"
 		},
 		{
 			"type": "header",

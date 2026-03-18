@@ -1,0 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "oostenrijk"
+  },
+  "parent": "index.json",
+  "sections": {
+    "best-products": {
+      "settings": {
+        "collection": "middeleeuwse-kleding"
+      },
+      "blocks": {}
+    },
+    "block_marketing_media_text_mEgbKY": {
+      "settings": {},
+      "blocks": {
+        "image_text_aJBEwL": {
+          "settings": {
+            "image": "shopify://shop_images/burgundian_knight1.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_media_text_eUmREH": {
+      "settings": {},
+      "blocks": {
+        "image_text_xddkDV": {
+          "settings": {
+            "image": "shopify://shop_images/Gallier.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_grid_eKTaaA": {
+      "settings": {},
+      "blocks": {
+        "banner_gMVXQH": {
+          "settings": {
+            "image": "shopify://shop_images/DSC08369_8ae5245b-fdf8-47c9-9a10-bdea3dc19f25.jpg"
+          }
+        }
+      }
+    }
+  }
+}

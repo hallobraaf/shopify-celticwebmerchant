@@ -13,8 +13,8 @@
       "type": "block-marketing-cover",
       "name": "Marketing Cover",
       "settings": {
-        "subheading": "The Tribe",
-        "heading": "Jouw community",
+        "subheading": "Word lid van onze community",
+        "heading": "De Tribe",
         "text": "",
         "image": "shopify://shop_images/Dec2025_-_Banners_Tribe_v2.webp",
         "focus_x": 60,
@@ -38,7 +38,7 @@
         "heading": "Word lid van onze community & spaar exclusieve kortingen",
         "subheading": "",
         "text": "",
-        "cta_text": "Wordt nu gratis lid!",
+        "cta_text": "Word nu gratis lid!",
         "cta_url": "https://shopify.com/89128927560/account/orders?locale=nl&region_country=NO",
         "cta_style": "primary",
         "show_countdown": false,
@@ -143,76 +143,6 @@
         "width": "align"
       }
     },
-    "block_marketing_testimonials_attenQ": {
-      "type": "block-marketing-testimonials",
-      "blocks": {
-        "testimonial_fHMLYg": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "In onze community ontsnap ik aan de dagelijkse sleur van  de saaie dreuzelwereld.",
-            "author": "",
-            "author_title": "",
-            "rating": 5
-          }
-        },
-        "testimonial_hxqTPC": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "Je voorouders zie je terug als je in de spiegel kijkt. Zonder jou zouden zij verdwijnen. Bij Celtic vind ik de kans om in hun voetsporen te treden.",
-            "author": "",
-            "author_title": "",
-            "rating": 5
-          }
-        },
-        "testimonial_jyjHqK": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "Celtic is onze community, waar wij, zonder vooroordelen onszelf kunnen zijn.",
-            "author": "",
-            "author_title": "",
-            "rating": 5
-          }
-        },
-        "testimonial_k3Uyxb": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "Ik ben me bewust van mijn cultuur en geschiedenis. Deze diepe waardering herken en voel ik bij Celtic.",
-            "author": "",
-            "author_title": "",
-            "rating": 5
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_fHMLYg",
-        "testimonial_hxqTPC",
-        "testimonial_jyjHqK",
-        "testimonial_k3Uyxb"
-      ],
-      "name": "Testimonials",
-      "settings": {
-        "heading": "",
-        "subheading": "",
-        "alignment": "center",
-        "quote_style": "boxed",
-        "width": "is-align-small",
-        "columns_desktop": 2,
-        "columns_tablet": 2,
-        "columns_mobile": 1,
-        "grid_gap": 0.5,
-        "padding_block": 3,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_loop": false,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
-        "background_color": "#ffffff",
-        "text_color": "#111111",
-        "anchor": "",
-        "custom_class": ""
-      }
-    },
     "block_marketing_media_text_HtFd6L": {
       "type": "block-marketing-media-text",
       "blocks": {
@@ -227,7 +157,7 @@
             "heading": "Inspireer de community & verdien je volgende bestelling bij elkaar!",
             "text": "<p>Doe mee aan challenges, sta in de spotlight en inspireer anderen. Deel jouw kennis en ervaring en word bekend! De community heeft jou nodig.</p>",
             "cta_text": "Lees meer",
-            "cta_url": "shopify://blogs/vroeg-modern/de-backsword",
+            "cta_url": "shopify://blogs/challenges",
             "cta_style": "primary",
             "image_position": "left",
             "image_width": "40",
@@ -247,9 +177,9 @@
             "focus_x": 50,
             "focus_y": 40,
             "heading": "Participeer & help anderen",
-            "text": "<p>Onze community deelt een unieke levensstijl, waardeer haar en help haar te groeien! </p><p>Nodig jouw vrienden uit en help hen hun weg te vinden binnen de community.</p>",
-            "cta_text": "",
-            "cta_url": "",
+            "text": "<p>Onze community deelt een unieke levensstijl, waardeer haar en help haar te groeien! </p><p>Nodig vrienden uit en verdien korting.</p>",
+            "cta_text": "Deel met vrienden",
+            "cta_url": "shopify://pages/loyalty",
             "cta_style": "primary",
             "image_position": "right",
             "image_width": "40",
@@ -290,10 +220,10 @@
             "image_height": "square",
             "focus_x": 50,
             "focus_y": 15,
-            "heading": "Word influencer & groei met ons mee",
-            "text": "<p>Ben jij gek op onze artikelen, actief binnen onze community en wil je ons graag vertegenwoordigen? Dat kan! Stuur ons jouw profiel ter beoordeling.</p><p>Elk jaar kiezen we enkele tientallen vrienden uit om een officieel Celtic WebMerchant influencer te worden. Belangrijk is dat je:</p><ul><li>Dezelfde waarden uitdraagt als waar Wij voor staan.</li><li>Geen politieke of concurrerende activiteiten ontplooit.</li><li>Een goede reputatie hebt binnen de markt.<br/></li></ul><p>Van alle inzendingen worden er jaarlijks een selectie gekozen om deel uit te maken van ons influencer programma.</p>",
+            "heading": "Word ambassadeur & groei met ons mee",
+            "text": "<p>Ben jij gek op onze producten en actief in onze community? Dan is dit iets voor jou!<br/><br/>Deel jouw persoonlijke link op social media. Bestellen via jouw pagina betekent 10% korting en jij verdient 5% van de aankoopwaarde.</p>",
             "cta_text": "Lees meer",
-            "cta_url": "shopify://blogs/challenges/word-influencer",
+            "cta_url": "shopify://blogs/challenges/word-ambassadeur-en-verdien-je-nieuwe-gear-bij-elkaar",
             "cta_style": "primary",
             "image_position": "right",
             "image_width": "40",
@@ -314,10 +244,32 @@
             "focus_y": 15,
             "heading": "Ontvang korting & exclusieve aanbiedingen",
             "text": "<p>Leden profiteren van:</p><ul><li>Kortingspunten bij elke aankoop.</li><li>Kortingen tot wel €150 bij het verzilveren van je punten.</li><li>Wekelijks exclusieve aanbiedingen voor Tribe-leden.</li><li>Lagere verzendkosten bij elke bestelling.</li></ul>",
-            "cta_text": "Lees meer",
-            "cta_url": "shopify://blogs/oudheid-romeinen",
-            "cta_style": "primary",
+            "cta_text": "",
+            "cta_url": "",
+            "cta_style": "outline",
             "image_position": "left",
+            "image_width": "40",
+            "vertical_alignment": "center",
+            "background_color": "",
+            "text_color": "",
+            "button_color": "#f05a22",
+            "button_text_color": ""
+          }
+        },
+        "image_text_MYN4bF": {
+          "type": "image_text",
+          "name": "Image + text #2",
+          "settings": {
+            "image": "shopify://shop_images/DSC04048_6731d0d1-fde6-4d2f-b2d7-edc8aef71efe.jpg",
+            "image_height": "square",
+            "focus_x": 50,
+            "focus_y": 40,
+            "heading": "Werken bij Celtic WebMerchant?",
+            "text": "<h2><strong>Doe een open sollicitatie</strong></h2><p>Ben jij gek van alles dat te maken heeft met geschiedenis, festivals en fantasy? </p><p><strong>Doe een open sollicitatie en misschien kom jij bij ons werken. </strong><br/></p><p>Je werkt in een klein team waar samenwerken en initiatief centraal staan. We zoeken proactieve, oplossingsgerichte mensen die graag leren en verantwoordelijkheid nemen.</p><p><strong>Wat we belangrijk vinden:</strong></p><ul><li>Je vindt het geen probleem om af te wisselen tussen praktisch werk en computerwerk</li><li>Je bent een alleskunner of wilt dat graag worden</li></ul><p>Je hebt een ondernemende instelling: je wacht niet af, maar pakt door. Je kunt zelfstandig dingen uitzoeken en oplossingen bedenken</p>",
+            "cta_text": "Solliciteer nu",
+            "cta_url": "https://celticwebmerchant.zendesk.com/hc/nl/articles/20385582668178-Jobs-Celtic-WebMerchant",
+            "cta_style": "primary",
+            "image_position": "right",
             "image_width": "40",
             "vertical_alignment": "center",
             "background_color": "",
@@ -332,13 +284,15 @@
         "image_text_jLUgxx",
         "image_text_KFBKdW",
         "image_text_WykxUi",
-        "image_text_hGqQrk"
+        "image_text_hGqQrk",
+        "image_text_MYN4bF"
       ],
       "custom_css": [],
       "name": "Media & text",
       "settings": {
         "heading": "",
         "subheading": "",
+        "text_align": "center",
         "width": "is-align",
         "padding_block": 3,
         "background_color": "#0f1f38",
@@ -374,6 +328,76 @@
         "button_text_color": "#243406",
         "anchor": "",
         "custom_class": "promo-join-tribe"
+      }
+    },
+    "block_marketing_testimonials_attenQ": {
+      "type": "block-marketing-testimonials",
+      "blocks": {
+        "testimonial_fHMLYg": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Very pleased with the service C W Merch is a brilliant place to go to for slightly 'unusual' presents. Everything arrived well in time - including one where there was a slight delay form the suppliers. Would have no hesitation in recommending them.",
+            "author": "Tony Fryer (UK)",
+            "author_title": "",
+            "rating": 5
+          }
+        },
+        "testimonial_hxqTPC": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Zeer goede service, duidelijke website en degelijk materiaal! Ik koop reeds jaren bij jullie en ben steeds zeer tevreden. De website spreekt tot de verbeelding, zeer mooi.",
+            "author": "Chris Backx (BE)",
+            "author_title": "",
+            "rating": 5
+          }
+        },
+        "testimonial_jyjHqK": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Very good quality on everything I purchased. Much better than I expected as it was my first time to buy from the store. Prices were very competitive against other suppliers. I am glad to have found your website",
+            "author": "Brian Condron (IE)",
+            "author_title": "",
+            "rating": 5
+          }
+        },
+        "testimonial_k3Uyxb": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Super snel bezorgd. Geweldige artikelen, ik voelde me helemaal geweldig in mijn outfit op Castlefest.",
+            "author": "Gitta Kunst (NL)",
+            "author_title": "",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_fHMLYg",
+        "testimonial_hxqTPC",
+        "testimonial_jyjHqK",
+        "testimonial_k3Uyxb"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "alignment": "center",
+        "quote_style": "boxed",
+        "width": "is-align-small",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 3,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
       }
     },
     "block_marketing_cover_FfEjPV": {

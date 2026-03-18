@@ -1,0 +1,135 @@
+/* ==========================================================================
+   BLOCK-MODAL-REGION
+   Structural styles — static, no dynamic values
+   ========================================================================== */
+
+.block-modal-region {
+  // Trigger
+  &__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 0.75em;
+    background: transparent;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1em;
+    color: inherit;
+    cursor: pointer;
+    transition: opacity 200ms ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__trigger-icon {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  // Modal content
+  &__content {
+    max-width: 520px;
+  }
+
+  &__form {
+    display: none;
+  }
+
+  // Groups
+  &__markets {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__group-name {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+  }
+
+  // Regions
+  &__market {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0;
+  }
+
+  &__market-name {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    &::after {
+      content: '|';
+      margin-inline: 0.6em;
+      opacity: 0.3;
+    }
+  }
+
+  // Languages
+  &__languages {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+
+    > * + *::before {
+      content: '|';
+      margin-inline: 0.5em;
+      opacity: 0.3;
+      text-decoration: none;
+      display: inline-block;
+    }
+  }
+
+  &__lang-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &.is-active {
+      font-weight: 600;
+      text-decoration: none;
+      cursor: default;
+      opacity: 1;
+    }
+  }
+
+  // Info text
+  &__info {
+    margin: 1.5rem -1.5rem -1.5rem;
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    opacity: 0.75;
+  }
+}

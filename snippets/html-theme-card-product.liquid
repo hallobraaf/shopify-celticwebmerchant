@@ -155,21 +155,16 @@ DEPENDENCIES:
 			{%- endif -%}
 		</figure>
 
-		{%- if show_badges -%}
+		{%- if show_badges and p.compare_at_price > p.price -%}
 			<div class="card__badges">
-				{%- if p.available == false -%}
-					<span class="card__badge card__badge--soldout">{{ 'product.sold_out' | t }}</span>
-				{%- elsif p.compare_at_price > p.price -%}
-					<span class="card__badge card__badge--sale">{{ 'product.on_sale' | t }}</span>
-				{%- endif -%}
+				<span class="card__badge card__badge--sale">{{ 'product.on_sale' | t }}</span>
 			</div>
 		{%- endif -%}
 	</div>
 
 	<div class="card__content">
-		{%- if show_rating and p.metafields.reviews.rating.value != blank -%}
-			{%- assign rating = p.metafields.reviews.rating.value -%}
-			<div class="card__rating">⭐ {{ rating.rating }} / {{ rating.scale_max }} ({{ rating.rating_count }})</div>
+		{%- if show_rating -%}
+			{%- render 'html-product-rating', product: p, show_count: false, size: 14 -%}
 		{%- endif -%}
 
 		{%- if show_vendor -%}
@@ -228,7 +223,7 @@ DEPENDENCIES:
 		{%- endif -%}
 
 		{%- if show_delivery -%}
-			<div class="card__delivery">{%- render 'html-product-delivery', product: p -%}</div>
+			<div class="card__delivery">{%- render 'html-product-delivery', product: p, display: 'fastest' -%}</div>
 		{%- endif -%}
 
 		{%- if quick_add -%}

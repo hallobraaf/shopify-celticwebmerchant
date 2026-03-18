@@ -17,11 +17,27 @@
   ============================================================================
 {% endcomment %}
 
+{{ 'block-collection-top.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-collection-top {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+	}
+	#shopify-section-{{ section.id }} .block-collection-top__content {
+		text-align: {{ section.settings.text_align }};
+	}
+{% endstyle %}
+
 <div class="block-collection-top__content {{ section.settings.width }}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	{%- if section.settings.show_image and collection.image -%}
 		<figure class="block-collection-top__image">
 			{%- assign image_alt = collection.image.alt | default: collection.title | escape -%}
-			<img 
+			<img
 				class="block-collection-top__img"
 				src="{{ collection.image | image_url: width: 1200 }}"
 				alt="{{ image_alt }}"
@@ -47,51 +63,6 @@
 		</p>
 	{%- endif -%}
 </div>
-
-{% style %}
-	.block-collection-top {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-	}
-
-	.block-collection-top__content {
-		text-align: {{ section.settings.text_align }};
-		padding-top: 1.5em;
-		padding-bottom: 1.5em;
-	}
-
-	.block-collection-top__image {
-		margin: 0 0 1.5em 0;
-		padding: 0;
-	}
-
-	.block-collection-top__img {
-		width: 100%;
-		max-height: 300px;
-		object-fit: cover;
-	}
-
-	.block-collection-top__title {
-		font-family: var(--theme-font-family-serif);
-		font-weight: 400;
-		font-size: clamp(1.8em, 4vw, 2.5em);
-		line-height: 1.1;
-		letter-spacing: var(--theme-letter-spacing);
-		margin: 0;
-	}
-
-	.block-collection-top__description {
-		margin: 0.75em 0 0 0;
-		letter-spacing: var(--theme-letter-spacing);
-		line-height: 1.5;
-	}
-
-	.block-collection-top__count {
-		margin: 0.5em 0 0 0;
-		font-size: 0.9em;
-		opacity: 0.7;
-	}
-{% endstyle %}
 
 {% schema %}
 {
@@ -159,6 +130,12 @@
 			"default": "center"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -171,16 +148,6 @@
 			"type": "color",
 			"id": "text_color",
 			"label": "Text"
-		},
-		{
-			"type": "header",
-			"content": "Advanced"
-		},
-		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
 		},
 		{
 			"type": "header",

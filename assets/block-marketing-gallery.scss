@@ -1,0 +1,116 @@
+/* ==========================================================================
+   BLOCK-MARKETING-GALLERY
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-marketing-gallery {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns, 3), 1fr);
+    gap: var(--grid-gap, 0.5em);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &--has-heading {
+      margin-block-start: 2em;
+    }
+
+    &--has-button {
+      margin-block-end: 2em;
+    }
+
+    @media (max-width: 60em) {
+      grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
+    }
+
+    @media (max-width: 40em) {
+      grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
+    }
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  &__link {
+    display: block;
+    position: relative;
+
+    &:hover .theme-media__img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__item .theme-media__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 200ms ease;
+  }
+
+  &__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: #fff;
+    font-size: 0.875em;
+  }
+
+  &__placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 50%;
+      height: auto;
+      opacity: 0.2;
+    }
+  }
+
+  &__actions {
+    text-align: center;
+  }
+
+  // Slider
+  &__slider {
+    position: relative;
+    overflow: hidden;
+
+    &--has-heading {
+      margin-block-start: 2em;
+    }
+
+    &--has-button {
+      margin-block-end: 2em;
+    }
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
+
+    &.swiper--all-visible {
+      .swiper-wrapper {
+        justify-content: center;
+      }
+
+      .swiper-nav,
+      .swiper-pagination {
+        display: none;
+      }
+    }
+  }
+}

@@ -17,6 +17,20 @@
   ============================================================================
 {%- endcomment -%}
 
+{{ 'block-footer-usps.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'block-footer-usps.min.js' | asset_url }}" defer></script>
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-footer-usps {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+	}
+{% endstyle %}
+
 <footer-usps class="block-footer-usps__content {{ section.settings.width }}">
 	{%- if section.blocks.size > 0 -%}
 		<div class="block-footer-usps__wrapper">
@@ -60,201 +74,7 @@
 	{%- endif -%}
 </footer-usps>
 
-{% style %}
-	.block-footer-usps {
-		background-color: {{ section.settings.background_color | default: '#0f1f38' }};
-		color: {{ section.settings.text_color | default: '#ffffff' }};
-		padding: 1.5em 0;
-	}
 
-	.block-footer-usps__content {
-		display: block;
-	}
-
-	/* Wrapper: flexbox with buttons on sides */
-	.block-footer-usps__wrapper {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 0.5em;
-	}
-
-	.block-footer-usps__slider {
-		flex: 1 1 auto;
-		min-width: 0;
-		overflow: hidden;
-	}
-
-	.block-footer-usps__list {
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.block-footer-usps__item {
-		flex: 0 0 auto;
-		width: auto !important;
-		display: flex;
-		align-items: center;
-		padding: 0 0.5em;
-	}
-
-	.block-footer-usps__link {
-		display: inline-flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 0.5em;
-		color: inherit;
-		text-decoration: none;
-	}
-
-	.block-footer-usps__link:hover {
-		opacity: 0.8;
-	}
-
-	.block-footer-usps__icon {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 1.25em;
-		height: 1.25em;
-	}
-
-	.block-footer-usps__icon svg {
-		width: 100%;
-		height: 100%;
-	}
-
-	.block-footer-usps__text {
-		font-size: 0.8em;
-		letter-spacing: -0.02em;
-		line-height: 1.3;
-		white-space: nowrap;
-	}
-
-	/* Navigation buttons - flex items on sides */
-	.block-footer-usps__nav {
-		flex: 0 0 auto;
-		display: none;
-		align-items: center;
-		justify-content: center;
-		width: 2em;
-		height: 2em;
-		padding: 0;
-		background-color: transparent;
-		color: inherit;
-		border: none;
-		cursor: pointer;
-		opacity: 0.7;
-		transition: opacity 150ms ease;
-	}
-
-	.block-footer-usps__nav:hover {
-		opacity: 1;
-	}
-
-	.block-footer-usps__nav--prev svg {
-		transform: rotate(90deg);
-	}
-
-	.block-footer-usps__nav--next svg {
-		transform: rotate(-90deg);
-	}
-
-	/* Show buttons only when overflow */
-	.block-footer-usps__wrapper.has-overflow .block-footer-usps__nav {
-		display: flex;
-	}
-
-	.block-footer-usps__wrapper.has-overflow .block-footer-usps__list {
-		justify-content: flex-start;
-	}
-
-	/* Mobile: show 1 item at a time */
-	@media (max-width: 40em) {
-		.block-footer-usps__item {
-			flex: 0 0 100%;
-			justify-content: center;
-		}
-	}
-{% endstyle %}
-
-<script>
-	class FooterUsps extends HTMLElement {
-		connectedCallback() {
-			this.wrapper = this.querySelector('.block-footer-usps__wrapper');
-			this.swiperEl = this.querySelector('[data-footer-usps-slider]');
-			this.prevBtn = this.querySelector('[data-nav-prev]');
-			this.nextBtn = this.querySelector('[data-nav-next]');
-			
-			if (!this.swiperEl || !this.wrapper) return;
-			this.initSwiper();
-		}
-
-		disconnectedCallback() {
-			if (this.slider) {
-				this.slider.destroy(true, true);
-				this.slider = null;
-			}
-		}
-
-		areAllSlidesInView(swiper) {
-			const slidesWidth = Array.from(swiper.slides).reduce((total, slide, index) => {
-				return total + slide.offsetWidth + (index < swiper.slides.length - 1 ? swiper.params.spaceBetween : 0);
-			}, 0);
-			return slidesWidth <= swiper.width;
-		}
-
-		updateLayout(swiper) {
-			const wrapper = swiper.el.querySelector('.swiper-wrapper');
-			if (!wrapper) return;
-
-			if (this.areAllSlidesInView(swiper)) {
-				wrapper.style.justifyContent = 'center';
-				this.wrapper.classList.remove('has-overflow');
-			} else {
-				wrapper.style.justifyContent = '';
-				this.wrapper.classList.add('has-overflow');
-			}
-		}
-
-		initSwiper() {
-			const self = this;
-
-			this.slider = new Swiper(this.swiperEl, {
-				direction: 'horizontal',
-				centeredSlides: false,
-				slidesPerView: 'auto',
-				slidesPerGroup: 1,
-				spaceBetween: 32,
-				loop: false,
-				autoplay: false,
-				mousewheel: {
-					forceToAxis: true,
-					releaseOnEdges: true
-				},
-				navigation: {
-					prevEl: this.prevBtn,
-					nextEl: this.nextBtn
-				},
-				on: {
-					init: function(swiper) {
-						self.updateLayout(swiper);
-					},
-					resize: function(swiper) {
-						self.updateLayout(swiper);
-					}
-				}
-			});
-		}
-	}
-
-	customElements.define('footer-usps', FooterUsps);
-</script>
 
 {% schema %}
 {

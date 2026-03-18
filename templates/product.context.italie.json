@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "italie"
+  },
+  "parent": "product.json",
+  "sections": {
+    "product-form": {
+      "settings": {},
+      "blocks": {
+        "trust_usps_dMe7Mk": {
+          "settings": {
+            "item_3_text": "Spedizione rapida con GLS, BRT e UPS"
+          }
+        },
+        "trust_payments_Lra8px": {
+          "settings": {
+            "method_1": "klarna",
+            "method_4": "maestro",
+            "method_5": "paypal",
+            "method_6": "apple_pay",
+            "method_7": "google_pay",
+            "method_8": "none",
+            "method_10": "none"
+          }
+        }
+      }
+    }
+  }
+}

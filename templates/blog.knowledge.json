@@ -9,6 +9,21 @@
  */
 {
   "sections": {
+    "block_page_breadcrumbs_PLeJee": {
+      "type": "block-page-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "ancestor_1": "",
+        "ancestor_2": "",
+        "ancestor_3": "",
+        "menu": "",
+        "width": "is-align-wide",
+        "text_align": "center",
+        "padding_block": 1,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
     "block_marketing_grid_AqGxiU": {
       "type": "block-marketing-grid",
       "blocks": {
@@ -18,7 +33,7 @@
             "label": "",
             "heading": "Onderhoud van staal en metaal",
             "text": "",
-            "link_url": "shopify://blogs/over-zwaarden-wapens/onderhoud-van-staal-en-metaal",
+            "link_url": "shopify://blogs/tips-tricks-zwaarden-wapens/onderhoud-van-staal-en-metaal",
             "image": "shopify://shop_images/DSC00948.jpg",
             "focus_x": 50,
             "focus_y": 50,
@@ -32,7 +47,7 @@
             "label": "",
             "heading": "Hoe draag je Viking beenwindsels",
             "text": "",
-            "link_url": "",
+            "link_url": "shopify://blogs/tips-tricks-outfit-accessoires/hoe-draag-je-een-viking-birka-broek",
             "image": "shopify://shop_images/DSC09062-2_afa12cde-e584-4dc4-b485-4c2dbdd8642e.jpg",
             "focus_x": 50,
             "focus_y": 50,
@@ -46,7 +61,7 @@
             "label": "",
             "heading": "Hoe trek ik mijn harnas aan",
             "text": "",
-            "link_url": "shopify://blogs/middeleeuwen/hoe-trek-ik-mijn-harnas-aan",
+            "link_url": "shopify://blogs/tips-tricks/hoe-trek-ik-mijn-harnas-aan",
             "image": "shopify://shop_images/DSC08162_ca9871da-8948-446f-a0f9-2c9f8146cb82.jpg",
             "focus_x": 50,
             "focus_y": 50,
@@ -64,8 +79,8 @@
       "settings": {
         "heading": "",
         "subtext": "",
-        "width": "is-align-full",
         "header_align": "left",
+        "width": "is-align-full",
         "columns_desktop": 3,
         "columns_tablet": 2,
         "columns_mobile": 1,
@@ -74,7 +89,6 @@
         "display_mode": "creative",
         "slider_navigation": true,
         "slider_pagination": true,
-        "slider_loop": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
         "background_color": "#ffffff",
@@ -129,12 +143,12 @@
         "show_header": true,
         "heading": "Alle kennisbanken",
         "subheading": "",
+        "text_align": "center",
         "card_layout": "vertical",
         "show_image": false,
         "image_ratio": "landscape",
         "show_article_count": false,
         "width": "is-align",
-        "text_align": "center",
         "columns_desktop": 5,
         "columns_tablet": 3,
         "columns_mobile": 2,
@@ -240,6 +254,7 @@
       "settings": {
         "heading": "Een greep uit onze kennisbank",
         "subheading": "",
+        "text_align": "center",
         "card_layout": "horizontal",
         "show_image": true,
         "image_ratio": "adapt",
@@ -251,7 +266,6 @@
         "max_articles": 8,
         "random_mode": true,
         "width": "is-align",
-        "text_align": "center",
         "columns_desktop": 2,
         "columns_tablet": 2,
         "columns_mobile": 1,
@@ -260,7 +274,6 @@
         "display_mode": "grid",
         "slider_navigation": true,
         "slider_pagination": false,
-        "slider_loop": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
         "background_color": "#f8f8f8",
@@ -277,6 +290,7 @@
       "settings": {
         "heading": "",
         "subheading": "",
+        "text_align": "center",
         "card_layout": "vertical",
         "show_image": true,
         "image_ratio": "landscape",
@@ -287,7 +301,6 @@
         "articles_per_page": 12,
         "width": "alignwide",
         "padding_block": 3,
-        "text_align": "center",
         "columns_desktop": 4,
         "columns_tablet": 2,
         "columns_mobile": 2,
@@ -302,6 +315,7 @@
     }
   },
   "order": [
+    "block_page_breadcrumbs_PLeJee",
     "block_marketing_grid_AqGxiU",
     "block_marketing_blogs_4kGTB7",
     "block_marketing_cover_bYEzBj",

@@ -7,7 +7,7 @@ Renders responsive image with webp source and fallback.
 PARAMS:
 - image         : Image object (Shopify image, media, or preview_image)
 - alt           : Alt text
-- w1-w8         : Fixed srcset widths (200, 400, 600, 800, 1000, 1200, 1600, 2000)
+- w1-w9         : Fixed srcset widths (200, 400, 600, 700, 800, 1000, 1200, 1600, 2000)
 - aspect_ratio  : Aspect ratio for height calculation when cropping
 - crop          : Crop position or blank for no crop
 - quality       : Image compression 1-100 (default 75)
@@ -36,11 +36,18 @@ DEPENDENCIES:
 	assign w1 = w1 | default: 200
 	assign w2 = w2 | default: 400
 	assign w3 = w3 | default: 600
-	assign w4 = w4 | default: 800
-	assign w5 = w5 | default: 1000
-	assign w6 = w6 | default: 1200
-	assign w7 = w7 | default: 1600
-	assign w8 = w8 | default: 2000
+	assign w4 = w4 | default: 700
+	assign w5 = w5 | default: 800
+	assign w6 = w6 | default: 1000
+	assign w7 = w7 | default: 1200
+	assign w8 = w8 | default: 1600
+	assign w9 = w9 | default: 2000
+
+	comment
+		Max srcset width — entries above this are never requested by the browser
+		(display slot × 2 for Retina). Defaults to 2000 = full ladder.
+	endcomment
+	assign max_srcset = max_srcset | default: 2000
 
 	comment
 		Quality param - only add if not 100 (CDN default)
@@ -79,6 +86,7 @@ DEPENDENCIES:
 		assign h6 = w6 | divided_by: aspect_ratio | round
 		assign h7 = w7 | divided_by: aspect_ratio | round
 		assign h8 = w8 | divided_by: aspect_ratio | round
+		assign h9 = w9 | divided_by: aspect_ratio | round
 	endif
 -%}
 
@@ -96,23 +104,25 @@ DEPENDENCIES:
 			type="image/webp"
 			srcset="
 				{%- if crop != blank -%}
-					{{ img | image_url: width: w1, height: h1, format: 'webp', crop: crop }}{{ quality_param }} {{ w1 }}w,
-					{{ img | image_url: width: w2, height: h2, format: 'webp', crop: crop }}{{ quality_param }} {{ w2 }}w,
-					{{ img | image_url: width: w3, height: h3, format: 'webp', crop: crop }}{{ quality_param }} {{ w3 }}w,
-					{{ img | image_url: width: w4, height: h4, format: 'webp', crop: crop }}{{ quality_param }} {{ w4 }}w,
-					{{ img | image_url: width: w5, height: h5, format: 'webp', crop: crop }}{{ quality_param }} {{ w5 }}w,
-					{{ img | image_url: width: w6, height: h6, format: 'webp', crop: crop }}{{ quality_param }} {{ w6 }}w,
-					{{ img | image_url: width: w7, height: h7, format: 'webp', crop: crop }}{{ quality_param }} {{ w7 }}w,
-					{{ img | image_url: width: w8, height: h8, format: 'webp', crop: crop }}{{ quality_param }} {{ w8 }}w
+					{{ img | image_url: width: w1, height: h1, format: 'webp', crop: crop }}{{ quality_param }} {{ w1 }}w
+					{%- if w2 <= max_srcset -%}, {{ img | image_url: width: w2, height: h2, format: 'webp', crop: crop }}{{ quality_param }} {{ w2 }}w{%- endif -%}
+					{%- if w3 <= max_srcset -%}, {{ img | image_url: width: w3, height: h3, format: 'webp', crop: crop }}{{ quality_param }} {{ w3 }}w{%- endif -%}
+					{%- if w4 <= max_srcset -%}, {{ img | image_url: width: w4, height: h4, format: 'webp', crop: crop }}{{ quality_param }} {{ w4 }}w{%- endif -%}
+					{%- if w5 <= max_srcset -%}, {{ img | image_url: width: w5, height: h5, format: 'webp', crop: crop }}{{ quality_param }} {{ w5 }}w{%- endif -%}
+					{%- if w6 <= max_srcset -%}, {{ img | image_url: width: w6, height: h6, format: 'webp', crop: crop }}{{ quality_param }} {{ w6 }}w{%- endif -%}
+					{%- if w7 <= max_srcset -%}, {{ img | image_url: width: w7, height: h7, format: 'webp', crop: crop }}{{ quality_param }} {{ w7 }}w{%- endif -%}
+					{%- if w8 <= max_srcset -%}, {{ img | image_url: width: w8, height: h8, format: 'webp', crop: crop }}{{ quality_param }} {{ w8 }}w{%- endif -%}
+					{%- if w9 <= max_srcset -%}, {{ img | image_url: width: w9, height: h9, format: 'webp', crop: crop }}{{ quality_param }} {{ w9 }}w{%- endif -%}
 				{%- else -%}
-					{{ img | image_url: width: w1, format: 'webp' }}{{ quality_param }} {{ w1 }}w,
-					{{ img | image_url: width: w2, format: 'webp' }}{{ quality_param }} {{ w2 }}w,
-					{{ img | image_url: width: w3, format: 'webp' }}{{ quality_param }} {{ w3 }}w,
-					{{ img | image_url: width: w4, format: 'webp' }}{{ quality_param }} {{ w4 }}w,
-					{{ img | image_url: width: w5, format: 'webp' }}{{ quality_param }} {{ w5 }}w,
-					{{ img | image_url: width: w6, format: 'webp' }}{{ quality_param }} {{ w6 }}w,
-					{{ img | image_url: width: w7, format: 'webp' }}{{ quality_param }} {{ w7 }}w,
-					{{ img | image_url: width: w8, format: 'webp' }}{{ quality_param }} {{ w8 }}w
+					{{ img | image_url: width: w1, format: 'webp' }}{{ quality_param }} {{ w1 }}w
+					{%- if w2 <= max_srcset -%}, {{ img | image_url: width: w2, format: 'webp' }}{{ quality_param }} {{ w2 }}w{%- endif -%}
+					{%- if w3 <= max_srcset -%}, {{ img | image_url: width: w3, format: 'webp' }}{{ quality_param }} {{ w3 }}w{%- endif -%}
+					{%- if w4 <= max_srcset -%}, {{ img | image_url: width: w4, format: 'webp' }}{{ quality_param }} {{ w4 }}w{%- endif -%}
+					{%- if w5 <= max_srcset -%}, {{ img | image_url: width: w5, format: 'webp' }}{{ quality_param }} {{ w5 }}w{%- endif -%}
+					{%- if w6 <= max_srcset -%}, {{ img | image_url: width: w6, format: 'webp' }}{{ quality_param }} {{ w6 }}w{%- endif -%}
+					{%- if w7 <= max_srcset -%}, {{ img | image_url: width: w7, format: 'webp' }}{{ quality_param }} {{ w7 }}w{%- endif -%}
+					{%- if w8 <= max_srcset -%}, {{ img | image_url: width: w8, format: 'webp' }}{{ quality_param }} {{ w8 }}w{%- endif -%}
+					{%- if w9 <= max_srcset -%}, {{ img | image_url: width: w9, format: 'webp' }}{{ quality_param }} {{ w9 }}w{%- endif -%}
 				{%- endif -%}"
 			sizes="{{ sizes }}"
 		>
@@ -123,23 +133,25 @@ DEPENDENCIES:
 			src="{%- if crop != blank -%}{{ img | image_url: width: w4, height: h4, crop: crop }}{{ quality_param }}{%- else -%}{{ img | image_url: width: w4 }}{{ quality_param }}{%- endif -%}"
 			srcset="
 				{%- if crop != blank -%}
-					{{ img | image_url: width: w1, height: h1, crop: crop }}{{ quality_param }} {{ w1 }}w,
-					{{ img | image_url: width: w2, height: h2, crop: crop }}{{ quality_param }} {{ w2 }}w,
-					{{ img | image_url: width: w3, height: h3, crop: crop }}{{ quality_param }} {{ w3 }}w,
-					{{ img | image_url: width: w4, height: h4, crop: crop }}{{ quality_param }} {{ w4 }}w,
-					{{ img | image_url: width: w5, height: h5, crop: crop }}{{ quality_param }} {{ w5 }}w,
-					{{ img | image_url: width: w6, height: h6, crop: crop }}{{ quality_param }} {{ w6 }}w,
-					{{ img | image_url: width: w7, height: h7, crop: crop }}{{ quality_param }} {{ w7 }}w,
-					{{ img | image_url: width: w8, height: h8, crop: crop }}{{ quality_param }} {{ w8 }}w
+					{{ img | image_url: width: w1, height: h1, crop: crop }}{{ quality_param }} {{ w1 }}w
+					{%- if w2 <= max_srcset -%}, {{ img | image_url: width: w2, height: h2, crop: crop }}{{ quality_param }} {{ w2 }}w{%- endif -%}
+					{%- if w3 <= max_srcset -%}, {{ img | image_url: width: w3, height: h3, crop: crop }}{{ quality_param }} {{ w3 }}w{%- endif -%}
+					{%- if w4 <= max_srcset -%}, {{ img | image_url: width: w4, height: h4, crop: crop }}{{ quality_param }} {{ w4 }}w{%- endif -%}
+					{%- if w5 <= max_srcset -%}, {{ img | image_url: width: w5, height: h5, crop: crop }}{{ quality_param }} {{ w5 }}w{%- endif -%}
+					{%- if w6 <= max_srcset -%}, {{ img | image_url: width: w6, height: h6, crop: crop }}{{ quality_param }} {{ w6 }}w{%- endif -%}
+					{%- if w7 <= max_srcset -%}, {{ img | image_url: width: w7, height: h7, crop: crop }}{{ quality_param }} {{ w7 }}w{%- endif -%}
+					{%- if w8 <= max_srcset -%}, {{ img | image_url: width: w8, height: h8, crop: crop }}{{ quality_param }} {{ w8 }}w{%- endif -%}
+					{%- if w9 <= max_srcset -%}, {{ img | image_url: width: w9, height: h9, crop: crop }}{{ quality_param }} {{ w9 }}w{%- endif -%}
 				{%- else -%}
-					{{ img | image_url: width: w1 }}{{ quality_param }} {{ w1 }}w,
-					{{ img | image_url: width: w2 }}{{ quality_param }} {{ w2 }}w,
-					{{ img | image_url: width: w3 }}{{ quality_param }} {{ w3 }}w,
-					{{ img | image_url: width: w4 }}{{ quality_param }} {{ w4 }}w,
-					{{ img | image_url: width: w5 }}{{ quality_param }} {{ w5 }}w,
-					{{ img | image_url: width: w6 }}{{ quality_param }} {{ w6 }}w,
-					{{ img | image_url: width: w7 }}{{ quality_param }} {{ w7 }}w,
-					{{ img | image_url: width: w8 }}{{ quality_param }} {{ w8 }}w
+					{{ img | image_url: width: w1 }}{{ quality_param }} {{ w1 }}w
+					{%- if w2 <= max_srcset -%}, {{ img | image_url: width: w2 }}{{ quality_param }} {{ w2 }}w{%- endif -%}
+					{%- if w3 <= max_srcset -%}, {{ img | image_url: width: w3 }}{{ quality_param }} {{ w3 }}w{%- endif -%}
+					{%- if w4 <= max_srcset -%}, {{ img | image_url: width: w4 }}{{ quality_param }} {{ w4 }}w{%- endif -%}
+					{%- if w5 <= max_srcset -%}, {{ img | image_url: width: w5 }}{{ quality_param }} {{ w5 }}w{%- endif -%}
+					{%- if w6 <= max_srcset -%}, {{ img | image_url: width: w6 }}{{ quality_param }} {{ w6 }}w{%- endif -%}
+					{%- if w7 <= max_srcset -%}, {{ img | image_url: width: w7 }}{{ quality_param }} {{ w7 }}w{%- endif -%}
+					{%- if w8 <= max_srcset -%}, {{ img | image_url: width: w8 }}{{ quality_param }} {{ w8 }}w{%- endif -%}
+					{%- if w9 <= max_srcset -%}, {{ img | image_url: width: w9 }}{{ quality_param }} {{ w9 }}w{%- endif -%}
 				{%- endif -%}"
 			sizes="{{ sizes }}"
 			alt="{{ alt | escape }}"

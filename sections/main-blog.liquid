@@ -1,360 +1,318 @@
 {%- comment -%}
-============================================================================
-MAIN-BLOG
-============================================================================
-Main section for single blog pages with pagination.
-Shows articles from the current blog in a grid layout.
+  ============================================================================
+  MAIN-BLOG
+  ============================================================================
+  Blog overview page — articles grid with pagination.
+  Displays on /blogs/[handle].
 
-DEPENDENCIES:
-- html-theme-card snippet
-- html-theme-pagination snippet
-============================================================================
+  Dependencies: html-theme-card, html-theme-pagination
+  ============================================================================
 {%- endcomment -%}
+
+{{ 'main-blog.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }}.main-blog {
+    {%- if section.settings.background_color != blank %}
+    background-color: {{ section.settings.background_color }};
+    {%- endif %}
+    {%- if section.settings.text_color != blank %}
+    color: {{ section.settings.text_color }};
+    {%- endif %}
+    padding-block: {{ section.settings.padding_block }}em;
+  }
+
+  #shopify-section-{{ section.id }} .main-blog__header {
+    text-align: {{ section.settings.text_align }};
+  }
+
+  {%- if section.settings.card_background_color != blank or section.settings.card_text_color != blank %}
+  #shopify-section-{{ section.id }} .card {
+    {%- if section.settings.card_background_color != blank %}
+    --card-bg: {{ section.settings.card_background_color }};
+    {%- endif %}
+    {%- if section.settings.card_text_color != blank %}
+    --card-text: {{ section.settings.card_text_color }};
+    {%- endif %}
+  }
+  {%- endif %}
+{% endstyle %}
 
 {%- paginate blog.articles by section.settings.articles_per_page -%}
 
 {%- liquid
-	assign heading_text = section.settings.heading
-	if heading_text == blank
-		assign heading_text = blog.title
-	endif
+  if section.settings.heading != blank
+    assign heading_text = section.settings.heading
+  else
+    assign heading_text = blog.title
+  endif
 -%}
 
 <div class="main-blog__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
-	<header class="main-blog__header">
-		<h1 class="main-blog__title">{{ heading_text | escape }}</h1>
-		{%- if section.settings.subheading != blank -%}
-			<p class="main-blog__subheading">{{ section.settings.subheading }}</p>
-		{%- endif -%}
-	</header>
+  <header class="main-blog__header">
+    <h1 class="main-blog__title">{{ heading_text | escape }}</h1>
+    {%- if section.settings.subheading != blank -%}
+      <p class="main-blog__subheading">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+  </header>
 
-	{%- if blog.articles.size > 0 -%}
-		<ul class="main-blog__grid" style="--grid-columns: {{ section.settings.columns_desktop | default: 4 }}; --grid-columns-tablet: {{ section.settings.columns_tablet | default: 3 }}; --grid-columns-mobile: {{ section.settings.columns_mobile | default: 1 }}; --grid-gap: {{ section.settings.grid_gap | default: 0.5 }}em;">
-			{%- for article in blog.articles -%}
-				{%- liquid
-					if forloop.index <= 4
-						assign card_loading = 'eager'
-						assign card_priority = 'high'
-					else
-						assign card_loading = 'lazy'
-						assign card_priority = 'auto'
-					endif
-				-%}
-				<li class="main-blog__item">
-					{%- render 'html-theme-card',
-						article: article,
-						blog_title: blog.title,
-						layout: section.settings.card_layout,
-						image_ratio: section.settings.image_ratio,
-						columns_desktop: section.settings.columns_desktop,
-						columns_tablet: section.settings.columns_tablet,
-						columns_mobile: section.settings.columns_mobile,
-						columns_width: section.settings.width,
-						columns_gap: section.settings.grid_gap,
-						image_loading: card_loading,
-						image_priority: card_priority,
-						show_image: section.settings.show_image,
-						show_blog: section.settings.show_blog_title,
-						show_date: section.settings.show_date,
-						show_excerpt: section.settings.show_excerpt,
-						show_cta: section.settings.show_cta
-					-%}
-				</li>
-			{%- endfor -%}
-		</ul>
+  {%- if blog.articles.size > 0 -%}
+    <ul
+      class="main-blog__grid"
+      style="--grid-columns: {{ section.settings.columns_desktop }}; --grid-columns-tablet: {{ section.settings.columns_tablet }}; --grid-columns-mobile: {{ section.settings.columns_mobile }}; --grid-gap: {{ section.settings.grid_gap }}em;"
+    >
+      {%- for article in blog.articles -%}
+        {%- liquid
+          if forloop.index <= 4
+            assign card_loading = 'eager'
+            assign card_priority = 'high'
+          else
+            assign card_loading = 'lazy'
+            assign card_priority = 'auto'
+          endif
+        -%}
+        <li class="main-blog__item">
+          {%- render 'html-theme-card',
+            article: article,
+            blog_title: blog.title,
+            layout: section.settings.card_layout,
+            image_ratio: section.settings.image_ratio,
+            columns_desktop: section.settings.columns_desktop,
+            columns_tablet: section.settings.columns_tablet,
+            columns_mobile: section.settings.columns_mobile,
+            columns_width: section.settings.width,
+            columns_gap: section.settings.grid_gap,
+            image_loading: card_loading,
+            image_priority: card_priority,
+            show_image: section.settings.show_image,
+            show_blog: section.settings.show_blog_title,
+            show_date: section.settings.show_date,
+            show_excerpt: section.settings.show_excerpt,
+            show_cta: section.settings.show_cta
+          -%}
+        </li>
+      {%- endfor -%}
+    </ul>
 
-		{%- if paginate.pages > 1 -%}
-			<div class="main-blog__pagination">
-				{%- render 'html-theme-pagination', paginate: paginate -%}
-			</div>
-		{%- endif -%}
-	{%- else -%}
-		<p class="main-blog__empty">{{ 'blog.no_articles' | t | default: 'No articles found.' }}</p>
-	{%- endif -%}
+    {%- if paginate.pages > 1 -%}
+      <div class="main-blog__pagination">
+        {%- render 'html-theme-pagination', paginate: paginate -%}
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <p class="main-blog__empty">{{ 'blog.no_articles' | t }}</p>
+  {%- endif -%}
 </div>
 
 {%- endpaginate -%}
 
-<style>
-	#shopify-section-{{ section.id }}.main-blog {
-		background-color: {{ section.settings.background_color | default: '#f8f8f8' }};
-		color: {{ section.settings.text_color | default: '#111111' }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	/* Card colors */
-	#shopify-section-{{ section.id }} .card {
-		--card-bg: {{ section.settings.card_background_color | default: 'transparent' }};
-		--card-text: {{ section.settings.card_text_color | default: 'inherit' }};
-	}
-
-	#shopify-section-{{ section.id }} .main-blog__header {
-		margin-bottom: 2em;
-		text-align: {{ section.settings.text_align | default: 'center' }};
-	}
-
-	.main-blog__title {
-		font-family: var(--theme-font-family-serif);
-		font-size: clamp(1.6em, 4vw, 2em);
-		font-weight: 400;
-		margin: 0;
-	}
-
-	.main-blog__subheading {
-		margin: 0.5em 0 0;
-		opacity: 0.8;
-	}
-
-	.main-blog__grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
-		gap: var(--grid-gap, 0.5em);
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.main-blog__item {
-		display: flex;
-		min-width: 0;
-	}
-
-	.main-blog__pagination {
-		margin-top: 3em;
-	}
-
-	.main-blog__empty {
-		text-align: center;
-		opacity: 0.6;
-		padding: 3em 1em;
-	}
-
-	@media (max-width: 60em) {
-		.main-blog__grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		.main-blog__grid {
-			grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
-		}
-	}
-</style>
-
 {% schema %}
 {
-	"name": "Blog",
-	"tag": "section",
-	"class": "main-blog",
-	"settings": [
-		{
-			"type": "header",
-			"content": "Content"
-		},
-		{
-			"type": "text",
-			"id": "heading",
-			"label": "Heading",
-			"info": "Leave empty to use blog title"
-		},
-		{
-			"type": "text",
-			"id": "subheading",
-			"label": "Subheading"
-		},
-		{
-			"type": "select",
-			"id": "text_align",
-			"label": "Header alignment",
-			"options": [
-				{ "value": "left", "label": "Left" },
-				{ "value": "center", "label": "Center" }
-			],
-			"default": "center"
-		},
-		{
-			"type": "header",
-			"content": "Article card"
-		},
-		{
-			"type": "select",
-			"id": "card_layout",
-			"label": "Card layout",
-			"options": [
-				{ "value": "vertical", "label": "Vertical" },
-				{ "value": "horizontal", "label": "Horizontal" }
-			],
-			"default": "vertical"
-		},
-		{
-			"type": "checkbox",
-			"id": "show_image",
-			"label": "Show image",
-			"default": true
-		},
-		{
-			"type": "select",
-			"id": "image_ratio",
-			"label": "Image ratio",
-			"options": [
-				{ "value": "portrait", "label": "Portrait (2:3)" },
-				{ "value": "square", "label": "Square (1:1)" },
-				{ "value": "landscape", "label": "Landscape (3:2)" },
-				{ "value": "adapt", "label": "Adapt (original)" }
-			],
-			"default": "landscape",
-			"info": "Use a fixed ratio for consistent heights in grids"
-		},
-		{
-			"type": "checkbox",
-			"id": "show_blog_title",
-			"label": "Show blog title",
-			"default": false
-		},
-		{
-			"type": "checkbox",
-			"id": "show_date",
-			"label": "Show article date",
-			"default": true
-		},
-		{
-			"type": "checkbox",
-			"id": "show_excerpt",
-			"label": "Show article excerpt",
-			"default": true
-		},
-		{
-			"type": "checkbox",
-			"id": "show_cta",
-			"label": "Show read more link",
-			"default": true
-		},
-		{
-			"type": "header",
-			"content": "Filters"
-		},
-		{
-			"type": "range",
-			"id": "articles_per_page",
-			"label": "Articles per page",
-			"min": 4,
-			"max": 24,
-			"step": 2,
-			"default": 12
-		},
-		{
-			"type": "header",
-			"content": "Layout"
-		},
-		{
-			"type": "select",
-			"id": "width",
-			"label": "Width",
-			"options": [
-				{ "value": "is-align-narrow", "label": "Narrow" },
-				{ "value": "is-align-small", "label": "Small" },
-				{ "value": "is-align", "label": "Regular" },
-				{ "value": "is-align-wide", "label": "Wide" },
-				{ "value": "is-align-full", "label": "Full" }
-			],
-			"default": "is-align-wide"
-		},
-		{
-			"type": "range",
-			"id": "padding_block",
-			"label": "Vertical padding",
-			"min": 0,
-			"max": 6,
-			"step": 0.5,
-			"default": 3,
-			"unit": "em"
-		},
-		{
-			"type": "range",
-			"id": "columns_desktop",
-			"label": "Columns (desktop)",
-			"min": 1,
-			"max": 6,
-			"step": 1,
-			"default": 4
-		},
-		{
-			"type": "range",
-			"id": "columns_tablet",
-			"label": "Columns (tablet)",
-			"min": 1,
-			"max": 4,
-			"step": 1,
-			"default": 3
-		},
-		{
-			"type": "range",
-			"id": "columns_mobile",
-			"label": "Columns (mobile)",
-			"min": 1,
-			"max": 3,
-			"step": 1,
-			"default": 2
-		},
-		{
-			"type": "range",
-			"id": "grid_gap",
-			"label": "Grid gap",
-			"min": 0,
-			"max": 2,
-			"step": 0.1,
-			"default": 0.5,
-			"unit": "em"
-		},
-		{
-			"type": "header",
-			"content": "Colors"
-		},
-		{
-			"type": "color",
-			"id": "background_color",
-			"label": "Background"
-		},
-		{
-			"type": "color",
-			"id": "text_color",
-			"label": "Text"
-		},
-		{
-			"type": "color",
-			"id": "card_background_color",
-			"label": "Card background"
-		},
-		{
-			"type": "color",
-			"id": "card_text_color",
-			"label": "Card text"
-		},
-		{
-			"type": "header",
-			"content": "Advanced"
-		},
-		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class"
-		},
-		{
-			"type": "header",
-			"content": "Howto"
-		},
-		{
-			"type": "paragraph",
-			"content": "Main section for blog pages. Displays articles from the current blog with pagination."
-		}
-	]
+  "name": "Blog",
+  "tag": "section",
+  "class": "main-blog",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave empty to use blog title."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Header alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Article card"
+    },
+    {
+      "type": "select",
+      "id": "card_layout",
+      "label": "Card layout",
+      "options": [
+        { "value": "vertical", "label": "Vertical" },
+        { "value": "horizontal", "label": "Horizontal" }
+      ],
+      "default": "vertical"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show image",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        { "value": "portrait", "label": "Portrait (2:3)" },
+        { "value": "square", "label": "Square (1:1)" },
+        { "value": "landscape", "label": "Landscape (3:2)" },
+        { "value": "adapt", "label": "Adapt (original)" }
+      ],
+      "default": "landscape"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_blog_title",
+      "label": "Show blog title",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show article date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show article excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show read more link",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Filters"
+    },
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "label": "Articles per page",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID",
+      "info": "ID for scroll links (without #)."
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "is-align-narrow", "label": "Narrow" },
+        { "value": "is-align-small", "label": "Small" },
+        { "value": "is-align", "label": "Regular" },
+        { "value": "is-align-wide", "label": "Wide" },
+        { "value": "is-align-full", "label": "Full" }
+      ],
+      "default": "is-align-wide"
+    },
+    {
+      "type": "range",
+      "id": "padding_block",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 6,
+      "step": 0.5,
+      "default": 3,
+      "unit": "em"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns (tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Columns (mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid gap",
+      "min": 0,
+      "max": 2,
+      "step": 0.1,
+      "default": 0.5,
+      "unit": "em"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text"
+    },
+    {
+      "type": "header",
+      "content": "Howto"
+    },
+    {
+      "type": "paragraph",
+      "content": "Blog overview page. Displays articles from the current blog with pagination."
+    }
+  ]
 }
 {% endschema %}

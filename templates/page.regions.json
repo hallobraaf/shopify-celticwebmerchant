@@ -1,0 +1,218 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "regions",
+  "sections": {
+    "main": {
+      "type": "main-page-regions",
+      "blocks": {
+        "group_Gmr6Jg": {
+          "type": "group",
+          "settings": {
+            "title": "Europa"
+          }
+        },
+        "region_NL": {
+          "type": "region",
+          "settings": {
+            "title": "Nederland"
+          }
+        },
+        "language_NL_nl": {
+          "type": "language",
+          "settings": {
+            "label": "Nederlands",
+            "language_code": "nl",
+            "country_code": "nl",
+            "market_handle": ""
+          }
+        },
+        "language_NL_en": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "country_code": "nl",
+            "market_handle": ""
+          }
+        },
+        "region_BhpD38": {
+          "type": "region",
+          "settings": {
+            "title": "Belgie"
+          }
+        },
+        "language_DXRdE7": {
+          "type": "language",
+          "settings": {
+            "label": "Nederlands",
+            "language_code": "nl",
+            "country_code": "be",
+            "market_handle": ""
+          }
+        },
+        "language_EpHqB7": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "country_code": "be",
+            "market_handle": ""
+          }
+        },
+        "language_bxip7A": {
+          "type": "language",
+          "settings": {
+            "label": "Frans",
+            "language_code": "fr",
+            "country_code": "be",
+            "market_handle": ""
+          }
+        },
+        "language_996VAM": {
+          "type": "language",
+          "settings": {
+            "label": "Duits",
+            "language_code": "de",
+            "country_code": "be",
+            "market_handle": ""
+          }
+        },
+        "region_8EKQaA": {
+          "type": "region",
+          "settings": {
+            "title": "Duitsland"
+          }
+        },
+        "language_mehdLn": {
+          "type": "language",
+          "settings": {
+            "label": "Duits",
+            "language_code": "de",
+            "country_code": "de",
+            "market_handle": ""
+          }
+        },
+        "language_kq8wWx": {
+          "type": "language",
+          "settings": {
+            "label": "Nederlands",
+            "language_code": "nl",
+            "country_code": "de",
+            "market_handle": ""
+          }
+        },
+        "region_GB": {
+          "type": "region",
+          "settings": {
+            "title": "United Kingdom"
+          }
+        },
+        "language_GB_en": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "country_code": "gb",
+            "market_handle": ""
+          }
+        },
+        "region_dqwCqQ": {
+          "type": "region",
+          "settings": {
+            "title": "Europees"
+          }
+        },
+        "language_9HYqC9": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "country_code": "",
+            "market_handle": "eu"
+          }
+        },
+        "group_JJhWw7": {
+          "type": "group",
+          "settings": {
+            "title": "America"
+          }
+        },
+        "region_e7AGmi": {
+          "type": "region",
+          "settings": {
+            "title": "USA"
+          }
+        },
+        "language_ffV9UW": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "country_code": "us",
+            "market_handle": ""
+          }
+        },
+        "region_TtXWyt": {
+          "type": "region",
+          "settings": {
+            "title": "Canada"
+          }
+        },
+        "language_qLzAaK": {
+          "type": "language",
+          "settings": {
+            "label": "Frans",
+            "language_code": "fr",
+            "country_code": "ca",
+            "market_handle": ""
+          }
+        }
+      },
+      "block_order": [
+        "group_Gmr6Jg",
+        "region_NL",
+        "language_NL_nl",
+        "language_NL_en",
+        "region_BhpD38",
+        "language_DXRdE7",
+        "language_EpHqB7",
+        "language_bxip7A",
+        "language_996VAM",
+        "region_8EKQaA",
+        "language_mehdLn",
+        "language_kq8wWx",
+        "region_GB",
+        "language_GB_en",
+        "region_dqwCqQ",
+        "language_9HYqC9",
+        "group_JJhWw7",
+        "region_e7AGmi",
+        "language_ffV9UW",
+        "region_TtXWyt",
+        "language_qLzAaK"
+      ],
+      "settings": {
+        "heading": "Kies jouw taal & regio",
+        "subheading": "",
+        "recommendation_image": "shopify://shop_images/samengestelde_outfit_door_celticwebmerchant.jpg",
+        "show_recommendation": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "padding_block": 4
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

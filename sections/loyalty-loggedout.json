@@ -39,9 +39,11 @@
         "text": "<p>Log in om je spaarpunten te bekijken of maak snel een account aan!</p>",
         "button_text": "Inloggen",
         "width": "is-align",
-        "padding_block": 4,
+        "padding_block": 3,
         "background_color": "#0f1f38",
         "text_color": "#ffffff",
+        "button_background_color": "",
+        "button_text_color": "",
         "anchor": "",
         "custom_class": ""
       }

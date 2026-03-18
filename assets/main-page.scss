@@ -1,0 +1,65 @@
+/* ==========================================================================
+   MAIN-PAGE
+   Structural styles — no dynamic per-section values; no {% style %} block needed
+   ========================================================================== */
+
+.main-page {
+  padding-bottom: 3em;
+
+  // Hero image
+  &__hero {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    padding: 0;
+    overflow: hidden;
+
+    .theme-media__picture {
+      width: 100%;
+      height: 100%;
+    }
+
+    img,
+    .theme-media__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--adapt {
+      aspect-ratio: auto;
+
+      .theme-media__picture {
+        height: auto;
+      }
+
+      img,
+      .theme-media__img {
+        height: auto;
+      }
+    }
+
+    &--small  { height: 30vh; }
+    &--medium { height: 50vh; }
+    &--large  { height: 70vh; }
+  }
+
+  // Header
+  &__header {
+    padding-top: 2em;
+    padding-bottom: 1em;
+  }
+
+  &__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(2em, 5vw, 3em);
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  // Content
+  &__content {
+    padding-top: 1em;
+    padding-bottom: 2em;
+  }
+}

@@ -1,0 +1,133 @@
+/* ==========================================================================
+   BLOCK-MODAL-REGION
+   Structural styles — static, no dynamic values
+   ========================================================================== */
+
+/* Trigger */
+.block-modal-region__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0.75em;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1em;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+
+.block-modal-region__trigger:hover {
+  opacity: 0.7;
+}
+
+.block-modal-region__trigger-icon {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* Modal content */
+.block-modal-region__content {
+  max-width: 520px;
+}
+
+.block-modal-region__form {
+  display: none;
+}
+
+/* Groups */
+.block-modal-region__markets {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.block-modal-region__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.block-modal-region__group-name {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.4;
+}
+
+/* Regions */
+.block-modal-region__market {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0;
+}
+
+.block-modal-region__market-name {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.block-modal-region__market-name::after {
+  content: '|';
+  margin-inline: 0.6em;
+  opacity: 0.3;
+}
+
+/* Languages */
+.block-modal-region__languages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+
+.block-modal-region__lang-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 150ms ease;
+}
+
+.block-modal-region__languages > * + *::before {
+  content: '|';
+  margin-inline: 0.5em;
+  opacity: 0.3;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button.block-modal-region__lang-btn:hover {
+  opacity: 0.6;
+}
+
+.block-modal-region__lang-btn.is-active {
+  font-weight: 600;
+  text-decoration: none;
+  cursor: default;
+  opacity: 1;
+}
+
+/* Info text */
+.block-modal-region__info {
+  margin: 1.5rem -1.5rem -1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.75;
+}

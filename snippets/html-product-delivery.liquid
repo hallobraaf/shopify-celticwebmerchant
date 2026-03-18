@@ -8,6 +8,9 @@
   - product: {Object} Product object (required)
   - variant: {Object} Product variant (optional, overrides product)
   - show: {Boolean} Whether to render (default: true)
+  - display: {String} Display mode (default: 'default')
+    - 'default': Shows delivery based on variant stock status
+    - 'fastest': Always shows in-stock delivery time (for product cards)
 
   METAFIELDS:
   - product.metafields.custom.product-delivery-references: List of delivery-reference
@@ -33,73 +36,21 @@
 
   USAGE:
   {% render 'html-product-delivery', product: product %}
-  {% render 'html-product-delivery', product: product, show: true %}
+  {% render 'html-product-delivery', product: product, variant: variant %}
+  {% render 'html-product-delivery', product: product, display: 'fastest' %}
   ============================================================================
 {%- endcomment -%}
 
 {%- liquid
-  assign show = show | default: true
+  if show == nil
+    assign show = true
+  endif
+  assign display = display | default: 'default'
   assign delivery_refs = product.metafields.custom['product-delivery-references'].value
 -%}
 
 {%- if show and delivery_refs != blank -%}
   {%- liquid
-    # Get threshold from theme settings
-    assign low_stock_threshold = settings.stock_low_threshold | default: 3
-
-    # Determine which variant to use
-    if variant
-      assign v = variant
-    else
-      assign v = product.selected_or_first_available_variant | default: product.variants.first
-    endif
-
-    # Exit if no variant
-    unless v
-      break
-    endunless
-
-    # Determine inventory status
-    assign has_inventory = false
-    if v.inventory_management != blank
-      assign has_inventory = true
-    endif
-    
-    assign allows_backorder = false
-    if v.inventory_policy == 'continue'
-      assign allows_backorder = true
-    endif
-    
-    assign quantity = v.inventory_quantity | default: 0
-    
-    assign is_low_stock = false
-    if quantity <= low_stock_threshold and quantity > 0
-      assign is_low_stock = true
-    endif
-
-    # Determine stock_type (same logic as html-product-stock)
-    if has_inventory == false
-      assign stock_type = 'no-inventory'
-    elsif quantity <= 0
-      if allows_backorder
-        assign stock_type = 'out-of-stock-backorder'
-      else
-        assign stock_type = 'out-of-stock'
-      endif
-    elsif is_low_stock
-      if allows_backorder
-        assign stock_type = 'low-in-stock-backorder'
-      else
-        assign stock_type = 'low-in-stock'
-      endif
-    else
-      if allows_backorder
-        assign stock_type = 'in-stock-backorder'
-      else
-        assign stock_type = 'in-stock'
-      endif
-    endif
-
     # Parse delivery references into lookup
     assign in_stock_message = ''
     assign out_of_stock_message = ''
@@ -116,21 +67,91 @@
       endcase
     endfor
 
-    # Select delivery message based on stock_type
-    assign delivery_message = ''
-    assign delivery_class = ''
-    
-    case stock_type
-      when 'in-stock', 'in-stock-backorder', 'low-in-stock', 'low-in-stock-backorder', 'no-inventory'
+    # Determine delivery message based on display mode
+    if display == 'fastest' and product.variants.size > 1
+      # FASTEST MODE: Show in-stock message if product/variant is purchasable
+      # Check selected_or_first_available_variant for filter compatibility
+      assign v = product.selected_or_first_available_variant
+      if product.available and v.available
         assign delivery_message = in_stock_message
         assign delivery_class = 'product-delivery--normal'
-      when 'out-of-stock-backorder'
-        assign delivery_message = out_of_stock_message | default: in_stock_message
-        assign delivery_class = 'product-delivery--backorder'
-      when 'out-of-stock'
-        # No delivery message for out-of-stock (not backorderable)
-        assign delivery_message = ''
-    endcase
+        assign stock_type = 'fastest'
+      endif
+    else
+      # DEFAULT MODE: Determine based on variant stock status
+      
+      # Get threshold from theme settings
+      assign low_stock_threshold = settings.stock_low_threshold | default: 3
+
+      # Determine which variant to use
+      if variant
+        assign v = variant
+      else
+        assign v = product.selected_or_first_available_variant | default: product.variants.first
+      endif
+
+      # Exit if no variant
+      unless v
+        break
+      endunless
+
+      # Determine inventory status
+      assign has_inventory = false
+      if v.inventory_management != blank
+        assign has_inventory = true
+      endif
+      
+      assign allows_backorder = false
+      if v.inventory_policy == 'continue'
+        assign allows_backorder = true
+      endif
+      
+      assign quantity = v.inventory_quantity | default: 0
+      
+      assign is_low_stock = false
+      if quantity <= low_stock_threshold and quantity > 0
+        assign is_low_stock = true
+      endif
+
+      # Determine stock_type (same logic as html-product-stock)
+      if has_inventory == false
+        assign stock_type = 'no-inventory'
+      elsif quantity <= 0
+        if allows_backorder
+          assign stock_type = 'out-of-stock-backorder'
+        else
+          assign stock_type = 'out-of-stock'
+        endif
+      elsif is_low_stock
+        if allows_backorder
+          assign stock_type = 'low-in-stock-backorder'
+        else
+          assign stock_type = 'low-in-stock'
+        endif
+      else
+        if allows_backorder
+          assign stock_type = 'in-stock-backorder'
+        else
+          assign stock_type = 'in-stock'
+        endif
+      endif
+
+      # Select delivery message based on stock_type
+      assign delivery_message = ''
+      assign delivery_class = ''
+      
+      case stock_type
+        when 'in-stock', 'in-stock-backorder', 'low-in-stock', 'low-in-stock-backorder', 'no-inventory'
+          assign delivery_message = in_stock_message
+          assign delivery_class = 'product-delivery--normal'
+        when 'out-of-stock-backorder'
+          assign delivery_message = out_of_stock_message | default: in_stock_message
+          assign delivery_class = 'product-delivery--backorder'
+        when 'out-of-stock'
+          # No delivery message for out-of-stock (not backorderable)
+          assign delivery_message = ''
+      endcase
+    endif
   -%}
 
   {%- if delivery_message != blank -%}

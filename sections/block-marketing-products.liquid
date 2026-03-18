@@ -1,3 +1,38 @@
+{%- comment -%}
+============================================================================
+BLOCK-MARKETING-PRODUCTS
+============================================================================
+Product grid from a collection with optional expandable rows.
+
+FEATURES:
+- Renders products from any collection
+- Heading falls back to collection title, then locale default
+- Configurable columns per breakpoint
+- Optional visible rows with show more/less toggle
+- Passes full card config to html-theme-card snippet
+- Filters: max products, only available
+
+DEPENDENCIES:
+- html-theme-card snippet
+- html-theme-icons snippet (for toggle chevron)
+============================================================================
+{%- endcomment -%}
+
+{{ 'block-marketing-products.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'block-marketing-products.min.js' | asset_url }}" defer></script>
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-products {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
+
 {%- liquid
 	assign source_collection = section.settings.collection | default: collections['all']
 	assign max_products = section.settings.max_products | default: 12
@@ -67,7 +102,7 @@
 							show_stock: true,
 							show_delivery: true,
 							show_rating: section.settings.show_rating,
-							show_badges: true,
+							show_badges: section.settings.show_badges,
 							quick_add: section.settings.quick_add
 						-%}
 					</li>
@@ -102,159 +137,6 @@
 	</div>
 {%- endif -%}
 
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-products {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	.block-marketing-products__header {
-		text-align: center;
-	}
-
-	.block-marketing-products__heading {
-		font-family: var(--theme-font-family-serif);
-		font-size: 2em;
-		font-weight: 400;
-		margin: 0;
-	}
-
-	.block-marketing-products__heading a {
-		color: inherit;
-		text-decoration: none;
-	}
-
-	.block-marketing-products__heading a:hover {
-		opacity: 0.7;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-products__grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
-		gap: var(--grid-gap, 0.2em);
-		list-style: none;
-		margin: 0;
-		margin-block-start: 2em;
-		padding: 0;
-	}
-
-	.block-marketing-products__item {
-		margin: 0;
-		min-width: 0;
-	}
-
-	.block-marketing-products__actions {
-		margin-block-start: 2em;
-		text-align: center;
-	}
-
-	.block-marketing-products__toggle {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5em;
-		background-color: transparent;
-		border: none;
-		border-bottom: 2px solid currentColor;
-		padding: 0.5em 1em;
-		cursor: pointer;
-		font-family: inherit;
-		font-size: inherit;
-		color: inherit;
-	}
-
-	.block-marketing-products__toggle:hover {
-		opacity: 0.8;
-	}
-
-	.block-marketing-products__toggle svg {
-		transition: transform 200ms ease;
-	}
-
-	.block-marketing-products__toggle[aria-expanded="true"] svg {
-		transform: rotate(180deg);
-	}
-
-	@media (max-width: 60em) {
-		#shopify-section-{{ section.id }} .block-marketing-products__grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		#shopify-section-{{ section.id }} .block-marketing-products__grid {
-			grid-template-columns: repeat(var(--grid-columns-mobile, 2), 1fr);
-		}
-	}
-{% endstyle %}
-
-<script>
-	(function() {
-		const grids = document.querySelectorAll('[data-expandable-grid]');
-		
-		grids.forEach(function(grid) {
-			const trigger = grid.parentElement.querySelector('[data-expandable-trigger]');
-			const visibleRows = parseInt(grid.dataset.visibleRows, 10) || 0;
-			const items = grid.querySelectorAll('.block-marketing-products__item');
-			
-			if (!trigger || visibleRows === 0) {
-				items.forEach(function(item) { item.hidden = false; });
-				if (trigger) trigger.parentElement.hidden = true;
-				return;
-			}
-			
-			const collapsedLabel = trigger.querySelector('[data-label-collapsed]');
-			const expandedLabel = trigger.querySelector('[data-label-expanded]');
-			
-			let isExpanded = false;
-			
-			function getColumnCount() {
-				const gridStyle = getComputedStyle(grid);
-				const columns = gridStyle.gridTemplateColumns.split(' ').filter(Boolean).length;
-				return columns || 4;
-			}
-			
-			function updateVisibility() {
-				const columns = getColumnCount();
-				const visibleCount = visibleRows * columns;
-				
-				if (items.length <= visibleCount) {
-					trigger.parentElement.hidden = true;
-					items.forEach(function(item) { item.hidden = false; });
-					return;
-				}
-				
-				trigger.parentElement.hidden = false;
-				
-				items.forEach(function(item, index) {
-					item.hidden = index >= visibleCount && !isExpanded;
-				});
-			}
-			
-			function setState(expanded) {
-				isExpanded = expanded;
-				trigger.setAttribute('aria-expanded', expanded);
-				grid.classList.toggle('is-expanded', expanded);
-				if (collapsedLabel) collapsedLabel.hidden = expanded;
-				if (expandedLabel) expandedLabel.hidden = !expanded;
-				updateVisibility();
-			}
-			
-			setState(false);
-			
-			let resizeTimeout;
-			window.addEventListener('resize', function() {
-				clearTimeout(resizeTimeout);
-				resizeTimeout = setTimeout(updateVisibility, 100);
-			});
-			
-			trigger.addEventListener('click', function() {
-				setState(!isExpanded);
-			});
-		});
-	})();
-</script>
-
 {% schema %}
 {
 	"name": "Marketing products",
@@ -281,7 +163,7 @@
 		},
 		{
 			"type": "header",
-			"content": "Product card"
+			"content": "Display"
 		},
 		{
 			"type": "select",
@@ -320,6 +202,12 @@
 		},
 		{
 			"type": "checkbox",
+			"id": "show_badges",
+			"label": "Show badges",
+			"default": true
+		},
+		{
+			"type": "checkbox",
 			"id": "show_rating",
 			"label": "Show rating",
 			"default": true
@@ -329,10 +217,6 @@
 			"id": "quick_add",
 			"label": "Enable quick add",
 			"default": false
-		},
-		{
-			"type": "header",
-			"content": "Filters"
 		},
 		{
 			"type": "range",
@@ -348,6 +232,28 @@
 			"id": "only_available",
 			"label": "Only show available products",
 			"default": true
+		},
+		{
+			"type": "range",
+			"id": "visible_rows",
+			"label": "Visible rows",
+			"info": "Set to 0 to show all products",
+			"min": 0,
+			"max": 4,
+			"step": 1,
+			"default": 1
+		},
+		{
+			"type": "text",
+			"id": "show_more_text",
+			"label": "Show more text",
+			"info": "Leave empty to use locale default"
+		},
+		{
+			"type": "text",
+			"id": "show_less_text",
+			"label": "Show less text",
+			"info": "Leave empty to use locale default"
 		},
 		{
 			"type": "header",
@@ -405,28 +311,6 @@
 		},
 		{
 			"type": "range",
-			"id": "visible_rows",
-			"label": "Visible rows",
-			"info": "Set to 0 to show all products",
-			"min": 0,
-			"max": 4,
-			"step": 1,
-			"default": 1
-		},
-		{
-			"type": "text",
-			"id": "show_more_text",
-			"label": "Show more text",
-			"info": "Leave empty to use locale default"
-		},
-		{
-			"type": "text",
-			"id": "show_less_text",
-			"label": "Show less text",
-			"info": "Leave empty to use locale default"
-		},
-		{
-			"type": "range",
 			"id": "padding_block",
 			"label": "Vertical padding",
 			"min": 0,
@@ -434,6 +318,18 @@
 			"step": 0.5,
 			"default": 3,
 			"unit": "em"
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "header",
@@ -448,22 +344,6 @@
 			"type": "color",
 			"id": "text_color",
 			"label": "Text"
-		},
-		{
-			"type": "header",
-			"content": "Advanced"
-		},
-		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "header",

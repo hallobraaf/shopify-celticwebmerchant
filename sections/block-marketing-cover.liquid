@@ -1,3 +1,5 @@
+{{ 'block-marketing-cover.min.css' | asset_url | stylesheet_tag }}
+
 {%- comment -%}
 ============================================================================
 BLOCK-MARKETING-COVER
@@ -112,189 +114,7 @@ DEPENDENCIES:
 	</div>
 </div>
 
-{% style %}
-	#shopify-section-{{ section.id }} .marketing-cover {
-		position: relative;
-		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
 
-	/* Height variations */
-	#shopify-section-{{ section.id }} .marketing-cover--height-small { min-height: 300px; }
-	#shopify-section-{{ section.id }} .marketing-cover--height-medium { min-height: 500px; }
-	#shopify-section-{{ section.id }} .marketing-cover--height-large { min-height: 700px; }
-	#shopify-section-{{ section.id }} .marketing-cover--height-full { min-height: 100vh; }
-
-	/* Media container */
-	#shopify-section-{{ section.id }} .marketing-cover__media {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		margin: 0;
-		background-color: #111;
-	}
-
-	/* Picture element (overlay image) */
-	#shopify-section-{{ section.id }} .marketing-cover__media > .theme-media__picture {
-		position: absolute;
-		inset: 0;
-		z-index: 1;
-		transition: opacity 0.6s ease;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover__media > .theme-media__picture .theme-media__img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	/* Picture fades out when video is playing */
-	#shopify-section-{{ section.id }} .marketing-cover.is-video-playing .theme-media__picture {
-		opacity: 0;
-		pointer-events: none;
-	}
-
-	/* Placeholder */
-	#shopify-section-{{ section.id }} .marketing-cover__placeholder {
-		position: absolute;
-		inset: 0;
-		background-color: #f0f0f0;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover__placeholder-svg {
-		width: 100%;
-		height: 100%;
-		opacity: 0.2;
-	}
-
-	/* Overlay */
-	#shopify-section-{{ section.id }} .marketing-cover__overlay {
-		position: absolute;
-		inset: 0;
-		background-color: #000;
-		z-index: 1;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover--overlay-none .marketing-cover__overlay { opacity: 0; }
-	#shopify-section-{{ section.id }} .marketing-cover--overlay-light .marketing-cover__overlay { opacity: 0.2; }
-	#shopify-section-{{ section.id }} .marketing-cover--overlay-medium .marketing-cover__overlay { opacity: 0.4; }
-	#shopify-section-{{ section.id }} .marketing-cover--overlay-dark .marketing-cover__overlay { opacity: 0.6; }
-
-	/* Content */
-	#shopify-section-{{ section.id }} .marketing-cover__content {
-		position: relative;
-		z-index: 2;
-		width: 100%;
-		padding: 2em;
-		color: #fff;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover__inner {
-		max-width: 50em;
-		margin: 0 auto;
-	}
-
-	/* Text position */
-	#shopify-section-{{ section.id }} .marketing-cover--position-top .marketing-cover__content {
-		align-self: flex-start;
-		padding-top: 4em;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover--position-center .marketing-cover__content {
-		align-self: center;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover--position-bottom .marketing-cover__content {
-		align-self: flex-end;
-		padding-bottom: 4em;
-	}
-
-	/* Text alignment */
-	#shopify-section-{{ section.id }} .marketing-cover--align-left .marketing-cover__inner {
-		text-align: left;
-		margin-left: 0;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover--align-center .marketing-cover__inner {
-		text-align: center;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover--align-right .marketing-cover__inner {
-		text-align: right;
-		margin-right: 0;
-	}
-
-	/* Typography */
-	#shopify-section-{{ section.id }} .marketing-cover__subheading {
-		font-size: 1em;
-		margin: 0 0 1em;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		opacity: 0.9;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover__heading {
-		font-family: var(--theme-font-family-serif);
-		font-size: clamp(2em, 5vw, 3em);
-		margin: 0 0 1rem;
-		font-weight: 500;
-		line-height: 1.2;
-		color: #fff;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover__text {
-		font-size: 1.25em;
-		margin: 0 0 2em;
-		line-height: 1.6;
-		color: #fff;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover__text p {
-		margin: 0;
-	}
-
-	/* Buttons container */
-	#shopify-section-{{ section.id }} .marketing-cover__buttons {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1em;
-		margin-top: 2em;
-	}
-
-	#shopify-section-{{ section.id }} .marketing-cover--align-left .marketing-cover__buttons { justify-content: flex-start; }
-	#shopify-section-{{ section.id }} .marketing-cover--align-center .marketing-cover__buttons { justify-content: center; }
-	#shopify-section-{{ section.id }} .marketing-cover--align-right .marketing-cover__buttons { justify-content: flex-end; }
-
-	#shopify-section-{{ section.id }} .marketing-cover__buttons .marketing-cta {
-		padding: 0;
-	}
-
-	/* Responsive */
-	@media (max-width: 40em) {
-		#shopify-section-{{ section.id }} .marketing-cover--height-medium { min-height: 400px; }
-		#shopify-section-{{ section.id }} .marketing-cover--height-large { min-height: 500px; }
-
-		#shopify-section-{{ section.id }} .marketing-cover__heading {
-			font-size: 2em;
-		}
-
-		#shopify-section-{{ section.id }} .marketing-cover__content {
-			padding: 1.5em;
-		}
-
-		#shopify-section-{{ section.id }} .marketing-cover__buttons {
-			flex-direction: column;
-			align-items: stretch;
-		}
-
-		#shopify-section-{{ section.id }} .marketing-cover--align-center .marketing-cover__buttons,
-		#shopify-section-{{ section.id }} .marketing-cover--align-right .marketing-cover__buttons {
-			align-items: center;
-		}
-	}
-{% endstyle %}
 
 {% schema %}
 {
@@ -446,13 +266,9 @@ DEPENDENCIES:
 			"default": "center"
 		},
 		{
-			"type": "header",
-			"content": "Advanced"
-		},
-		{
 			"type": "text",
 			"id": "anchor",
-			"label": "Anchor",
+			"label": "Anchor ID",
 			"info": "ID for scroll links (without #)"
 		},
 		{
@@ -460,6 +276,14 @@ DEPENDENCIES:
 			"id": "custom_class",
 			"label": "Custom class",
 			"info": "Add custom CSS class for styling"
+		},
+		{
+			"type": "header",
+			"content": "Howto"
+		},
+		{
+			"type": "paragraph",
+			"content": "Add button blocks to include CTAs. Use 'Eager' loading and 'High' fetch priority for covers that appear above the fold."
 		}
 	],
 	"blocks": [

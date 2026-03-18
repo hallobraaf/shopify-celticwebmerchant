@@ -76,9 +76,16 @@ class CartUpdater {
 
     if (context === 'page') {
       const mainSection = document.querySelector('[data-cart-main-section]');
+      if (!mainSection) return sections;
       
-      // If cart is empty or becomes empty, update entire section to show/hide empty state
-      if (cartData && cartData.item_count === 0 && mainSection) {
+      // Check if subsections exist (they don't when cart is empty)
+      const itemsSection = document.querySelector('[data-cart-items-section]');
+      const subtotalSection = document.querySelector('[data-cart-subtotal-section]');
+      const paymentsSection = document.querySelector('[data-cart-payments-section]');
+      
+      // If cart becomes empty OR was empty (no subsections), replace entire section
+      const hasSubsections = itemsSection && subtotalSection && paymentsSection;
+      if (!hasSubsections || (cartData && cartData.item_count === 0)) {
         sections.push({
           id: sectionId,
           selector: '[data-cart-main-section]',
@@ -88,11 +95,7 @@ class CartUpdater {
         return sections;
       }
       
-      // Full cart page updates (when cart has items)
-      const itemsSection = document.querySelector('[data-cart-items-section]');
-      const subtotalSection = document.querySelector('[data-cart-subtotal-section]');
-      const paymentsSection = document.querySelector('[data-cart-payments-section]');
-
+      // Update subsections (when cart has items)
       if (itemsSection) {
         sections.push({
           id: sectionId,
@@ -117,14 +120,29 @@ class CartUpdater {
         });
       }
     } else if (context === 'drawer' || context === 'preview') {
-      // Drawer/preview updates - update subsections within the drawer
+      // Drawer/preview updates
       const previewContainer = document.querySelector('[data-cart-preview-section]');
-      if (!previewContainer) return sections;
+      const innerContainer = document.querySelector('[data-cart-preview-inner]');
+      if (!previewContainer || !innerContainer) return sections;
 
+      // Check if subsections exist (they don't when cart is empty)
       const itemsSection = previewContainer.querySelector('[data-cart-items-section]');
       const subtotalSection = previewContainer.querySelector('[data-cart-subtotal-section]');
       const paymentsSection = previewContainer.querySelector('[data-cart-payments-section]');
+      
+      // If cart becomes empty OR was empty (no subsections), replace inner content (keeps drawer open)
+      const hasSubsections = itemsSection && subtotalSection && paymentsSection;
+      if (!hasSubsections || (cartData && cartData.item_count === 0)) {
+        sections.push({
+          id: sectionId,
+          selector: '[data-cart-preview-inner]',
+          target: innerContainer,
+          replaceWhole: true
+        });
+        return sections;
+      }
 
+      // Update subsections within the drawer
       if (itemsSection) {
         sections.push({
           id: sectionId,

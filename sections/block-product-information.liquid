@@ -1,304 +1,319 @@
 {%- comment -%}
-  ============================================================================
-  BLOCK-PRODUCT-INFORMATION
-  ============================================================================
-  Product description and additional information from metafields.
+============================================================================
+BLOCK-PRODUCT-INFORMATION
+============================================================================
+Product description and additional information from metafields.
 
-  FEATURES:
-  - Collapsible product description with read more/less
-  - Product details from metafield
-  - Size chart in modal (always)
-  - Information references: inline details (≤128 chars) or modal (>128 chars)
-  - Responsive two-column layout
+FEATURES:
+- Collapsible product description with read more/less
+- Product details from metafield
+- Size chart in modal (always)
+- Information references: inline details (≤128 chars) or modal (>128 chars)
+- Responsive two-column layout
 
-  DEPENDENCIES:
-  - html-theme-icons snippet
-  - theme-modal.js
-  - Product metafields:
-    - custom.product_details
-    - custom.product-sizechart
-    - custom.product-information-references
-  ============================================================================
+DEPENDENCIES:
+- html-theme-icons snippet
+- theme-modal.js
+- Product metafields:
+  - custom.product_details
+  - custom.product-sizechart
+  - custom.product-information-references
+============================================================================
 {%- endcomment -%}
 
+{{ 'block-product-information.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'block-product-information.min.js' | asset_url }}" defer></script>
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-product-information {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
+
 {%- liquid
-  assign refs = product.metafields.custom['product-information-references']
-  assign has_refs = false
-  if refs and refs.value
-    assign has_refs = true
-  endif
-  assign has_sizechart = false
-  if product.metafields.custom['product-sizechart'] != blank
-    assign has_sizechart = true
-  endif
-  assign content_threshold = 128
-  
-  assign description_heading = section.settings.description_heading
-  if description_heading == blank
-    assign description_heading = 'product.description_heading' | t
-  endif
-  assign details_heading = section.settings.details_heading
-  if details_heading == blank
-    assign details_heading = 'product.details_heading' | t
-  endif
-  assign sizechart_heading = section.settings.sizechart_heading
-  if sizechart_heading == blank
-    assign sizechart_heading = 'product.sizechart_heading' | t
-  endif
-  assign read_more_text = section.settings.read_more_text
-  if read_more_text == blank
-    assign read_more_text = 'general.read_more' | t
-  endif
-  assign read_less_text = section.settings.read_less_text
-  if read_less_text == blank
-    assign read_less_text = 'general.read_less' | t
-  endif
+	assign refs = product.metafields.custom['product-information-references']
+	assign has_refs = false
+	if refs and refs.value
+		assign has_refs = true
+	endif
+	assign has_sizechart = false
+	if product.metafields.custom['product-sizechart'] != blank
+		assign has_sizechart = true
+	endif
+	assign content_threshold = 128
+
+	assign description_heading = section.settings.description_heading
+	if description_heading == blank
+		assign description_heading = 'product.description_heading' | t
+	endif
+	assign details_heading = section.settings.details_heading
+	if details_heading == blank
+		assign details_heading = 'product.details_heading' | t
+	endif
+	assign sizechart_heading = section.settings.sizechart_heading
+	if sizechart_heading == blank
+		assign sizechart_heading = 'product.sizechart_heading' | t
+	endif
+	assign read_more_text = section.settings.read_more_text
+	if read_more_text == blank
+		assign read_more_text = 'general.read_more' | t
+	endif
+	assign read_less_text = section.settings.read_less_text
+	if read_less_text == blank
+		assign read_less_text = 'general.read_less' | t
+	endif
 -%}
 
 <div class="block-product-information__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
-  <article class="block-product-information__article">
-    <div class="block-product-information__main">
-      {%- if product.description != blank -%}
-        <section 
-          class="block-product-information__description{% if has_refs %} has-product-references{% endif %}"
-          data-readmore="collapsed" 
-          data-readmore-paragraphs="1" 
-          aria-live="polite"
-        >
-          <h2 class="block-product-information__heading">{{ description_heading }}</h2>
-          {{ product.description 
-            | replace: '<br><br>', '</p><p>' 
-            | replace: '<p hidden></p>', ''
-            | replace: '<p hidden="hidden"></p>', ''
-            | replace: '<p aria-hidden="true"></p>', ''
-            | replace: '<p>&nbsp;</p>', ''
-            | replace: '<p> &nbsp; </p>', ''
-            | replace: '<p> </p>', ''
-            | replace: '<p></p>', ''
-          }}
-          <button class="block-product-information__toggle" type="button" aria-expanded="false">
-            <span data-label-collapsed>{{ read_more_text }}</span>
-            <span data-label-expanded hidden>{{ read_less_text }}</span>
-            {%- render 'html-theme-icons', icon: 'chevron-down', size: 20 -%}
-          </button>
-        </section>
-      {%- endif -%}
-      
-      {%- if product.metafields.custom.product_details != blank -%}
-        <section class="block-product-information__details">
-          <details open>
-            <summary>
-              <span class="block-product-information__summary-icon">
-                {%- render 'html-theme-icons', icon: 'details', size: 24 -%}
-              </span>
-              <span class="block-product-information__summary-label">{{ details_heading }}</span>
-              <span class="block-product-information__summary-caret">
-                {%- render 'html-theme-icons', icon: 'chevron-down', size: 20 -%}
-              </span>
-            </summary>
-            <div class="block-product-information__details-list">
-              {%- assign details_raw = product.metafields.custom.product_details.value | default: product.metafields.custom.product_details -%}
-              {%- comment -%} Try splitting on <br> first, then <br/>, then <br /> {%- endcomment -%}
-              {%- assign details_lines = details_raw | split: '<br>' -%}
-              {%- if details_lines.size == 1 -%}
-                {%- assign details_lines = details_raw | split: '<br/>' -%}
-              {%- endif -%}
-              {%- if details_lines.size == 1 -%}
-                {%- assign details_lines = details_raw | split: '<br />' -%}
-              {%- endif -%}
-              {%- comment -%} If still no splits, output as single block without title styling {%- endcomment -%}
-              {%- if details_lines.size == 1 -%}
-                <div class="block-product-information__details-item">{{ details_raw }}</div>
-              {%- else -%}
-                {%- for line in details_lines -%}
-                  {%- assign line_stripped = line | strip_html | strip -%}
-                  {%- if line_stripped != blank -%}
-                    {%- if forloop.first -%}
-                      <div class="block-product-information__details-title">{{ line_stripped }}</div>
-                    {%- else -%}
-                      {%- assign line_parts = line_stripped | split: ': ' -%}
-                      {%- if line_parts.size > 1 -%}
-                        <div class="block-product-information__details-item">
-                          <strong>{{ line_parts.first }}:</strong> {{ line_parts | slice: 1, line_parts.size | join: ': ' }}
-                        </div>
-                      {%- else -%}
-                        <div class="block-product-information__details-item">{{ line_stripped }}</div>
-                      {%- endif -%}
-                    {%- endif -%}
-                  {%- endif -%}
-                {%- endfor -%}
-              {%- endif -%}
-            </div>
-          </details>
-        </section>
-      {%- endif -%}
-    </div>
+	<article class="block-product-information__article">
+		<div class="block-product-information__main">
+			{%- if product.description != blank -%}
+				<section
+					class="block-product-information__description{% if has_refs %} has-product-references{% endif %}"
+					data-readmore="collapsed"
+					data-readmore-paragraphs="1"
+					aria-live="polite"
+				>
+					<h2 class="block-product-information__heading">{{ description_heading }}</h2>
+					{{ product.description
+						| replace: '<br><br>', '</p><p>'
+						| replace: '<p hidden></p>', ''
+						| replace: '<p hidden="hidden"></p>', ''
+						| replace: '<p aria-hidden="true"></p>', ''
+						| replace: '<p>&nbsp;</p>', ''
+						| replace: '<p> &nbsp; </p>', ''
+						| replace: '<p> </p>', ''
+						| replace: '<p></p>', ''
+					}}
+					<button class="block-product-information__toggle" type="button" aria-expanded="false">
+						<span data-label-collapsed>{{ read_more_text }}</span>
+						<span data-label-expanded hidden>{{ read_less_text }}</span>
+						{%- render 'html-theme-icons', icon: 'chevron-down', size: 20 -%}
+					</button>
+				</section>
+			{%- endif -%}
 
-    {%- if has_refs or has_sizechart -%}
-      <aside class="block-product-information__aside">
-        <div class="block-product-information__references">
-          
-          {%- comment -%} Sizechart - always modal {%- endcomment -%}
-          {%- if has_sizechart -%}
-            <div class="block-product-information__item">
-              <button 
-                type="button" 
-                class="block-product-information__trigger"
-                data-modal-trigger="sizechart-modal-{{ section.id }}"
-              >
-                <span class="block-product-information__trigger-icon">
-                  {%- render 'html-theme-icons', icon: 'sizechart', size: 24 -%}
-                </span>
-                <span class="block-product-information__trigger-label">{{ sizechart_heading }}</span>
-                <span class="block-product-information__trigger-arrow">
-                  {%- render 'html-theme-icons', icon: 'arrow-up-right', size: 18 -%}
-                </span>
-              </button>
-            </div>
-          {%- endif -%}
-          
-          {%- comment -%} Information references {%- endcomment -%}
-          {%- if has_refs -%}
-            {%- assign ref_items = refs.value -%}
-            
-            {%- comment -%} First pass: Inline details (short content) {%- endcomment -%}
-            {%- assign ref_index = 0 -%}
-            {%- for ref_item in ref_items -%}
-              {%- liquid
-                assign ref_type = ''
-                if ref_item.type
-                  assign ref_info = ref_item.type.value
-                  assign ref_type = ref_info.system.handle
-                endif
-                
-                assign ref_content = ref_item.content | metafield_tag
-                assign ref_content_stripped = ref_content | strip_html | strip
-                assign ref_content_size = ref_content_stripped | size
-                assign use_modal = false
-                if ref_content_size > content_threshold
-                  assign use_modal = true
-                endif
-              -%}
-              
-              {%- unless use_modal -%}
-                {%- capture ref_icon -%}
-                  {%- case ref_type -%}
-                    {%- when 'verpakkingsinformatie' -%}
-                      {%- render 'html-theme-icons', icon: 'package', size: 24 -%}
-                    {%- when 'leeftijdsverificatie' -%}
-                      {%- render 'html-theme-icons', icon: 'shield-check', size: 24 -%}
-                    {%- when 'productie' -%}
-                      {%- render 'html-theme-icons', icon: 'factory', size: 24 -%}
-                    {%- when 'onderhoud' -%}
-                      {%- render 'html-theme-icons', icon: 'wrench', size: 24 -%}
-                    {%- when 'afwerking' -%}
-                      {%- render 'html-theme-icons', icon: 'sparkles', size: 24 -%}
-                    {%- when 'kwaliteitsclassificatie' -%}
-                      {%- render 'html-theme-icons', icon: 'badge', size: 24 -%}
-                    {%- when 'materiaal' -%}
-                      {%- render 'html-theme-icons', icon: 'layers', size: 24 -%}
-                    {%- when 'garantie' -%}
-                      {%- render 'html-theme-icons', icon: 'shield', size: 24 -%}
-                    {%- when 'opmeten' -%}
-                      {%- render 'html-theme-icons', icon: 'ruler', size: 24 -%}
-                    {%- when 'verzending' -%}
-                      {%- render 'html-theme-icons', icon: 'truck', size: 24 -%}
-                    {%- when 'bevestiging' -%}
-                      {%- render 'html-theme-icons', icon: 'bolt', size: 24 -%}
-                    {%- else -%}
-                      {%- render 'html-theme-icons', icon: 'info', size: 24 -%}
-                  {%- endcase -%}
-                {%- endcapture -%}
-                
-                <details class="block-product-information__item block-product-information__item--{{ ref_type }}">
-                  <summary>
-                    <span class="block-product-information__summary-icon">{{ ref_icon }}</span>
-                    <span class="block-product-information__summary-label">{{ ref_item.title }}</span>
-                    <span class="block-product-information__summary-caret">
-                      {%- render 'html-theme-icons', icon: 'chevron-down', size: 20 -%}
-                    </span>
-                  </summary>
-                  <div class="block-product-information__item-content">
-                    {{ ref_content }}
-                  </div>
-                </details>
-              {%- endunless -%}
-              
-              {%- assign ref_index = ref_index | plus: 1 -%}
-            {%- endfor -%}
-            
-            {%- comment -%} Second pass: Modal triggers (long content) {%- endcomment -%}
-            {%- assign ref_index = 0 -%}
-            {%- for ref_item in ref_items -%}
-              {%- liquid
-                assign ref_type = ''
-                if ref_item.type
-                  assign ref_info = ref_item.type.value
-                  assign ref_type = ref_info.system.handle
-                endif
-                
-                assign ref_content = ref_item.content | metafield_tag
-                assign ref_content_stripped = ref_content | strip_html | strip
-                assign ref_content_size = ref_content_stripped | size
-                assign use_modal = false
-                if ref_content_size > content_threshold
-                  assign use_modal = true
-                endif
-                assign modal_id = 'ref-modal-' | append: section.id | append: '-' | append: ref_index
-              -%}
-              
-              {%- if use_modal -%}
-                {%- capture ref_icon -%}
-                  {%- case ref_type -%}
-                    {%- when 'verpakkingsinformatie' -%}
-                      {%- render 'html-theme-icons', icon: 'package', size: 24 -%}
-                    {%- when 'leeftijdsverificatie' -%}
-                      {%- render 'html-theme-icons', icon: 'shield-check', size: 24 -%}
-                    {%- when 'productie' -%}
-                      {%- render 'html-theme-icons', icon: 'factory', size: 24 -%}
-                    {%- when 'onderhoud' -%}
-                      {%- render 'html-theme-icons', icon: 'wrench', size: 24 -%}
-                    {%- when 'afwerking' -%}
-                      {%- render 'html-theme-icons', icon: 'sparkles', size: 24 -%}
-                    {%- when 'kwaliteitsclassificatie' -%}
-                      {%- render 'html-theme-icons', icon: 'badge', size: 24 -%}
-                    {%- when 'materiaal' -%}
-                      {%- render 'html-theme-icons', icon: 'layers', size: 24 -%}
-                    {%- when 'garantie' -%}
-                      {%- render 'html-theme-icons', icon: 'shield', size: 24 -%}
-                    {%- when 'opmeten' -%}
-                      {%- render 'html-theme-icons', icon: 'ruler', size: 24 -%}
-                    {%- when 'verzending' -%}
-                      {%- render 'html-theme-icons', icon: 'truck', size: 24 -%}
-                    {%- when 'bevestiging' -%}
-                      {%- render 'html-theme-icons', icon: 'bolt', size: 24 -%}
-                    {%- else -%}
-                      {%- render 'html-theme-icons', icon: 'info', size: 24 -%}
-                  {%- endcase -%}
-                {%- endcapture -%}
-                
-                <div class="block-product-information__item block-product-information__item--{{ ref_type }}">
-                  <button 
-                    type="button" 
-                    class="block-product-information__trigger"
-                    data-modal-trigger="{{ modal_id }}"
-                  >
-                    <span class="block-product-information__trigger-icon">{{ ref_icon }}</span>
-                    <span class="block-product-information__trigger-label">{{ ref_item.title }}</span>
-                    <span class="block-product-information__trigger-arrow">
-                      {%- render 'html-theme-icons', icon: 'arrow-up-right', size: 18 -%}
-                    </span>
-                  </button>
-                </div>
-              {%- endif -%}
-              
-              {%- assign ref_index = ref_index | plus: 1 -%}
-            {%- endfor -%}
-          {%- endif -%}
-        </div>
-      </aside>
-    {%- endif -%}
-  </article>
+			{%- if product.metafields.custom.product_details != blank -%}
+				<section class="block-product-information__details">
+					<details open>
+						<summary>
+							<span class="block-product-information__summary-icon">
+								{%- render 'html-theme-icons', icon: 'details', size: 24 -%}
+							</span>
+							<span class="block-product-information__summary-label">{{ details_heading }}</span>
+							<span class="block-product-information__summary-caret">
+								{%- render 'html-theme-icons', icon: 'chevron-down', size: 20 -%}
+							</span>
+						</summary>
+						<div class="block-product-information__details-list">
+							{%- assign details_raw = product.metafields.custom.product_details.value | default: product.metafields.custom.product_details -%}
+							{%- comment -%} Try splitting on <br> first, then <br/>, then <br /> {%- endcomment -%}
+							{%- assign details_lines = details_raw | split: '<br>' -%}
+							{%- if details_lines.size == 1 -%}
+								{%- assign details_lines = details_raw | split: '<br/>' -%}
+							{%- endif -%}
+							{%- if details_lines.size == 1 -%}
+								{%- assign details_lines = details_raw | split: '<br />' -%}
+							{%- endif -%}
+							{%- comment -%} If still no splits, output as single block without title styling {%- endcomment -%}
+							{%- if details_lines.size == 1 -%}
+								<div class="block-product-information__details-item">{{ details_raw }}</div>
+							{%- else -%}
+								{%- for line in details_lines -%}
+									{%- assign line_stripped = line | strip_html | strip -%}
+									{%- if line_stripped != blank -%}
+										{%- if forloop.first -%}
+											<div class="block-product-information__details-title">{{ line_stripped }}</div>
+										{%- else -%}
+											{%- assign line_parts = line_stripped | split: ': ' -%}
+											{%- if line_parts.size > 1 -%}
+												<div class="block-product-information__details-item">
+													<strong>{{ line_parts.first }}:</strong> {{ line_parts | slice: 1, line_parts.size | join: ': ' }}
+												</div>
+											{%- else -%}
+												<div class="block-product-information__details-item">{{ line_stripped }}</div>
+											{%- endif -%}
+										{%- endif -%}
+									{%- endif -%}
+								{%- endfor -%}
+							{%- endif -%}
+						</div>
+					</details>
+				</section>
+			{%- endif -%}
+		</div>
+
+		{%- if has_refs or has_sizechart -%}
+			<aside class="block-product-information__aside">
+				<div class="block-product-information__references">
+
+					{%- comment -%} Sizechart - always modal {%- endcomment -%}
+					{%- if has_sizechart -%}
+						<div class="block-product-information__item">
+							<button
+								type="button"
+								class="block-product-information__trigger"
+								data-modal-trigger="sizechart-modal-{{ section.id }}"
+							>
+								<span class="block-product-information__trigger-icon">
+									{%- render 'html-theme-icons', icon: 'sizechart', size: 24 -%}
+								</span>
+								<span class="block-product-information__trigger-label">{{ sizechart_heading }}</span>
+								<span class="block-product-information__trigger-arrow">
+									{%- render 'html-theme-icons', icon: 'arrow-up-right', size: 18 -%}
+								</span>
+							</button>
+						</div>
+					{%- endif -%}
+
+					{%- comment -%} Information references {%- endcomment -%}
+					{%- if has_refs -%}
+						{%- assign ref_items = refs.value -%}
+
+						{%- comment -%} First pass: Inline details (short content) {%- endcomment -%}
+						{%- assign ref_index = 0 -%}
+						{%- for ref_item in ref_items -%}
+							{%- liquid
+								assign ref_type = ''
+								if ref_item.type
+									assign ref_info = ref_item.type.value
+									assign ref_type = ref_info.system.handle
+								endif
+
+								assign ref_content = ref_item.content | metafield_tag
+								assign ref_content_stripped = ref_content | strip_html | strip
+								assign ref_content_size = ref_content_stripped | size
+								assign use_modal = false
+								if ref_content_size > content_threshold
+									assign use_modal = true
+								endif
+							-%}
+
+							{%- unless use_modal -%}
+								{%- capture ref_icon -%}
+									{%- case ref_type -%}
+										{%- when 'verpakkingsinformatie' -%}
+											{%- render 'html-theme-icons', icon: 'package', size: 24 -%}
+										{%- when 'leeftijdsverificatie' -%}
+											{%- render 'html-theme-icons', icon: 'shield-check', size: 24 -%}
+										{%- when 'productie' -%}
+											{%- render 'html-theme-icons', icon: 'factory', size: 24 -%}
+										{%- when 'onderhoud' -%}
+											{%- render 'html-theme-icons', icon: 'wrench', size: 24 -%}
+										{%- when 'afwerking' -%}
+											{%- render 'html-theme-icons', icon: 'sparkles', size: 24 -%}
+										{%- when 'kwaliteitsclassificatie' -%}
+											{%- render 'html-theme-icons', icon: 'badge', size: 24 -%}
+										{%- when 'materiaal' -%}
+											{%- render 'html-theme-icons', icon: 'layers', size: 24 -%}
+										{%- when 'garantie' -%}
+											{%- render 'html-theme-icons', icon: 'shield', size: 24 -%}
+										{%- when 'opmeten' -%}
+											{%- render 'html-theme-icons', icon: 'ruler', size: 24 -%}
+										{%- when 'verzending' -%}
+											{%- render 'html-theme-icons', icon: 'truck', size: 24 -%}
+										{%- when 'bevestiging' -%}
+											{%- render 'html-theme-icons', icon: 'bolt', size: 24 -%}
+										{%- else -%}
+											{%- render 'html-theme-icons', icon: 'info', size: 24 -%}
+									{%- endcase -%}
+								{%- endcapture -%}
+
+								<details class="block-product-information__item block-product-information__item--{{ ref_type }}">
+									<summary>
+										<span class="block-product-information__summary-icon">{{ ref_icon }}</span>
+										<span class="block-product-information__summary-label">{{ ref_item.title }}</span>
+										<span class="block-product-information__summary-caret">
+											{%- render 'html-theme-icons', icon: 'chevron-down', size: 20 -%}
+										</span>
+									</summary>
+									<div class="block-product-information__item-content">
+										{{ ref_content }}
+									</div>
+								</details>
+							{%- endunless -%}
+
+							{%- assign ref_index = ref_index | plus: 1 -%}
+						{%- endfor -%}
+
+						{%- comment -%} Second pass: Modal triggers (long content) {%- endcomment -%}
+						{%- assign ref_index = 0 -%}
+						{%- for ref_item in ref_items -%}
+							{%- liquid
+								assign ref_type = ''
+								if ref_item.type
+									assign ref_info = ref_item.type.value
+									assign ref_type = ref_info.system.handle
+								endif
+
+								assign ref_content = ref_item.content | metafield_tag
+								assign ref_content_stripped = ref_content | strip_html | strip
+								assign ref_content_size = ref_content_stripped | size
+								assign use_modal = false
+								if ref_content_size > content_threshold
+									assign use_modal = true
+								endif
+								assign modal_id = 'ref-modal-' | append: section.id | append: '-' | append: ref_index
+							-%}
+
+							{%- if use_modal -%}
+								{%- capture ref_icon -%}
+									{%- case ref_type -%}
+										{%- when 'verpakkingsinformatie' -%}
+											{%- render 'html-theme-icons', icon: 'package', size: 24 -%}
+										{%- when 'leeftijdsverificatie' -%}
+											{%- render 'html-theme-icons', icon: 'shield-check', size: 24 -%}
+										{%- when 'productie' -%}
+											{%- render 'html-theme-icons', icon: 'factory', size: 24 -%}
+										{%- when 'onderhoud' -%}
+											{%- render 'html-theme-icons', icon: 'wrench', size: 24 -%}
+										{%- when 'afwerking' -%}
+											{%- render 'html-theme-icons', icon: 'sparkles', size: 24 -%}
+										{%- when 'kwaliteitsclassificatie' -%}
+											{%- render 'html-theme-icons', icon: 'badge', size: 24 -%}
+										{%- when 'materiaal' -%}
+											{%- render 'html-theme-icons', icon: 'layers', size: 24 -%}
+										{%- when 'garantie' -%}
+											{%- render 'html-theme-icons', icon: 'shield', size: 24 -%}
+										{%- when 'opmeten' -%}
+											{%- render 'html-theme-icons', icon: 'ruler', size: 24 -%}
+										{%- when 'verzending' -%}
+											{%- render 'html-theme-icons', icon: 'truck', size: 24 -%}
+										{%- when 'bevestiging' -%}
+											{%- render 'html-theme-icons', icon: 'bolt', size: 24 -%}
+										{%- else -%}
+											{%- render 'html-theme-icons', icon: 'info', size: 24 -%}
+									{%- endcase -%}
+								{%- endcapture -%}
+
+								<div class="block-product-information__item block-product-information__item--{{ ref_type }}">
+									<button
+										type="button"
+										class="block-product-information__trigger"
+										data-modal-trigger="{{ modal_id }}"
+									>
+										<span class="block-product-information__trigger-icon">{{ ref_icon }}</span>
+										<span class="block-product-information__trigger-label">{{ ref_item.title }}</span>
+										<span class="block-product-information__trigger-arrow">
+											{%- render 'html-theme-icons', icon: 'arrow-up-right', size: 18 -%}
+										</span>
+									</button>
+								</div>
+							{%- endif -%}
+
+							{%- assign ref_index = ref_index | plus: 1 -%}
+						{%- endfor -%}
+					{%- endif -%}
+				</div>
+			</aside>
+		{%- endif -%}
+	</article>
 </div>
 
 {%- comment -%} ============================================
@@ -307,479 +322,113 @@
 
 {%- comment -%} Sizechart Modal {%- endcomment -%}
 {%- if has_sizechart -%}
-  <div 
-    class="block-product-information__modal"
-    data-modal="sizechart-modal-{{ section.id }}"
-    role="dialog"
-    aria-modal="true"
-    aria-label="{{ sizechart_heading }}"
-    hidden
-  >
-    <div class="block-product-information__modal-overlay" data-modal-overlay></div>
-    <div class="block-product-information__modal-content theme-modal__content">
-      <header class="block-product-information__modal-header theme-modal__header">
-        <h3 class="block-product-information__modal-title theme-modal__title">
-          {%- render 'html-theme-icons', icon: 'sizechart', size: 24 -%}
-          {{ sizechart_heading }}
-        </h3>
-        <button type="button" class="block-product-information__modal-close theme-modal__close" data-modal-close aria-label="{{ 'accessibility.close' | t }}">
-          {%- render 'html-theme-icons', icon: 'close', size: 24 -%}
-        </button>
-      </header>
-      <div class="block-product-information__modal-body theme-modal__body">
-        {{ product.metafields.custom['product-sizechart'] | metafield_tag | replace: '&lt;', '<' | replace: '&gt;', '>' }}
-      </div>
-    </div>
-  </div>
+	<div
+		class="block-product-information__modal"
+		data-modal="sizechart-modal-{{ section.id }}"
+		role="dialog"
+		aria-modal="true"
+		aria-label="{{ sizechart_heading }}"
+		hidden
+	>
+		<div class="block-product-information__modal-overlay" data-modal-overlay></div>
+		<div class="block-product-information__modal-content theme-modal__content">
+			<header class="block-product-information__modal-header theme-modal__header">
+				<h3 class="block-product-information__modal-title theme-modal__title">
+					{%- render 'html-theme-icons', icon: 'sizechart', size: 24 -%}
+					{{ sizechart_heading }}
+				</h3>
+				<button type="button" class="block-product-information__modal-close theme-modal__close" data-modal-close aria-label="{{ 'accessibility.close' | t }}">
+					{%- render 'html-theme-icons', icon: 'close', size: 24 -%}
+				</button>
+			</header>
+			<div class="block-product-information__modal-body theme-modal__body">
+				{{ product.metafields.custom['product-sizechart'].value | replace: '&lt;', '<' | replace: '&gt;', '>' }}
+			</div>
+		</div>
+	</div>
 {%- endif -%}
 
 {%- comment -%} Reference Modals (only for long content) {%- endcomment -%}
 {%- if has_refs -%}
-  {%- assign ref_items = refs.value -%}
-  {%- assign ref_index = 0 -%}
-  {%- for ref_item in ref_items -%}
-    {%- liquid
-      assign ref_type = ''
-      if ref_item.type
-        assign ref_info = ref_item.type.value
-        assign ref_type = ref_info.system.handle
-      endif
-      
-      assign ref_content = ref_item.content | metafield_tag
-      assign ref_content_stripped = ref_content | strip_html | strip
-      assign ref_content_size = ref_content_stripped | size
-      assign use_modal = false
-      if ref_content_size > content_threshold
-        assign use_modal = true
-      endif
-      assign modal_id = 'ref-modal-' | append: section.id | append: '-' | append: ref_index
-    -%}
-    
-    {%- if use_modal -%}
-      {%- capture ref_icon -%}
-        {%- case ref_type -%}
-          {%- when 'verpakkingsinformatie' -%}
-            {%- render 'html-theme-icons', icon: 'package', size: 24 -%}
-          {%- when 'leeftijdsverificatie' -%}
-            {%- render 'html-theme-icons', icon: 'shield-check', size: 24 -%}
-          {%- when 'productie' -%}
-            {%- render 'html-theme-icons', icon: 'factory', size: 24 -%}
-          {%- when 'onderhoud' -%}
-            {%- render 'html-theme-icons', icon: 'wrench', size: 24 -%}
-          {%- when 'afwerking' -%}
-            {%- render 'html-theme-icons', icon: 'sparkles', size: 24 -%}
-          {%- when 'kwaliteitsclassificatie' -%}
-            {%- render 'html-theme-icons', icon: 'badge', size: 24 -%}
-          {%- when 'materiaal' -%}
-            {%- render 'html-theme-icons', icon: 'layers', size: 24 -%}
-          {%- when 'garantie' -%}
-            {%- render 'html-theme-icons', icon: 'shield', size: 24 -%}
-          {%- when 'opmeten' -%}
-            {%- render 'html-theme-icons', icon: 'ruler', size: 24 -%}
-          {%- when 'verzending' -%}
-            {%- render 'html-theme-icons', icon: 'truck', size: 24 -%}
-          {%- when 'bevestiging' -%}
-            {%- render 'html-theme-icons', icon: 'bolt', size: 24 -%}
-          {%- else -%}
-            {%- render 'html-theme-icons', icon: 'info', size: 24 -%}
-        {%- endcase -%}
-      {%- endcapture -%}
-      
-      <div 
-        class="block-product-information__modal"
-        data-modal="{{ modal_id }}"
-        role="dialog"
-        aria-modal="true"
-        aria-label="{{ ref_item.title }}"
-        hidden
-      >
-        <div class="block-product-information__modal-overlay" data-modal-overlay></div>
-        <div class="block-product-information__modal-content theme-modal__content">
-          <header class="block-product-information__modal-header theme-modal__header">
-            <h3 class="block-product-information__modal-title theme-modal__title">
-              {{ ref_icon }}
-              {{ ref_item.title }}
-            </h3>
-            <button type="button" class="block-product-information__modal-close theme-modal__close" data-modal-close aria-label="{{ 'accessibility.close' | t }}">
-              {%- render 'html-theme-icons', icon: 'close', size: 24 -%}
-            </button>
-          </header>
-          <div class="block-product-information__modal-body theme-modal__body">
-            {{ ref_content }}
-          </div>
-        </div>
-      </div>
-    {%- endif -%}
-    
-    {%- assign ref_index = ref_index | plus: 1 -%}
-  {%- endfor -%}
+	{%- assign ref_items = refs.value -%}
+	{%- assign ref_index = 0 -%}
+	{%- for ref_item in ref_items -%}
+		{%- liquid
+			assign ref_type = ''
+			if ref_item.type
+				assign ref_info = ref_item.type.value
+				assign ref_type = ref_info.system.handle
+			endif
+
+			assign ref_content = ref_item.content | metafield_tag
+			assign ref_content_stripped = ref_content | strip_html | strip
+			assign ref_content_size = ref_content_stripped | size
+			assign use_modal = false
+			if ref_content_size > content_threshold
+				assign use_modal = true
+			endif
+			assign modal_id = 'ref-modal-' | append: section.id | append: '-' | append: ref_index
+		-%}
+
+		{%- if use_modal -%}
+			{%- capture ref_icon -%}
+				{%- case ref_type -%}
+					{%- when 'verpakkingsinformatie' -%}
+						{%- render 'html-theme-icons', icon: 'package', size: 24 -%}
+					{%- when 'leeftijdsverificatie' -%}
+						{%- render 'html-theme-icons', icon: 'shield-check', size: 24 -%}
+					{%- when 'productie' -%}
+						{%- render 'html-theme-icons', icon: 'factory', size: 24 -%}
+					{%- when 'onderhoud' -%}
+						{%- render 'html-theme-icons', icon: 'wrench', size: 24 -%}
+					{%- when 'afwerking' -%}
+						{%- render 'html-theme-icons', icon: 'sparkles', size: 24 -%}
+					{%- when 'kwaliteitsclassificatie' -%}
+						{%- render 'html-theme-icons', icon: 'badge', size: 24 -%}
+					{%- when 'materiaal' -%}
+						{%- render 'html-theme-icons', icon: 'layers', size: 24 -%}
+					{%- when 'garantie' -%}
+						{%- render 'html-theme-icons', icon: 'shield', size: 24 -%}
+					{%- when 'opmeten' -%}
+						{%- render 'html-theme-icons', icon: 'ruler', size: 24 -%}
+					{%- when 'verzending' -%}
+						{%- render 'html-theme-icons', icon: 'truck', size: 24 -%}
+					{%- when 'bevestiging' -%}
+						{%- render 'html-theme-icons', icon: 'bolt', size: 24 -%}
+					{%- else -%}
+						{%- render 'html-theme-icons', icon: 'info', size: 24 -%}
+				{%- endcase -%}
+			{%- endcapture -%}
+
+			<div
+				class="block-product-information__modal"
+				data-modal="{{ modal_id }}"
+				role="dialog"
+				aria-modal="true"
+				aria-label="{{ ref_item.title }}"
+				hidden
+			>
+				<div class="block-product-information__modal-overlay" data-modal-overlay></div>
+				<div class="block-product-information__modal-content theme-modal__content">
+					<header class="block-product-information__modal-header theme-modal__header">
+						<h3 class="block-product-information__modal-title theme-modal__title">
+							{{ ref_icon }}
+							{{ ref_item.title }}
+						</h3>
+						<button type="button" class="block-product-information__modal-close theme-modal__close" data-modal-close aria-label="{{ 'accessibility.close' | t }}">
+							{%- render 'html-theme-icons', icon: 'close', size: 24 -%}
+						</button>
+					</header>
+					<div class="block-product-information__modal-body theme-modal__body">
+						{{ ref_content }}
+					</div>
+				</div>
+			</div>
+		{%- endif -%}
+
+		{%- assign ref_index = ref_index | plus: 1 -%}
+	{%- endfor -%}
 {%- endif -%}
-
-<script>
-(function() {
-  const blocks = document.querySelectorAll('[data-readmore]');
-  blocks.forEach(function(block) {
-    const btn = block.querySelector('button[aria-expanded]');
-    if (!btn) return;
-
-    const maxParas = parseInt(block.dataset.readmoreParagraphs || '1', 10);
-    const selector = block.dataset.readmoreSelector || ':scope > p, :scope > .readmore-item';
-    const trimEmpty = (block.dataset.readmoreTrimEmpty || 'true') === 'true';
-
-    const collapsedLabel = btn.querySelector('[data-label-collapsed]');
-    const expandedLabel = btn.querySelector('[data-label-expanded]');
-
-    let countables = Array.from(block.querySelectorAll(selector))
-      .filter(function(el) { return el.parentElement === block && el !== btn; });
-
-    if (trimEmpty) {
-      countables = countables.filter(function(el) {
-        if (el.tagName !== 'P') return true;
-        const txt = (el.textContent || '').replace(/\u00A0/g, ' ').trim();
-        if (!txt) { el.remove(); return false; }
-        return true;
-      });
-    }
-
-    if (countables.length <= maxParas) {
-      btn.remove();
-      return;
-    }
-
-    function setState(expanded) {
-      block.setAttribute('data-readmore', expanded ? 'expanded' : 'collapsed');
-      btn.setAttribute('aria-expanded', expanded);
-      if (collapsedLabel) collapsedLabel.hidden = expanded;
-      if (expandedLabel) expandedLabel.hidden = !expanded;
-
-      countables.forEach(function(el, i) {
-        el.hidden = i >= maxParas && !expanded;
-      });
-    }
-
-    setState(false);
-
-    btn.addEventListener('click', function() {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      setState(!expanded);
-    });
-  });
-})();
-</script>
-
-<style>
-  #shopify-section-{{ section.id }}.block-product-information {
-    background-color: {{ section.settings.background_color | default: '#f8f8f8' }};
-    color: {{ section.settings.text_color | default: '#111111' }};
-    padding-block: {{ section.settings.padding_block }}em;
-  }
-
-  .block-product-information__content {
-    scroll-margin-top: 100px;
-  }
-
-  .block-product-information__article {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 2em 4em;
-  }
-
-  .block-product-information__main {
-    flex: 1 1 20em;
-    padding-inline: 1em;
-  }
-
-  .block-product-information__aside {
-    flex: 1 1 10em;
-  }
-
-  .block-product-information__heading {
-    font-family: var(--theme-font-family-serif);
-    font-size: 1.5em;
-    font-weight: 400;
-    margin: 0 0 1em 0;
-  }
-
-  /* Description */
-  .block-product-information__description {
-    & p { letter-spacing: -0.02em; }
-    & p:first-of-type { font-size: 1.2em; }
-    & p a { color: inherit; }
-    & li { letter-spacing: -0.02em; }
-    & table { margin-bottom: 1em; }
-  }
-
-  .block-product-information__description[data-readmore="collapsed"] {
-    & p:first-of-type ~ *:not(.block-product-information__toggle) { 
-      display: none; 
-    }
-  }
-
-  .block-product-information__toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid currentColor;
-    padding: 0.5em 1em;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-  }
-
-  .block-product-information__toggle svg {
-    transition: transform 200ms ease;
-  }
-
-  .block-product-information__toggle[aria-expanded="true"] svg {
-    transform: rotate(180deg);
-  }
-
-  /* Details section */
-  .block-product-information__details {
-    margin-top: 4em; 
-  }
-
-  .block-product-information__details > details > summary {
-    display: none;
-  }
-
-  .block-product-information__details-list {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .block-product-information__details-title {
-    font-weight: 600;
-    padding-bottom: 0.6em;
-    margin-bottom: 0.2em;
-    border-bottom: 1px solid var(--theme-color-border, #ccc);
-  }
-
-  .block-product-information__details-item {
-    padding: 0.2em 0;
-    border-bottom: 1px solid var(--theme-color-border, #ccc);
-    letter-spacing: -0.02em;
-  }
-
-  .block-product-information__details-item:last-child {
-    border-bottom: none;
-  }
-
-  /* References aside */
-  .block-product-information__references {
-    background-color: var(--theme-color-white, #fff);
-    padding: 1em 2em;
-  }
-
-  /* Item (both details and button trigger) */
-  .block-product-information__item {
-    border-bottom: 1px solid var(--theme-color-blue, #0f1f38);
-    padding-block: 1em;
-  }
-
-  .block-product-information__item:last-child {
-    border-bottom: none;
-  }
-
-  /* Inline details */
-  .block-product-information__item summary {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1em;
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .block-product-information__item summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .block-product-information__summary-icon {
-    flex-shrink: 0;
-    width: 1.5em;
-    height: 1.5em;
-  }
-
-  .block-product-information__summary-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .block-product-information__summary-label {
-    flex-grow: 1;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  .block-product-information__summary-caret {
-    flex-shrink: 0;
-  }
-
-  .block-product-information__summary-caret svg {
-    transition: transform 200ms ease;
-  }
-
-  .block-product-information__item[open] .block-product-information__summary-caret svg {
-    transform: rotate(180deg);
-  }
-
-  .block-product-information__item-content {
-    padding-top: 1em;
-    padding-left: 2.5em;
-  }
-
-  .block-product-information__item-content p,
-  .block-product-information__item-content li {
-    letter-spacing: -0.02em;
-  }
-
-  /* Modal trigger button */
-  .block-product-information__trigger {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1em;
-    width: 100%;
-    padding: 0;
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-    text-align: left;
-    cursor: pointer;
-  }
-
-  .block-product-information__trigger:hover {
-    opacity: 0.8;
-  }
-
-  .block-product-information__trigger-icon {
-    flex-shrink: 0;
-    width: 1.5em;
-    height: 1.5em;
-  }
-
-  .block-product-information__trigger-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .block-product-information__trigger-label {
-    flex-grow: 1;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  .block-product-information__trigger-arrow {
-    flex-shrink: 0;
-    opacity: 0.6;
-    transition: transform 200ms ease, opacity 200ms ease;
-  }
-
-  .block-product-information__trigger:hover .block-product-information__trigger-arrow {
-    opacity: 1;
-    transform: translate(2px, -2px);
-  }
-
-  /* Modal styling */
-  .block-product-information__modal {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .block-product-information__modal[hidden] {
-    display: none;
-  }
-
-  .block-product-information__modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .block-product-information__modal-content {
-    position: relative;
-    z-index: 1;
-    max-width: 640px;
-    width: 90vw;
-  }
-
-  .block-product-information__modal-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-  }
-
-  .block-product-information__modal-title svg {
-    flex-shrink: 0;
-  }
-
-  .block-product-information__modal-body {
-    max-height: 60vh;
-    overflow-y: auto;
-  }
-
-  .block-product-information__modal-body p,
-  .block-product-information__modal-body li {
-    letter-spacing: -0.02em;
-  }
-
-  .block-product-information__modal-body table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .block-product-information__modal-body th,
-  .block-product-information__modal-body td {
-    padding: 0.5em;
-    border: 1px solid var(--theme-color-grey, #e5e5e5);
-    text-align: left;
-  }
-
-  .block-product-information__modal-body th {
-    background-color: var(--theme-color-grey, #f5f5f5);
-    font-weight: 600;
-  }
-
-  /* Responsive */
-  @media (max-width: 40em) {
-    .block-product-information__main {
-      flex-basis: 100%;
-      text-align: center;
-    }
-
-    .block-product-information__aside {
-      flex-basis: 100%;
-    }
-  }
-</style>
 
 {% schema %}
 {
@@ -853,6 +502,19 @@
 			"unit": "em"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"default": "product-information",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -865,23 +527,6 @@
 			"type": "color",
 			"id": "text_color",
 			"label": "Text"
-		},
-		{
-			"type": "header",
-			"content": "Advanced"
-		},
-		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"default": "product-information",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class"
 		},
 		{
 			"type": "header",

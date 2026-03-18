@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "frankrijk"
+  },
+  "parent": "index.json",
+  "sections": {
+    "best-products": {
+      "settings": {
+        "collection": "middeleeuwse-kleding"
+      },
+      "blocks": {}
+    },
+    "block_marketing_media_text_mEgbKY": {
+      "settings": {},
+      "blocks": {
+        "image_text_aJBEwL": {
+          "settings": {
+            "image": "shopify://shop_images/DSC05197_2.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_grid_93tkDC": {
+      "settings": {},
+      "blocks": {
+        "banner_nPEhgz": {
+          "settings": {
+            "image": "shopify://shop_images/DSC00400.jpg"
+          }
+        }
+      }
+    }
+  }
+}

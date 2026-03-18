@@ -41,7 +41,7 @@
   endif
 -%}
 
-<div class="cart-payments">
+<div class="cart-payments{% if context == 'drawer' or context == 'preview' %} cart-payments--drawer{% endif %}">
   {%- comment -%} Primary Checkout Button {%- endcomment -%}
   <button
     type="submit"
@@ -68,62 +68,4 @@
   {%- endif -%}
 </div>
 
-<style>
-  .cart-payments {
-    padding: 1.5em 0;
-  }
 
-  .cart-payments__checkout {
-    width: 100%;
-    padding: 1em 2em;
-    font-size: 1em;
-    background-color:var(--theme-color-green)!important;
-  }
-
-  .cart-payments__checkout:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .cart-payments__additional {
-    margin-top: 1em;
-  }
-
-  .cart-payments__terms {
-    margin-top: 1.5em;
-    padding-top: 0em;
-    border-top: 1px solid var(--theme-border-color);
-    font-size: 0.85em;
-    line-height: 1.6;
-    text-align: center;
-    opacity: 0.75;
-  }
-
-  .cart-payments__terms a {
-    color: inherit;
-    text-decoration: underline;
-  }
-
-  .cart-payments__terms a:hover {
-    text-decoration: none;
-  }
-
-  /* Compact mode for drawer */
-  {% if context == 'drawer' or context == 'preview' %}
-  .cart-payments {
-    padding: 1em 0;
-  }
-
-  .cart-payments__checkout {
-    padding: 0.875em 1.5em;
-    font-size: 0.9em;
-    
-  }
-
-  .cart-payments__terms {
-    margin-top: 1em;
-    padding-top: 1em;
-    font-size: 0.8em;
-  }
-  {% endif %}
-</style>

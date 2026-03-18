@@ -14,6 +14,19 @@
   ============================================================================
 {%- endcomment -%}
 
+{{ 'block-footer-payments.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-footer-payments {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+	}
+{% endstyle %}
+
 {%- if section.settings.payment_enable -%}
 	<div class="block-footer-payments__content {{ section.settings.width }}">
 		<ul class="block-footer-payments__list" role="list">
@@ -26,35 +39,7 @@
 	</div>
 {%- endif -%}
 
-{% style %}
-	.block-footer-payments {
-		background-color: {{ section.settings.background_color | default: '#0f1f38' }};
-		color: {{ section.settings.text_color | default: '#ffffff' }};
-		padding: 1.5em 0;
-	}
 
-	.block-footer-payments__list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75em 1em;
-	}
-
-	.block-footer-payments__item {
-		display: flex;
-		align-items: center;
-	}
-
-	.block-footer-payments__icon {
-		height: 1.5em;
-		width: auto;
-	}
-{% endstyle %}
 
 {% schema %}
 {

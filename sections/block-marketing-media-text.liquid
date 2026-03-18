@@ -2,7 +2,7 @@
 ============================================================================
 BLOCK-MARKETING-MEDIA-TEXT
 ============================================================================
-Image + text side-by-side layouts.
+Image/Video + text side-by-side layouts.
 
 FEATURES:
 - Mobile-first: media always renders first in HTML
@@ -10,6 +10,8 @@ FEATURES:
 - Configurable aspect ratios, widths, alignments
 - Focus point support for images (CSS object-position)
 - Quality compression (70%)
+- Video support: Shopify hosted or external (YouTube/Vimeo)
+- Video modes: play (poster + controls) or background (autoplay loop)
 
 DEPENDENCIES:
 - html-theme-media-image snippet (direct, for focus point support)
@@ -17,6 +19,20 @@ DEPENDENCIES:
 - html-marketing-headline snippet
 ============================================================================
 {%- endcomment -%}
+
+{{ 'block-marketing-media-text.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-media-text {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
 
 {%- liquid
 	assign has_heading = false
@@ -101,22 +117,250 @@ DEPENDENCIES:
 							{%- if block.settings.image != blank -%}
 								<figure class="media-text__figure">
 									{%- render 'html-theme-media-image',
-									image: block.settings.image,
-									alt: block.settings.image.alt | default: block.settings.heading,
-									w1: w1,
-									w2: w2,
-									w3: w3,
-									w4: w4,
-									w5: w5,
-									sizes: img_sizes,
-									image_loading: 'lazy',
-									focus_x: focus_x,
-									focus_y: focus_y
+										image: block.settings.image,
+										alt: block.settings.image.alt | default: block.settings.heading,
+										w1: w1,
+										w2: w2,
+										w3: w3,
+										w4: w4,
+										w5: w5,
+										sizes: img_sizes,
+										image_loading: 'lazy',
+										focus_x: focus_x,
+										focus_y: focus_y
 									-%}
 								</figure>
 							{%- else -%}
 								<div class="media-text__placeholder">
 									{%- render 'html-theme-icons', icon: 'image', size: 64 -%}
+								</div>
+							{%- endif -%}
+						
+						{%- when 'video_text' -%}
+							{%- liquid
+								assign video_mode = block.settings.video_mode | default: 'play'
+								assign video = block.settings.video
+								assign video_url = block.settings.video_url
+								assign poster = block.settings.poster
+								assign unique_id = 'video-' | append: block.id
+								
+								comment
+									Determine video source
+								endcomment
+								assign has_shopify_video = false
+								assign has_external_video = false
+								assign external_host = nil
+								assign external_id = nil
+								
+								if video != blank and video.sources.size > 0
+									assign has_shopify_video = true
+								elsif video_url != blank
+									assign has_external_video = true
+									if video_url contains 'youtube.com' or video_url contains 'youtu.be'
+										assign external_host = 'youtube'
+										if video_url contains 'youtu.be'
+											assign external_id = video_url | split: 'youtu.be/' | last | split: '?' | first
+										else
+											assign external_id = video_url | split: 'v=' | last | split: '&' | first
+										endif
+									elsif video_url contains 'vimeo.com'
+										assign external_host = 'vimeo'
+										assign external_id = video_url | split: 'vimeo.com/' | last | split: '?' | first | split: '/' | first
+									endif
+								endif
+								
+								if has_shopify_video or has_external_video
+									assign has_video = true
+								else
+									assign has_video = false
+								endif
+							-%}
+							
+							{%- if has_video -%}
+								{%- if video_mode == 'background' -%}
+									{%- comment -%} Background mode: autoplay, muted, loop, no controls {%- endcomment -%}
+									<div class="media-text__video media-text__video--background" id="{{ unique_id }}">
+										{%- if poster != blank -%}
+											<picture class="media-text__video-poster">
+												<source
+													type="image/webp"
+													srcset="
+														{{ poster | image_url: width: w3, format: 'webp' }} {{ w3 }}w,
+														{{ poster | image_url: width: w4, format: 'webp' }} {{ w4 }}w,
+														{{ poster | image_url: width: w5, format: 'webp' }} {{ w5 }}w"
+													sizes="{{ img_sizes }}"
+												>
+												<img
+													class="media-text__video-poster-img"
+													src="{{ poster | image_url: width: w3 }}"
+													srcset="
+														{{ poster | image_url: width: w3 }} {{ w3 }}w,
+														{{ poster | image_url: width: w4 }} {{ w4 }}w,
+														{{ poster | image_url: width: w5 }} {{ w5 }}w"
+													sizes="{{ img_sizes }}"
+													alt="{{ block.settings.heading | escape | default: 'Video' }}"
+													loading="lazy"
+													width="{{ poster.width }}"
+													height="{{ poster.height }}"
+													style="object-position: {{ focus_x }}% {{ focus_y }}%;"
+												>
+											</picture>
+										{%- endif -%}
+										{%- if has_shopify_video -%}
+											<video
+												class="media-text__video-element"
+												autoplay
+												muted
+												loop
+												playsinline
+												preload="metadata"
+												style="object-position: {{ focus_x }}% {{ focus_y }}%;"
+											>
+												{%- for source in video.sources -%}
+													<source src="{{ source.url }}" type="{{ source.mime_type }}">
+												{%- endfor -%}
+											</video>
+										{%- elsif has_external_video and external_host == 'youtube' -%}
+											<iframe 
+												class="media-text__video-iframe"
+												src="https://www.youtube.com/embed/{{ external_id }}?autoplay=1&mute=1&loop=1&playlist={{ external_id }}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+												allow="autoplay; encrypted-media"
+												allowfullscreen
+												loading="lazy"
+											></iframe>
+										{%- elsif has_external_video and external_host == 'vimeo' -%}
+											<iframe 
+												class="media-text__video-iframe"
+												src="https://player.vimeo.com/video/{{ external_id }}?autoplay=1&muted=1&loop=1&background=1"
+												allow="autoplay; encrypted-media"
+												allowfullscreen
+												loading="lazy"
+											></iframe>
+										{%- endif -%}
+									</div>
+								{%- else -%}
+									{%- comment -%} Play mode: poster + play button + controls {%- endcomment -%}
+									<div class="media-text__video media-text__video--play" id="{{ unique_id }}">
+										{%- comment -%} Cover/poster with play button {%- endcomment -%}
+										<div class="media-text__video-cover" data-video-cover="{{ unique_id }}">
+											{%- if poster != blank -%}
+												<figure class="media-text__figure">
+													{%- render 'html-theme-media-image',
+														image: poster,
+														alt: block.settings.heading | default: 'Video',
+														w1: w1,
+														w2: w2,
+														w3: w3,
+														w4: w4,
+														w5: w5,
+														sizes: img_sizes,
+														image_loading: 'lazy',
+														focus_x: focus_x,
+														focus_y: focus_y
+													-%}
+												</figure>
+											{%- elsif has_shopify_video and video.preview_image -%}
+												<figure class="media-text__figure">
+													{%- render 'html-theme-media-image',
+														image: video.preview_image,
+														alt: block.settings.heading | default: 'Video',
+														w1: w1,
+														w2: w2,
+														w3: w3,
+														w4: w4,
+														w5: w5,
+														sizes: img_sizes,
+														image_loading: 'lazy',
+														focus_x: focus_x,
+														focus_y: focus_y
+													-%}
+												</figure>
+											{%- else -%}
+												<div class="media-text__placeholder media-text__placeholder--video">
+													{%- render 'html-theme-icons', icon: 'play', size: 64 -%}
+												</div>
+											{%- endif -%}
+											<button 
+												class="media-text__play-btn" 
+												type="button" 
+												data-video-play="{{ unique_id }}"
+												aria-label="{{ 'accessibility.play_video' | t | default: 'Play video' }}"
+											>
+												<span class="media-text__play-icon">
+													{%- render 'html-theme-icons', icon: 'play', size: 32 -%}
+												</span>
+											</button>
+										</div>
+										
+										{%- comment -%} Video player (hidden until play) {%- endcomment -%}
+										<div class="media-text__video-player" data-video-player="{{ unique_id }}" hidden>
+											{%- if has_shopify_video -%}
+												<video
+													class="media-text__video-element"
+													controls
+													playsinline
+													preload="metadata"
+													{%- if poster %} poster="{{ poster | image_url: width: 1200 }}"{% endif %}
+												>
+													{%- for source in video.sources -%}
+														<source src="{{ source.url }}" type="{{ source.mime_type }}">
+													{%- endfor -%}
+												</video>
+											{%- elsif has_external_video and external_host == 'youtube' -%}
+												<iframe 
+													class="media-text__video-iframe"
+													data-src="https://www.youtube.com/embed/{{ external_id }}?autoplay=1&rel=0&modestbranding=1"
+													allow="autoplay; encrypted-media; fullscreen"
+													allowfullscreen
+												></iframe>
+											{%- elsif has_external_video and external_host == 'vimeo' -%}
+												<iframe 
+													class="media-text__video-iframe"
+													data-src="https://player.vimeo.com/video/{{ external_id }}?autoplay=1"
+													allow="autoplay; encrypted-media; fullscreen"
+													allowfullscreen
+												></iframe>
+											{%- endif -%}
+										</div>
+									</div>
+									
+									<script>
+										(function() {
+											const id = '{{ unique_id }}';
+											const playBtn = document.querySelector('[data-video-play="' + id + '"]');
+											const cover = document.querySelector('[data-video-cover="' + id + '"]');
+											const player = document.querySelector('[data-video-player="' + id + '"]');
+											
+											if (playBtn && cover && player) {
+												playBtn.addEventListener('click', function() {
+													cover.hidden = true;
+													player.hidden = false;
+													
+													const video = player.querySelector('video');
+													const iframe = player.querySelector('iframe');
+													
+													if (video) {
+														video.play();
+													} else if (iframe && iframe.dataset.src) {
+														iframe.src = iframe.dataset.src;
+													}
+												});
+												
+												const video = player.querySelector('video');
+												if (video) {
+													video.addEventListener('ended', function() {
+														cover.hidden = false;
+														player.hidden = true;
+													});
+												}
+											}
+										})();
+									</script>
+								{%- endif -%}
+							{%- else -%}
+								<div class="media-text__placeholder">
+									{%- render 'html-theme-icons', icon: 'play', size: 64 -%}
+									<p>{{ 'general.select_video' | t | default: 'Select a video' }}</p>
 								</div>
 							{%- endif -%}
 					{%- endcase -%}
@@ -147,166 +391,6 @@ DEPENDENCIES:
 		{%- endfor -%}
 	</div>
 </div>
-
-{% style %}
-#shopify-section-{{ section.id }}.block-marketing-media-text {
-	background-color: {{ section.settings.background_color }};
-	color: {{ section.settings.text_color }};
-	padding-block: {{ section.settings.padding_block }}em;
-}
-
-.block-marketing-media-text__items--has-heading {
-	margin-block-start: 2em;
-}
-
-.block-marketing-media-text__items > * + * {
-	margin-block-start: 3em;
-}
-
-/* ===========================================
-   Media + Text Layout
-   =========================================== */
-
-.media-text {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 0;
-	align-items: stretch;
-}
-
-.media-text > * {
-	min-width: 0;
-}
-
-/* Desktop: side-by-side */
-@media (min-width: 40em) {
-	/* Width variations */
-	.media-text--width-40 { grid-template-columns: 40% 60%; }
-	.media-text--width-50 { grid-template-columns: 50% 50%; }
-	.media-text--width-60 { grid-template-columns: 60% 40%; }
-	
-	/* Position right: media moves to second column via order */
-	.media-text--right .media-text__media { order: 2; }
-	.media-text--right .media-text__content { order: 1; }
-	
-	/* Flip grid columns when media is on right */
-	.media-text--right.media-text--width-40 { grid-template-columns: 60% 40%; }
-	.media-text--right.media-text--width-60 { grid-template-columns: 40% 60%; }
-}
-
-/* ===========================================
-   Media Container
-   =========================================== */
-
-.media-text__media {
-	position: relative;
-	width: 100%;
-	overflow: hidden;
-}
-
-.media-text__figure {
-	margin: 0;
-}
-
-.media-text__figure .theme-media__img {
-	width: 100%;
-	height: auto;
-	object-fit: cover;
-}
-
-/* Mobile: fixed ratios op media container */
-.media-text__media--square { aspect-ratio: 1 / 1; }
-.media-text__media--portrait { aspect-ratio: 2 / 3; }
-.media-text__media--landscape { aspect-ratio: 3 / 2; }
-
-/* Mobile: fill heeft min-height, adapt toont natuurlijke ratio */
-.media-text__media--fill {
-	aspect-ratio: auto;
-	min-height: 296px;
-}
-
-.media-text__media--adapt {
-	/* Natuurlijke afbeelding ratio behouden */
-}
-
-/* Desktop: figure vult media container */
-@media (min-width: 40em) {
-	.media-text__figure {
-		position: absolute;
-		inset: 0;
-	}
-	
-	.media-text__figure .theme-media__img {
-		height: 100%;
-	}
-	
-	/* Fill: content bepaalt hoogte, media vult mee */
-	.media-text__media--fill {
-		min-height: 20em;
-	}
-	
-	/* Adapt: afbeelding behoudt natuurlijke ratio, content strekt mee */
-	.media-text__media--adapt .media-text__figure {
-		position: relative;
-		inset: auto;
-	}
-	
-	.media-text__media--adapt .theme-media__img {
-		height: auto;
-	}
-}
-
-/* Placeholder */
-.media-text__placeholder {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	min-height: 300px;
-	background-color: var(--theme-color-grey-light, #f5f5f5);
-	color: var(--theme-color-grey, #999);
-	gap: 1em;
-}
-
-/* ===========================================
-   Content Container
-   =========================================== */
-
-.media-text__content {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 2em 1.5em;
-}
-
-/* Vertical alignment within content */
-.media-text--align-top .media-text__content { justify-content: flex-start; }
-.media-text--align-center .media-text__content { justify-content: center; }
-.media-text--align-bottom .media-text__content { justify-content: flex-end; }
-
-@media (min-width: 40em) {
-	.media-text__content {
-		padding: 3em;
-	}
-}
-
-.media-text__heading {
-	font-family: var(--theme-font-family-serif);
-	font-size: 2em;
-	font-weight: 400;
-	line-height: 1.2;
-	margin: 0 0 0.5em;
-}
-
-.media-text__text {
-	margin: 0;
-}
-
-.media-text__cta {
-	margin-top: 2em;
-}
-{% endstyle %}
 
 {% schema %}
 {
@@ -369,6 +453,18 @@ DEPENDENCIES:
 			"unit": "em"
 		},
 		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
 			"type": "header",
 			"content": "Colors"
 		},
@@ -384,19 +480,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add image+text or video+text blocks. Each block is a side-by-side row with configurable media position and width."
 		}
 	],
 	"blocks": [
@@ -404,6 +492,46 @@ DEPENDENCIES:
 			"type": "image_text",
 			"name": "Image + text",
 			"settings": [
+				{
+					"type": "header",
+					"content": "Content"
+				},
+				{
+					"type": "text",
+					"id": "heading",
+					"label": "Heading"
+				},
+				{
+					"type": "richtext",
+					"id": "text",
+					"label": "Text"
+				},
+				{
+					"type": "text",
+					"id": "cta_text",
+					"label": "Button text",
+					"info": "Leave empty to use locale default"
+				},
+				{
+					"type": "url",
+					"id": "cta_url",
+					"label": "Button link"
+				},
+				{
+					"type": "select",
+					"id": "cta_style",
+					"label": "Button style",
+					"options": [
+						{ "value": "primary", "label": "Primary" },
+						{ "value": "secondary", "label": "Secondary" },
+						{ "value": "outline", "label": "Outline" }
+					],
+					"default": "primary"
+				},
+				{
+					"type": "header",
+					"content": "Media"
+				},
 				{
 					"type": "image_picker",
 					"id": "image",
@@ -443,6 +571,76 @@ DEPENDENCIES:
 					"unit": "%"
 				},
 				{
+					"type": "header",
+					"content": "Layout"
+				},
+				{
+					"type": "select",
+					"id": "image_position",
+					"label": "Image position (desktop)",
+					"options": [
+						{ "value": "left", "label": "Left" },
+						{ "value": "right", "label": "Right" }
+					],
+					"default": "left"
+				},
+				{
+					"type": "select",
+					"id": "image_width",
+					"label": "Image width",
+					"options": [
+						{ "value": "40", "label": "40%" },
+						{ "value": "50", "label": "50%" },
+						{ "value": "60", "label": "60%" }
+					],
+					"default": "50"
+				},
+				{
+					"type": "select",
+					"id": "vertical_alignment",
+					"label": "Vertical alignment",
+					"options": [
+						{ "value": "top", "label": "Top" },
+						{ "value": "center", "label": "Center" },
+						{ "value": "bottom", "label": "Bottom" }
+					],
+					"default": "center"
+				},
+				{
+					"type": "header",
+					"content": "Colors"
+				},
+				{
+					"type": "color",
+					"id": "background_color",
+					"label": "Content background"
+				},
+				{
+					"type": "color",
+					"id": "text_color",
+					"label": "Content text"
+				},
+				{
+					"type": "color",
+					"id": "button_color",
+					"label": "Button color"
+				},
+				{
+					"type": "color",
+					"id": "button_text_color",
+					"label": "Button text color"
+				}
+			]
+		},
+		{
+			"type": "video_text",
+			"name": "Video + text",
+			"settings": [
+				{
+					"type": "header",
+					"content": "Content"
+				},
+				{
 					"type": "text",
 					"id": "heading",
 					"label": "Heading"
@@ -476,12 +674,79 @@ DEPENDENCIES:
 				},
 				{
 					"type": "header",
+					"content": "Media"
+				},
+				{
+					"type": "video",
+					"id": "video",
+					"label": "Shopify hosted video",
+					"info": "Upload video in Settings > Files"
+				},
+				{
+					"type": "text",
+					"id": "video_url",
+					"label": "External video URL",
+					"info": "YouTube or Vimeo URL (used if no Shopify video)"
+				},
+				{
+					"type": "select",
+					"id": "video_mode",
+					"label": "Video mode",
+					"options": [
+						{ "value": "play", "label": "Play button (click to play)" },
+						{ "value": "background", "label": "Background (autoplay loop)" }
+					],
+					"default": "play",
+					"info": "Background mode autoplays muted and loops"
+				},
+				{
+					"type": "image_picker",
+					"id": "poster",
+					"label": "Cover image",
+					"info": "Shown before video plays. Falls back to video thumbnail."
+				},
+				{
+					"type": "select",
+					"id": "image_height",
+					"label": "Video height",
+					"options": [
+						{ "value": "adapt", "label": "Adapt to content" },
+						{ "value": "fill", "label": "Fill to content" },
+						{ "value": "square", "label": "Square (1:1)" },
+						{ "value": "portrait", "label": "Portrait (2:3)" },
+						{ "value": "landscape", "label": "Landscape (3:2)" }
+					],
+					"default": "landscape"
+				},
+				{
+					"type": "range",
+					"id": "focus_x",
+					"label": "Horizontal focus",
+					"min": 0,
+					"max": 100,
+					"step": 5,
+					"default": 50,
+					"unit": "%",
+					"info": "For cover image and video positioning"
+				},
+				{
+					"type": "range",
+					"id": "focus_y",
+					"label": "Vertical focus",
+					"min": 0,
+					"max": 100,
+					"step": 5,
+					"default": 50,
+					"unit": "%"
+				},
+				{
+					"type": "header",
 					"content": "Layout"
 				},
 				{
 					"type": "select",
 					"id": "image_position",
-					"label": "Image position (desktop)",
+					"label": "Video position (desktop)",
 					"options": [
 						{ "value": "left", "label": "Left" },
 						{ "value": "right", "label": "Right" }
@@ -491,7 +756,7 @@ DEPENDENCIES:
 				{
 					"type": "select",
 					"id": "image_width",
-					"label": "Image width",
+					"label": "Video width",
 					"options": [
 						{ "value": "40", "label": "40%" },
 						{ "value": "50", "label": "50%" },

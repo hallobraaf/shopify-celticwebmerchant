@@ -11,31 +11,16 @@
   "current": {
     "logo": "shopify://shop_images/logo-white.png",
     "favicon": "shopify://shop_images/CWM_Favicon_2_a5e67390-f3d6-4b46-9083-89e3db9a57b7.png",
+    "seo_description": "Een kostuum of zwaard kopen doe je bij Celtic! Beste winkel voor LARP, reenactment & Cosplay. Gratis verzending boven 75 euro – grootste assortiment van Europa",
     "cart_type": "drawer",
+    "price_show_compare": true,
     "price_show_tax_notice": true,
     "content_for_index": [],
     "blocks": {
-      "8183701962187534751": {
-        "type": "shopify://apps/wc-wishlist-club/blocks/wishlist-script/582a225b-bd58-49d0-b0b6-9479192e79c5",
-        "disabled": false,
-        "settings": {}
-      },
       "3243910605452009494": {
         "type": "shopify://apps/oo-eu-tax-exemption/blocks/tax-exemption/bc577450-6605-4fce-887f-6c25c2bccc22",
         "disabled": false,
         "settings": {}
-      },
-      "13766566558402285670": {
-        "type": "shopify://apps/doran-product-reviews/blocks/app-embed/ca90c3ee-bc39-4c25-90cd-fdf0519c6d11",
-        "disabled": false,
-        "settings": {
-          "isJSONLD": false,
-          "isPopup": false,
-          "isPop": false,
-          "customCSS": "",
-          "is_use_shopify_font": false,
-          "pop_shopify_font": "sans_serif_n4"
-        }
       },
       "11945366711752539959": {
         "type": "shopify://apps/zendesk/blocks/zendesk_web_widget/c0b417b1-b90b-4754-baaf-f55627e6acd4",
@@ -62,6 +47,108 @@
         "disabled": false,
         "settings": {
           "designId": ""
+        }
+      },
+      "9075437643488871153": {
+        "type": "shopify://apps/token-of-trust-verification/blocks/app-embed-tot/dd9fd4c4-d61a-4d4e-933e-e9cff6289b8c",
+        "disabled": false,
+        "settings": {}
+      },
+      "17670923894607274400": {
+        "type": "shopify://apps/wishlist-plus/blocks/wishlist-app-embed/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+        "disabled": false,
+        "settings": {
+          "storefront_layout_enabled": false,
+          "storefront_layout_primary_bg_color": "#000000",
+          "storefront_layout_primary_text_color": "#ffffff",
+          "storefront_layout_secondary_bg_color": "#F4F8FE",
+          "storefront_layout_secondary_text_color": "#333333",
+          "storefront_layout_ui_border_radius": 6,
+          "storefront_layout_notification_position": "left",
+          "storefront_layout_action_popup_position": "left",
+          "storefront_layout_drawer_position": "left",
+          "storefront_layout_as_section_page": ""
+        }
+      },
+      "16187601983559181590": {
+        "type": "shopify://apps/swym-back-in-stock-alerts/blocks/sbisa-embed-init/7ab62acf-4bd3-4b2d-a616-684b2d8d8985",
+        "disabled": false,
+        "settings": {}
+      },
+      "16191182845589407845": {
+        "type": "shopify://apps/rockit-sales-manager/blocks/timer-embed/f347a9bf-00bf-4eeb-9f4d-159bb9b1cead",
+        "disabled": false,
+        "settings": {}
+      },
+      "7322671195855991875": {
+        "type": "shopify://apps/discount-mixer/blocks/discount-view/791c666a-e939-4fd3-bdd3-b122066bb588",
+        "disabled": false,
+        "settings": {
+          "discounted-price-background-color": "#000000",
+          "card-discounted-price-font-size": 16,
+          "product-discounted-price-font-size": 18,
+          "home-badge": true,
+          "collection-badge": true,
+          "product-badge": true,
+          "round-price-to-whole-number": false,
+          "trailing-zero": false,
+          "sale-badge-text": "",
+          "sale-badge-background-color": "#000000",
+          "sale-badge-text-color": "#ffffff",
+          "sale-badge-font-size": 12,
+          "sale-badge-border-radius": 12,
+          "timeout": 500,
+          "show-tier-table": false,
+          "tier-quantity-header-text": "",
+          "tier-discount-header-text": "",
+          "tier-table-background-color": "transparent",
+          "tier-table-text-color": "#000000",
+          "tier-table-border-color": "#cccccc",
+          "tier-table-border-width": 1,
+          "tier-table-border-radius": 5,
+          "tier-table-font-size": 14
+        }
+      },
+      "5254528770348971878": {
+        "type": "shopify://apps/discount-mixer/blocks/app-embed/791c666a-e939-4fd3-bdd3-b122066bb588",
+        "disabled": false,
+        "settings": {
+          "general_banner": false,
+          "sticky_banner": false,
+          "title": "All products have a discount!",
+          "background-color": "#000000",
+          "text-color": "#ffffff",
+          "url": "",
+          "font-size": 16,
+          "text-align": "center"
+        }
+      },
+      "13433517325689821891": {
+        "type": "shopify://apps/rockit-sales-manager/blocks/savings-embed/f347a9bf-00bf-4eeb-9f4d-159bb9b1cead",
+        "disabled": false,
+        "settings": {}
+      },
+      "13766566558402285670": {
+        "type": "shopify://apps/doran-product-reviews/blocks/app-embed/ca90c3ee-bc39-4c25-90cd-fdf0519c6d11",
+        "disabled": false,
+        "settings": {
+          "isJSONLD": true,
+          "isPopup": false,
+          "isPop": false,
+          "customCSS": "",
+          "is_use_shopify_font": false,
+          "pop_shopify_font": "sans_serif_n4"
+        }
+      },
+      "7333856334229879547": {
+        "type": "shopify://apps/doran-back-in-stock/blocks/app-embed/aeb93bd4-c112-4bfe-bfbd-9cd73686d06e",
+        "disabled": false,
+        "settings": {
+          "custom_css": "",
+          "form_selector": "",
+          "atc_selector": "",
+          "atc_text_selector": "",
+          "variant_selector": ""
         }
       }
     },
@@ -121,20 +208,6 @@
   "presets": {
     "Default": {
       "cart_type": "drawer",
-      "sections": {
-        "main-password-header": {
-          "type": "main-password-header",
-          "settings": {
-            "color_scheme": "scheme-1"
-          }
-        },
-        "main-password-footer": {
-          "type": "main-password-footer",
-          "settings": {
-            "color_scheme": "scheme-1"
-          }
-        }
-      },
       "color_schemes": {
         "scheme-1": {
           "settings": {

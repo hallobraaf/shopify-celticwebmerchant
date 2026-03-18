@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "italie"
+  },
+  "parent": "cart.json",
+  "sections": {
+    "block_marketing_banners_9GPiW": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-cde6c63c66f5b551f9e6ec77a27f6870": null,
+        "heading": "",
+        "subheading": "",
+        "header-61fe2faf7a62ce2d2e0a9d0dd36cfbdd": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-c37d4f9845c5943ed1ef424e0b534bcd": null,
+        "background_color": "",
+        "text_color": "",
+        "header-4d1f98ac239ee7d6d6abb1ce0219c7b7": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_q6fVr": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Spedizione gratuita per ordini superiori a 99 €",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_q6fVr"
+      ],
+      "name": "Banners"
+    }
+  },
+  "order": [
+    "block_marketing_banners_9GPiW",
+    "cart-order",
+    "block_product_recommended_yfFAdg"
+  ]
+}

@@ -7,211 +7,8 @@
 -%}
 
 {%- if menu.links.size > 0 -%}
-<header-bottom class="block-header-bottom__wrapper">
-	<nav class="block-header-bottom__nav" aria-label="{{ section.settings.menu | replace: '-', ' ' | capitalize }}">
-		<div class="block-header-bottom__menu-wrapper is-align-wide">
-			<ul class="block-header-bottom__menu">
-			{%- for link in menu.links -%}
-				<li class="block-header-bottom__item{% if link.links.size > 0 %} has-dropdown{% endif %}">
-					<a href="{{ link.url }}" aria-label="{{ link.title }}" {% if link.current %}aria-current="page"{% endif %}>
-						<span>{{ link.title }}</span>
-					</a>
 
-					{%- if link.links.size > 0 -%}
-						{%- liquid
-							assign detected_collection = false
-							assign detected_assist = false
-							if link.url contains '/collections/'
-								assign url_parts = link.url | split: '/'
-								assign handle = url_parts.last
-								assign detected_collection = collections[handle]
-							endif
-							if detected_collection
-								assign detected_assist = detected_collection.metafields.custom['collection-assist-reference']
-							endif
-						-%}
-
-						<div class="block-header-bottom__dropdown">
-							<div class="block-header-bottom__dropdown-inner is-align-wide{% if detected_assist %} has-assist{% endif %}">
-								<section class="block-header-bottom__links">
-									<ul>
-										{%- for child in link.links -%}
-											{%- liquid
-												assign link_collection = false
-												if child.url contains '/collections/'
-													assign url_parts = child.url | split: '/'
-													assign handle = url_parts.last
-													assign link_collection = collections[handle]
-												endif
-											-%}
-
-											<li class="{% if child.links.size > 0 %}has-dropdown{% endif %}">
-												<a href="{{ child.url }}" aria-label="{{ child.title }}" class="block-header-bottom__link">
-													{%- if link_collection.image -%}
-														<div class="block-header-bottom__link-image">
-															{%- render 'html-theme-media',
-															media: link_collection.image,
-															alt: link_collection.image.alt | default: link_collection.title,
-															width: 96,
-															sizes: '72px',
-															image_ratio: 'square',
-															image_loading: 'lazy'
-															-%}
-														</div>
-													{%- endif -%}
-													<span>{{ child.title }}</span>
-													{%- if child.links.size > 0 -%}
-														<i class="block-header-bottom__caret">
-															{% render 'html-theme-icons', icon: 'caret', size: 16 %}
-														</i>
-													{%- endif -%}
-												</a>
-
-												{%- if child.links.size > 0 -%}
-													<div class="block-header-bottom__dropdown block-header-bottom__dropdown--nested">
-														<div class="block-header-bottom__dropdown-inner is-align-wide{% if detected_assist %} has-assist{% endif %}">
-															<section class="block-header-bottom__links">
-																<ul>
-																	<li class="block-header-bottom__navigate block-header-bottom__navigate--top">
-																		<a href="{{ link.url }}" aria-label="{{ link.title }}" class="block-header-bottom__link block-header-bottom__link--back">
-																			<i>{% render 'html-theme-icons', icon: 'arrow', size: 16 %}</i>
-																			<span>{{ link.title }}</span>
-																		</a>
-																		<a href="{{ child.url }}" aria-label="{{ child.title }}" class="block-header-bottom__link block-header-bottom__link--all">
-																			<span>{{ child.title }}</span>
-																			<i>{% render 'html-theme-icons', icon: 'arrow', size: 16 %}</i>
-																		</a>
-																	</li>
-
-																	{%- for subchild in child.links -%}
-																		{%- liquid
-																			assign sublink_collection = false
-																			if subchild.url contains '/collections/'
-																				assign url_parts = subchild.url | split: '/'
-																				assign handle = url_parts.last
-																				assign sublink_collection = collections[handle]
-																			endif
-																		-%}
-
-																		<li>
-																			<a href="{{ subchild.url }}" aria-label="{{ subchild.title }}" class="block-header-bottom__link">
-																				{%- if sublink_collection.image -%}
-																					<div class="block-header-bottom__link-image">
-																						{%- render 'html-theme-media',
-																						media: sublink_collection.image,
-																						alt: sublink_collection.image.alt | default: sublink_collection.title,
-																						width: 96,
-																						sizes: '72px',
-																						image_ratio: 'square',
-																						image_loading: 'lazy'
-																						-%}
-																					</div>
-																				{%- endif -%}
-																				<span>{{ subchild.title }}</span>
-																			</a>
-																		</li>
-																	{%- endfor -%}
-
-																	<li class="block-header-bottom__navigate block-header-bottom__navigate--bottom">
-																		<a href="{{ link.url }}" aria-label="{{ link.title }}" class="block-header-bottom__link block-header-bottom__link--back">
-																			<i>{% render 'html-theme-icons', icon: 'arrow', size: 16 %}</i>
-																			<span>{{ link.title }}</span>
-																		</a>
-																		<a href="{{ child.url }}" aria-label="{{ child.title }}" class="block-header-bottom__link block-header-bottom__link--all">
-																			<span>{{ child.title }}</span>
-																			<i>{% render 'html-theme-icons', icon: 'arrow', size: 16 %}</i>
-																		</a>
-																	</li>
-																</ul>
-															</section>
-
-															{%- if detected_assist -%}
-																{%- assign assist = detected_assist.value -%}
-																<section class="block-header-bottom__assist">
-																	<article class="block-header-bottom__assist-item">
-																		{%- if assist.page -%}
-																			<a href="{{ assist.page.value.url }}" aria-label="{{ assist.title }}" class="block-header-bottom__assist-overlay"></a>
-																		{%- endif -%}
-																		{%- if assist.image -%}
-																			<div class="block-header-bottom__assist-image">
-																				{%- render 'html-theme-media',
-																				media: assist.image,
-																				alt: assist.title,
-																				width: 520,
-																				sizes: '260px',
-																				image_ratio: 'portrait',
-																				image_loading: 'lazy'
-																				-%}
-																				</div>
-																				{%- endif -%}
-																				<section class="block-header-bottom__assist-content">
-																				<h3>{{ assist.title }}</h3>
-																				{%- if assist.page.value -%}
-																				<span class="block-header-bottom__assist-link">
-																				<span>{{ assist_link_text }}</span>
-																				<i>{% render 'html-theme-icons', icon: 'arrow', size: 16 %}</i>
-																				</span>
-																				{%- endif -%}
-																				</section>
-																				</article>
-																				</section>
-																				{%- endif -%}
-																				</div>
-																				</div>
-																				{%- endif -%}
-																				</li>
-																				{%- endfor -%}
-
-										<li class="block-header-bottom__navigate block-header-bottom__navigate--bottom">
-											<a href="{{ link.url }}" class="block-header-bottom__link block-header-bottom__link--all">
-												<span>{{ link.title }}</span>
-												<i>{% render 'html-theme-icons', icon: 'arrow', size: 16 %}</i>
-											</a>
-										</li>
-									</ul>
-								</section>
-
-								{%- if detected_assist -%}
-									{%- assign assist = detected_assist.value -%}
-									<section class="block-header-bottom__assist">
-										<article class="block-header-bottom__assist-item">
-											{%- if assist.page -%}
-												<a href="{{ assist.page.value.url }}" class="block-header-bottom__assist-overlay"></a>
-											{%- endif -%}
-											{%- if assist.image -%}
-												<div class="block-header-bottom__assist-image">
-													{%- render 'html-theme-media',
-													media: assist.image,
-													alt: assist.title,
-													width: 520,
-													sizes: '260px',
-													image_ratio: 'portrait',
-													image_loading: 'lazy'
-													-%}
-												</div>
-											{%- endif -%}
-											<section class="block-header-bottom__assist-content">
-												<h3>{{ assist.title }}</h3>
-												{%- if assist.page.value -%}
-													<span class="block-header-bottom__assist-link">
-														<span>{{ assist_link_text }}</span>
-														<i>{% render 'html-theme-icons', icon: 'arrow', size: 16 %}</i>
-													</span>
-												{%- endif -%}
-											</section>
-										</article>
-									</section>
-								{%- endif -%}
-							</div>
-						</div>
-					{%- endif -%}
-				</li>
-			{%- endfor -%}
-			</ul>
-		</div>
-	</nav>
-</header-bottom>
-{%- endif -%}
+{{ 'block-header-bottom.min.css' | asset_url | stylesheet_tag }}
 
 {% style %}
 	#shopify-section-{{ section.id }}.block-header-bottom {
@@ -220,73 +17,129 @@
 	}
 {% endstyle %}
 
-{% javascript %}
-	class HeaderBottom extends HTMLElement {
-		constructor() {
-			super();
-		}
+<div class="block-header-bottom__wrapper" data-nav-id="{{ section.id }}">
+	<nav class="block-header-bottom__nav" aria-label="{{ section.settings.menu | replace: '-', ' ' | capitalize }}">
+		<div class="block-header-bottom__menu-wrapper is-align-wide">
 
-		connectedCallback() {
-			this.nav = this.querySelector('.block-header-bottom__nav');
-			if (this.nav) {
-				this.initDesktopNav();
+			<ul class="block-header-bottom__menu">
+				{%- for link in menu.links -%}
+					<li class="block-header-bottom__item{% if link.links.size > 0 %} has-dropdown{% endif %}"{% if link.links.size > 0 %} data-menu-index="{{ forloop.index0 }}"{% endif %}>
+						<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+							<span>{{ link.title }}</span>
+						</a>
+					</li>
+				{%- endfor -%}
+			</ul>
+
+			{{- '<!-- single shared dropdown panel -->' -}}
+			<div class="block-header-bottom__dropdown" id="nav-panel-{{ section.id }}">
+				<div class="block-header-bottom__dropdown-inner is-align-wide">
+					<section class="block-header-bottom__links">
+						<ul class="block-header-bottom__panel-links"></ul>
+					</section>
+					<section class="block-header-bottom__assist" style="display:none"></section>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+
+	{{- '<!-- SEO: all child links, visually hidden but crawlable -->' -}}
+	<div class="block-header-bottom__seo-links" aria-hidden="true">
+		{%- for link in menu.links -%}
+			{%- for child in link.links -%}
+				<a href="{{ child.url }}">{{ child.title }}</a>
+				{%- for subchild in child.links -%}
+					<a href="{{ subchild.url }}">{{ subchild.title }}</a>
+				{%- endfor -%}
+			{%- endfor -%}
+		{%- endfor -%}
+	</div>
+</div>
+
+{{- '<!-- menu data for JS panel rendering -->' -}}
+<script type="application/json" id="nav-data-{{ section.id }}">[
+	{%- for link in menu.links -%}
+	{%- liquid
+		assign detected_collection = false
+		assign detected_assist = false
+		if link.url contains '/collections/'
+			assign url_parts = link.url | split: '/'
+			assign handle = url_parts.last
+			assign detected_collection = collections[handle]
+		endif
+		if detected_collection
+			assign detected_assist = detected_collection.metafields.custom['collection-assist-reference']
+		endif
+	-%}
+	{
+		"url": {{ link.url | json }},
+		"title": {{ link.title | json }},
+		"links": [
+			{%- for child in link.links -%}
+			{%- liquid
+				assign link_collection = false
+				assign child_image_url = nil
+				assign child_image_alt = child.title
+				if child.url contains '/collections/'
+					assign url_parts = child.url | split: '/'
+					assign handle = url_parts.last
+					assign link_collection = collections[handle]
+				endif
+				if link_collection.image
+					assign child_image_url = link_collection.image | image_url: width: 96
+					assign child_image_alt = link_collection.image.alt | default: link_collection.title | default: child.title
+				endif
+			-%}
+			{
+				"url": {{ child.url | json }},
+				"title": {{ child.title | json }},
+				"imageUrl": {{ child_image_url | json }},
+				"imageAlt": {{ child_image_alt | json }},
+				"links": [
+					{%- for subchild in child.links -%}
+					{%- liquid
+						assign sublink_collection = false
+						assign subchild_image_url = nil
+						assign subchild_image_alt = subchild.title
+						if subchild.url contains '/collections/'
+							assign url_parts = subchild.url | split: '/'
+							assign handle = url_parts.last
+							assign sublink_collection = collections[handle]
+						endif
+						if sublink_collection.image
+							assign subchild_image_url = sublink_collection.image | image_url: width: 96
+							assign subchild_image_alt = sublink_collection.image.alt | default: sublink_collection.title | default: subchild.title
+						endif
+					-%}
+					{
+						"url": {{ subchild.url | json }},
+						"title": {{ subchild.title | json }},
+						"imageUrl": {{ subchild_image_url | json }},
+						"imageAlt": {{ subchild_image_alt | json }}
+					}{% unless forloop.last %},{% endunless %}
+					{%- endfor -%}
+				]
+			}{% unless forloop.last %},{% endunless %}
+			{%- endfor -%}
+		],
+		"assist": {%- if detected_assist -%}
+			{%- assign assist = detected_assist.value -%}
+			{%- assign assist_image_url = nil -%}
+			{%- if assist.image -%}{%- assign assist_image_url = assist.image | image_url: width: 520 -%}{%- endif -%}
+			{
+				"title": {{ assist.title | json }},
+				"imageUrl": {{ assist_image_url | json }},
+				"pageUrl": {{ assist.page.value.url | json }},
+				"linkText": {{ assist_link_text | json }}
 			}
-		}
+		{%- else -%}null{%- endif -%}
+	}{% unless forloop.last %},{% endunless %}
+	{%- endfor -%}
+]</script>
 
-		initDesktopNav() {
-			const allItems = [...this.nav.querySelectorAll('li')];
-
-			const getAncestors = (li, boundary) => {
-				const ancestors = [];
-				let parent = li.parentElement;
-				while (parent && parent !== boundary) {
-					if (parent.tagName.toLowerCase() === 'li') {
-						ancestors.push(parent);
-					}
-					parent = parent.parentElement;
-				}
-				return ancestors;
-			};
-
-			this.nav.addEventListener('mouseleave', () => {
-				allItems.forEach(item => item.classList.remove('is-selected'));
-			});
-
-			this.nav.addEventListener('click', (event) => {
-				const link = event.target.closest('.has-dropdown > .block-header-bottom__link');
-				if (link) {
-					const listItem = link.closest('li');
-					if (listItem.closest('.block-header-bottom__dropdown')) {
-						event.preventDefault();
-						const ancestors = getAncestors(listItem, this.nav);
-						allItems.forEach(item => {
-							if (ancestors.includes(item)) {
-								item.classList.add('is-selected');
-							} else if (item === listItem) {
-								item.classList.toggle('is-selected');
-							} else {
-								item.classList.remove('is-selected');
-							}
-						});
-					}
-				}
-
-				if (event.target.closest('.block-header-bottom__link--back')) {
-					event.preventDefault();
-					const listItem = event.target.closest('li');
-					const ancestors = getAncestors(listItem, this.nav);
-					if (ancestors.length > 0) {
-						ancestors[0].classList.remove('is-selected');
-					}
-				}
-			});
-		}
-
-		disconnectedCallback() {}
-	}
-
-	customElements.define('header-bottom', HeaderBottom);
-{% endjavascript %}
+<script src="{{ 'block-header-bottom.min.js' | asset_url }}" defer></script>
+{%- endif -%}
 
 {% schema %}
 {

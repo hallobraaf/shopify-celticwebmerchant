@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_banners_hCKB6": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-1bc1b3c24b35454ff2c1ec2a1afd90ed": null,
+        "heading": "",
+        "subheading": "",
+        "header-c058848080a6b3b1e85583f7d8807b36": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-8ca637e3e7f0ea51c2b02ca77d60abef": null,
+        "background_color": "#f8f8f8",
+        "text_color": "",
+        "header-a0f438a5dd5443506aa7160f0d1a09a0": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_kyHUg": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Free shipping on orders over £99,-\nFor DPD shipments only — excluding weapons.",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_kyHUg"
+      ],
+      "name": "Banners"
+    },
+    "block_marketing_testimonials_wKjB8": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-742f4960262ed267ef77ec6dd5da008e": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-56841b53f798654a08ea1cbb82ce1853": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "header-6171728e3b054c298ea83b711cae5d6f": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "header-39b3436a13599a82f1b571a2f50c682a": null,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-a302c71c9f3d94ea3ddba23e046d1c38": null,
+        "background_color": "",
+        "text_color": "",
+        "header-4efa75eae976c83753d838191da800d1": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "testimonial_bVTYn": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Excellent customer service always keeps in contact and I'm very happy with my purchase 💯👌🏻🕺🏻",
+            "author": "justin watkins, UK 🇬🇧",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_RVj6r": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Very pleased with the service C W Merch is a brilliant place to go to for slightly 'unusual' presents. Everything arrived well in time - including one where there was a slight delay form the suppliers. Would have no hesitation in recommending them.",
+            "author": "Tony Fryer , UK 🇬🇧",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_Crmif": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Great service, order fulfilled fast and delivered fast thank you",
+            "author": "Matthew Campbell, UK 🇬🇧",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_bVTYn",
+        "testimonial_RVj6r",
+        "testimonial_Crmif"
+      ],
+      "name": "Testimonials"
+    },
+    "block_marketing_products_YdRxh": {
+      "type": "block-marketing-products",
+      "disabled": false,
+      "settings": {
+        "header-1d609547df305ebaeaa36be00c0e6d80": null,
+        "collection": "altijd-nodig",
+        "heading": "Always needed",
+        "header-8d9d9503133783a1499712afd8449077": null,
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_badges": false,
+        "show_rating": false,
+        "quick_add": true,
+        "header-5054bd1a3a80630714c0ca4534244d61": null,
+        "max_products": 12,
+        "only_available": true,
+        "header-47b4e645c4cea87b196df2234da9e435": null,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "header-fb9a4fde850bc2b01f0ca475a57496be": null,
+        "background_color": "",
+        "text_color": "",
+        "header-354aa7c8dd3bc8dd663423cb4c577d7b": null,
+        "anchor": "",
+        "custom_class": "",
+        "header-5b6d27b08b21cb61c0d837aeec1ce244": null,
+        "paragraph-0ff675685fb4956682321b488ec639ab": null
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "Products"
+    },
+    "cart-order": {
+      "settings": {
+        "show_continue_shopping": false
+      },
+      "blocks": {
+        "oo_eu_tax_exemption_cart_tax_exemption_MDMRjm": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    }
+  },
+  "context": {
+    "market": "verenigd-koningkrijk"
+  },
+  "parent": "cart.json",
+  "order": [
+    "block_marketing_banners_hCKB6",
+    "cart-order",
+    "block_marketing_testimonials_wKjB8",
+    "block_marketing_products_YdRxh"
+  ]
+}

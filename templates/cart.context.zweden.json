@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "zweden"
+  },
+  "parent": "cart.json",
+  "sections": {
+    "block_marketing_banners_FzfRq": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-d98862c9e0dc7728da208e8e92c95c23": null,
+        "heading": "",
+        "subheading": "",
+        "header-9ffa867c38084bc100bb641ce7f19002": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-e7e8d6265eed8777925203661eb9933c": null,
+        "background_color": "",
+        "text_color": "",
+        "header-20bd526289c92ca0c05bdb1db1aacd3d": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_6xwMg": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Fri frakt från 1070 kr.",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_6xwMg"
+      ],
+      "name": "Banners"
+    }
+  },
+  "order": [
+    "block_marketing_banners_FzfRq",
+    "cart-order",
+    "block_product_recommended_yfFAdg"
+  ]
+}

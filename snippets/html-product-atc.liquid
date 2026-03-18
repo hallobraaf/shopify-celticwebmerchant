@@ -15,14 +15,32 @@
   - Submit button with sold out/unavailable states
   - Data attributes for JS state updates
   - Wishlist integration (third-party app)
+  
+  STRUCTURE:
+  - Container: flex row with 3 sibling divs
+  - [data-fragment-update="atc"] wraps quantity + button (updated on variant change)
+  - Notify and wishlist are siblings (preserved across updates)
+  - CSS uses .is-available class + sibling selectors for visibility
   ============================================================================
 {%- endcomment -%}
 
 {%- liquid
   assign v = product.selected_or_first_available_variant
-  assign is_full_width = full_width | default: true
-  assign display_quantity = show_quantity | default: true
-  assign display_wishlist = show_wishlist | default: true
+  if full_width == nil
+    assign is_full_width = true
+  else
+    assign is_full_width = full_width
+  endif
+  if show_quantity == nil
+    assign display_quantity = true
+  else
+    assign display_quantity = show_quantity
+  endif
+  if show_wishlist == nil
+    assign display_wishlist = true
+  else
+    assign display_wishlist = show_wishlist
+  endif
   
   assign is_available = false
   if v.available
@@ -34,78 +52,90 @@
   assign unavailable_label = 'product.unavailable' | t
 -%}
 
-<div class="product-atc{% if is_available %} product-atc--available{% else %} product-atc--unavailable{% endif %}" data-product-atc>
-  {%- if display_quantity -%}
-    <div class="product-atc__quantity">
-      <button 
-        type="button" 
-        class="product-atc__qty-btn" 
-        data-qty-minus 
-        aria-label="{{ 'product.quantity.decrease' | t }}"
-      >
-        <span aria-hidden="true">−</span>
-      </button>
-      <input 
-        type="number" 
-        name="quantity" 
-        class="product-atc__qty-input" 
-        value="1" 
-        min="1" 
-        aria-label="{{ 'product.quantity.label' | t }}"
-        data-qty-input
-      >
-      <button 
-        type="button" 
-        class="product-atc__qty-btn" 
-        data-qty-plus 
-        aria-label="{{ 'product.quantity.increase' | t }}"
-      >
-        <span aria-hidden="true">+</span>
-      </button>
-    </div>
-  {%- endif -%}
+<div class="product-atc" data-product-atc>
+  {%- comment -%} Form: quantity + button (fragment updated) {%- endcomment -%}
+  <div class="product-atc__form{% if is_available %} is-available{% endif %}" data-fragment-update="atc">
+    {%- if display_quantity -%}
+      <div class="product-atc__quantity">
+        <button 
+          type="button" 
+          class="product-atc__qty-btn" 
+          data-qty-minus 
+          aria-label="{{ 'product.quantity.decrease' | t }}"
+        >
+          <span aria-hidden="true">−</span>
+        </button>
+        <input 
+          type="number" 
+          name="quantity" 
+          class="product-atc__qty-input" 
+          value="1" 
+          min="1" 
+          aria-label="{{ 'product.quantity.label' | t }}"
+          data-qty-input
+        >
+        <button 
+          type="button" 
+          class="product-atc__qty-btn" 
+          data-qty-plus 
+          aria-label="{{ 'product.quantity.increase' | t }}"
+        >
+          <span aria-hidden="true">+</span>
+        </button>
+      </div>
+    {%- endif -%}
 
-  <div class="product-atc__submit">
-    
-    <div>
-      <div 
-        class="wc_wl_bis_btn" 
-        data-product_id="{{ product.id }}" 
-        data-variant_id="{{ v.id }}"
-      ></div>
-    </div>
-    
-    <div>
-      <button 
-        type="submit"
-        class="product-atc__btn{% if is_full_width %} product-atc__btn--full{% endif %}"
-        data-atc
-        {% unless v.available %}disabled{% endunless %}
-      >
-        <span data-atc-text>
-          {%- if v.available -%}
-            {{ atc_label }}
-          {%- else -%}
-            {{ sold_out_label }}
-          {%- endif -%}
-        </span>
-      </button>
-    </div>
+    <button 
+      type="submit"
+      class="product-atc__btn{% if is_full_width %} product-atc__btn--full{% endif %}"
+      data-atc
+      {% unless v.available %}disabled{% endunless %}
+    >
+      <span data-atc-text>
+        {%- if v.available -%}
+          {{ atc_label }}
+        {%- else -%}
+          {{ sold_out_label }}
+        {%- endif -%}
+      </span>
+    </button>
   </div>
-  
-  {%- if display_wishlist -%}
-    <div class="product-atc__wishlist">
-      <div 
-        class="th_prd_wl_btn" 
-        data-product_id="{{ product.id }}" 
-        data-variant_id="{{ v.id }}"
-      ></div>
-    </div>
-  {%- endif -%}
+
+  {%- comment -%} Notify: back in stock (sibling, not updated) {%- endcomment -%}
+  <!-- <div class="product-atc__notify" data-atc-notify>
+    <a 
+      id="custom-notify-button" 
+      href="#" 
+      class="swym-button swym-custom-watchlist swym-add-to-watchlist-view-product product-atc__notify-btn" 
+      data-url="{{ shop.url }}{{ product.url }}" 
+      data-variant-id="{{ v.id }}" 
+      data-product-id="{{ product.id }}"
+    >
+      {{ 'product.notify_me' | t | default: 'Notify me' }}
+    </a>
+  </div> -->
+
+  {%- comment -%} Wishlist (sibling, not updated) {%- endcomment -%}
+    <!-- <div class="product-atc__wishlist" data-atc-wishlist>
+      <button 
+        id="custom-wishlist-button" 
+        class="swym-button swym-add-to-wishlist"
+        data-with-epi="true" 
+        data-swaction="addToWishlist" 
+        data-product-id="{{ product.id }}" 
+        data-variant-id="{{ v.id }}" 
+        data-product-url="{{ shop.url }}{{ product.url }}" 
+      >
+          <svg class="icon icon-heart" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+      </button>
+
+    </div> -->
 </div>
 
 <script>
-  // Quantity buttons
+  // Quantity buttons (event delegation)
   document.addEventListener('click', (e) => {
     const minus = e.target.closest('[data-qty-minus]');
     const plus = e.target.closest('[data-qty-plus]');
@@ -126,122 +156,93 @@
     
     input.dispatchEvent(new Event('change', { bubbles: true }));
   });
+
+  // Update variant IDs on app buttons when variant changes
+  document.addEventListener('product:updated', (e) => {
+    const { variantId } = e.detail;
+    if (!variantId) return;
+    
+    const wrapper = e.target.closest('[data-product-form]');
+    if (!wrapper) return;
+    
+    // Update data attributes on notify and wishlist buttons
+    wrapper.querySelectorAll('[data-atc-notify] [data-variant-id], [data-atc-wishlist] [data-variant-id]').forEach(el => {
+      el.dataset.variantId = variantId;
+    });
+  });
 </script>
 
-<style>
-  .product-atc {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 0.5em;
+<!-- <script>
+  function swymCallbackFn(swat) {
+    // your API calls go here
+    attachNotifyMeEvents();
+    function attachNotifyMeEvents() {
+      var swymNotifyMeBtn = document.querySelectorAll(".swym-custom-watchlist");
+      swymNotifyMeBtn.forEach(function(btn) {
+        btn.addEventListener("click", addToWatchlist);
+        btn.classList.add("swym-loaded");
+      });
+    }
+    function addToWatchlist(eventObj) {
+      eventObj.preventDefault();
+      var productId = +eventObj.target.getAttribute("data-product-id");
+      var variantId = +eventObj.target.getAttribute("data-variant-id");
+      var du = eventObj.target.getAttribute("data-url");
+      var params = {
+        empi: productId,
+        epi: variantId,
+        du: du
+      };
+      swat.getProductDetails(params, function(productJSON) {
+        productJSON.variants.forEach(function(v) {
+          if (v.id == variantId) {
+            params.pr = SwymUtils.formatProductPrice(v.price);
+            params.iu = productJSON.featured_image;
+            params.et = 8;
+            swat.addToWatchList(eventObj, params, function(e) {
+              console.log("Subscribed to product!", e);
+            }); // Shows Subscribe me.
+            return;
+          }
+        });
+      });
+    }
   }
+  if (!window.SwymCallbacks) {
+    window.SwymCallbacks = [];
+ }
+  window.SwymCallbacks.push(swymCallbackFn);
+</script>
 
-  /* Quantity */
-  .product-atc__quantity {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: stretch;
-    border: 1px solid var(--theme-color-grey, #ddd);
-    border-radius: 4px;
-    overflow: hidden;
-    flex-basis: 4em;
-  }
+<script>
+  // Cookie consent fallback for wishlist/notify buttons
+  // Swym adds .swym-loaded class after consent - if missing, show message or reset consent
+  (function(){
+    
+    const $atc = document.querySelector('.product-atc[data-product-atc]');
+    if($atc){
+      $atc.addEventListener('click', (e) => {
+        const btn = e.target.closest('#custom-wishlist-button, #custom-notify-button');
+        if (!btn) return;
+        
+        // If Swym is loaded, let it handle everything
+        if (btn.classList.contains('swym-loaded')) return;
+        
+        // No consent yet - block action
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        
+        // Option 1: Reset consent cookie and reload to show banner again
+        //document.cookie = '_tracking_consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        //window.location.reload();
+        
+        // Option 2: Show custom message (uncomment if you prefer this)
+        // alert('{{ 'product.consent_required' | t | default: 'Please accept cookies to use this feature.' }}');
+      }, true);
+    }
+    
+    
+  })();
+</script> -->
 
-  .product-atc__qty-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.75em;
-    padding: 0;
-    font-size: 1em;
-    font-weight: 400;
-    line-height: 1;
-    color: inherit;
-    background: var(--theme-color-grey, #f5f5f5);
-    border: none;
-    cursor: pointer;
-    transition: background-color 150ms ease;
-  }
 
-  .product-atc__qty-btn:hover {
-    background: var(--theme-color-grey-dark, #e5e5e5);
-  }
-
-  .product-atc__qty-input {
-    width: 2em;
-    padding: 0.25em;
-    font-size: 0.9em;
-    font-weight: 500;
-    text-align: center;
-    color: inherit;
-    background: transparent;
-    border: none;
-    -moz-appearance: textfield;
-  }
-
-  .product-atc__qty-input::-webkit-outer-spin-button,
-  .product-atc__qty-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Submit button */
-  .product-atc__submit {
-    flex-grow: 1;
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  .product-atc__submit > div {
-    width: 100%;
-  }
-
-  .product-atc__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75em 1.5em;
-    min-height: 3em;
-    font-family: inherit;
-    font-size: 1em;
-    font-weight: 600;
-    text-align: center;
-    color: #fff;
-    background-color: var(--theme-color-green, #22c55e);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 150ms ease, opacity 150ms ease;
-  }
-
-  .product-atc__btn--full {
-    width: 100%;
-  }
-
-  .product-atc__btn:hover:not([disabled]) {
-    background-color: var(--theme-color-green-dark, #16a34a);
-  }
-
-  .product-atc__btn[disabled] {
-    background-color: var(--theme-color-orange, #f59e0b);
-    cursor: not-allowed;
-  }
-
-  .product-atc__btn[disabled]:hover {
-    opacity: 0.9;
-  }
-
-  /* Wishlist */
-  .product-atc__wishlist {
-    flex-shrink: 0;
-    flex-basis: 4em;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Unavailable state - hide quantity and button, notify-me shows itself */
-  .product-atc--unavailable .product-atc__quantity,
-  .product-atc--unavailable .product-atc__btn {
-    display: none;
-  }
-</style>

@@ -1,0 +1,79 @@
+{%- comment -%}
+  Policy template - styles for policy pages (Privacy, Terms, Refund, etc.)
+  Note: Shopify renders policy content with .shopify-policy__ classes
+{%- endcomment -%}
+
+<style>
+  .shopify-policy__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3em 1.5em;
+  }
+
+  .shopify-policy__title h1 {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.8em, 4vw, 2.5em);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 1em;
+  }
+
+  .shopify-policy__body {
+    line-height: 1.7;
+  }
+
+  .shopify-policy__body h2 {
+    font-family: var(--theme-font-family-serif);
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 1.5em 0 0.75em;
+  }
+
+  .shopify-policy__body h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 1.5em 0 0.5em;
+  }
+
+  .shopify-policy__body p {
+    margin: 0 0 1em;
+  }
+
+  .shopify-policy__body ul,
+  .shopify-policy__body ol {
+    margin: 0 0 1em;
+    padding-left: 1.5em;
+  }
+
+  .shopify-policy__body li {
+    margin: 0 0 0.5em;
+  }
+
+  .shopify-policy__body a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .shopify-policy__body a:hover {
+    opacity: 0.7;
+  }
+
+  .shopify-policy__body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+  }
+
+  .shopify-policy__body th,
+  .shopify-policy__body td {
+    padding: 0.75em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .shopify-policy__body th {
+    background-color: rgba(0, 0, 0, 0.03);
+    font-weight: 600;
+  }
+</style>

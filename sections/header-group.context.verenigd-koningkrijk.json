@@ -12,5 +12,36 @@
   "context": {
     "market": "verenigd-koningkrijk"
   },
-  "sections": {}
+  "sections": {
+    "header-top": {
+      "settings": {},
+      "blocks": {
+        "usp-1": {
+          "settings": {
+            "text": "Gratis boven £99 (UK)",
+            "title": "Gratis boven £99 (UK)"
+          }
+        },
+        "usp-2": {
+          "settings": {
+            "text": "Voor 19:30 verzonden (DPD, UPS)",
+            "title": "Voor 19:30 verzonden (DPD, UPS)",
+            "link": ""
+          }
+        },
+        "usp-4": {
+          "settings": {
+            "text": "Dagelijks vanaf EU naar UK",
+            "link": "",
+            "icon": "heart"
+          }
+        },
+        "usp-3": {
+          "settings": {
+            "link": ""
+          }
+        }
+      }
+    }
+  }
 }

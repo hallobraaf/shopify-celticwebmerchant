@@ -30,6 +30,7 @@
     "sold_out": "Uitverkocht",
     "on_sale": "Sale",
     "unavailable": "Niet beschikbaar",
+    "notify_me": "Hou mij op de hoogte",
     "onetime_purchase": "Eenmalige aankoop",
     "upsell_heading": "Vaak samen gekocht",
     "recommended_heading": "Aanbevolen combinatie",
@@ -69,7 +70,7 @@
       "low_stock": "Op voorraad",
       "low_stock_count": "Nog {{ quantity }} op voorraad, koop snel!",
       "backorder": "Leverbaar op bestelling",
-      "out_of_stock": "Niet op voorraad"
+      "out_of_stock": "Uitverkocht! Meld je aan en ontvang 10% korting"
     },
     "volume_pricing": {
       "title": "Staffelkorting",
@@ -200,7 +201,7 @@
     "estimated_total": "Geschat totaal",
     "taxes_included": "Belastingen inbegrepen.",
     "shipping_at_checkout": "Eventuele verzendkosten worden berekend bij de checkout.",
-    "terms_html": "Door te bestellen ga je akkoord met onze <a href=\"/policies/terms-of-service\" target=\"_blank\">Algemene voorwaarden</a>. Lees ons <a href=\"/policies/privacy-policy\" target=\"_blank\">Privacybeleid</a> en de handleiding veilig gebruik.",
+    "terms_html": "Door te bestellen ga je akkoord met onze <a href=\"/policies/terms-of-service\" target=\"_blank\">Algemene voorwaarden</a>. Lees ons <a href=\"/policies/privacy-policy\" target=\"_blank\">Privacybeleid</a> en de <a href=\"/pages/handleiding-veilig-gebruik\" target=\"_blank\">handleiding veilig gebruik</a>.",
     "login": {
       "title": "Heb je een account?",
       "paragraph_html": "<a href=\"{{ link }}\">Log in</a> om sneller af te rekenen."
@@ -285,6 +286,10 @@
     "shop_link": "Bezoek onze winkel"
   },
   "accessibility": {
+    "breadcrumbs": {
+      "label": "Kruimelpad",
+      "home": "Home"
+    },
     "skip_to_content": "Ga naar inhoud",
     "close": "Sluiten",
     "loading": "Laden...",
@@ -361,6 +366,9 @@
         "update_tip": "Donatie bijwerken",
         "description": "Steun ons werk - voor gratis content over jouw cultuur!",
         "message": "Hartelijk bedankt! We waarderen dit echt."
+      },
+      "stock": {
+        "title": "Uitverkocht!"
       }
     }
   },

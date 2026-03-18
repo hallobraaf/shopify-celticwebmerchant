@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_banners_qU3DG": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-e01f53ef0d305a2b31dba9c33145ffce": null,
+        "heading": "",
+        "subheading": "g",
+        "header-6985b9631a872667c031a2396b55a0c0": null,
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-860db51ad5de9fe16a01a2832859949e": null,
+        "background_color": "",
+        "text_color": "",
+        "header-7ba8af16e80c87d4f89ede9f558c75e5": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "banner_nPcdi": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Gratis verzending vanaf €75",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_nPcdi"
+      ],
+      "name": "Banners"
+    },
+    "block_marketing_testimonials_nXCwa": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-8cd3aae70d415c57e307915be9136db9": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-4a640f314a142451e4a3c72a48426848": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "header-b567dc3470df3e300916a7483fd3d092": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "header-2daa024dae256d4cf36b16c7e2e9aefe": null,
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-be5210be0d3c6b7df5d51fbebd0eaeaa": null,
+        "background_color": "",
+        "text_color": "",
+        "header-3ddc0328f021de62528abadc96259248": null,
+        "anchor": "",
+        "custom_class": ""
+      },
+      "blocks": {
+        "testimonial_ffPBk": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "They are really so passionate about their products and historical and traditional items, not just only vendors, but like a way of life.\nI bought a replica, it arrived just in times, considering it was shipped from abroad to me, and the package showed no scratch at all, very professional, great care on preparation and shipping.\nIf You register to the site, You earn points with every buy, they have always a discount or promotion: I was surprised also because they gifted me with a very amazing calendar. It's a \"themed\" calendar, month by month (photo with explanation), printed on gloss paper.",
+            "author": "Francesco Coco, Italy 🇮🇹",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_mMGMn": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Bought multiple items. Quick shipping every time. I also returned 2 items and all went good. Customer support is awesome. Its better to read the description of an item than just to look at the pictures.",
+            "author": "Ivan Matković, Croatia 🇭🇷",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_AEmWP": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "My order was expedited very quickly and the products were exactly as depicted online. Every thing was well wrapped and protected. But the best thing was the price!",
+            "author": "Joakim from Sweden 🇸🇪",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_ffPBk",
+        "testimonial_mMGMn",
+        "testimonial_AEmWP"
+      ],
+      "name": "Testimonials"
+    },
+    "block_marketing_products_UALKY": {
+      "type": "block-marketing-products",
+      "disabled": false,
+      "settings": {
+        "header-880710749d5e88318d579bba4ed6c9cb": null,
+        "collection": "altijd-nodig",
+        "heading": "Always needed",
+        "header-fccfcb09639bdb10c9d49837d1c1eb2d": null,
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_badges": false,
+        "show_rating": false,
+        "quick_add": true,
+        "header-f0267c4b6548a9b603fa8282490d2891": null,
+        "max_products": 12,
+        "only_available": true,
+        "header-f79a7d4fac45f9309b9e1fb9b429bc31": null,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "header-b3fd0f9fe3517f0b0c7815dbb7f49221": null,
+        "background_color": "",
+        "text_color": "",
+        "header-c8ba71d8302f58da3d85a6ae1f0f4229": null,
+        "anchor": "",
+        "custom_class": "",
+        "header-390d2b08089e4e5148a500d28e4e54fa": null,
+        "paragraph-a1c0cb2d923bf53f6b1df466c97b1894": null
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "Products"
+    },
+    "cart-order": {
+      "settings": {
+        "show_continue_shopping": false
+      },
+      "blocks": {}
+    }
+  },
+  "context": {
+    "market": "europa"
+  },
+  "parent": "cart.json",
+  "order": [
+    "block_marketing_banners_qU3DG",
+    "cart-order",
+    "block_marketing_testimonials_nXCwa",
+    "block_marketing_products_UALKY"
+  ]
+}

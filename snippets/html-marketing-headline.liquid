@@ -42,35 +42,3 @@ Sections can override with scoped CSS:
 </header>
 {%- endif -%}
 
-<style>
-.marketing-headline {
-	margin-bottom: 1.5em;
-}
-
-.marketing-headline--align-left { text-align: left; }
-.marketing-headline--align-center { text-align: center; }
-.marketing-headline--align-right { text-align: right; }
-
-.marketing-headline__heading {
-	font-family: var(--theme-font-family-serif);
-	font-weight: 500;
-	line-height: 1.2;
-	margin: 0 0 0.5em;
-}
-
-.marketing-headline--small .marketing-headline__heading { font-size: 1.5em; }
-.marketing-headline--medium .marketing-headline__heading { font-size: 2em; }
-.marketing-headline--large .marketing-headline__heading { font-size: clamp(2em, 5vw, 2.5em); }
-
-.marketing-headline__subheading {
-	font-size: 1.125em;
-	line-height: 1.6;
-	opacity: 0.8;
-	margin: 0;
-}
-
-@media (max-width: 40em) {
-	.marketing-headline--large .marketing-headline__heading { font-size: 1.75em; }
-	.marketing-headline--medium .marketing-headline__heading { font-size: 1.5em; }
-}
-</style>

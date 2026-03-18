@@ -1,0 +1,241 @@
+/* ==========================================================================
+   MAIN-ACCOUNT-ADDRESSES
+   Structural styles — dynamic per-section values stay in {% style %} block
+   ========================================================================== */
+
+.main-account-addresses {
+  &__container {
+    max-width: 48rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--account-border);
+  }
+
+  &__title {
+    font-family: var(--theme-font-family-serif, Georgia, serif);
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.875rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__add {
+    margin-bottom: 2rem;
+  }
+
+  &__add-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background-color: var(--account-text);
+    color: var(--account-background);
+    border: none;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &__form-wrapper {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--account-border);
+    border-radius: 0.5rem;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__form-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @media (max-width: 40em) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  &__submit {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--account-text);
+    color: var(--account-background);
+    border: none;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &__cancel {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: var(--account-text);
+    border: 1px solid var(--account-border);
+    border-radius: 0.25rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--account-text);
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin: 0;
+  }
+
+  &__card {
+    padding: 1.5rem;
+    background-color: var(--account-border);
+    border-radius: 0.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__default-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.75rem;
+    background-color: var(--account-text);
+    color: var(--account-background);
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: fit-content;
+  }
+
+  &__address {
+    font-style: normal;
+    line-height: 1.6;
+    font-size: 0.875rem;
+    flex-grow: 1;
+  }
+
+  &__card-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--account-background);
+  }
+
+  &__edit-button,
+  &__delete-button {
+    padding: 0;
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__delete-button {
+    color: #dc2626;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--account-border);
+  }
+
+  &__pagination-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--account-border);
+    border-radius: 0.25rem;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--account-text);
+    }
+  }
+
+  &__pagination-info {
+    font-size: 0.875rem;
+  }
+}

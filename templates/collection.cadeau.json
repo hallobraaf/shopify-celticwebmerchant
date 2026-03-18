@@ -1,0 +1,370 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_cover_cNKBer": {
+      "type": "block-marketing-cover",
+      "blocks": {
+        "button_iJPbzj": {
+          "type": "button",
+          "settings": {
+            "text": "",
+            "url": "",
+            "style": "primary",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_iJPbzj"
+      ],
+      "name": "Cover",
+      "settings": {
+        "subheading": "vier de liefde",
+        "heading": "Geef cadeau's!",
+        "text": "",
+        "image": "shopify://shop_images/Banner_ValentineAankondiging_Feb2026.webp",
+        "focus_x": 70,
+        "focus_y": 30,
+        "overlay": "light",
+        "loading": "eager",
+        "fetchpriority": "auto",
+        "width": "is-align-full",
+        "height": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "collection-banners": {
+      "type": "block-collection-banners",
+      "settings": {
+        "menu": "sale-menu",
+        "card_layout": "horizontal",
+        "image_ratio": "portrait",
+        "show_product_count": false,
+        "card_text_align": "left",
+        "width": "is-align-full",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 1,
+        "grid_gap": 0.2,
+        "padding_block": 2,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "#ffffff",
+        "text_color": "",
+        "card_background_color": "#0f1f38",
+        "card_text_color": "#ffffff",
+        "anchor": ""
+      }
+    },
+    "block_marketing_products_mEpeQx": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "voor-geliefden",
+        "heading": "",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 12,
+        "only_available": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_zKw7DC": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "voor-vrouwen",
+        "heading": "",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 12,
+        "only_available": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#243406",
+        "text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_Xcpk97": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "voor-mannen",
+        "heading": "",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 12,
+        "only_available": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_B3XeQr": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "cadeaus-tot-100",
+        "heading": "",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 8,
+        "only_available": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#243406",
+        "text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_fy7ita": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "budgetcadeau-tot-50",
+        "heading": "",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 8,
+        "only_available": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#243406",
+        "text_color": "#ffffff",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_QPK83e": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "licht-voor-huisaltaar",
+        "heading": "",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 8,
+        "only_available": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_products_wM8LG6": {
+      "type": "block-marketing-products",
+      "name": "Products",
+      "settings": {
+        "collection": "sieraden",
+        "heading": "",
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 8,
+        "only_available": true,
+        "width": "is-align",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "padding_block": 3,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "block_marketing_grid_Jr7BnT": {
+      "type": "block-marketing-grid",
+      "blocks": {
+        "banner_zTyfdr": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Cadeaus geven: zo pagan!",
+            "text": "",
+            "link_url": "shopify://blogs/cultuur-spiritualiteit/cadeaus-geven-tijdens-de-feestdagen-zo-pagan",
+            "image": "shopify://shop_images/DSC03376_ba938c0b-7a61-44bc-8b83-e3e5fe92f2fa.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "green"
+          }
+        },
+        "banner_UNEFkd": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Zo belangrijk zijn drinkhoorns",
+            "text": "",
+            "link_url": "shopify://blogs/cultuur-spiritualiteit/pagan-symboliek-drinkhoorns",
+            "image": "shopify://shop_images/DSC03309_0c5d277f-c6a9-436f-b17b-3d9316d66464.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "green"
+          }
+        },
+        "banner_LyqxJd": {
+          "type": "banner",
+          "settings": {
+            "label": "",
+            "heading": "Toon jouw verbondenheid",
+            "text": "",
+            "link_url": "shopify://blogs/cultuur-spiritualiteit/pagan-symboliek-arm-ringen-armbanden",
+            "image": "shopify://shop_images/DSC07019_be950d5f-6234-43b4-af9d-c75466c4caa7.jpg",
+            "focus_x": 50,
+            "focus_y": 50,
+            "overlay": "medium",
+            "design": "green"
+          }
+        }
+      },
+      "block_order": [
+        "banner_zTyfdr",
+        "banner_UNEFkd",
+        "banner_LyqxJd"
+      ],
+      "name": "Grid",
+      "settings": {
+        "heading": "Daarom geven wij cadeaus!",
+        "subtext": "",
+        "header_align": "center",
+        "width": "is-align-wide",
+        "columns_desktop": 4,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 0.5,
+        "padding_block": 0.5,
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "background_color": "",
+        "text_color": "",
+        "anchor": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "block_marketing_cover_cNKBer",
+    "collection-banners",
+    "block_marketing_products_mEpeQx",
+    "block_marketing_products_zKw7DC",
+    "block_marketing_products_Xcpk97",
+    "block_marketing_products_B3XeQr",
+    "block_marketing_products_fy7ita",
+    "block_marketing_products_QPK83e",
+    "block_marketing_products_wM8LG6",
+    "block_marketing_grid_Jr7BnT"
+  ]
+}

@@ -1,0 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "italie"
+  },
+  "parent": "index.json",
+  "sections": {
+    "best-products": {
+      "settings": {
+        "collection": "middeleeuwse-kleding"
+      },
+      "blocks": {}
+    },
+    "block_marketing_media_text_mEgbKY": {
+      "blocks": {
+        "image_text_aJBEwL": {
+          "settings": {
+            "image": "shopify://shop_images/Roman_aquilifer.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_media_text_iDhD8j": {
+      "blocks": {
+        "image_text_G9gzXM": {
+          "settings": {
+            "image": "shopify://shop_images/DSC09104_ee531092-bc74-4e4d-b872-6d3e6e178534.jpg"
+          }
+        }
+      }
+    }
+  }
+}

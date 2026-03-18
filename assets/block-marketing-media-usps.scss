@@ -1,0 +1,210 @@
+/* ==========================================================================
+   BLOCK-MARKETING-MEDIA-USPS
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.media-usps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+
+  > * {
+    min-width: 0;
+  }
+
+  @media (min-width: 40em) {
+    gap: 3em;
+
+    &--width-40 { grid-template-columns: 40% 1fr; }
+    &--width-50 { grid-template-columns: 50% 1fr; }
+    &--width-60 { grid-template-columns: 60% 1fr; }
+
+    &--right {
+      .media-usps__media { order: 2; }
+      .media-usps__body  { order: 1; }
+
+      &.media-usps--width-40 { grid-template-columns: 1fr 40%; }
+      &.media-usps--width-60 { grid-template-columns: 1fr 60%; }
+    }
+  }
+
+  &--align-top    { align-items: flex-start; }
+  &--align-center { align-items: center; }
+  &--align-bottom { align-items: flex-end; }
+  &--fill         { align-items: stretch; }
+
+  // =============================================================================
+  // Media Container
+  // =============================================================================
+
+  &__media {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    &--adapt .theme-media__img {
+      height: auto;
+      object-fit: contain;
+    }
+
+    &--fill {
+      min-height: 20em;
+
+      .media-usps__figure,
+      .media-usps__video-wrapper {
+        position: absolute;
+        inset: 0;
+      }
+    }
+
+    &--square   { aspect-ratio: 1 / 1; }
+    &--portrait  { aspect-ratio: 2 / 3; }
+    &--landscape { aspect-ratio: 3 / 2; }
+  }
+
+  &__figure {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    .theme-media__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // =============================================================================
+  // Video
+  // =============================================================================
+
+  &__video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+
+    &.is-playing .media-usps__poster {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__poster {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+
+    .theme-media__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__video {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  // =============================================================================
+  // Body Content
+  // =============================================================================
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.6em, 4vw, 2.25em);
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  &__text {
+    margin-top: 1em;
+    font-size: 1em;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  // =============================================================================
+  // USP List
+  // =============================================================================
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &--has-heading {
+      margin-block-start: 2em;
+    }
+  }
+
+  &__item {
+    display: flex;
+    gap: 1em;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  &__item-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__item-title {
+    font-family: var(--theme-font-family-sans);
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  &__item-text {
+    margin: 0.25em 0 0;
+    font-size: 0.9375em;
+    line-height: 1.5;
+    opacity: 0.75;
+  }
+
+  // =============================================================================
+  // Actions
+  // =============================================================================
+
+  &__actions {
+    margin-block-start: 2em;
+
+    .marketing-cta {
+      padding: 0;
+    }
+  }
+}

@@ -24,6 +24,20 @@ DEPENDENCIES:
 ============================================================================
 {%- endcomment -%}
 
+{{ 'block-marketing-testimonials.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-testimonials {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+	}
+{% endstyle %}
+
 {%- liquid
 	assign has_heading = false
 	if section.settings.heading != blank or section.settings.subheading != blank
@@ -97,66 +111,6 @@ DEPENDENCIES:
 	{%- endif -%}
 </div>
 
-{% style %}
-	/* Section */
-	#shopify-section-{{ section.id }}.block-marketing-testimonials {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	/* Grid layout */
-	#shopify-section-{{ section.id }} .block-marketing-testimonials__grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns, 2), 1fr);
-		gap: var(--grid-gap, 1.5em);
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-testimonials__item {
-		margin: 0;
-		height: 100%;
-	}
-
-	@media (max-width: 60em) {
-		#shopify-section-{{ section.id }} .block-marketing-testimonials__grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 2), 1fr);
-		}
-	}
-
-	@media (max-width: 40em) {
-		#shopify-section-{{ section.id }} .block-marketing-testimonials__grid {
-			grid-template-columns: repeat(var(--grid-columns-mobile, 1), 1fr);
-		}
-	}
-
-	/* Slider layout */
-	#shopify-section-{{ section.id }} .block-marketing-testimonials__slider {
-		position: relative;
-		overflow: hidden;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-testimonials__slider .swiper-wrapper {
-		align-items: stretch;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-testimonials__slider .swiper-slide {
-		height: auto;
-	}
-
-	/* When all slides fit: center and hide controls */
-	#shopify-section-{{ section.id }} .block-marketing-testimonials__slider.swiper--all-visible .swiper-wrapper {
-		justify-content: center;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-testimonials__slider.swiper--all-visible .swiper-nav,
-	#shopify-section-{{ section.id }} .block-marketing-testimonials__slider.swiper--all-visible .swiper-pagination {
-		display: none;
-	}
-{% endstyle %}
-
 {%- if is_slider -%}
 <script>
 	(function() {
@@ -166,14 +120,9 @@ DEPENDENCIES:
 			
 			if (swiperEl.swiper) swiperEl.swiper.destroy();
 
-			// Convert em to px using computed font-size
-			const fontSize = parseFloat(getComputedStyle(swiperEl).fontSize);
-			const gapEm = parseFloat('{{ section.settings.grid_gap | default: 1.5 }}');
-			const gapPx = gapEm * fontSize;
-
 			const config = {
 				slidesPerView: {{ section.settings.columns_mobile | default: 1 }},
-				spaceBetween: gapPx,
+				spaceBetween: {{ section.settings.grid_gap | default: 1.5 | times: 16 }},
 				{%- if section.settings.slider_navigation -%}
 				navigation: {
 					prevEl: swiperEl.querySelector('.swiper-nav--prev'),
@@ -277,12 +226,12 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Review card"
+			"content": "Display"
 		},
 		{
 			"type": "select",
 			"id": "alignment",
-			"label": "Text alignment",
+			"label": "Quote alignment",
 			"options": [
 				{ "value": "left", "label": "Left" },
 				{ "value": "center", "label": "Center" }
@@ -299,6 +248,48 @@ DEPENDENCIES:
 				{ "value": "accent", "label": "Accent border" }
 			],
 			"default": "boxed"
+		},
+		{
+			"type": "select",
+			"id": "display_mode",
+			"label": "Display mode",
+			"options": [
+				{ "value": "grid", "label": "Grid" },
+				{ "value": "slider", "label": "Slider" }
+			],
+			"default": "grid"
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_navigation",
+			"label": "Show navigation",
+			"info": "Slider only",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_pagination",
+			"label": "Show pagination",
+			"info": "Slider only",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_autoplay",
+			"label": "Autoplay",
+			"info": "Slider only. Includes rewind.",
+			"default": false
+		},
+		{
+			"type": "range",
+			"id": "slider_autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Slider only",
+			"min": 2,
+			"max": 10,
+			"step": 1,
+			"default": 5,
+			"unit": "s"
 		},
 		{
 			"type": "header",
@@ -365,50 +356,16 @@ DEPENDENCIES:
 			"unit": "em"
 		},
 		{
-			"type": "header",
-			"content": "Display"
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
 		},
 		{
-			"type": "select",
-			"id": "display_mode",
-			"label": "Display mode",
-			"options": [
-				{ "value": "grid", "label": "Grid" },
-				{ "value": "slider", "label": "Slider" }
-			],
-			"default": "grid"
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_navigation",
-			"label": "Show navigation",
-			"info": "Slider only",
-			"default": true
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_pagination",
-			"label": "Show pagination",
-			"info": "Slider only",
-			"default": false
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_autoplay",
-			"label": "Autoplay",
-			"info": "Slider only. Includes rewind.",
-			"default": false
-		},
-		{
-			"type": "range",
-			"id": "slider_autoplay_speed",
-			"label": "Autoplay speed",
-			"info": "Slider only",
-			"min": 2,
-			"max": 10,
-			"step": 1,
-			"default": 5,
-			"unit": "s"
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "header",
@@ -426,19 +383,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add testimonial blocks with a quote, author name, optional photo and star rating."
 		}
 	],
 	"blocks": [

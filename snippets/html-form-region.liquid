@@ -40,46 +40,6 @@
   endif
 -%}
 
-<style>
-  .form-region {
-    width: 100%;
-  }
-
-  .form-region__group {
-    margin-bottom: 1.5rem;
-  }
-
-  .form-region__group:last-child {
-    margin-bottom: 0;
-  }
-
-  .form-region__label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: rgba(var(--color-foreground), 0.75);
-  }
-
-  .form-region__empty {
-    padding: 2rem 1.25rem;
-    text-align: center;
-    background: rgba(var(--color-foreground), 0.05);
-    border: 1px solid rgba(var(--color-foreground), 0.1);
-    border-radius: var(--border-radius, 0);
-    color: rgba(var(--color-foreground), 0.75);
-    font-size: 0.875rem;
-  }
-
-  .form-region__empty strong {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-  }
-</style>
-
 {%- if has_multiple_languages or has_multiple_countries -%}
   <div class="form-region {{ additional_class }}">
     {%- if show_language and has_multiple_languages -%}

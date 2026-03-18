@@ -35,4 +35,10 @@ Thumbs.db
 .idea/*
 
 # DOCS #
+docs/
 docs/*
+private/
+private/*
+
+# SCSS files #
+*.scss

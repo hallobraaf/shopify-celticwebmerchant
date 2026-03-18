@@ -1,0 +1,57 @@
+/* ==========================================================================
+   BLOCK-MARKETING-FAQ
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-marketing-faq {
+  &__heading {
+    font-size: clamp(1.5em, 3vw, 2em);
+    margin: 0 0 0.5em;
+    font-weight: 500;
+  }
+
+  &__text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 2em;
+    opacity: 0.8;
+  }
+
+  &__items {
+    max-width: 100%;
+  }
+
+  &__item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    &[open] .block-marketing-faq__icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    padding: 1.25em 0;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    transition: transform 200ms ease;
+  }
+
+  &__answer {
+    padding: 0 0 1.5em;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+}

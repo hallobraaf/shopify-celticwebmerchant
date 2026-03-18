@@ -122,6 +122,25 @@ DEPENDENCIES:
 	endif
 -%}
 
+{{ 'block-marketing-brands-small.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-marketing-brands-small {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
+		{%- if section.settings.card_background != blank %}
+		--brand-card-bg: {{ section.settings.card_background }};
+		{%- endif %}
+		--brand-image-ratio: {{ ratio }};
+		--brand-image-fit: {{ section.settings.image_fit }};
+	}
+{% endstyle %}
+
 <div class="block-marketing-brands-small__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 	{%- if has_heading -%}
 		<header class="block-marketing-brands-small__header">
@@ -224,129 +243,6 @@ DEPENDENCIES:
 		</div>
 	{%- endif -%}
 </div>
-
-{% style %}
-	#shopify-section-{{ section.id }}.block-marketing-brands-small {
-		background-color: {{ section.settings.background_color }};
-		color: {{ section.settings.text_color }};
-		padding-block: {{ section.settings.padding_block }}em;
-	}
-
-	.block-marketing-brands-small__header {
-		text-align: center;
-	}
-
-	.block-marketing-brands-small__title {
-		font-family: var(--theme-font-family-serif);
-		font-size: 2em;
-		font-weight: 400;
-		margin: 0;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-brands-small__grid {
-		display: grid;
-		grid-template-columns: repeat(var(--grid-columns-mobile, 2), 1fr);
-		gap: var(--grid-gap, 0.5em);
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-brands-small__grid--has-heading,
-	#shopify-section-{{ section.id }} .block-marketing-brands-small__slider--has-heading {
-		margin-block-start: 2em;
-	}
-
-	@media (min-width: 40em) {
-		#shopify-section-{{ section.id }} .block-marketing-brands-small__grid {
-			grid-template-columns: repeat(var(--grid-columns-tablet, 4), 1fr);
-		}
-	}
-
-	@media (min-width: 60em) {
-		#shopify-section-{{ section.id }} .block-marketing-brands-small__grid {
-			grid-template-columns: repeat(var(--grid-columns, 6), 1fr);
-		}
-	}
-
-	#shopify-section-{{ section.id }} .block-marketing-brands-small__item {
-		margin: 0;
-	}
-
-	.block-marketing-brands-small__link {
-		display: block;
-		text-decoration: none;
-		color: inherit;
-		background-color: {{ section.settings.card_background | default: '#ffffff' }};
-		border: 1px solid rgba(0, 0, 0, 0.1);
-		overflow: hidden;
-		transition: transform 200ms ease, box-shadow 200ms ease;
-	}
-
-	.block-marketing-brands-small__link:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	}
-
-	.block-marketing-brands-small__image {
-		width: 100%;
-		aspect-ratio: {{ ratio }};
-		overflow: hidden;
-		background-color: {{ section.settings.card_background | default: '#ffffff' }};
-		margin: 0;
-		padding: 0.2em;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.block-marketing-brands-small__image .theme-media__img {
-		width: 100%;
-		height: 100%;
-		object-fit: {{ section.settings.image_fit }};
-	}
-
-	.block-marketing-brands-small__name {
-		display: block;
-		padding: 1em;
-		text-align: center;
-		font-weight: 600;
-	}
-
-	.block-marketing-brands-small__actions {
-		display: flex;
-		justify-content: center;
-		margin-block-start: 2em;
-	}
-
-	.block-marketing-brands-small__actions .marketing-cta {
-		padding: 0;
-	}
-
-	/* Slider styles */
-	.block-marketing-brands-small__slider {
-		position: relative;
-		overflow: hidden;
-	}
-
-	.block-marketing-brands-small__slider .swiper-wrapper {
-		align-items: stretch;
-	}
-
-	.block-marketing-brands-small__slider .swiper-slide {
-		height: auto;
-	}
-
-	/* When all slides fit: center and hide controls */
-	.block-marketing-brands-small__slider.swiper--all-visible .swiper-wrapper {
-		justify-content: center;
-	}
-
-	.block-marketing-brands-small__slider.swiper--all-visible .swiper-nav,
-	.block-marketing-brands-small__slider.swiper--all-visible .swiper-pagination {
-		display: none;
-	}
-{% endstyle %}
 
 {%- if is_slider -%}
 <script>
@@ -474,7 +370,49 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Collection card"
+			"content": "Display"
+		},
+		{
+			"type": "select",
+			"id": "display_mode",
+			"label": "Display mode",
+			"options": [
+				{ "value": "grid", "label": "Grid" },
+				{ "value": "slider", "label": "Slider" }
+			],
+			"default": "grid"
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_navigation",
+			"label": "Show navigation",
+			"info": "Slider only",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_pagination",
+			"label": "Show pagination",
+			"info": "Slider only",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_autoplay",
+			"label": "Autoplay",
+			"info": "Slider only. Includes rewind.",
+			"default": false
+		},
+		{
+			"type": "range",
+			"id": "slider_autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Slider only",
+			"min": 2,
+			"max": 10,
+			"step": 1,
+			"default": 5,
+			"unit": "s"
 		},
 		{
 			"type": "checkbox",
@@ -512,6 +450,18 @@ DEPENDENCIES:
 		{
 			"type": "header",
 			"content": "Layout"
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
 		},
 		{
 			"type": "select",
@@ -575,52 +525,6 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Display"
-		},
-		{
-			"type": "select",
-			"id": "display_mode",
-			"label": "Display mode",
-			"options": [
-				{ "value": "grid", "label": "Grid" },
-				{ "value": "slider", "label": "Slider" }
-			],
-			"default": "grid"
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_navigation",
-			"label": "Show navigation",
-			"info": "Slider only",
-			"default": true
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_pagination",
-			"label": "Show pagination",
-			"info": "Slider only",
-			"default": false
-		},
-		{
-			"type": "checkbox",
-			"id": "slider_autoplay",
-			"label": "Autoplay",
-			"info": "Slider only. Includes rewind.",
-			"default": false
-		},
-		{
-			"type": "range",
-			"id": "slider_autoplay_speed",
-			"label": "Autoplay speed",
-			"info": "Slider only",
-			"min": 2,
-			"max": 10,
-			"step": 1,
-			"default": 5,
-			"unit": "s"
-		},
-		{
-			"type": "header",
 			"content": "Colors"
 		},
 		{
@@ -645,19 +549,11 @@ DEPENDENCIES:
 		},
 		{
 			"type": "header",
-			"content": "Advanced"
+			"content": "Howto"
 		},
 		{
-			"type": "text",
-			"id": "anchor",
-			"label": "Anchor",
-			"info": "ID for scroll links (without #)"
-		},
-		{
-			"type": "text",
-			"id": "custom_class",
-			"label": "Custom class",
-			"info": "Add custom CSS class for styling"
+			"type": "paragraph",
+			"content": "Add brand blocks to display brand logos. Each block links to a collection. Use grid or slider display mode."
 		}
 	],
 	"blocks": [

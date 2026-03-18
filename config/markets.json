@@ -26,6 +26,33 @@
     },
     "internationaal": {
       "parent": "@default"
+    },
+    "belgie": {
+      "parent": "@default"
+    },
+    "denemarken": {
+      "parent": "@default"
+    },
+    "ierland": {
+      "parent": "@default"
+    },
+    "spanje": {
+      "parent": "@default"
+    },
+    "italie": {
+      "parent": "@default"
+    },
+    "oostenrijk": {
+      "parent": "@default"
+    },
+    "polen": {
+      "parent": "@default"
+    },
+    "zweden": {
+      "parent": "@default"
+    },
+    "zwitserland": {
+      "parent": "@default"
     }
   }
 }

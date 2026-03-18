@@ -1,38 +1,56 @@
 {%- comment -%}
-============================================================================
-MAIN-PAGE-ASSIST
-============================================================================
-Assist wizard using metaobjects for hierarchical navigation.
+  ============================================================================
+  MAIN-PAGE-ASSIST
+  ============================================================================
+  Assist wizard using metaobjects for hierarchical navigation.
 
-FEATURES:
-- Drill-down navigation via metaobjects
-- Section Rendering API via /search endpoint (search.terms trick)
-- Deep linking via ?assist=handle parameter (optional)
-- Browser history support
-- Multilingual article URLs via article metafield
+  Features:
+  - Drill-down navigation via metaobjects
+  - Section Rendering API via /search endpoint (search.terms trick)
+  - Deep linking via ?assist=handle parameter (optional)
+  - Browser history support
+  - Multilingual article URLs via article metafield
 
-TEMPLATE SETTINGS:
-- enable_url_params: Enable URL parameter updates for deep linking
-
-DEPENDENCIES:
-- Metaobject: assist-reference, reference-blogpost
-- Snippet: html-assist-grid
-- Page metafield: custom.page-assist-reference (or section setting)
-============================================================================
+  Dependencies: html-assist-grid, html-theme-icons
+  Metaobjects: assist-reference, reference-blogpost
+  Page metafield: custom.page-assist-reference (or section setting)
+  ============================================================================
 {%- endcomment -%}
 
-{%- liquid
-  comment
-    Template settings (not editable in theme editor)
-  endcomment
-  assign enable_url_params = false
--%}
+{{ 'main-page-assist.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }}.main-page-assist {
+    padding-block: 0;
+  }
+
+  #shopify-section-{{ section.id }} .main-page-assist__wizard {
+    --grid-columns: {{ section.settings.columns_desktop }};
+    --grid-columns-tablet: {{ section.settings.columns_tablet }};
+    --grid-columns-mobile: {{ section.settings.columns_mobile }};
+    --grid-gap: {{ section.settings.grid_gap }}em;
+  }
+
+  {%- unless section.settings.show_count %}
+  #shopify-section-{{ section.id }} .main-page-assist__card-count {
+    display: none;
+  }
+  {%- endunless %}
+
+  {%- unless section.settings.show_cta %}
+  #shopify-section-{{ section.id }} .main-page-assist__card-cta {
+    display: none;
+  }
+  {%- endunless %}
+{% endstyle %}
 
 {%- liquid
+  assign enable_url_params = false
+
   assign handle = blank
   assign is_section_render = false
   assign ref = nil
-  
+
   if search.terms != blank
     assign handle = search.terms
     assign is_section_render = true
@@ -46,10 +64,19 @@ DEPENDENCIES:
   endif
 -%}
 
-{% if ref %}
+{%- if ref -%}
   {%- if is_section_render -%}
     {%- render 'html-assist-grid', ref: ref, title: ref.title -%}
   {%- else -%}
+    {%- capture assist_back_html -%}
+      <a href="#" class="main-page-assist__back" data-back>
+        {%- render 'html-theme-icons', icon: 'arrow', size: 16 -%}
+        <span>{{ 'general.back' | t }}</span>
+      </a>
+    {%- endcapture -%}
+
+    <template id="assist-back-{{ section.id }}">{{ assist_back_html }}</template>
+
     <div class="main-page-assist__content alignwide">
       <section id="assist" class="main-page-assist__wizard">
         <section class="main-page-assist__start main-page-assist__path">
@@ -61,73 +88,73 @@ DEPENDENCIES:
 
     <script>
     (function(){
-      const wizard = document.getElementById('assist');
+      var wizard = document.getElementById('assist');
       if (!wizard) return;
 
-      const enableUrlParams = {{ enable_url_params | json }};
+      var enableUrlParams = {{ enable_url_params | json }};
+      var backHtml = document.getElementById('assist-back-{{ section.id }}').innerHTML;
 
       async function fetchChildren(handle) {
-        const res = await fetch(`/search?q=${encodeURIComponent(handle)}&type=&sections=main-page-assist`);
-        const json = await res.json();
+        var res = await fetch('/search?q=' + encodeURIComponent(handle) + '&type=&sections=main-page-assist');
+        var json = await res.json();
         return json['main-page-assist'] || null;
       }
 
-      async function drillDown(handle, updateUrl = true) {
-        wizard.querySelectorAll('.main-page-assist__path').forEach(el => el.classList.add('is-hidden'));
-        
-        const html = await fetchChildren(handle);
+      async function drillDown(handle, updateUrl) {
+        if (updateUrl === undefined) updateUrl = true;
+        wizard.querySelectorAll('.main-page-assist__path').forEach(function(el) { el.classList.add('is-hidden'); });
+
+        var html = await fetchChildren(handle);
         if (!html) return;
-        
-        const temp = document.createElement('div');
+
+        var temp = document.createElement('div');
         temp.innerHTML = html;
-        const title = temp.querySelector('[data-title]')?.dataset.title || handle;
-        
+        var titleEl = temp.querySelector('[data-title]');
+        var title = titleEl ? titleEl.dataset.title : handle;
+
         if (enableUrlParams && updateUrl) {
-          const url = new URL(window.location);
+          var url = new URL(window.location);
           url.searchParams.set('assist', handle);
-          window.history.pushState({ handle }, '', url);
+          window.history.pushState({ handle: handle }, '', url);
         }
-        
-        const section = document.createElement('section');
+
+        var section = document.createElement('section');
         section.className = 'main-page-assist__children main-page-assist__path';
-        section.innerHTML = `
-          <a href="#" class="main-page-assist__back" data-back>
-            {%- render 'html-theme-icons', icon: 'arrow', size: 16 -%}
-            <span>{{ 'general.back' | t | default: 'Terug' }}</span>
-          </a>
-          <h2 class="main-page-assist__title">${title}</h2>
-          ${html}
-        `;
-        
+        section.innerHTML = backHtml
+          + '<h2 class="main-page-assist__title">' + title + '</h2>'
+          + html;
+
         wizard.appendChild(section);
         window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - 256, behavior: 'smooth' });
       }
 
       function goBack() {
-        const current = wizard.querySelector('.main-page-assist__children:not(.is-hidden)');
+        var current = wizard.querySelector('.main-page-assist__children:not(.is-hidden)');
         if (!current) return;
-        
-        let prev = current.previousElementSibling;
+
+        var prev = current.previousElementSibling;
         while (prev && !prev.classList.contains('main-page-assist__path')) {
           prev = prev.previousElementSibling;
         }
         if (prev) prev.classList.remove('is-hidden');
         current.remove();
-        
+
         if (enableUrlParams) {
-          const url = new URL(window.location);
-          const remaining = wizard.querySelector('.main-page-assist__children:not(.is-hidden)');
-          remaining 
-            ? url.searchParams.set('assist', remaining.dataset.handle)
-            : url.searchParams.delete('assist');
+          var url = new URL(window.location);
+          var remaining = wizard.querySelector('.main-page-assist__children:not(.is-hidden)');
+          if (remaining) {
+            url.searchParams.set('assist', remaining.dataset.handle);
+          } else {
+            url.searchParams.delete('assist');
+          }
           window.history.pushState({}, '', url);
         }
       }
 
-      wizard.addEventListener('click', async (e) => {
-        const link = e.target.closest('a[data-handle], a[data-back]');
+      wizard.addEventListener('click', async function(e) {
+        var link = e.target.closest('a[data-handle], a[data-back]');
         if (!link) return;
-        
+
         e.preventDefault();
         if (link.dataset.handle) {
           await drillDown(link.dataset.handle);
@@ -137,213 +164,28 @@ DEPENDENCIES:
       });
 
       if (enableUrlParams) {
-        window.addEventListener('popstate', async () => {
-          const handle = new URL(window.location).searchParams.get('assist');
+        window.addEventListener('popstate', async function() {
+          var handle = new URL(window.location).searchParams.get('assist');
           if (handle) {
             await drillDown(handle, false);
           } else {
-            wizard.querySelectorAll('.main-page-assist__children').forEach(el => el.remove());
-            wizard.querySelector('.main-page-assist__start')?.classList.remove('is-hidden');
+            wizard.querySelectorAll('.main-page-assist__children').forEach(function(el) { el.remove(); });
+            var start = wizard.querySelector('.main-page-assist__start');
+            if (start) start.classList.remove('is-hidden');
           }
         });
 
-        const initial = new URL(window.location).searchParams.get('assist');
+        var initial = new URL(window.location).searchParams.get('assist');
         if (initial) drillDown(initial, false);
       }
     })();
     </script>
   {%- endif -%}
-{% else %}
+{%- else -%}
   <div class="main-page-assist__content alignwide">
-    <p class="main-page-assist__empty">{{ 'general.no_content' | t | default: 'No content available.' }}</p>
+    <p class="main-page-assist__empty">{{ 'general.no_content' | t }}</p>
   </div>
-{% endif %}
-
-<style>
-#shopify-section-{{ section.id }}.main-page-assist {
-  padding-block: 0;
-}
-
-#shopify-section-{{ section.id }} .main-page-assist__wizard {
-  --grid-columns: {{ section.settings.columns_desktop | default: 4 }};
-  --grid-columns-tablet: {{ section.settings.columns_tablet | default: 3 }};
-  --grid-columns-mobile: {{ section.settings.columns_mobile | default: 2 }};
-  --grid-gap: {{ section.settings.grid_gap | default: 0.5 }}em;
-}
-
-{% unless section.settings.show_count %}
-#shopify-section-{{ section.id }} .main-page-assist__card-count {
-  display: none;
-}
-{% endunless %}
-
-{% unless section.settings.show_cta %}
-#shopify-section-{{ section.id }} .main-page-assist__card-cta {
-  display: none;
-}
-{% endunless %}
-
-.main-page-assist__content {
-  padding-block: 1em 6em;
-}
-
-.main-page-assist__title {
-  font-family: var(--theme-font-family-serif);
-  font-size: clamp(1.6em, 4vw, 2em);
-  font-weight: 500;
-  margin: 0 0 1em;
-}
-
-.main-page-assist__back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  background-color: var(--theme-color-blue);
-  padding: 0.4em 0.8em;
-  margin-bottom: 1em;
-  text-decoration: none;
-  color: #fff;
-}
-
-.main-page-assist__back svg {
-  transform: rotate(180deg);
-}
-
-.main-page-assist__back:hover {
-  opacity: 0.9;
-}
-
-.main-page-assist__grid {
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns, 4), 1fr);
-  gap: var(--grid-gap, 0.5em);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  animation: assist-fadeIn 0.4s ease forwards;
-}
-
-.main-page-assist__item {
-  position: relative;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid #e6e6e6;
-  min-height: 12em;
-}
-
-.main-page-assist__card {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background-color: var(--theme-color-blue);
-  text-align: center;
-  aspect-ratio: 2/3;
-}
-
-.main-page-assist__card-link {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-}
-
-.main-page-assist__card-image {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.main-page-assist__card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.8;
-  transition: opacity 125ms linear, transform 125ms ease-in-out;
-}
-
-.main-page-assist__card:hover .main-page-assist__card-image img {
-  transform: scale(1.1);
-}
-
-.main-page-assist__card-content {
-  position: relative;
-  z-index: 11;
-  padding: 1em;
-  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.6) calc(100% - 1em));
-  pointer-events: none;
-}
-
-.main-page-assist__card-title {
-  font-family: var(--theme-font-family-serif);
-  font-size: 1.4em;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 0.25em;
-}
-
-.main-page-assist__card-count {
-  font-size: 0.85em;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 0.5em;
-}
-
-.main-page-assist__card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  background-color: var(--theme-color-blue);
-  padding: 0.4em 0.8em;
-  text-decoration: none;
-  color: #fff;
-  transition: background-color 150ms ease, color 150ms ease;
-}
-
-.main-page-assist__card-cta svg {
-  transition: transform 150ms ease;
-}
-
-.main-page-assist__card:hover .main-page-assist__card-cta {
-  background-color: #fff;
-  color: var(--theme-color-blue);
-}
-
-.main-page-assist__card:hover .main-page-assist__card-cta svg {
-  transform: translateX(4px);
-}
-
-.main-page-assist__path.is-hidden {
-  display: none;
-}
-
-.main-page-assist__empty {
-  text-align: center;
-  opacity: 0.6;
-  padding: 3em 1em;
-}
-
-@media (max-width: 60em) {
-  .main-page-assist__grid {
-    grid-template-columns: repeat(var(--grid-columns-tablet, 3), 1fr);
-  }
-}
-
-@media (max-width: 40em) {
-  .main-page-assist__grid {
-    grid-template-columns: repeat(var(--grid-columns-mobile, 2), 1fr);
-  }
-}
-
-@keyframes assist-fadeIn {
-  from { opacity: 0; transform: translateY(1em); }
-  to { opacity: 1; transform: none; }
-}
-</style>
+{%- endif -%}
 
 {% schema %}
 {
@@ -352,10 +194,14 @@ DEPENDENCIES:
   "class": "main-page-assist",
   "settings": [
     {
+      "type": "header",
+      "content": "Content"
+    },
+    {
       "type": "text",
       "id": "handle",
-      "label": "Metaobject Handle",
-      "info": "Leave empty to use page metafield"
+      "label": "Metaobject handle",
+      "info": "Leave empty to use page metafield."
     },
     {
       "type": "header",

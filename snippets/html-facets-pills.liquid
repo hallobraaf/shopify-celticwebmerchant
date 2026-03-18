@@ -104,48 +104,5 @@
 		{{ 'collection.filtering.results' | t: count: result_count }}
 		</span>
 	</section>
-
-	<style>
-		.facets__active {
-			display: flex; flex-direction: row;
-			flex-wrap: nowrap; align-items: flex-start; justify-content: space-between;
-			column-gap: 2em; row-gap: 1em; padding-top:1em; padding-bottom: 1em;
-			border-top:var(--theme-color-blue) 1px solid;  margin-top: 1em;
-			& ul {
-					display: flex; flex-direction: row;
-					flex-wrap: wrap; align-items: flex-start; justify-content: flex-start;
-					column-gap: 0.4em; row-gap: 1em;
-					list-style: none; padding:0; margin: 0;
-				& li {
-					& .pill {
-						display: inline-flex; flex-direction: row; flex-wrap:nowrap;
-						align-items: center; justify-content: flex-start;
-						column-gap: 1em;
-						font-size: 0.8em; line-height: 1em;
-						text-decoration: none;
-						background-color: var(--theme-color-blue); color:#fff;
-						padding:0.6em 1em;
-						& .pill__info {
-							& .pill__label {
-								display: block; font-size: 0.8em; letter-spacing: -0.02em; opacity: 0.6;
-							}
-							& .pill__value {
-								display: block; letter-spacing: -0.02em;
-							}
-						}
-						
-						& .pill__icon {}
-						&.pill--clear {
-							background-color: transparent; color: var(--theme-color-blue); letter-spacing: -0.02em;
-						}
-					}
-					&.clear { align-self: center; }	
-				}
-			}
-			& section {
-				font-size: 0.8em; line-height: 1em; padding: 1.2em 0; letter-spacing: -0.02em; white-space: nowrap;
-			}
-		}
-	</style>
 	{%- endif -%}
 </nav>

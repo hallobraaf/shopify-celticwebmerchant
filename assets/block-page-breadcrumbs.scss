@@ -1,0 +1,53 @@
+/* ==========================================================================
+   BLOCK-PAGE-BREADCRUMBS
+   Structural styles — dynamic per-section values stay inline in the section
+   ========================================================================== */
+
+.block-breadcrumbs {
+  &__content {
+    margin-inline: auto;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__separator {
+    margin-inline: 0.5em;
+    opacity: 0.5;
+  }
+
+  &__link,
+  &__current {
+    font-size: 0.8em;
+    letter-spacing: -0.02em;
+    color: inherit;
+  }
+
+  &__link {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    opacity: 0.75;
+    transition: opacity var(--theme-transition-fast);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__current {
+    text-decoration: none;
+    opacity: 1;
+  }
+}

@@ -1,72 +1,357 @@
-<section class="block-breadcrumbs-content">
-	{% assign breadcrumb_menu = linklists[section.settings.menu].links %}
-	{% assign current_url = request.path | prepend: '' %}
-	{% assign clean_url = current_url | split: '?' | first %}
-		
-	{% capture build_trail %}
-	  {% for link in breadcrumb_menu %}
-		{% if clean_url == link.url %}
-		  <a href="{{ link.url }}">{{ link.title }}</a>
-		{% endif %}
-	
-		{% if link.links.size > 0 %}
-		  {% for child in link.links %}
-			{% if clean_url == child.url %}
-			  <a href="{{ link.url }}">{{ link.title }}</a>  › 
-			  <a href="{{ child.url }}">{{ child.title }}</a>
-			{% endif %}
-	
-			{% if child.links.size > 0 %}
-			  {% for subchild in child.links %}
-				{% if clean_url == subchild.url %}
-				  <a href="{{ link.url }}">{{ link.title }}</a>  › 
-				  <a href="{{ child.url }}">{{ child.title }}</a>  › 
-				  <a href="{{ subchild.url }}">{{ subchild.title }}</a>
-				{% endif %}
-			  {% endfor %}
-			{% endif %}
-		  {% endfor %}
-		{% endif %}
-	  {% endfor %}
-	{% endcapture %}
-	  <nav class="breadcrumb">
-		<a href="/">Home</a> › {{ build_trail }}
-	  </nav>
-	
-</section>
+{%- comment -%}
+============================================================================
+BLOCK-PAGE-BREADCRUMBS
+============================================================================
+Breadcrumb navigation with two modes:
+1. Manual: Use up to 3 ancestor URL pickers (takes priority)
+2. Menu-based: Match current URL against menu structure
 
-{%- style -%}
-	.block-breadcrumbs {
-		& > .block-breadcrumbs-content {
-			text-align: center; padding-top: 1em;
-			& a { 
-				font-size: 0.8em; letter-spacing: -0.02em;
-				color:inherit;
-				&:last-of-type { text-decoration: none; }
-			}
-		}
+The current page is always added automatically as the last item (no link).
+
+PRIORITY:
+1. Manual breadcrumbs (if any ancestor_* is set)
+2. Selected menu
+3. Fallback to 'product-menu'
+
+FEATURES:
+- JSON-LD structured data (schema.org BreadcrumbList)
+- Accessible markup with aria-label and aria-current
+- Responsive styling
+
+DEPENDENCIES:
+- None
+============================================================================
+{%- endcomment -%}
+
+{{ 'block-page-breadcrumbs.min.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	#shopify-section-{{ section.id }}.block-breadcrumbs {
+		{%- if section.settings.background_color != blank %}
+		background-color: {{ section.settings.background_color }};
+		{%- endif %}
+		{%- if section.settings.text_color != blank %}
+		color: {{ section.settings.text_color }};
+		{%- endif %}
+		padding-block: {{ section.settings.padding_block }}em;
 	}
-{%- endstyle -%}
+	#shopify-section-{{ section.id }} .block-breadcrumbs__nav {
+		text-align: {{ section.settings.text_align }};
+	}
+	#shopify-section-{{ section.id }} .block-breadcrumbs__list {
+		justify-content: {{ section.settings.text_align }};
+	}
+{% endstyle %}
+
+{%- liquid
+	assign clean_url = request.path | split: '?' | first
+	assign has_manual_crumbs = false
+	assign home_title = 'accessibility.breadcrumbs.home' | t | default: 'Home'
+	
+	comment
+		Determine current page title and URL based on template
+	endcomment
+	case template.name
+		when 'collection'
+			assign current_page_title = collection.title
+			assign current_page_url = collection.url
+		when 'product'
+			assign current_page_title = product.title
+			assign current_page_url = product.url
+		when 'page'
+			assign current_page_title = page.title
+			assign current_page_url = page.url
+		when 'article'
+			assign current_page_title = article.title
+			assign current_page_url = article.url
+		when 'blog'
+			assign current_page_title = blog.title
+			assign current_page_url = blog.url
+		when 'search'
+			assign current_page_title = 'search.title' | t | default: 'Search'
+			assign current_page_url = routes.search_url
+		when 'cart'
+			assign current_page_title = 'cart.title' | t | default: 'Cart'
+			assign current_page_url = routes.cart_url
+		when 'list-collections'
+			assign current_page_title = 'collection.heading' | t | default: 'Collections'
+			assign current_page_url = routes.collections_url
+		else
+			assign current_page_title = page_title
+			assign current_page_url = request.path
+	endcase
+	
+	comment
+		Check if any manual ancestors are set
+	endcomment
+	if section.settings.ancestor_1 != blank or section.settings.ancestor_2 != blank or section.settings.ancestor_3 != blank
+		assign has_manual_crumbs = true
+	endif
+	
+	comment
+		Determine which menu to use (with fallback)
+	endcomment
+	if section.settings.menu != blank
+		assign breadcrumb_menu = linklists[section.settings.menu].links
+	else
+		assign breadcrumb_menu = linklists['product-menu'].links
+	endif
+	
+	comment
+		Build breadcrumb trail array
+		Format: title|url (pipe-separated for easy splitting)
+	endcomment
+	assign breadcrumb_trail = ''
+	
+	if has_manual_crumbs
+		comment
+			Manual mode: collect from ancestor settings
+		endcomment
+		if section.settings.ancestor_1 != blank
+			assign obj = section.settings.ancestor_1.object
+			assign title = obj.title | default: obj.name | default: section.settings.ancestor_1
+			assign breadcrumb_trail = breadcrumb_trail | append: title | append: '|' | append: section.settings.ancestor_1 | append: '||'
+		endif
+		if section.settings.ancestor_2 != blank
+			assign obj = section.settings.ancestor_2.object
+			assign title = obj.title | default: obj.name | default: section.settings.ancestor_2
+			assign breadcrumb_trail = breadcrumb_trail | append: title | append: '|' | append: section.settings.ancestor_2 | append: '||'
+		endif
+		if section.settings.ancestor_3 != blank
+			assign obj = section.settings.ancestor_3.object
+			assign title = obj.title | default: obj.name | default: section.settings.ancestor_3
+			assign breadcrumb_trail = breadcrumb_trail | append: title | append: '|' | append: section.settings.ancestor_3 | append: '||'
+		endif
+	else
+		comment
+			Menu-based mode: find matching trail
+		endcomment
+		assign found_trail = false
+		
+		for link in breadcrumb_menu
+			if found_trail
+				break
+			endif
+			
+			if clean_url == link.url
+				assign found_trail = true
+			endif
+
+			if link.links.size > 0
+				for child in link.links
+					if found_trail
+						break
+					endif
+					
+					if clean_url == child.url
+						assign breadcrumb_trail = link.title | append: '|' | append: link.url | append: '||'
+						assign found_trail = true
+					endif
+
+					if child.links.size > 0
+						for subchild in child.links
+							if found_trail
+								break
+							endif
+							
+							if clean_url == subchild.url
+								assign breadcrumb_trail = link.title | append: '|' | append: link.url | append: '||'
+								assign breadcrumb_trail = breadcrumb_trail | append: child.title | append: '|' | append: child.url | append: '||'
+								assign found_trail = true
+							endif
+
+							if subchild.links.size > 0
+								for subsubchild in subchild.links
+									if found_trail
+										break
+									endif
+									
+									if clean_url == subsubchild.url
+										assign breadcrumb_trail = link.title | append: '|' | append: link.url | append: '||'
+										assign breadcrumb_trail = breadcrumb_trail | append: child.title | append: '|' | append: child.url | append: '||'
+										assign breadcrumb_trail = breadcrumb_trail | append: subchild.title | append: '|' | append: subchild.url | append: '||'
+										assign found_trail = true
+									endif
+								endfor
+							endif
+						endfor
+					endif
+				endfor
+			endif
+		endfor
+	endif
+	
+	comment
+		Split trail into array
+	endcomment
+	assign trail_items = breadcrumb_trail | split: '||'
+-%}
+
+{%- comment -%} ========== JSON-LD STRUCTURED DATA ========== {%- endcomment -%}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{
+			"@type": "ListItem",
+			"position": 1,
+			"name": {{ home_title | json }},
+			"item": "{{ shop.url }}{{ routes.root_url }}"
+		}
+		{%- assign position = 2 -%}
+		{%- for item in trail_items -%}
+			{%- if item != blank -%}
+				{%- assign parts = item | split: '|' -%}
+				{%- assign item_title = parts[0] -%}
+				{%- assign item_url = parts[1] -%}
+				,{
+			"@type": "ListItem",
+			"position": {{ position }},
+			"name": {{ item_title | json }},
+			"item": "{{ shop.url }}{{ item_url }}"
+		}
+				{%- assign position = position | plus: 1 -%}
+			{%- endif -%}
+		{%- endfor -%}
+		,{
+			"@type": "ListItem",
+			"position": {{ position }},
+			"name": {{ current_page_title | json }}
+		}
+	]
+}
+</script>
+
+{%- comment -%} ========== VISUAL BREADCRUMBS ========== {%- endcomment -%}
+<div class="block-breadcrumbs__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
+	<nav class="block-breadcrumbs__nav" aria-label="{{ 'accessibility.breadcrumbs.label' | t | default: 'Breadcrumbs' }}">
+		<ol class="block-breadcrumbs__list">
+			{%- comment -%} Home is always first {%- endcomment -%}
+			<li class="block-breadcrumbs__item">
+				<a href="{{ routes.root_url }}" class="block-breadcrumbs__link">{{ home_title }}</a>
+			</li>
+
+			{%- comment -%} Trail items (ancestors) {%- endcomment -%}
+			{%- for item in trail_items -%}
+				{%- if item != blank -%}
+					{%- assign parts = item | split: '|' -%}
+					{%- assign item_title = parts[0] -%}
+					{%- assign item_url = parts[1] -%}
+					<li class="block-breadcrumbs__item">
+						<span class="block-breadcrumbs__separator" aria-hidden="true">›</span>
+						<a href="{{ item_url }}" class="block-breadcrumbs__link">{{ item_title }}</a>
+					</li>
+				{%- endif -%}
+			{%- endfor -%}
+
+			{%- comment -%} Current page is always last (no link) {%- endcomment -%}
+			<li class="block-breadcrumbs__item">
+				<span class="block-breadcrumbs__separator" aria-hidden="true">›</span>
+				<span class="block-breadcrumbs__current" aria-current="page">{{ current_page_title }}</span>
+			</li>
+		</ol>
+	</nav>
+</div>
 
 {% schema %}
 {
-  "name": "Breadcrumbs",
-  "tag": "section",
-  "class": "block-breadcrumbs",
-  "limit": 1,
-  "enabled_on": {
-    "templates": ["collection", "product", "page", "blog", "article", "search", "cart", "list-collections"]
-  },
-  "settings": [
+	"name": "Breadcrumbs",
+	"tag": "section",
+	"class": "block-breadcrumbs",
+	"limit": 1,
+	"enabled_on": {
+		"templates": ["collection", "product", "page", "blog", "article", "search", "cart", "list-collections"]
+	},
+	"settings": [
 		{
 			"type": "header",
 			"content": "Content"
 		},
 		{
+			"type": "url",
+			"id": "ancestor_1",
+			"label": "Parent 1"
+		},
+		{
+			"type": "url",
+			"id": "ancestor_2",
+			"label": "Parent 2"
+		},
+		{
+			"type": "url",
+			"id": "ancestor_3",
+			"label": "Parent 3"
+		},
+		{
 			"type": "link_list",
 			"id": "menu",
 			"label": "Menu",
-			"info": "Select menu for breadcrumb matching"
+			"info": "Used when no manual parents are set. Fallback: 'product-menu'."
+		},
+		{
+			"type": "header",
+			"content": "Layout"
+		},
+		{
+			"type": "select",
+			"id": "width",
+			"label": "Width",
+			"options": [
+				{ "value": "is-align-narrow", "label": "Narrow" },
+				{ "value": "is-align-small", "label": "Small" },
+				{ "value": "is-align", "label": "Regular" },
+				{ "value": "is-align-wide", "label": "Wide" },
+				{ "value": "is-align-full", "label": "Full" }
+			],
+			"default": "is-align-wide"
+		},
+		{
+			"type": "select",
+			"id": "text_align",
+			"label": "Alignment",
+			"options": [
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": "center"
+		},
+		{
+			"type": "range",
+			"id": "padding_block",
+			"label": "Vertical padding",
+			"min": 0,
+			"max": 4,
+			"step": 0.5,
+			"default": 1,
+			"unit": "em"
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor ID",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
+			"type": "header",
+			"content": "Colors"
+		},
+		{
+			"type": "color",
+			"id": "background_color",
+			"label": "Background"
+		},
+		{
+			"type": "color",
+			"id": "text_color",
+			"label": "Text"
 		},
 		{
 			"type": "header",
@@ -74,15 +359,14 @@
 		},
 		{
 			"type": "paragraph",
-			"content": "Displays breadcrumb trail based on menu structure. Matches current URL to menu links."
+			"content": "Priority: 1) Manual parents, 2) Selected menu, 3) 'product-menu'. Current page is always added automatically as the last item. JSON-LD structured data (schema.org BreadcrumbList) is generated automatically."
 		}
 	],
-  "presets": [
-	{
-	  "name": "Breadcrumbs",
-	  "category": "Page",
-	  "blocks": []
-	}
-  ]
+	"presets": [
+		{
+			"name": "Breadcrumbs",
+			"category": "Page"
+		}
+	]
 }
 {% endschema %}

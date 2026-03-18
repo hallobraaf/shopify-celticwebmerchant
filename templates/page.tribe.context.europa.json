@@ -1,0 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_marketing_media_text_HtFd6L": {
+      "settings": {},
+      "blocks": {},
+      "block_order": [
+        "image_text_4RCR9H",
+        "image_text_WykxUi",
+        "image_text_KFBKdW",
+        "image_text_jLUgxx",
+        "image_text_hGqQrk"
+      ]
+    }
+  },
+  "context": {
+    "market": "europa"
+  },
+  "parent": "page.tribe.json"
+}
