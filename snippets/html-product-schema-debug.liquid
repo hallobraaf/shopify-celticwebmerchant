@@ -1,0 +1,127 @@
+{%- comment -%}
+============================================================================
+HTML-PRODUCT-SCHEMA-DEBUG
+============================================================================
+Debug snippet — toont Shopify's native `{{ product | structured_data }}`
+filter output als extra JSON-LD block op de product pagina.
+
+DOEL:
+Vergelijken wat Shopify native produceert vs. de Doran Product Reviews app
+output (die al aanwezig is in de server-HTML).
+
+ACTIVATIE — alleen zichtbaar wanneer één van deze waar is:
+  - ?schemadebug=1 (of welke waarde dan ook) in de URL
+  - admin theme editor preview (request.design_mode)
+
+Normale bezoekers en Google-crawlers zien dit block NIET, dus geen
+schema-conflict in production.
+
+VERGELIJKEN:
+  1. Open een PDP met ?schemadebug=1
+  2. DevTools → Elements → zoek "application/ld+json"
+  3. Er zouden nu 3 blocks moeten zijn:
+       - Organization (html-theme-schema)
+       - Product (Doran app-embed, reeds aanwezig)
+       - Product met data-source="shopify-native-debug" (dit snippet)
+
+TIJDELIJK — verwijder dit snippet (en de render call in
+sections/block-product-information.liquid) zodra de vergelijking klaar is.
+
+USAGE:
+  {% render 'html-product-schema-debug', product: product %}
+============================================================================
+{%- endcomment -%}
+
+{%- comment -%}
+  TIJDELIJK: altijd aan voor korte vergelijking met Doran's output.
+  VERWIJDER dit snippet en de render call in block-product-information.liquid
+  zodra de vergelijking is gedaan — anders conflicteert dit met Doran.
+{%- endcomment -%}
+
+{%- if product != blank -%}
+<script type="application/ld+json" data-source="shopify-native-debug">
+{{ product | structured_data }}
+</script>
+
+{%- comment -%}
+  ----------------------------------------------------------------------
+  DIAGNOSTIC MODE — altijd output, plus HTML-comment met ruwe dump van
+  product.metafields.shopify.* zodat we kunnen zien welke keys aanwezig
+  zijn, welke types, en welke waardes.
+
+  Zodra we weten wat er in zit, maken we dit productie-waardig.
+  ----------------------------------------------------------------------
+{%- endcomment -%}
+
+<!-- SCHEMA-DEBUG-MARKER: snippet v4 (metaobject-dereference) -->
+<!-- SCHEMA-DEBUG: iteration dump met metaobject field-probes
+{%- for pair in product.metafields.shopify -%}
+  iter_key={{ pair[0] }} | type={{ pair[1].type }}
+  {%- if pair[1].type contains 'list.' -%}
+    {%- for item in pair[1].value -%}
+      | item.label={{ item.label }} | item.name={{ item.name }} | item.display_name={{ item.display_name }} | item.system.handle={{ item.system.handle }} | item.handle={{ item.handle }}
+    {%- endfor -%}
+  {%- else -%}
+    | val.label={{ pair[1].value.label }} | val.name={{ pair[1].value.name }} | val.display_name={{ pair[1].value.display_name }}
+  {%- endif -%}
+{% endfor -%}
+END iteration dump -->
+
+{%- capture properties_json -%}
+  {%- assign first = true -%}
+  {%- for pair in product.metafields.shopify -%}
+    {%- assign mf_key = pair[0] -%}
+    {%- assign mf = pair[1] -%}
+    {%- if mf == blank or mf.value == blank -%}{%- continue -%}{%- endif -%}
+
+    {%- assign label = mf_key | replace: '_', ' ' | replace: '-', ' ' | capitalize -%}
+
+    {%- if mf.type contains 'list.' -%}
+      {%- for item in mf.value -%}
+        {%- comment -%} Metaobject-referenties hebben meestal .label, anders .name / .display_name, anders handle {%- endcomment -%}
+        {%- if item.label != blank -%}
+          {%- assign item_str = item.label -%}
+        {%- elsif item.name != blank -%}
+          {%- assign item_str = item.name -%}
+        {%- elsif item.display_name != blank -%}
+          {%- assign item_str = item.display_name -%}
+        {%- elsif item.handle != blank -%}
+          {%- assign item_str = item.handle -%}
+        {%- else -%}
+          {%- capture item_str -%}{{ item }}{%- endcapture -%}
+          {%- assign item_str = item_str | strip -%}
+        {%- endif -%}
+        {%- if item_str == blank -%}{%- continue -%}{%- endif -%}
+        {%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+        {"@type":"PropertyValue","name":{{ label | json }},"value":{{ item_str | json }}}
+      {%- endfor -%}
+    {%- else -%}
+      {%- if mf.value.label != blank -%}
+        {%- assign val_str = mf.value.label -%}
+      {%- elsif mf.value.name != blank -%}
+        {%- assign val_str = mf.value.name -%}
+      {%- elsif mf.value.display_name != blank -%}
+        {%- assign val_str = mf.value.display_name -%}
+      {%- else -%}
+        {%- capture val_str -%}{{ mf.value }}{%- endcapture -%}
+        {%- assign val_str = val_str | strip -%}
+      {%- endif -%}
+      {%- if val_str == blank -%}{%- continue -%}{%- endif -%}
+      {%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+      {"@type":"PropertyValue","name":{{ label | json }},"value":{{ val_str | json }}}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- assign properties_json = properties_json | strip -%}
+
+<script type="application/ld+json" data-source="shopify-native-debug-additional">
+{
+  "@context": "https://schema.org/",
+  "@id": {{ product.url | append: '#product' | json }},
+  "@type": "Product",
+  "additionalProperty": [{{ properties_json }}]
+}
+</script>
+
+{%- endif -%}

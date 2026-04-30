@@ -8,9 +8,22 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "footer-group.json",
   "context": {
-    "market": "verenigd-koningkrijk"
+    "market": "nl"
   },
-  "sections": {}
+  "parent": "header-group.json",
+  "sections": {
+    "block_header_callout_AGfLm9": {
+      "disabled": false,
+      "settings": {},
+      "blocks": {
+        "button_y9x84q": {
+          "settings": {
+            "text": "Shop festival kleding",
+            "url": "shopify://collections/elfia-haarzuilens-arcen"
+          }
+        }
+      }
+    }
+  }
 }

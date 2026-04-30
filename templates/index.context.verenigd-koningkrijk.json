@@ -13,7 +13,97 @@
   },
   "parent": "index.json",
   "sections": {
+    "block_marketing_testimonials_mhpAE": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-a8ae6b19da1d593db324b3b913a2bb00": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-1ce0ae65c7ca413a526d7c8c464fa6d8": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-ead9e888644edd27ca2cc350b19a7792": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-711911bd90560bdf119d693861c36c6e": null,
+        "background_color": "",
+        "text_color": "",
+        "header-dd17eec0c2e4aba0ed1f2029d1da47e8": null,
+        "paragraph-d4cd6190c82b737b9d8eb1dac5ff423d": null
+      },
+      "blocks": {
+        "testimonial_fFDRz": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Bought a wonderful iron Torc necklace i wear every day and I LOVE it so much! Will hopefully purchase something here again",
+            "author": "Cheeseb0ng, UK",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_7FE6P": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Fast delivery and excellent service as usual",
+            "author": "Terry Wright, UK",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_e9Pji": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Fast delivery, stuff very spot on :)",
+            "author": "Matias, UK",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_fFDRz",
+        "testimonial_7FE6P",
+        "testimonial_e9Pji"
+      ],
+      "name": "Testimonials"
+    },
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "subheading": "Ostara Sale",
+        "heading": "",
+        "image": "shopify://shop_images/1-UK_Banner_GBPantser1_Feb2026.webp",
+        "focus_x": 85,
+        "overlay": "medium"
+      },
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "url": "shopify://collections/tijdperk"
+          }
+        }
+      }
+    },
     "block_marketing_grid_eKTaaA": {
+      "settings": {},
       "blocks": {
         "banner_PH6hGr": {
           "settings": {
@@ -24,6 +114,7 @@
       }
     },
     "block_marketing_media_text_mEgbKY": {
+      "settings": {},
       "blocks": {
         "image_text_aJBEwL": {
           "settings": {
@@ -32,5 +123,25 @@
         }
       }
     }
-  }
+  },
+  "order": [
+    "block_marketing_cover_EyVVzr",
+    "block_marketing_grid_eKTaaA",
+    "block_marketing_collections_KLibTG",
+    "best-products",
+    "block_marketing_grid_93tkDC",
+    "block_marketing_products_EaRW4A",
+    "block_marketing_products_pXat79",
+    "block_marketing_media_text_iDhD8j",
+    "17653968662b835c7e",
+    "block_marketing_articles_mcEqQJ",
+    "block_marketing_media_text_mEgbKY",
+    "block_marketing_articles_HAGXAT",
+    "block_marketing_media_text_eUmREH",
+    "block_marketing_articles_wJ9gkm",
+    "block_marketing_articles_qtkjtB",
+    "block_marketing_brands_small_gekrHy",
+    "1765396664e68351eb",
+    "block_marketing_testimonials_mhpAE"
+  ]
 }

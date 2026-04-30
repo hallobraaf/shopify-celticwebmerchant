@@ -17,26 +17,27 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-b998ef7ffb8137d8efaac5c23f48d022": null,
+        "header-6daff88be58234421ad70a2722d8c693": null,
         "heading": "",
         "subheading": "",
-        "header-21d64a47342a84c3af720ef3b60166ec": null,
+        "header-a2195be74fb20416161663feaba5ad5b": null,
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-f9045cc88d62dd841b31bd9a680c1c73": null,
+        "header-5dfe71774b2b6792e86bd6a29c9938c8": null,
         "background_color": "",
         "text_color": "",
-        "header-d0888424feaee791c22b62e326cb9750": null,
-        "anchor": "",
-        "custom_class": ""
+        "header-020678465be450cfa82df3e3c825fe93": null,
+        "paragraph-f4ca15717f5f68a94a7eb1cfe57a6ddb": null
       },
       "blocks": {
         "banner_Tt47j": {
           "type": "banner",
           "disabled": false,
           "settings": {
-            "text": "Gratis verzending bij orders boven €75,-",
+            "text": "Gratis verzending vanaf €75",
             "cta_text": "",
             "cta_url": "",
             "style": "promo",
@@ -48,11 +49,124 @@
         "banner_Tt47j"
       ],
       "name": "Banners"
+    },
+    "block_marketing_products_FR9qz": {
+      "type": "block-marketing-products",
+      "disabled": false,
+      "settings": {
+        "header-92233f68bc204407552b4b49a0578302": null,
+        "collection": "altijd-nodig",
+        "heading": "Altijd nodig!",
+        "header-b79fdec5067e65dedef288e1ff7504a0": null,
+        "card_layout": "vertical",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_badges": true,
+        "show_rating": false,
+        "quick_add": false,
+        "max_products": 12,
+        "only_available": true,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
+        "header-e636b2e02a26f89c8ac125e3da45020a": null,
+        "width": "is-align-wide",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 0.2,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-29b75b07e61c293c650b43ecfca0c8bc": null,
+        "background_color": "",
+        "text_color": "",
+        "header-e80e37f9b33e41ef037fae4f2b60f7b7": null,
+        "paragraph-6a9283129e8fcf01182b004107a6621f": null
+      },
+      "blocks": {},
+      "block_order": [],
+      "name": "Products"
+    },
+    "block_marketing_testimonials_mpA4Y": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-702b981342d0b23406dd9308f34aa3df": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-81469ae2ff06f31792eeabd01f065840": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-54f35c1e3a67be0341602030ee517d9e": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-d7f821a682d17539078fae00f3d687d3": null,
+        "background_color": "",
+        "text_color": "",
+        "header-d512c516fa707fae99b28d9f3d3302fb": null,
+        "paragraph-24e3361548adde55cfc418f550067ce9": null
+      },
+      "blocks": {
+        "testimonial_UA9Ft": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Steeds als ik bij jullie bestel , komt het altijd mooi op tijd aan . De kwaliteit van jullie producten zijn altijd top.",
+            "author": "Johan Haesevoets, BE",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_MmjtY": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Ruim aanbod, snelle levering, ook als je iets vergeten bent, kan je vlot nabestellen zonder verzendkosten. Alles wordt goed ingepakt en je kan je bestelling perfect volgen. Een aanrader!",
+            "author": "Patrick Puype, BE",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_WBPaP": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Levering was snel toegekomen en elk zeer knap werk !!! Heel fier via deze weg mijn verzameling met pracht stukken te kunnen spijzen",
+            "author": "Ilse De Graeve,BE",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_UA9Ft",
+        "testimonial_MmjtY",
+        "testimonial_WBPaP"
+      ],
+      "name": "Testimonials"
     }
   },
   "order": [
     "block_marketing_banners_9m79i",
     "cart-order",
-    "block_product_recommended_yfFAdg"
+    "block_marketing_products_FR9qz",
+    "block_marketing_testimonials_mpA4Y"
   ]
 }

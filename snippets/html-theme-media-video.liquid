@@ -139,8 +139,11 @@ DEPENDENCIES:
 			style="object-position: {{ focus_x }}% {{ focus_y }}%;"
 			data-background-video
 		>
+			{%- comment -%} Skip HLS (.m3u8): Chrome reports canPlayType='maybe' but cannot decode it natively, which causes autoplay to silently fail. {%- endcomment -%}
 			{%- for source in video.sources -%}
-				<source data-src="{{ source.url }}" type="{{ source.mime_type }}">
+				{%- unless source.mime_type == 'application/x-mpegURL' -%}
+					<source data-src="{{ source.url }}" type="{{ source.mime_type }}">
+				{%- endunless -%}
 			{%- endfor -%}
 		</video>
 	{%- endif -%}
@@ -191,8 +194,11 @@ DEPENDENCIES:
 				controlslist="nodownload"
 				data-video
 			>
+				{%- comment -%} Skip HLS (.m3u8): Chrome reports canPlayType='maybe' but cannot decode it natively, which causes autoplay to silently fail. {%- endcomment -%}
 				{%- for source in video.sources -%}
-					<source src="{{ source.url }}" type="{{ source.mime_type }}">
+					{%- unless source.mime_type == 'application/x-mpegURL' -%}
+						<source src="{{ source.url }}" type="{{ source.mime_type }}">
+					{%- endunless -%}
 				{%- endfor -%}
 				{{ 'product.media.video_error' | t | default: 'Your browser does not support the video tag.' }}
 			</video>

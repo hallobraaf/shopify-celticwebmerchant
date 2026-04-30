@@ -17,26 +17,27 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-838774024620166387c67840fe7c9ff0": null,
+        "header-761026d0541cefb45a7d0c0694a770e7": null,
         "heading": "",
         "subheading": "",
-        "header-83785adf82d25c7d16b898514054c0c8": null,
+        "header-a65a7eb52d204107cabb9a949f2613da": null,
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-c16701c28e4d3e56ea8161a637c3bf40": null,
+        "header-bf9f83c14a45bc5bf972e6e4a1dc94bc": null,
         "background_color": "",
         "text_color": "",
-        "header-25b31440d6b9e47840d704c09498fc30": null,
-        "anchor": "",
-        "custom_class": ""
+        "header-8cd8eaa877191ed8cff4f45cf055c331": null,
+        "paragraph-a1af0996f91d47b20ad12ebddd66e63c": null
       },
       "blocks": {
         "banner_BNR3N": {
           "type": "banner",
           "disabled": false,
           "settings": {
-            "text": "Gratis fragt fra 570 kr.",
+            "text": "Gratis fragt 570 kr",
             "cta_text": "",
             "cta_url": "",
             "style": "promo",
@@ -48,11 +49,85 @@
         "banner_BNR3N"
       ],
       "name": "Banners"
+    },
+    "block_marketing_testimonials_GD6N4": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-820d386bca4e9209dc1cd5f074fe13dc": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-3d866918585f92d7d7cd25074e4c99f0": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-c0a2b7f83542c108c4087b6fa39b06a2": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-94d305e10dd7d564d45633d29e9cec30": null,
+        "background_color": "",
+        "text_color": "",
+        "header-58088c3aa0827b9c2bcc5f32aae23c3d": null,
+        "paragraph-56040b0e2670d5c176859af7ca365afd": null
+      },
+      "blocks": {
+        "testimonial_mc9kw": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Great service, fast delivery, good quality stuff. I got moste of my hema gear from here. 2-3 days delivery to Denmark. ❤️ Fantastisk",
+            "author": "Rasmus Junge Jensen, DK",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_33Kef": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "My order came quickly, especially considering I had it shipped to Denmark. My things are good quality and customer service is nice and helpful.",
+            "author": "Regitse Jensen, DK",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_t7KDJ": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "It is superb service. I got my packets quickly and save",
+            "author": "Helle Larsen, DK",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_mc9kw",
+        "testimonial_33Kef",
+        "testimonial_t7KDJ"
+      ],
+      "name": "Testimonials"
     }
   },
   "order": [
     "block_marketing_banners_pQyfb",
     "cart-order",
-    "block_product_recommended_yfFAdg"
+    "block_marketing_products_QKemGE",
+    "block_marketing_testimonials_GD6N4"
   ]
 }

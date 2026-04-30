@@ -222,7 +222,13 @@
     "recent": "Tìm kiếm gần đây"
   },
   "marketing": {
-    "products_heading": "Sản phẩm mới nhất"
+    "products_heading": "Sản phẩm mới nhất",
+    "countdown": {
+      "days": "Ngày",
+      "hours": "Giờ",
+      "minutes": "Phút",
+      "seconds": "Giây"
+    }
   },
   "newsletter": {
     "heading": "Bản tin",

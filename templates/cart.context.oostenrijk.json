@@ -17,26 +17,27 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-dbbedce18999cf9599179e491af6d7c6": null,
+        "header-ab54247c0c2f408b4c30d03729c0f377": null,
         "heading": "",
         "subheading": "",
-        "header-1a1913e72563032f61e1749a538a54e0": null,
+        "header-b4489d1e97fdd1ab67aa6e374f15aa63": null,
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-4c342c9576b3cf3240740a5cf6799c40": null,
+        "header-35f5268bc239176910abb8193e9df92f": null,
         "background_color": "",
         "text_color": "",
-        "header-6ace1eed53d6ab7b9f35bacee1a6bcbf": null,
-        "anchor": "",
-        "custom_class": ""
+        "header-e7ae651c1961f6ef63accc4b8109d8d9": null,
+        "paragraph-f5c1103cb99416a2cb0806fa9df28dcc": null
       },
       "blocks": {
         "banner_zhMXX": {
           "type": "banner",
           "disabled": false,
           "settings": {
-            "text": "Kostenloser Versand ab 99 €",
+            "text": "Kostenloser Versand ab 75 €",
             "cta_text": "",
             "cta_url": "",
             "style": "promo",
@@ -48,11 +49,85 @@
         "banner_zhMXX"
       ],
       "name": "Banners"
+    },
+    "block_marketing_testimonials_eLtkh": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-a28ed9267c00dd2a700d70cc67d5b6c3": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-7521b8d080ce0af52f2bd5b2ae08bc9f": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-4add1afca2fce21b02edc547506cef7c": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-6f89e86fb1c784a9a903cc789cd08e54": null,
+        "background_color": "",
+        "text_color": "",
+        "header-307fdf1eb5488350bf7339ba8c6b3eac": null,
+        "paragraph-3fd2712f347c61d49a3145dae68d330a": null
+      },
+      "blocks": {
+        "testimonial_GRbVT": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Tolle und rasche Abwicklung. besser und schneller als viele andere Anbieter! Kann ich nur weiterempfehlen.",
+            "author": "Gozo, AT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_Akg3L": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Schnelle Lieferung, Top Artikel und Qualität! Jederzeit wieder",
+            "author": "Ragnar, AT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_Dc8p4": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Das Paket wurde sehr schnell geliefert und der Artikel entsprach voll und ganz dem Angegebenen. Die Lieferung konnte verfolgt werden und man sendete mir stets Benachrichtigungen und Hilfe. Danke WebMerchant",
+            "author": "Marc Pichler, AT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_GRbVT",
+        "testimonial_Akg3L",
+        "testimonial_Dc8p4"
+      ],
+      "name": "Testimonials"
     }
   },
   "order": [
     "block_marketing_banners_HjayP",
     "cart-order",
-    "block_product_recommended_yfFAdg"
+    "block_marketing_products_QKemGE",
+    "block_marketing_testimonials_eLtkh"
   ]
 }

@@ -60,19 +60,19 @@
         "quick_add": false,
         "max_products": 24,
         "only_available": true,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
         "width": "is-align-wide",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "columns_mobile": 2,
         "grid_gap": 0.2,
-        "visible_rows": 1,
-        "show_more_text": "",
-        "show_less_text": "",
         "padding_block": 3,
-        "background_color": "#f8f8f8",
-        "text_color": "#000000",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#f8f8f8",
+        "text_color": "#000000"
       }
     },
     "block_marketing_grid_G4YbJR": {
@@ -149,21 +149,21 @@
         "heading": "Piraat",
         "subtext": "",
         "header_align": "center",
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
         "columns_mobile": 1,
         "grid_gap": 0.5,
         "padding_block": 3,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": false,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
-        "background_color": "#0f1f38",
-        "text_color": "#ffffff",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff"
       }
     },
     "block_marketing_grid_ihdRQi": {
@@ -204,7 +204,7 @@
         "product_kX9JJ6": {
           "type": "product",
           "settings": {
-            "product": "9de-eeuwse-vikingriem-1",
+            "product": "9de-eeuwse-vikingriem",
             "second_image": false,
             "design": "blue"
           }
@@ -212,7 +212,7 @@
         "product_RtghJM": {
           "type": "product",
           "settings": {
-            "product": "drinkhoorn-0-05-l",
+            "product": "drinkhoorn-005-l",
             "second_image": false,
             "design": "blue"
           }
@@ -240,21 +240,21 @@
         "heading": "Viking",
         "subtext": "",
         "header_align": "center",
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
         "columns_mobile": 1,
         "grid_gap": 0.5,
         "padding_block": 3,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": false,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
-        "background_color": "",
-        "text_color": "",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "",
+        "text_color": ""
       }
     },
     "block_marketing_grid_jPLkpp": {
@@ -287,7 +287,7 @@
         "product_EdfGhW": {
           "type": "product",
           "settings": {
-            "product": "benedictijnse-habijt-monnikspij-zwart",
+            "product": "benedictijnse-habijt-monnikspij",
             "second_image": false,
             "design": "blue"
           }
@@ -322,21 +322,21 @@
         "heading": "Monnik",
         "subtext": "",
         "header_align": "center",
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
         "columns_mobile": 1,
         "grid_gap": 0.5,
         "padding_block": 3,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": false,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
-        "background_color": "#0f1f38",
-        "text_color": "#ffffff",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff"
       }
     },
     "block_marketing_grid_FVHipy": {
@@ -431,21 +431,21 @@
         "heading": "Middeleeuws geinspireerd",
         "subtext": "",
         "header_align": "center",
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
         "columns_mobile": 1,
         "grid_gap": 0.5,
         "padding_block": 3,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": false,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
-        "background_color": "rgba(0,0,0,0)",
-        "text_color": "#000000",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "#000000"
       }
     },
     "block_marketing_grid_89tjgj": {
@@ -513,21 +513,21 @@
         "heading": "Tempelier",
         "subtext": "",
         "header_align": "center",
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
         "columns_mobile": 1,
         "grid_gap": 0.5,
         "padding_block": 3,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": false,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
-        "background_color": "#0f1f38",
-        "text_color": "#ffffff",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff"
       }
     },
     "block_marketing_grid_9z6PaX": {
@@ -552,7 +552,7 @@
         "product_arVYmb": {
           "type": "product",
           "settings": {
-            "product": "beestachtig-orkmasker-groen",
+            "product": "epic-armoury-beestachtig-orkmasker-groen",
             "second_image": false,
             "design": "blue"
           }
@@ -595,21 +595,21 @@
         "heading": "Maskers",
         "subtext": "",
         "header_align": "center",
+        "display_mode": "slider",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
         "columns_mobile": 1,
         "grid_gap": 0.5,
         "padding_block": 3,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": false,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
-        "background_color": "rgba(0,0,0,0)",
-        "text_color": "#000000",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "#000000"
       }
     },
     "block_marketing_products_wjK74V": {
@@ -627,19 +627,19 @@
         "quick_add": false,
         "max_products": 12,
         "only_available": true,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
         "width": "is-align-wide",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "columns_mobile": 2,
         "grid_gap": 0.2,
-        "visible_rows": 1,
-        "show_more_text": "",
-        "show_less_text": "",
         "padding_block": 3,
-        "background_color": "#0f1f38",
-        "text_color": "#ffffff",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#0f1f38",
+        "text_color": "#ffffff"
       }
     },
     "block_marketing_products_zg4bPh": {
@@ -657,19 +657,19 @@
         "quick_add": false,
         "max_products": 12,
         "only_available": true,
+        "visible_rows": 1,
+        "show_more_text": "",
+        "show_less_text": "",
         "width": "is-align-wide",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "columns_mobile": 2,
         "grid_gap": 0.2,
-        "visible_rows": 1,
-        "show_more_text": "",
-        "show_less_text": "",
         "padding_block": 3,
-        "background_color": "",
-        "text_color": "",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "",
+        "text_color": ""
       }
     }
   },

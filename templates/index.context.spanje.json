@@ -13,6 +13,93 @@
   },
   "parent": "index.json",
   "sections": {
+    "block_marketing_testimonials_CkLFt": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-3250abbd3b6464c039ce4d57ceab5b13": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-472b7171a5a211efa0a4e19e8a2e7be0": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-7b2ea2bf37dccdc49cb94025ae10cc34": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-ecd7f9d5c14643851fdef0bd477e85cb": null,
+        "background_color": "",
+        "text_color": "",
+        "header-e52aa77f98755cf9601601a7ba242805": null,
+        "paragraph-c64050782f7e8f4fd9ccd2635f153e5a": null
+      },
+      "blocks": {
+        "testimonial_zyBY8": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "He hecho varios pedidos y siempre todo bien. Además los paquetes tardan muy poco en llegar a España. Me llegó un artículo dañado por el transporte y me hicieron el reembolso, me daban además varias facilidades si quería comprarlo de nuevo (en otras tiendas no te dan estas facilidades/no te compensan y no son tan eficientes). Atención al cliente rápida y atenta, ¡perfecta! Gracias :)",
+            "author": "Sara, ES",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_eLbJ7": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "El cuchillo realmente una obra de arte y el envío a España en tiempo record, menos que si fuera un envío nacional.\nGracias",
+            "author": "Silvia Parra Roelas, ES",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_qgFjp": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Destacaría la rapidez del servicio y la facilidad de punto de recogida. Lo recibido se ajusta perfectamente a lo que pedí.",
+            "author": "Olatz, ES",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_zyBY8",
+        "testimonial_eLbJ7",
+        "testimonial_qgFjp"
+      ],
+      "name": "Testimonials"
+    },
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "image": "shopify://shop_images/1-IT-ES_Banner_Tijdperk_Dec2025_4b87e494-32bb-4715-9083-68afa2b8cf94.webp",
+        "focus_x": 80,
+        "overlay": "medium"
+      },
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "url": "shopify://collections/tijdperk"
+          }
+        }
+      }
+    },
     "best-products": {
       "settings": {
         "collection": "middeleeuwse-kleding"
@@ -20,6 +107,7 @@
       "blocks": {}
     },
     "block_marketing_media_text_iDhD8j": {
+      "settings": {},
       "blocks": {
         "image_text_G9gzXM": {
           "settings": {
@@ -29,6 +117,7 @@
       }
     },
     "block_marketing_media_text_mEgbKY": {
+      "settings": {},
       "blocks": {
         "image_text_aJBEwL": {
           "settings": {
@@ -38,6 +127,7 @@
       }
     },
     "block_marketing_media_text_eUmREH": {
+      "settings": {},
       "blocks": {
         "image_text_xddkDV": {
           "settings": {
@@ -46,5 +136,25 @@
         }
       }
     }
-  }
+  },
+  "order": [
+    "block_marketing_cover_EyVVzr",
+    "block_marketing_grid_eKTaaA",
+    "block_marketing_collections_KLibTG",
+    "best-products",
+    "block_marketing_grid_93tkDC",
+    "block_marketing_products_EaRW4A",
+    "block_marketing_products_pXat79",
+    "block_marketing_media_text_iDhD8j",
+    "17653968662b835c7e",
+    "block_marketing_articles_mcEqQJ",
+    "block_marketing_media_text_mEgbKY",
+    "block_marketing_articles_HAGXAT",
+    "block_marketing_media_text_eUmREH",
+    "block_marketing_articles_wJ9gkm",
+    "block_marketing_articles_qtkjtB",
+    "block_marketing_brands_small_gekrHy",
+    "1765396664e68351eb",
+    "block_marketing_testimonials_CkLFt"
+  ]
 }

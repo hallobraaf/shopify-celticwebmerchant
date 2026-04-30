@@ -29,11 +29,11 @@
       "name": "Cover",
       "settings": {
         "subheading": "",
-        "heading": "Maart is knutselmaand",
-        "text": "<p>10% korting op alle doe-het-zelf producten. </p><p>Code <strong>CRAFTING2026<br/>* </strong><em>Vul je code in bij het afrekenen</em></p>",
-        "image": "shopify://shop_images/Banner_Volva_Dali_Feb2026_3.jpg",
-        "focus_x": 0,
-        "focus_y": 45,
+        "heading": "April is kookmaand",
+        "text": "<p>10% korting op alle kook producten. </p><p>Code <strong>COOKING2026<br/><br/><br/>* </strong><em>Vul je code in bij het afrekenen. <br/>Niet geldig in combinatie met andere kortingen</em></p>",
+        "image": "shopify://shop_images/Banner_Volva_Dali_Feb2026_2.jpg",
+        "focus_x": 95,
+        "focus_y": 20,
         "overlay": "medium",
         "loading": "lazy",
         "fetchpriority": "auto",
@@ -55,6 +55,8 @@
         "width": "is-align-wide",
         "text_align": "center",
         "padding_block": 1,
+        "anchor": "",
+        "custom_class": "",
         "background_color": "",
         "text_color": ""
       }
@@ -69,35 +71,35 @@
         "show_count": false,
         "width": "is-align-narrow",
         "text_align": "center",
+        "anchor": "",
         "background_color": "#ffffff",
-        "text_color": "#111111",
-        "anchor": ""
+        "text_color": "#111111"
       }
     },
     "collection-banners": {
       "type": "block-collection-banners",
       "settings": {
         "menu": "",
+        "display_mode": "slider",
         "card_layout": "horizontal",
         "image_ratio": "portrait",
         "show_product_count": false,
         "card_text_align": "left",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "width": "is-align",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "columns_mobile": 1,
         "grid_gap": 0.2,
         "padding_block": 2,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
+        "anchor": "",
         "background_color": "#ffffff",
         "text_color": "",
         "card_background_color": "#0f1f38",
-        "card_text_color": "#ffffff",
-        "anchor": ""
+        "card_text_color": "#ffffff"
       }
     },
     "collection-products": {
@@ -125,9 +127,9 @@
         "grid_columns_tablet": 3,
         "grid_columns_mobile": 2,
         "grid_gap": 0.2,
+        "anchor": "",
         "background_color": "#f8f8f8",
-        "text_color": "#111111",
-        "anchor": ""
+        "text_color": "#111111"
       }
     },
     "collection-info": {
@@ -136,11 +138,11 @@
         "title": "Gerelateerde blogs",
         "read_more_text": "",
         "width": "is-align",
+        "anchor": "",
         "background_color": "#f8f8f8",
         "text_color": "#111111",
         "knowledge_background_color": "#0f1f38",
-        "knowledge_text_color": "#ffffff",
-        "anchor": ""
+        "knowledge_text_color": "#ffffff"
       }
     },
     "collection-bottom": {
@@ -150,9 +152,9 @@
         "heading_tag": "h2",
         "width": "is-align-small",
         "text_align": "center",
+        "anchor": "",
         "background_color": "#ffffff",
-        "text_color": "#111111",
-        "anchor": ""
+        "text_color": "#111111"
       }
     }
   },

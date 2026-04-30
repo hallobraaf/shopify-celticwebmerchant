@@ -13,6 +13,20 @@
   },
   "parent": "index.json",
   "sections": {
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "image": "shopify://shop_images/1-NL-DEBanner_Tudor_Feb2026_1_1.webp",
+        "focus_x": 85,
+        "overlay": "medium"
+      },
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "url": "shopify://collections/tijdperk"
+          }
+        }
+      }
+    },
     "block_marketing_media_text_mEgbKY": {
       "settings": {
         "padding_block": 0

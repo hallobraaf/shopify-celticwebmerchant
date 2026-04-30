@@ -222,7 +222,13 @@
     "recent": "Pencarian terbaru"
   },
   "marketing": {
-    "products_heading": "Produk terbaru kami"
+    "products_heading": "Produk terbaru kami",
+    "countdown": {
+      "days": "Hari",
+      "hours": "Jam",
+      "minutes": "Menit",
+      "seconds": "Detik"
+    }
   },
   "newsletter": {
     "heading": "Newsletter",

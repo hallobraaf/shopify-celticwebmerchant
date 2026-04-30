@@ -8,11 +8,18 @@
   - product: {Object} Product object (required)
   - scroll_target: {String} CSS selector to scroll to (default: '#reviews')
   - show_count: {Boolean} Show review count (default: true)
+  - show_brand: {Boolean} Show brand link via metaobject (default: false)
   - size: {Number} Star size in pixels (default: 16)
-  
+
   METAFIELDS (Doran Product Reviews):
   - product.metafields.doran.prAvgRating: Average rating (0-5)
   - product.metafields.doran.prReviewCount: Number of reviews
+
+  METAFIELDS (Brand reference):
+  - product.metafields.custom['product-brand-reference']: Metaobject (brand-reference)
+    → .title: Brand name (required om de brand te tonen)
+    → .collection.value.url: Collection URL (optioneel — als afwezig wordt
+                              alleen de titel getoond zonder link)
   ============================================================================
 {%- endcomment -%}
 
@@ -27,6 +34,9 @@
   else
     assign display_count = show_count
   endif
+
+  assign display_brand = show_brand | default: false
+  assign brand_ref = p.metafields.custom['product-brand-reference'].value
 -%}
 
 {%- if review_count > 0 -%}
@@ -49,14 +59,14 @@
         
         <svg class="product-rating__star" viewBox="0 0 24 24" width="{{ star_size }}" height="{{ star_size }}">
           <defs>
-            <linearGradient id="star-fill-{{ section.id }}-{{ i }}">
+            <linearGradient id="star-fill-{{ product.id }}-{{ section.id }}-{{ i }}">
               <stop offset="{{ fill_percent }}%" stop-color="currentColor" />
               <stop offset="{{ fill_percent }}%" stop-color="transparent" />
             </linearGradient>
           </defs>
           <path 
             d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-            fill="url(#star-fill-{{ section.id }}-{{ i }})"
+            fill="url(#star-fill-{{ product.id }}-{{ section.id }}-{{ i }})"
             stroke="currentColor"
             stroke-width="1.5"
             stroke-linejoin="round"
@@ -84,4 +94,19 @@
       });
     })();
   </script>
+{%- endif -%}
+
+
+{%- if display_brand and brand_ref != blank -%}
+  {%- assign brand_title = brand_ref.title -%}
+  {%- assign brand_collection = brand_ref.collection.value -%}
+  {%- if brand_title != blank -%}
+    <span class="product-rating__brand">
+      {%- if brand_collection != blank -%}
+        <a href="{{ brand_collection.url }}">{{ brand_title }}</a>
+      {%- else -%}
+        {{ brand_title }}
+      {%- endif -%}
+    </span>
+  {%- endif -%}
 {%- endif -%}

@@ -222,7 +222,13 @@
     "recent": "最近搜尋"
   },
   "marketing": {
-    "products_heading": "最新產品"
+    "products_heading": "最新產品",
+    "countdown": {
+      "days": "天",
+      "hours": "小時",
+      "minutes": "分鐘",
+      "seconds": "秒"
+    }
   },
   "newsletter": {
     "heading": "訂閱電子報",

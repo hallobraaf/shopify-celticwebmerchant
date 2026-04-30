@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "nl"
+  },
+  "parent": "collection.elfia-hoofdpagina.json",
+  "sections": {
+    "block_marketing_grid_GKRdWm": {
+      "settings": {},
+      "blocks": {
+        "banner_QJXc7i": {
+          "settings": {
+            "link_url": "shopify://blogs/community/waarom-fantasyfestivals-meer-zijn-dan-verkleedpartijen"
+          }
+        },
+        "banner_j6f8jm": {
+          "settings": {
+            "link_url": "shopify://blogs/community/echte-verbinding-waarom-deze-community-voor-mij-voelt-als-thuiskomen"
+          }
+        },
+        "banner_QaYeEX": {
+          "settings": {
+            "link_url": "shopify://blogs/community/zeg-ja-doe-gek-en-beland-in-een-kasteel"
+          }
+        }
+      }
+    }
+  }
+}

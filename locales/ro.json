@@ -222,7 +222,13 @@
     "recent": "Căutări recente"
   },
   "marketing": {
-    "products_heading": "Cele mai noi produse"
+    "products_heading": "Cele mai noi produse",
+    "countdown": {
+      "days": "Zile",
+      "hours": "Ore",
+      "minutes": "Minute",
+      "seconds": "Secunde"
+    }
   },
   "newsletter": {
     "heading": "Newsletter",

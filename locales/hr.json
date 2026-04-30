@@ -222,7 +222,13 @@
     "recent": "Nedavna pretraživanja"
   },
   "marketing": {
-    "products_heading": "Naši najnoviji proizvodi"
+    "products_heading": "Naši najnoviji proizvodi",
+    "countdown": {
+      "days": "Dani",
+      "hours": "Sati",
+      "minutes": "Minute",
+      "seconds": "Sekunde"
+    }
   },
   "newsletter": {
     "heading": "Newsletter",

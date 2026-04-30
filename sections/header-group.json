@@ -18,7 +18,7 @@
           "type": "usp",
           "settings": {
             "text": "Gratis boven € 75 (NL/BE)",
-            "link": "",
+            "link": "shopify://pages/wereldwijde-verzending",
             "title": "Gratis boven € 75 (NL/BE)",
             "icon": "truck"
           }
@@ -72,9 +72,9 @@
         "menu_secondary": "sale-menu",
         "show_search": true,
         "show_account": true,
+        "login_return_url": "shopify://pages/loyalty",
         "show_wishlist": true,
         "show_cart": true,
-        "login_return_url": "shopify://pages/loyalty",
         "width": "is-align-wide",
         "background_color": "#2e130d",
         "text_color": "#ffffff"
@@ -92,12 +92,47 @@
     "header-product": {
       "type": "block-header-product",
       "settings": {}
+    },
+    "block_header_callout_AGfLm9": {
+      "type": "block-header-callout",
+      "blocks": {
+        "button_y9x84q": {
+          "type": "button",
+          "settings": {
+            "text": "Ga naar festival collectie",
+            "url": "shopify://collections",
+            "style": "primary",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_y9x84q"
+      ],
+      "disabled": true,
+      "name": "Callout bar",
+      "settings": {
+        "heading": "Bijna Elfia Vorden!",
+        "subheading": "Nog",
+        "show_countdown": true,
+        "countdown_end_date": "2026-05-09",
+        "countdown_message": "Oeps",
+        "width": "alignfull",
+        "text_alignment": "center",
+        "background_color": "#2e130d",
+        "text_color": "#ffffff",
+        "dismiss_days": 1,
+        "anchor": "",
+        "custom_class": ""
+      }
     }
   },
   "order": [
     "header-top",
     "header-middle",
     "header-bottom",
-    "header-product"
+    "header-product",
+    "block_header_callout_AGfLm9"
   ]
 }

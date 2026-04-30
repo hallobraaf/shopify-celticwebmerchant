@@ -222,7 +222,13 @@
     "recent": "最近の検索"
   },
   "marketing": {
-    "products_heading": "最新商品"
+    "products_heading": "最新商品",
+    "countdown": {
+      "days": "日",
+      "hours": "時間",
+      "minutes": "分",
+      "seconds": "秒"
+    }
   },
   "newsletter": {
     "heading": "ニュースレター",

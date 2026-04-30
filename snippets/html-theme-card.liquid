@@ -31,6 +31,7 @@ PARAMS (product) - passed to html-theme-card-product:
 - show_badges          : Show sale/soldout badges (default true)
 - show_volume_pricing  : Show B2B volume pricing (default false)
 - quick_add            : Show quick add button (default false)
+- card_sizing          : 'regular' | 'smaller' (default 'regular')
 
 PARAMS (collection) - passed to html-theme-card-collection:
 - collection       : Collection object
@@ -145,7 +146,8 @@ DEPENDENCIES:
 		show_badges: show_badges,
 		show_volume_pricing: show_volume_pricing,
 		quick_add: quick_add,
-		quick_add_behavior: quick_add_behavior
+		quick_add_behavior: quick_add_behavior,
+		card_sizing: card_sizing
 	-%}
 
 {%- when 'collection' -%}

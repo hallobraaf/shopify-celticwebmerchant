@@ -18,35 +18,35 @@
         "show_count": false,
         "width": "alignsmall",
         "text_align": "center",
+        "anchor": "",
         "background_color": "",
-        "text_color": "",
-        "anchor": ""
+        "text_color": ""
       }
     },
     "collection-banners": {
       "type": "block-collection-banners",
       "settings": {
         "menu": "sale-menu",
+        "display_mode": "slider",
         "card_layout": "horizontal",
         "image_ratio": "portrait",
         "show_product_count": false,
         "card_text_align": "left",
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
         "width": "is-align",
         "columns_desktop": 4,
         "columns_tablet": 3,
         "columns_mobile": 1,
         "grid_gap": 0.2,
         "padding_block": 2,
-        "display_mode": "slider",
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_autoplay": false,
-        "slider_autoplay_speed": 5,
+        "anchor": "",
         "background_color": "#ffffff",
         "text_color": "",
         "card_background_color": "#0f1f38",
-        "card_text_color": "#ffffff",
-        "anchor": ""
+        "card_text_color": "#ffffff"
       }
     },
     "collection-overview": {
@@ -55,7 +55,7 @@
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_secondary_image": true,
-        "show_rating": false,
+        "show_rating": true,
         "show_vendor": false,
         "show_badges": true,
         "quick_add": false,
@@ -74,9 +74,9 @@
         "grid_columns_tablet": 3,
         "grid_columns_mobile": 2,
         "grid_gap": 0.2,
+        "anchor": "",
         "background_color": "#f8f8f8",
-        "text_color": "",
-        "anchor": ""
+        "text_color": ""
       }
     },
     "collection-bottom": {
@@ -86,9 +86,9 @@
         "heading_tag": "h2",
         "width": "alignsmall",
         "text_align": "center",
+        "anchor": "",
         "background_color": "",
-        "text_color": "",
-        "anchor": ""
+        "text_color": ""
       }
     }
   },

@@ -222,7 +222,13 @@
     "recent": "最近搜索"
   },
   "marketing": {
-    "products_heading": "我们的最新产品"
+    "products_heading": "我们的最新产品",
+    "countdown": {
+      "days": "天",
+      "hours": "小时",
+      "minutes": "分钟",
+      "seconds": "秒"
+    }
   },
   "newsletter": {
     "heading": "订阅通讯",

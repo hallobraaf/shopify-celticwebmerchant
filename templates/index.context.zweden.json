@@ -13,7 +13,22 @@
     "market": "zweden"
   },
   "sections": {
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "image": "shopify://shop_images/1-DK-SEBanner_Viking_Eleanora_Feb2026_3.webp",
+        "focus_x": 50,
+        "overlay": "medium"
+      },
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "url": "shopify://collections/tijdperk"
+          }
+        }
+      }
+    },
     "block_marketing_media_text_mEgbKY": {
+      "settings": {},
       "blocks": {
         "image_text_aJBEwL": {
           "settings": {
@@ -23,6 +38,7 @@
       }
     },
     "block_marketing_media_text_eUmREH": {
+      "settings": {},
       "blocks": {
         "image_text_xddkDV": {
           "settings": {

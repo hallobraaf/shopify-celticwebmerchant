@@ -274,7 +274,7 @@
   &__modal-content {
     position: relative;
     z-index: 1;
-    max-width: 640px;
+    max-width: 896px;
     width: 90vw;
   }
 
@@ -292,6 +292,10 @@
     max-height: 60vh;
     overflow-y: auto;
 
+    p {
+     margin-bottom: 0.6em;  
+    }
+    
     p,
     li {
       letter-spacing: -0.02em;
@@ -300,6 +304,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
+      margin-bottom: 1em;
     }
 
     th,

@@ -225,30 +225,6 @@
       "oAP" : "\/AbsaraSansPro-Regular.woff2",
       "oF" : 0
     },
-    "\/block-cart-order.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/block-cart-order.min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/block-cart-order.min.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 1,
-      "oAP" : "\/block-cart-order.min.min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
     "\/block-cart-order.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -260,30 +236,6 @@
       "oAP" : "\/block-cart-order.min.css",
       "oF" : 0,
       "oS" : 0,
-      "pg" : 0
-    },
-    "\/block-cart-preview.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/block-cart-preview.min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
-    "\/block-cart-preview.min.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 1,
-      "oAP" : "\/block-cart-preview.min.min.css",
-      "oF" : 0,
       "pg" : 0
     },
     "\/block-cart-preview.scss" : {
@@ -307,7 +259,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-collection-banners.min.min.css",
+      "oAP" : "\/block-collection-banners.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -332,7 +284,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-collection-bottom.min.min.css",
+      "oAP" : "\/block-collection-bottom.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -357,7 +309,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-collection-info.min.min.css",
+      "oAP" : "\/block-collection-info.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -374,17 +326,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-collection-products.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/block-collection-products.min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/block-collection-products.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -393,7 +334,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-collection-products.min.min.css",
+      "oAP" : "\/block-collection-products.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -403,7 +344,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/block-collection-products.min.min.js",
+      "oAP" : "\/block-collection-products.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -429,7 +370,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-collection-top.min.min.css",
+      "oAP" : "\/block-collection-top.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -454,7 +395,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-footer-copyright.min.min.css",
+      "oAP" : "\/block-footer-copyright.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -479,7 +420,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-footer-links.min.min.css",
+      "oAP" : "\/block-footer-links.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -504,7 +445,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-footer-payments.min.min.css",
+      "oAP" : "\/block-footer-payments.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -529,7 +470,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-footer-service.min.min.css",
+      "oAP" : "\/block-footer-service.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -546,17 +487,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-footer-usps.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/block-footer-usps.min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/block-footer-usps.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -565,7 +495,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-footer-usps.min.min.css",
+      "oAP" : "\/block-footer-usps.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -575,7 +505,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/block-footer-usps.min.min.js",
+      "oAP" : "\/block-footer-usps.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -593,17 +523,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-header-bottom.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/block-header-bottom.min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/block-header-bottom.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -612,7 +531,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-header-bottom.min.min.css",
+      "oAP" : "\/block-header-bottom.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -622,7 +541,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/block-header-bottom.min.min.js",
+      "oAP" : "\/block-header-bottom.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -640,6 +559,42 @@
       "oS" : 0,
       "pg" : 0
     },
+    "\/block-header-callout.min.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/block-header-callout.min-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
+    "\/block-header-callout.min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/block-header-callout.min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/block-header-callout.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 1,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/block-header-callout.min.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
     "\/block-header-middle.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -648,7 +603,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-header-middle.min.min.css",
+      "oAP" : "\/block-header-middle.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -673,7 +628,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-header-product.min.min.css",
+      "oAP" : "\/block-header-product.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -698,7 +653,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-header-top.min.min.css",
+      "oAP" : "\/block-header-top.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -715,18 +670,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-loyalty-account.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/block-loyalty-account.min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
     "\/block-loyalty-account.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -735,7 +678,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-loyalty-account.min.min.css",
+      "oAP" : "\/block-loyalty-account.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -752,18 +695,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-loyalty-login.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/block-loyalty-login.min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
     "\/block-loyalty-login.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -772,7 +703,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-loyalty-login.min.min.css",
+      "oAP" : "\/block-loyalty-login.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -797,7 +728,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-articles-related.min.min.css",
+      "oAP" : "\/block-marketing-articles-related.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -822,7 +753,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-articles.min.min.css",
+      "oAP" : "\/block-marketing-articles.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -847,7 +778,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-banners.min.min.css",
+      "oAP" : "\/block-marketing-banners.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -872,7 +803,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-blogs.min.min.css",
+      "oAP" : "\/block-marketing-blogs.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -897,7 +828,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-brands-small.min.min.css",
+      "oAP" : "\/block-marketing-brands-small.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -922,7 +853,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-brands.min.min.css",
+      "oAP" : "\/block-marketing-brands.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -947,7 +878,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-collections.min.min.css",
+      "oAP" : "\/block-marketing-collections.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -972,7 +903,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-cover.min.min.css",
+      "oAP" : "\/block-marketing-cover.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -997,7 +928,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-faq.min.min.css",
+      "oAP" : "\/block-marketing-faq.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1022,7 +953,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-features.min.min.css",
+      "oAP" : "\/block-marketing-features.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1047,7 +978,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-gallery.min.min.css",
+      "oAP" : "\/block-marketing-gallery.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1072,7 +1003,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-grid.min.min.css",
+      "oAP" : "\/block-marketing-grid.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1097,7 +1028,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-media-text.min.min.css",
+      "oAP" : "\/block-marketing-media-text.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1122,7 +1053,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-media-usps.min.min.css",
+      "oAP" : "\/block-marketing-media-usps.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1139,17 +1070,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-marketing-products.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/block-marketing-products.min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/block-marketing-products.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -1158,7 +1078,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-products.min.min.css",
+      "oAP" : "\/block-marketing-products.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1168,7 +1088,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/block-marketing-products.min.min.js",
+      "oAP" : "\/block-marketing-products.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -1194,7 +1114,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-promo.min.min.css",
+      "oAP" : "\/block-marketing-promo.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1219,7 +1139,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-marketing-testimonials.min.min.css",
+      "oAP" : "\/block-marketing-testimonials.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1244,7 +1164,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-modal-region.min.css",
+      "oAP" : "\/block-modal-region-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1261,17 +1181,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-modal-share.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/block-modal-share.min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/block-modal-share.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -1280,7 +1189,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-modal-share.min.min.css",
+      "oAP" : "\/block-modal-share.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1290,7 +1199,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/block-modal-share.min.min.js",
+      "oAP" : "\/block-modal-share.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -1316,7 +1225,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-page-breadcrumbs.min.min.css",
+      "oAP" : "\/block-page-breadcrumbs.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1333,17 +1242,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-page-menu.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/block-page-menu.min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/block-page-menu.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -1352,7 +1250,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-page-menu.min.min.css",
+      "oAP" : "\/block-page-menu.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1362,7 +1260,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/block-page-menu.min.min.js",
+      "oAP" : "\/block-page-menu.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -1388,7 +1286,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-product-blogs.min.min.css",
+      "oAP" : "\/block-product-blogs.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1413,7 +1311,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-product-discovery.min.min.css",
+      "oAP" : "\/block-product-discovery.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1438,7 +1336,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-product-form.min.min.css",
+      "oAP" : "\/block-product-form.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1455,17 +1353,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/block-product-information.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/block-product-information.min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/block-product-information.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -1474,7 +1361,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-product-information.min.min.css",
+      "oAP" : "\/block-product-information.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1484,7 +1371,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/block-product-information.min.min.js",
+      "oAP" : "\/block-product-information.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -1510,7 +1397,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-product-recommended.min.min.css",
+      "oAP" : "\/block-product-recommended.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1535,7 +1422,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-product-reviews.min.min.css",
+      "oAP" : "\/block-product-reviews.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1560,7 +1447,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-search-form.min.min.css",
+      "oAP" : "\/block-search-form.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1585,7 +1472,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/block-search-overlay.min.min.css",
+      "oAP" : "\/block-search-overlay.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1608,7 +1495,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/global.min.js",
+      "oAP" : "\/global-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -1619,7 +1506,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/localization-form.min.js",
+      "oAP" : "\/localization-form-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -1632,7 +1519,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-404.min.min.css",
+      "oAP" : "\/main-404.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1657,7 +1544,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-account-activate.min.min.css",
+      "oAP" : "\/main-account-activate.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1674,17 +1561,6 @@
       "oS" : 0,
       "pg" : 0
     },
-    "\/main-account-addresses.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/main-account-addresses.min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/main-account-addresses.min.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -1693,7 +1569,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-account-addresses.min.min.css",
+      "oAP" : "\/main-account-addresses.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1703,7 +1579,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/main-account-addresses.min.min.js",
+      "oAP" : "\/main-account-addresses.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -1729,7 +1605,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-account-login.min.min.css",
+      "oAP" : "\/main-account-login.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1754,7 +1630,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-account-order.min.min.css",
+      "oAP" : "\/main-account-order.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1779,7 +1655,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-account-register.min.min.css",
+      "oAP" : "\/main-account-register.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1804,7 +1680,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-account-reset.min.min.css",
+      "oAP" : "\/main-account-reset.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1829,7 +1705,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-account.min.min.css",
+      "oAP" : "\/main-account.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1854,7 +1730,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-article.min.min.css",
+      "oAP" : "\/main-article.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1879,7 +1755,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-blog.min.min.css",
+      "oAP" : "\/main-blog.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1904,7 +1780,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-collection-list.min.min.css",
+      "oAP" : "\/main-collection-list.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1929,7 +1805,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-page-assist.min.min.css",
+      "oAP" : "\/main-page-assist.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1954,7 +1830,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-page-blogs.min.min.css",
+      "oAP" : "\/main-page-blogs.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -1979,7 +1855,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-page-toki.min.min.css",
+      "oAP" : "\/main-page-toki.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2004,7 +1880,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-page.min.min.css",
+      "oAP" : "\/main-page.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2029,7 +1905,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-password.min.min.css",
+      "oAP" : "\/main-password.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2054,7 +1930,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/main-policy.min.min.css",
+      "oAP" : "\/main-policy.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2077,7 +1953,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-cart.min.js",
+      "oAP" : "\/theme-cart-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2088,7 +1964,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-cart.min.min.js",
+      "oAP" : "\/theme-cart.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2099,7 +1975,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-cart.usage.min.js",
+      "oAP" : "\/theme-cart.usage-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2110,7 +1986,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-drawer.min.js",
+      "oAP" : "\/theme-drawer-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2121,7 +1997,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-drawer.min.min.js",
+      "oAP" : "\/theme-drawer.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2132,7 +2008,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-editor.min.js",
+      "oAP" : "\/theme-editor-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2145,7 +2021,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-fonts.min.css",
+      "oAP" : "\/theme-fonts-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2165,7 +2041,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-lazyload.min.js",
+      "oAP" : "\/theme-lazyload-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2176,7 +2052,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-lazyload.min.min.js",
+      "oAP" : "\/theme-lazyload.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2199,7 +2075,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-maurits.min.css",
+      "oAP" : "\/theme-maurits-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2211,7 +2087,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-maurits.min.min.css",
+      "oAP" : "\/theme-maurits.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2221,7 +2097,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-modal.min.js",
+      "oAP" : "\/theme-modal-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2232,7 +2108,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-modal.min.min.js",
+      "oAP" : "\/theme-modal.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2243,7 +2119,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-search.min.js",
+      "oAP" : "\/theme-search-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2254,7 +2130,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-search.min.min.js",
+      "oAP" : "\/theme-search.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2267,7 +2143,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ui.min.min.css",
+      "oAP" : "\/theme-ui.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2292,7 +2168,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/theme-ux-apps.min.min.css",
+      "oAP" : "\/theme-ux-apps.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2317,7 +2193,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/theme-ux-cart.min.min.css",
+      "oAP" : "\/theme-ux-cart.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2342,7 +2218,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/theme-ux-collection.min.min.css",
+      "oAP" : "\/theme-ux-collection.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2367,7 +2243,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/theme-ux-forms.min.min.css",
+      "oAP" : "\/theme-ux-forms.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2392,7 +2268,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/theme-ux-header.min.min.css",
+      "oAP" : "\/theme-ux-header.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2417,7 +2293,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/theme-ux-marketing.min.min.css",
+      "oAP" : "\/theme-ux-marketing.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2442,7 +2318,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/theme-ux-product.min.min.css",
+      "oAP" : "\/theme-ux-product.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2459,16 +2335,40 @@
       "oS" : 0,
       "pg" : 0
     },
+    "\/theme-ux.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/theme-ux-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
     "\/theme-ux.js" : {
       "bF" : 0,
       "ft" : 64,
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-ux.min.js",
+      "oAP" : "\/theme-ux-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
+    },
+    "\/theme-ux.min-min.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/theme-ux.min-min-min.css",
+      "oF" : 0,
+      "pg" : 0
     },
     "\/theme-ux.min.css" : {
       "aP" : 1,
@@ -2478,7 +2378,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux.min.min.css",
+      "oAP" : "\/theme-ux.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2488,7 +2388,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/theme-ux.min.min.js",
+      "oAP" : "\/theme-ux.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2514,7 +2414,7 @@
       "ft" : 16,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/vendor-swiperjs.min.min.css",
+      "oAP" : "\/vendor-swiperjs.min-min.css",
       "oF" : 0,
       "pg" : 0
     },
@@ -2524,7 +2424,7 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/vendor-swiperjs.min.min.js",
+      "oAP" : "\/vendor-swiperjs.min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2843,7 +2743,7 @@
       "NODE_ENV:::production"
     ],
     "esLintConfigFileHandlingType" : 0,
-    "esLintECMAVersion" : 11,
+    "esLintECMAVersion" : 7,
     "esLintEnvironmentsMask" : 1,
     "esLintRules" : {
       "accessor-pairs" : {
@@ -3817,8 +3717,8 @@
       "transpilerStyle" : 1
     },
     "languageDefaultsCSS" : {
-      "autoOutputAction" : 1,
-      "autoOutputPathFilenamePattern" : "*.min.css",
+      "autoOutputAction" : 0,
+      "autoOutputPathFilenamePattern" : "*-min.css",
       "autoOutputPathRelativePath" : "",
       "autoOutputPathReplace1" : "",
       "autoOutputPathReplace2" : "",
@@ -3870,7 +3770,7 @@
     },
     "languageDefaultsJS" : {
       "autoOutputAction" : 0,
-      "autoOutputPathFilenamePattern" : "*.min.js",
+      "autoOutputPathFilenamePattern" : "*-min.js",
       "autoOutputPathRelativePath" : "\/min",
       "autoOutputPathReplace1" : "",
       "autoOutputPathReplace2" : "",
@@ -3983,7 +3883,7 @@
       "autoOutputPathReplace1" : "sass",
       "autoOutputPathReplace2" : "css",
       "autoOutputPathStyle" : 0,
-      "cssoStyle" : 1,
+      "cssoStyle" : 0,
       "emitCharset" : 1,
       "outputStyle" : 0,
       "purgeCSSStyle" : 0,

@@ -89,14 +89,11 @@
         <span class="button-order__text" data-button-text>
           {{ 'product.add_to_cart' | t }}
         </span>
-        <span class="button-order__text button-order__text--loading" data-button-loader>
-          {{ 'accessibility.loading' | t }}
+        <span class="button-order__badge button-order__badge--success" data-button-success aria-label="{{ 'cart.item_added' | t }}">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
         </span>
-        <span class="button-order__text button-order__text--success" data-button-success>
-          ✓ {{ 'cart.item_added' | t }}
-        </span>
-        <span class="button-order__text button-order__text--error" data-button-error>
-          ✗ {{ 'error.general' | t }}
+        <span class="button-order__badge button-order__badge--error" data-button-error aria-label="{{ 'error.general' | t }}">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </span>
       </button>
     </form>
@@ -175,3 +172,100 @@
   </span>
 {%- endif -%}
 
+<style>
+  .button-order {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.75em 1.25em;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 200ms ease, opacity 200ms ease, transform 100ms ease;
+  }
+
+  .button-order:active {
+    transform: scale(0.98);
+  }
+
+  .button-order__form {
+    display: contents;
+  }
+
+  .button-order--primary {
+    background-color: var(--theme-color-green, #000);
+    color: var(--theme-color-white, #fff);
+  }
+
+  .button-order--primary:hover {
+    opacity: 0.9;
+  }
+
+  .button-order--secondary {
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+  }
+
+  .button-order--secondary:hover {
+    background-color: var(--theme-color-foreground, #000);
+    color: var(--theme-color-background, #fff);
+  }
+
+  .button-order--minimal {
+    background-color: transparent;
+    color: inherit;
+    padding: 0.5em;
+  }
+
+  .button-order--minimal:hover {
+    opacity: 0.7;
+  }
+
+  .button-order--soldout {
+    background-color: var(--theme-color-grey-light, #f5f5f5);
+    color: var(--theme-color-grey, #666);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .button-order__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .button-order__text {
+    font-size: 0.8em;
+  }
+
+  .button-order__badge {
+    display: none;
+    position: absolute;
+    top: -0.4em;
+    right: -0.4em;
+    width: 1.4em;
+    height: 1.4em;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .button-order__badge--success { background-color: var(--theme-color-green, #4caf50); }
+  .button-order__badge--error { background-color: var(--theme-color-red, #f44336); }
+
+  .button-order.is-loading { pointer-events: none; opacity: 0.6; }
+
+  .button-order.is-success [data-button-success] { display: flex; }
+  .button-order.is-error [data-button-error] { display: flex; }
+</style>

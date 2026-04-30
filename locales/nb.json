@@ -222,7 +222,13 @@
     "recent": "Nylige søk"
   },
   "marketing": {
-    "products_heading": "Våre nyeste produkter"
+    "products_heading": "Våre nyeste produkter",
+    "countdown": {
+      "days": "Dager",
+      "hours": "Timer",
+      "minutes": "Minutter",
+      "seconds": "Sekunder"
+    }
   },
   "newsletter": {
     "heading": "Nyhetsbrev",

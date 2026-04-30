@@ -178,7 +178,7 @@
         "collection_6jjGVT": {
           "type": "brand",
           "settings": {
-            "collection": "ballistol-1"
+            "collection": "ballistol"
           }
         },
         "collection_f6cWyh": {
@@ -224,12 +224,12 @@
         "image_text_debQTH": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/Middeleeuwse_monnikspij.webp",
             "heading": "Marketing Media & Text",
             "text": "<p>Add your description here...</p>",
             "cta_text": "Knoptekst",
             "cta_url": "shopify://blogs/oudheid-romeinen/de-parazonium-symbool-van-macht-in-de-romeinse-oudheid",
             "cta_style": "primary",
+            "image": "shopify://shop_images/Middeleeuwse_monnikspij.webp",
             "image_position": "left",
             "image_width": "40",
             "vertical_alignment": "center",

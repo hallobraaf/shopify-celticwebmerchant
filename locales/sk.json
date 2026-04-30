@@ -222,7 +222,13 @@
     "recent": "Posledné vyhľadávania"
   },
   "marketing": {
-    "products_heading": "Naše najnovšie produkty"
+    "products_heading": "Naše najnovšie produkty",
+    "countdown": {
+      "days": "Dní",
+      "hours": "Hodín",
+      "minutes": "Minút",
+      "seconds": "Sekúnd"
+    }
   },
   "newsletter": {
     "heading": "Newsletter",

@@ -106,7 +106,7 @@
           "type": "text",
           "settings": {
             "heading": "Bedrijfsgegevens",
-            "text": "<p>Celtic WebMerchant BV<br/>Marisstraat 8a<br/>3364 AZ Sliedrecht<br/>Nederland<br/><br/>BTW-nummer: NL864375803B01<br/>EORI-nummer: NL864375803<br/>KvK-nummer: <a href=\"https://www.kvk.nl/bestellen/#/87703211000035123672?origin=search\" target=\"_blank\" title=\"https://www.kvk.nl/bestellen/#/87703211000035123672?origin=search\">87703211</a></p><p>E-mail: info@celticwebmerchant.com</p>",
+            "text": "<p>Celtic WebMerchant BV<br/>Marisstraat 8a<br/>3364 AZ Sliedrecht<br/>Nederland<br/><br/>BTW-nummer: NL864375803B01<br/>EORI-nummer: NL864375803<br/>KvK-nummer: <a href=\"https://www.kvk.nl/bestellen/#/87703211000035123672?origin=search\" target=\"_blank\" title=\"https://www.kvk.nl/bestellen/#/87703211000035123672?origin=search\">87703211</a></p>",
             "link": "shopify://pages/about-us",
             "link_text": "Over ons"
           }
@@ -205,115 +205,1083 @@
     "modal-region": {
       "type": "block-modal-region",
       "blocks": {
-        "region_NL": {
-          "type": "region",
-          "settings": { "title": "Nederland" }
-        },
-        "language_NL_nl": {
-          "type": "language",
+        "group_A7CjQV": {
+          "type": "group",
           "settings": {
-            "label": "Nederlands",
-            "language_code": "nl",
-            "country_code": "nl"
+            "title": "Europa"
           }
         },
-        "language_NL_en": {
+        "region_wCTEnf": {
+          "type": "region",
+          "settings": {
+            "title": "Andorra"
+          }
+        },
+        "language_AegVFt": {
           "type": "language",
           "settings": {
-            "label": "English",
+            "label": "Engels",
             "language_code": "en",
-            "country_code": "nl"
+            "region": "eu"
           }
         },
-        "region_BE": {
+        "region_8JVYBh": {
           "type": "region",
-          "settings": { "title": "België" }
+          "settings": {
+            "title": "België"
+          }
         },
-        "language_BE_nl": {
+        "language_i86xPG": {
           "type": "language",
           "settings": {
             "label": "Nederlands",
             "language_code": "nl",
-            "country_code": "be"
+            "region": "be"
           }
         },
-        "language_BE_fr": {
+        "language_4k6dU3": {
           "type": "language",
           "settings": {
-            "label": "Français",
+            "label": "Frans",
             "language_code": "fr",
-            "country_code": "be"
+            "region": "be"
           }
         },
-        "region_DE": {
-          "type": "region",
-          "settings": { "title": "Deutschland" }
-        },
-        "language_DE_de": {
+        "language_aPDXBn": {
           "type": "language",
           "settings": {
-            "label": "Deutsch",
+            "label": "Duits",
             "language_code": "de",
-            "country_code": "de"
+            "region": "be"
           }
         },
-        "region_FR": {
-          "type": "region",
-          "settings": { "title": "France" }
-        },
-        "language_FR_fr": {
+        "language_p9aP9c": {
           "type": "language",
           "settings": {
-            "label": "Français",
-            "language_code": "fr",
-            "country_code": "fr"
-          }
-        },
-        "region_GB": {
-          "type": "region",
-          "settings": { "title": "United Kingdom" }
-        },
-        "language_GB_en": {
-          "type": "language",
-          "settings": {
-            "label": "English",
+            "label": "Engels",
             "language_code": "en",
-            "country_code": "gb"
+            "region": "be"
+          }
+        },
+        "region_fed7H4": {
+          "type": "region",
+          "settings": {
+            "title": "Bosnië en Herzegovina"
+          }
+        },
+        "language_gtzjwt": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_cAGyfC": {
+          "type": "region",
+          "settings": {
+            "title": "Bulgarije"
+          }
+        },
+        "language_4R7RzQ": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_WFLMzH": {
+          "type": "region",
+          "settings": {
+            "title": "Cyprus"
+          }
+        },
+        "language_knPt8J": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_MdPenM": {
+          "type": "region",
+          "settings": {
+            "title": "Denemarken"
+          }
+        },
+        "language_jPyQer": {
+          "type": "language",
+          "settings": {
+            "label": "Deens",
+            "language_code": "da",
+            "region": "dk"
+          }
+        },
+        "language_KRXMn9": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "dk"
+          }
+        },
+        "region_Rey6UF": {
+          "type": "region",
+          "settings": {
+            "title": "Duitsland"
+          }
+        },
+        "language_7LCb9j": {
+          "type": "language",
+          "settings": {
+            "label": "Duits",
+            "language_code": "de",
+            "region": "de"
+          }
+        },
+        "language_d7yHb6": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "de"
+          }
+        },
+        "region_Gi3fKF": {
+          "type": "region",
+          "settings": {
+            "title": "Estland"
+          }
+        },
+        "language_pd9bQb": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_yg4NQY": {
+          "type": "region",
+          "settings": {
+            "title": "Finland"
+          }
+        },
+        "language_RUENLg": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_F9if4H": {
+          "type": "region",
+          "settings": {
+            "title": "Frankrijk"
+          }
+        },
+        "language_GCqjDt": {
+          "type": "language",
+          "settings": {
+            "label": "Frans",
+            "language_code": "fr",
+            "region": "fr"
+          }
+        },
+        "language_JEiQ3c": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "fr"
+          }
+        },
+        "region_MUekxM": {
+          "type": "region",
+          "settings": {
+            "title": "Griekenland"
+          }
+        },
+        "language_4GYz68": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_6i8MHM": {
+          "type": "region",
+          "settings": {
+            "title": "Hongarije"
+          }
+        },
+        "language_xcimLn": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_WEkqci": {
+          "type": "region",
+          "settings": {
+            "title": "Ierland"
+          }
+        },
+        "language_4d3rTp": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "ie"
+          }
+        },
+        "region_MPnf98": {
+          "type": "region",
+          "settings": {
+            "title": "IJsland"
+          }
+        },
+        "language_GyE6aM": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_riRmBq": {
+          "type": "region",
+          "settings": {
+            "title": "Isle of Man"
+          }
+        },
+        "language_YXTYaf": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "gb"
+          }
+        },
+        "region_4qAdgw": {
+          "type": "region",
+          "settings": {
+            "title": "Italië"
+          }
+        },
+        "language_3WadTw": {
+          "type": "language",
+          "settings": {
+            "label": "Italiaans",
+            "language_code": "it",
+            "region": "it"
+          }
+        },
+        "language_DjeUYX": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "it"
+          }
+        },
+        "region_DD3LEn": {
+          "type": "region",
+          "settings": {
+            "title": "Kanaaleilanden"
+          }
+        },
+        "language_GDHYdH": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "gb"
+          }
+        },
+        "region_jLWGhn": {
+          "type": "region",
+          "settings": {
+            "title": "Kroatië"
+          }
+        },
+        "language_tRkUbj": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_Qmxjb8": {
+          "type": "region",
+          "settings": {
+            "title": "Letland"
+          }
+        },
+        "language_iA498f": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_4fE6jw": {
+          "type": "region",
+          "settings": {
+            "title": "Litouwen"
+          }
+        },
+        "language_d4GaQ7": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_nVKTdm": {
+          "type": "region",
+          "settings": {
+            "title": "Luxemburg"
+          }
+        },
+        "language_MNBkYP": {
+          "type": "language",
+          "settings": {
+            "label": "Frans",
+            "language_code": "fr",
+            "region": "eu"
+          }
+        },
+        "language_naAtqf": {
+          "type": "language",
+          "settings": {
+            "label": "Duits",
+            "language_code": "de",
+            "region": "eu"
+          }
+        },
+        "language_b8zbxp": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_4a3aye": {
+          "type": "region",
+          "settings": {
+            "title": "Malta"
+          }
+        },
+        "language_hhUGWW": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_m6CQg7": {
+          "type": "region",
+          "settings": {
+            "title": "Monaco"
+          }
+        },
+        "language_faNYdn": {
+          "type": "language",
+          "settings": {
+            "label": "Frans",
+            "language_code": "fr",
+            "region": "eu"
+          }
+        },
+        "language_tRNz4U": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_ebUj3d": {
+          "type": "region",
+          "settings": {
+            "title": "Nederland"
+          }
+        },
+        "language_EiKNXy": {
+          "type": "language",
+          "settings": {
+            "label": "Nederlands",
+            "language_code": "nl",
+            "region": ""
+          }
+        },
+        "language_8ejhiw": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": ""
+          }
+        },
+        "region_JJ9pWd": {
+          "type": "region",
+          "settings": {
+            "title": "Noord-Macedonië"
+          }
+        },
+        "language_FR7Xr9": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_zHEbBX": {
+          "type": "region",
+          "settings": {
+            "title": "Noorwegen"
+          }
+        },
+        "language_7Wjiba": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_jjUjVB": {
+          "type": "region",
+          "settings": {
+            "title": "Oekraïne"
+          }
+        },
+        "language_nEQU9e": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_VgAzbU": {
+          "type": "region",
+          "settings": {
+            "title": "Oostenrijk"
+          }
+        },
+        "language_GNq9pF": {
+          "type": "language",
+          "settings": {
+            "label": "Duits",
+            "language_code": "de",
+            "region": "at"
+          }
+        },
+        "language_76EmNK": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "at"
+          }
+        },
+        "region_CwR3ex": {
+          "type": "region",
+          "settings": {
+            "title": "Polen"
+          }
+        },
+        "language_8n3bRT": {
+          "type": "language",
+          "settings": {
+            "label": "Pools",
+            "language_code": "pl",
+            "region": "pl"
+          }
+        },
+        "language_B7ndxx": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "pl"
+          }
+        },
+        "region_E9MmB7": {
+          "type": "region",
+          "settings": {
+            "title": "Portugal"
+          }
+        },
+        "language_CEKfci": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_izfU43": {
+          "type": "region",
+          "settings": {
+            "title": "Roemenië"
+          }
+        },
+        "language_FzWVEj": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_nHCeVC": {
+          "type": "region",
+          "settings": {
+            "title": "Servië"
+          }
+        },
+        "language_BqVwMU": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_6mXMXP": {
+          "type": "region",
+          "settings": {
+            "title": "Slovenië"
+          }
+        },
+        "language_p34hyA": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_HfzHyU": {
+          "type": "region",
+          "settings": {
+            "title": "Slowakije"
+          }
+        },
+        "language_YrNe7i": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_PqmRdX": {
+          "type": "region",
+          "settings": {
+            "title": "Spanje"
+          }
+        },
+        "language_6zk7jQ": {
+          "type": "language",
+          "settings": {
+            "label": "Spaans",
+            "language_code": "es",
+            "region": "es"
+          }
+        },
+        "language_FjQDBp": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "es"
+          }
+        },
+        "region_ywmiNL": {
+          "type": "region",
+          "settings": {
+            "title": "Tsjechië"
+          }
+        },
+        "language_7YBYiX": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "eu"
+          }
+        },
+        "region_3BqBne": {
+          "type": "region",
+          "settings": {
+            "title": "Verenigd Koninkrijk"
+          }
+        },
+        "language_L4NUdB": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "gb"
+          }
+        },
+        "region_EjBwir": {
+          "type": "region",
+          "settings": {
+            "title": "Zweden"
+          }
+        },
+        "language_PLPMdQ": {
+          "type": "language",
+          "settings": {
+            "label": "Zweeds",
+            "language_code": "sv",
+            "region": "se"
+          }
+        },
+        "language_4fxpC7": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "se"
+          }
+        },
+        "region_9Cn4rX": {
+          "type": "region",
+          "settings": {
+            "title": "Zwitserland"
+          }
+        },
+        "language_UtP3Fq": {
+          "type": "language",
+          "settings": {
+            "label": "Frans",
+            "language_code": "fr",
+            "region": "ch"
+          }
+        },
+        "language_bMFjc7": {
+          "type": "language",
+          "settings": {
+            "label": "Duits",
+            "language_code": "de",
+            "region": "ch"
+          }
+        },
+        "language_HhzEz7": {
+          "type": "language",
+          "settings": {
+            "label": "Italiaans",
+            "language_code": "it",
+            "region": "ch"
+          }
+        },
+        "language_CPUNjf": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "ch"
+          }
+        },
+        "group_ptq7aK": {
+          "type": "group",
+          "settings": {
+            "title": "Noord-Amerika"
+          }
+        },
+        "region_QcALed": {
+          "type": "region",
+          "settings": {
+            "title": "Canada"
+          }
+        },
+        "language_qHkDJL": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "language_WbANnP": {
+          "type": "language",
+          "settings": {
+            "label": "Frans",
+            "language_code": "fr",
+            "region": "int"
+          }
+        },
+        "region_DTAdwM": {
+          "type": "region",
+          "settings": {
+            "title": "Verenigde Staten"
+          }
+        },
+        "language_HBbkJx": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "language_HJkyaz": {
+          "type": "language",
+          "settings": {
+            "label": "Spaans",
+            "language_code": "es",
+            "region": "int"
+          }
+        },
+        "group_PjGVVg": {
+          "type": "group",
+          "settings": {
+            "title": "Zuid-Amerika"
+          }
+        },
+        "region_nykd6h": {
+          "type": "region",
+          "settings": {
+            "title": "Argentinië"
+          }
+        },
+        "language_Q8fwnT": {
+          "type": "language",
+          "settings": {
+            "label": "Spaans",
+            "language_code": "es",
+            "region": "int"
+          }
+        },
+        "language_RhQtJW": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_cVVKwn": {
+          "type": "region",
+          "settings": {
+            "title": "Brazilië"
+          }
+        },
+        "language_9Xzw8t": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_gqjiRY": {
+          "type": "region",
+          "settings": {
+            "title": "Chili"
+          }
+        },
+        "language_UYhdD4": {
+          "type": "language",
+          "settings": {
+            "label": "Spaans",
+            "language_code": "es",
+            "region": "int"
+          }
+        },
+        "language_4tDAej": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "group_m6UFik": {
+          "type": "group",
+          "settings": {
+            "title": "Azië & Oceanië"
+          }
+        },
+        "region_VjGRGV": {
+          "type": "region",
+          "settings": {
+            "title": "Australië"
+          }
+        },
+        "language_KMqFMy": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_GHpMqw": {
+          "type": "region",
+          "settings": {
+            "title": "China"
+          }
+        },
+        "language_PyQzLc": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_dpVfaB": {
+          "type": "region",
+          "settings": {
+            "title": "Hongkong"
+          }
+        },
+        "language_QdmBcF": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_jJz9zi": {
+          "type": "region",
+          "settings": {
+            "title": "Israël"
+          }
+        },
+        "language_xkAg9C": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_zhcG6q": {
+          "type": "region",
+          "settings": {
+            "title": "Japan"
+          }
+        },
+        "language_8qJrhL": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_wXDVaB": {
+          "type": "region",
+          "settings": {
+            "title": "Nieuw-Zeeland"
+          }
+        },
+        "language_4kaQKx": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_GqUHGk": {
+          "type": "region",
+          "settings": {
+            "title": "Taiwan"
+          }
+        },
+        "language_3pQQxm": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
+          }
+        },
+        "region_Phb6Wm": {
+          "type": "region",
+          "settings": {
+            "title": "Zuid-Korea"
+          }
+        },
+        "language_YaQa6X": {
+          "type": "language",
+          "settings": {
+            "label": "Engels",
+            "language_code": "en",
+            "region": "int"
           }
         }
       },
       "block_order": [
-        "region_NL",
-        "language_NL_nl",
-        "language_NL_en",
-        "region_BE",
-        "language_BE_nl",
-        "language_BE_fr",
-        "region_DE",
-        "language_DE_de",
-        "region_FR",
-        "language_FR_fr",
-        "region_GB",
-        "language_GB_en"
+        "group_A7CjQV",
+        "region_wCTEnf",
+        "language_AegVFt",
+        "region_8JVYBh",
+        "language_i86xPG",
+        "language_4k6dU3",
+        "language_aPDXBn",
+        "language_p9aP9c",
+        "region_fed7H4",
+        "language_gtzjwt",
+        "region_cAGyfC",
+        "language_4R7RzQ",
+        "region_WFLMzH",
+        "language_knPt8J",
+        "region_MdPenM",
+        "language_jPyQer",
+        "language_KRXMn9",
+        "region_Rey6UF",
+        "language_7LCb9j",
+        "language_d7yHb6",
+        "region_Gi3fKF",
+        "language_pd9bQb",
+        "region_yg4NQY",
+        "language_RUENLg",
+        "region_F9if4H",
+        "language_GCqjDt",
+        "language_JEiQ3c",
+        "region_MUekxM",
+        "language_4GYz68",
+        "region_6i8MHM",
+        "language_xcimLn",
+        "region_WEkqci",
+        "language_4d3rTp",
+        "region_MPnf98",
+        "language_GyE6aM",
+        "region_riRmBq",
+        "language_YXTYaf",
+        "region_4qAdgw",
+        "language_3WadTw",
+        "language_DjeUYX",
+        "region_DD3LEn",
+        "language_GDHYdH",
+        "region_jLWGhn",
+        "language_tRkUbj",
+        "region_Qmxjb8",
+        "language_iA498f",
+        "region_4fE6jw",
+        "language_d4GaQ7",
+        "region_nVKTdm",
+        "language_MNBkYP",
+        "language_naAtqf",
+        "language_b8zbxp",
+        "region_4a3aye",
+        "language_hhUGWW",
+        "region_m6CQg7",
+        "language_faNYdn",
+        "language_tRNz4U",
+        "region_ebUj3d",
+        "language_EiKNXy",
+        "language_8ejhiw",
+        "region_JJ9pWd",
+        "language_FR7Xr9",
+        "region_zHEbBX",
+        "language_7Wjiba",
+        "region_jjUjVB",
+        "language_nEQU9e",
+        "region_VgAzbU",
+        "language_GNq9pF",
+        "language_76EmNK",
+        "region_CwR3ex",
+        "language_8n3bRT",
+        "language_B7ndxx",
+        "region_E9MmB7",
+        "language_CEKfci",
+        "region_izfU43",
+        "language_FzWVEj",
+        "region_nHCeVC",
+        "language_BqVwMU",
+        "region_6mXMXP",
+        "language_p34hyA",
+        "region_HfzHyU",
+        "language_YrNe7i",
+        "region_PqmRdX",
+        "language_6zk7jQ",
+        "language_FjQDBp",
+        "region_ywmiNL",
+        "language_7YBYiX",
+        "region_3BqBne",
+        "language_L4NUdB",
+        "region_EjBwir",
+        "language_PLPMdQ",
+        "language_4fxpC7",
+        "region_9Cn4rX",
+        "language_UtP3Fq",
+        "language_bMFjc7",
+        "language_HhzEz7",
+        "language_CPUNjf",
+        "group_ptq7aK",
+        "region_QcALed",
+        "language_qHkDJL",
+        "language_WbANnP",
+        "region_DTAdwM",
+        "language_HBbkJx",
+        "language_HJkyaz",
+        "group_PjGVVg",
+        "region_nykd6h",
+        "language_Q8fwnT",
+        "language_RhQtJW",
+        "region_cVVKwn",
+        "language_9Xzw8t",
+        "region_gqjiRY",
+        "language_UYhdD4",
+        "language_4tDAej",
+        "group_m6UFik",
+        "region_VjGRGV",
+        "language_KMqFMy",
+        "region_GHpMqw",
+        "language_PyQzLc",
+        "region_dpVfaB",
+        "language_QdmBcF",
+        "region_jJz9zi",
+        "language_xkAg9C",
+        "region_zhcG6q",
+        "language_8qJrhL",
+        "region_wXDVaB",
+        "language_4kaQKx",
+        "region_GqUHGk",
+        "language_3pQQxm",
+        "region_Phb6Wm",
+        "language_YaQa6X"
       ],
       "settings": {
         "show_trigger": false,
+        "modal_id": "region-modal",
+        "use_blocks": true,
+        "show_language_selector": true,
+        "show_currency_selector": true,
+        "auto_submit": false,
+        "modal_heading": "",
+        "submit_text": "",
         "show_info_text": true,
-        "modal_id": "region-modal"
+        "info_text": ""
       }
     },
     "cart-preview": {
       "type": "block-cart-preview",
       "blocks": {
-        "cart-items": {
-          "type": "cart_items",
-          "settings": {
-            "show_vendor": false,
-            "show_recommended": false,
-            "max_recommended": 4,
-            "hide_out_of_stock": true
-          }
-        },
         "cart-subtotal": {
           "type": "cart_subtotal",
           "settings": {
@@ -323,7 +1291,6 @@
         }
       },
       "block_order": [
-        "cart-items",
         "cart-subtotal"
       ],
       "settings": {

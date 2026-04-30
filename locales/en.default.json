@@ -237,7 +237,13 @@
     "recent": "Recent searches"
   },
   "marketing": {
-    "products_heading": "Our latest products"
+    "products_heading": "Our latest products",
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    }
   },
   "newsletter": {
     "heading": "Newsletter",

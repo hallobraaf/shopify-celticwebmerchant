@@ -10,11 +10,13 @@
   - App block slots for integrations
   - Empty cart state with login prompt
 
+  LAYOUT:
+  - Left column: Cart items (fixed, always rendered)
+  - Right column: Configurable blocks (subtotal, payments, apps)
+
   BLOCKS:
-  - cart_items: Product list with quantity controls
   - cart_subtotal: Totals, discounts, cart note
   - cart_payments: Checkout button, terms
-  - app_block_*: Third-party app integration slots
 
   DEPENDENCIES:
   - theme-cart.js
@@ -51,37 +53,16 @@
       <form action="{{ routes.cart_url }}" method="post" id="cart-form" class="block-cart-order__form">
         <div class="block-cart-order__grid">
           
-          {%- comment -%} Main: Cart Items {%- endcomment -%}
-          <div class="block-cart-order__main">
-            {%- for block in section.blocks -%}
-              {%- case block.type -%}
-                {%- when 'cart_items' -%}
-                  <div 
-                    class="block-cart-order__block" 
-                    {{ block.shopify_attributes }}
-                    data-cart-items-section="{{ section.id }}"
-                  >
-                    {%- render 'html-cart-items', 
-                      cart: cart,
-                      show_vendor: block.settings.show_vendor,
-                      show_recommended: block.settings.show_recommended,
-                      max_recommended: block.settings.max_recommended,
-                      hide_out_of_stock: block.settings.hide_out_of_stock,
-                      compact: false
-                    -%}
-                  </div>
-
-                {%- when 'app_block_before_items' -%}
-                  <div class="block-cart-order__block" {{ block.shopify_attributes }}>
-                    {%- render 'html-cart-apps', blocks: section.blocks, location: 'before-items' -%}
-                  </div>
-
-                {%- when 'app_block_after_items' -%}
-                  <div class="block-cart-order__block" {{ block.shopify_attributes }}>
-                    {%- render 'html-cart-apps', blocks: section.blocks, location: 'after-items' -%}
-                  </div>
-              {%- endcase -%}
-            {%- endfor -%}
+          {%- comment -%} Main: Cart Items (fixed) {%- endcomment -%}
+          <div class="block-cart-order__main" data-cart-items-section="{{ section.id }}">
+            {%- render 'html-cart-items',
+              cart: cart,
+              show_vendor: section.settings.show_vendor,
+              show_recommended: section.settings.show_recommended,
+              max_recommended: section.settings.max_recommended,
+              hide_out_of_stock: section.settings.hide_out_of_stock,
+              compact: false
+            -%}
           </div>
 
           {%- comment -%} Sidebar: Subtotal & Payments {%- endcomment -%}
@@ -103,12 +84,12 @@
                   </div>
 
                 {%- when 'cart_payments' -%}
-                  <div 
-                    class="block-cart-order__block" 
+                  <div
+                    class="block-cart-order__block"
                     {{ block.shopify_attributes }}
                     data-cart-payments-section="{{ section.id }}"
                   >
-                    {%- render 'html-cart-payments', 
+                    {%- render 'html-cart-payments',
                       cart: cart,
                       show_terms: block.settings.show_terms,
                       terms_text: block.settings.terms_text,
@@ -118,10 +99,11 @@
                     -%}
                   </div>
 
-                {%- when 'app_block_sidebar' -%}
+                {%- when '@app' -%}
                   <div class="block-cart-order__block" {{ block.shopify_attributes }}>
-                    {%- render 'html-cart-apps', blocks: section.blocks, location: 'sidebar' -%}
+                    {%- render block -%}
                   </div>
+
               {%- endcase -%}
             {%- endfor -%}
           </div>
@@ -149,15 +131,104 @@
   </div>
 </div>
 
-{{ 'block-cart-order.css' | asset_url | stylesheet_tag }}
-
-{% style %}
-  #shopify-section-{{ section.id }}.block-cart-order {
+<style>
+  .block-cart-order {
     padding-block: {{ section.settings.padding_block }}em;
     background-color: {{ section.settings.background_color | default: '#f8f8f8' }};
     color: {{ section.settings.text_color | default: '#111111' }};
   }
-{% endstyle %}
+
+  .block-cart-order__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-bottom: 2em;
+  }
+
+  .block-cart-order__title {
+    margin: 0;
+    font-family: var(--theme-font-family-serif);
+    font-size: clamp(1.5em, 4vw, 2em);
+    font-weight: 400;
+  }
+
+  .block-cart-order__continue {
+    font-size: 0.9em;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .block-cart-order__continue:hover {
+    text-decoration: none;
+  }
+
+  .block-cart-order__grid {
+    display: grid;
+    gap: 2em;
+  }
+
+  @media (min-width: 60em) {
+    .block-cart-order__grid {
+      grid-template-columns: 1fr 380px;
+      gap: 3em;
+    }
+  }
+
+  .block-cart-order__main {
+    min-width: 0;
+  }
+
+  .block-cart-order__sidebar {
+    position: sticky;
+    top: 6em;
+    align-self: start;
+  }
+
+  .block-cart-order__block {
+    margin-bottom: 1.5em;
+  }
+
+  .block-cart-order__block:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Empty cart */
+  .block-cart-order__empty {
+    padding: 4em 0;
+    text-align: center;
+  }
+
+  .block-cart-order__empty-title {
+    margin: 0 0 1.5em;
+    font-family: var(--theme-font-family-serif);
+    font-size: 1.5em;
+    font-weight: 400;
+  }
+
+  .block-cart-order__login {
+    margin-top: 3em;
+    padding-top: 2em;
+    border-top: 1px solid var(--theme-border-color);
+  }
+
+  .block-cart-order__login-title {
+    margin: 0 0 0.5em;
+    font-size: 1.1em;
+  }
+
+  .block-cart-order__login-text {
+    margin: 0;
+    color: inherit;
+    opacity: 0.75;
+  }
+
+  .block-cart-order__login-text a {
+    color: inherit;
+  }
+</style>
 
 {% schema %}
 {
@@ -183,6 +254,42 @@
       "id": "show_continue_shopping",
       "label": "Show continue shopping link",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Recommended products"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recommended",
+      "label": "Show recommended products",
+      "info": "Display products from metafield custom.recommended-products under each cart item.",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "max_recommended",
+      "label": "Max recommended products",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_out_of_stock",
+      "label": "Hide out of stock recommended products",
+      "default": false
     },
     {
       "type": "header",
@@ -235,49 +342,6 @@
     }
   ],
   "blocks": [
-    {
-      "type": "cart_items",
-      "name": "Cart items",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "header",
-          "content": "Product"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_vendor",
-          "label": "Show vendor",
-          "default": false
-        },
-        {
-          "type": "header",
-          "content": "Recommended products"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_recommended",
-          "label": "Show recommended products",
-          "info": "Display products from metafield custom.recommended-products under each cart item.",
-          "default": true
-        },
-        {
-          "type": "range",
-          "id": "max_recommended",
-          "label": "Max recommended products",
-          "min": 1,
-          "max": 6,
-          "step": 1,
-          "default": 4
-        },
-        {
-          "type": "checkbox",
-          "id": "hide_out_of_stock",
-          "label": "Hide out of stock products",
-          "default": false
-        }
-      ]
-    },
     {
       "type": "cart_subtotal",
       "name": "Cart subtotal",
@@ -342,51 +406,6 @@
       ]
     },
     {
-      "type": "app_block_before_items",
-      "name": "App slot: before items",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "header",
-          "content": "Howto"
-        },
-        {
-          "type": "paragraph",
-          "content": "Add this block to create a slot for third-party apps above the cart items."
-        }
-      ]
-    },
-    {
-      "type": "app_block_after_items",
-      "name": "App slot: after items",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "header",
-          "content": "Howto"
-        },
-        {
-          "type": "paragraph",
-          "content": "Add this block to create a slot for third-party apps below the cart items."
-        }
-      ]
-    },
-    {
-      "type": "app_block_sidebar",
-      "name": "App slot: sidebar",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "header",
-          "content": "Howto"
-        },
-        {
-          "type": "paragraph",
-          "content": "Add this block to create a slot for third-party apps in the cart sidebar."
-        }
-      ]
-    },
-    {
       "type": "@app"
     }
   ],
@@ -395,7 +414,6 @@
       "name": "Order",
       "category": "Cart",
       "blocks": [
-        { "type": "cart_items" },
         { "type": "cart_subtotal" },
         { "type": "cart_payments" }
       ]

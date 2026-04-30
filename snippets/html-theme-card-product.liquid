@@ -30,6 +30,7 @@ DISPLAY OPTIONS:
 - show_badges          : Show sale/soldout badges
 - show_volume_pricing  : Show B2B volume pricing
 - quick_add            : Show quick add button
+- card_sizing          : 'regular' | 'smaller' (default 'regular')
 
 DEPENDENCIES:
 - html-theme-media snippet
@@ -107,6 +108,9 @@ DEPENDENCIES:
 	if has_secondary
 		assign card_classes = card_classes | append: ' card--has-secondary'
 	endif
+	if card_sizing == 'smaller'
+		assign card_classes = card_classes | append: ' card--smaller'
+	endif
 -%}
 
 <article class="{{ card_classes }}" style="--card-ratio: {{ aspect_ratio_css }};">
@@ -164,7 +168,7 @@ DEPENDENCIES:
 
 	<div class="card__content">
 		{%- if show_rating -%}
-			{%- render 'html-product-rating', product: p, show_count: false, size: 14 -%}
+			{%- render 'html-product-rating', product: p, show_count: false, show_brand: false, size: 14 -%}
 		{%- endif -%}
 
 		{%- if show_vendor -%}

@@ -135,7 +135,7 @@
   // Safe to call multiple times — data-nav-src is deleted after first load.
   const loadNavigation = (root = document) => {
     root.querySelectorAll && root.querySelectorAll('.is-strategy-navigation[data-nav-src]').forEach(figure => {
-      //console.log('Test:',figure);
+      console.log('Test:',figure);
       const img = document.createElement('img');
       img.className = 'theme-media__img';
       img.src = figure.dataset.navSrc;

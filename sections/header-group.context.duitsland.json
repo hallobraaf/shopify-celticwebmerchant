@@ -29,6 +29,25 @@
           }
         }
       }
+    },
+    "block_header_callout_AGfLm9": {
+      "disabled": false,
+      "settings": {
+        "heading": "Chroniken von Mythodea",
+        "subheading": "Noch",
+        "countdown_end_date": "2026-04-30"
+      },
+      "blocks": {
+        "button_y9x84q": {
+          "settings": {
+            "text": "Zur LARP-Kollektion",
+            "url": "shopify://collections/larp"
+          }
+        }
+      },
+      "block_order": [
+        "button_y9x84q"
+      ]
     }
   }
 }

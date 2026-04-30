@@ -7,7 +7,10 @@ Product description and additional information from metafields.
 FEATURES:
 - Collapsible product description with read more/less
 - Product details from metafield
-- Size chart in modal (always)
+- Size chart in modal (always), drie bronnen in volgorde:
+  1. custom.product-sizecharts      — list van metaobjecten (title + content)
+  2. custom.product_maattabel       — enkelvoudig metaobject (klantalias, title + content)
+  3. custom.product-sizechart       — enkelvoudige richtext (fallback)
 - Information references: inline details (≤128 chars) or modal (>128 chars)
 - Responsive two-column layout
 
@@ -16,7 +19,9 @@ DEPENDENCIES:
 - theme-modal.js
 - Product metafields:
   - custom.product_details
-  - custom.product-sizechart
+  - custom.product-sizechart        (richtext, fallback)
+  - custom.product-sizecharts       (list metaobjecten)
+  - custom.product_maattabel        (enkelvoudig metaobject, klantalias voor product-sizecharts)
   - custom.product-information-references
 ============================================================================
 {%- endcomment -%}
@@ -42,8 +47,29 @@ DEPENDENCIES:
 	if refs and refs.value
 		assign has_refs = true
 	endif
+	# Sizecharts: product-sizecharts (list) -> product_maattabel (single metaobject, klantalias) -> product-sizechart (enkelvoud richtext)
+	assign sizecharts = nil
+	for sc_candidate in product.metafields.custom['product-sizecharts'].value
+		assign sizecharts = product.metafields.custom['product-sizecharts'].value
+		break
+	endfor
+	assign sizechart_single_metaobject = nil
+	if sizecharts == nil
+		assign maattabel_obj = product.metafields.custom['product_maattabel'].value
+		if maattabel_obj != blank
+			assign sizechart_single_metaobject = maattabel_obj
+		endif
+	endif
+	assign has_sizecharts = false
+	if sizecharts != nil
+		assign has_sizecharts = true
+	endif
 	assign has_sizechart = false
-	if product.metafields.custom['product-sizechart'] != blank
+	if has_sizecharts
+		assign has_sizechart = true
+	elsif sizechart_single_metaobject != nil
+		assign has_sizechart = true
+	elsif product.metafields.custom['product-sizechart'].value != blank
 		assign has_sizechart = true
 	endif
 	assign content_threshold = 128
@@ -342,7 +368,29 @@ DEPENDENCIES:
 				</button>
 			</header>
 			<div class="block-product-information__modal-body theme-modal__body">
-				{{ product.metafields.custom['product-sizechart'].value | replace: '&lt;', '<' | replace: '&gt;', '>' }}
+				{%- if has_sizecharts -%}
+					{%- for sc_item in sizecharts -%}
+						<div class="block-product-information__sizechart-item">
+							{%- if sc_item.title != blank -%}
+								<!-- <h4 class="block-product-information__sizechart-title">{{ sc_item.title }}</h4> -->
+							{%- endif -%}
+							<div class="block-product-information__sizechart-content">
+								{{ sc_item.content.value }}
+							</div>
+						</div>
+					{%- endfor -%}
+				{%- elsif sizechart_single_metaobject != nil -%}
+					<div class="block-product-information__sizechart-item">
+						{%- if sizechart_single_metaobject.title != blank -%}
+							{% comment %} <h4 class="block-product-information__sizechart-title">{{ sizechart_single_metaobject.title }}</h4> {% endcomment %}
+						{%- endif -%}
+						<div class="block-product-information__sizechart-content">
+							{{ sizechart_single_metaobject.content.value }}
+						</div>
+					</div>
+				{%- else -%}
+					{{ product.metafields.custom['product-sizechart'].value | replace: '&lt;', '<' | replace: '&gt;', '>' }}
+				{%- endif -%}
 			</div>
 		</div>
 	</div>
@@ -534,7 +582,7 @@ DEPENDENCIES:
 		},
 		{
 			"type": "paragraph",
-			"content": "Displays product description, details, size chart, and information references from metafields (custom.product_details, custom.product-sizechart, custom.product-information-references)."
+			"content": "Displays product description, details, size chart, and information references from metafields (custom.product_details, custom.product-sizechart, custom.product-sizecharts, custom.product-information-references). Volgorde sizechart: product-sizecharts → product_maattabel (alias bij klantvergissing) → product-sizechart (enkelvoud)."
 		}
 	],
 	"presets": [

@@ -54,74 +54,10 @@
         "disabled": false,
         "settings": {}
       },
-      "17670923894607274400": {
-        "type": "shopify://apps/wishlist-plus/blocks/wishlist-app-embed/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
-        "disabled": false,
-        "settings": {
-          "storefront_layout_enabled": false,
-          "storefront_layout_primary_bg_color": "#000000",
-          "storefront_layout_primary_text_color": "#ffffff",
-          "storefront_layout_secondary_bg_color": "#F4F8FE",
-          "storefront_layout_secondary_text_color": "#333333",
-          "storefront_layout_ui_border_radius": 6,
-          "storefront_layout_notification_position": "left",
-          "storefront_layout_action_popup_position": "left",
-          "storefront_layout_drawer_position": "left",
-          "storefront_layout_as_section_page": ""
-        }
-      },
-      "16187601983559181590": {
-        "type": "shopify://apps/swym-back-in-stock-alerts/blocks/sbisa-embed-init/7ab62acf-4bd3-4b2d-a616-684b2d8d8985",
-        "disabled": false,
-        "settings": {}
-      },
       "16191182845589407845": {
         "type": "shopify://apps/rockit-sales-manager/blocks/timer-embed/f347a9bf-00bf-4eeb-9f4d-159bb9b1cead",
         "disabled": false,
         "settings": {}
-      },
-      "7322671195855991875": {
-        "type": "shopify://apps/discount-mixer/blocks/discount-view/791c666a-e939-4fd3-bdd3-b122066bb588",
-        "disabled": false,
-        "settings": {
-          "discounted-price-background-color": "#000000",
-          "card-discounted-price-font-size": 16,
-          "product-discounted-price-font-size": 18,
-          "home-badge": true,
-          "collection-badge": true,
-          "product-badge": true,
-          "round-price-to-whole-number": false,
-          "trailing-zero": false,
-          "sale-badge-text": "",
-          "sale-badge-background-color": "#000000",
-          "sale-badge-text-color": "#ffffff",
-          "sale-badge-font-size": 12,
-          "sale-badge-border-radius": 12,
-          "timeout": 500,
-          "show-tier-table": false,
-          "tier-quantity-header-text": "",
-          "tier-discount-header-text": "",
-          "tier-table-background-color": "transparent",
-          "tier-table-text-color": "#000000",
-          "tier-table-border-color": "#cccccc",
-          "tier-table-border-width": 1,
-          "tier-table-border-radius": 5,
-          "tier-table-font-size": 14
-        }
-      },
-      "5254528770348971878": {
-        "type": "shopify://apps/discount-mixer/blocks/app-embed/791c666a-e939-4fd3-bdd3-b122066bb588",
-        "disabled": false,
-        "settings": {
-          "general_banner": false,
-          "sticky_banner": false,
-          "title": "All products have a discount!",
-          "background-color": "#000000",
-          "text-color": "#ffffff",
-          "url": "",
-          "font-size": 16,
-          "text-align": "center"
-        }
       },
       "13433517325689821891": {
         "type": "shopify://apps/rockit-sales-manager/blocks/savings-embed/f347a9bf-00bf-4eeb-9f4d-159bb9b1cead",
@@ -149,6 +85,27 @@
           "atc_selector": "",
           "atc_text_selector": "",
           "variant_selector": ""
+        }
+      },
+      "16936614187718193802": {
+        "type": "shopify://apps/multifeeds/blocks/app_embed/f3e7ca1d-2d5a-45a7-97dd-2fd45843acef",
+        "disabled": false,
+        "settings": {}
+      },
+      "17670923894607274400": {
+        "type": "shopify://apps/wishlist-plus/blocks/wishlist-app-embed/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+        "disabled": false,
+        "settings": {
+          "storefront_layout_enabled": true,
+          "storefront_layout_primary_bg_color": "#0f1f38",
+          "storefront_layout_primary_text_color": "#ffffff",
+          "storefront_layout_secondary_bg_color": "#f4f8fe",
+          "storefront_layout_secondary_text_color": "#333333",
+          "storefront_layout_ui_border_radius": 6,
+          "storefront_layout_notification_position": "left",
+          "storefront_layout_action_popup_position": "left",
+          "storefront_layout_drawer_position": "left",
+          "storefront_layout_as_section_page": ""
         }
       }
     },

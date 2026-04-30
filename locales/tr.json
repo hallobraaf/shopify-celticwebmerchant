@@ -222,7 +222,13 @@
     "recent": "Son aramalar"
   },
   "marketing": {
-    "products_heading": "En yeni ürünlerimiz"
+    "products_heading": "En yeni ürünlerimiz",
+    "countdown": {
+      "days": "Gün",
+      "hours": "Saat",
+      "minutes": "Dakika",
+      "seconds": "Saniye"
+    }
   },
   "newsletter": {
     "heading": "Bülten",

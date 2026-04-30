@@ -23,7 +23,6 @@ build/*
 Thumbs.db
 
 # NOVA #
-.nova
 .nova/*
 
 # CODEKIT #
@@ -31,14 +30,12 @@ Thumbs.db
 .compiled.codekit3/*
 
 # PHPSTORM #
-.idea
 .idea/*
 
 # DOCS #
-docs/
 docs/*
-private/
 private/*
+.private/*
 
 # SCSS files #
 *.scss

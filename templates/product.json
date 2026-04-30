@@ -23,7 +23,8 @@
           "settings": {
             "scroll_target": "#reviews",
             "show_count": true,
-            "size": 16
+            "size": 16,
+            "show_brand": true
           }
         },
         "variant_picker_FRRdBk": {
@@ -36,10 +37,6 @@
           "type": "price",
           "settings": {}
         },
-        "discount_mixer_countdown_block_RM9jfi": {
-          "type": "shopify://apps/discount-mixer/blocks/countdown-block/791c666a-e939-4fd3-bdd3-b122066bb588",
-          "settings": {}
-        },
         "rockit_sales_manager_timer_wMjnzc": {
           "type": "shopify://apps/rockit-discounts-sales/blocks/timer/f347a9bf-00bf-4eeb-9f4d-159bb9b1cead",
           "settings": {}
@@ -48,6 +45,15 @@
           "type": "stock",
           "settings": {
             "show_stock_count": true
+          }
+        },
+        "doran_back_in_stock_bis_inline_button_RrJJ7D": {
+          "type": "shopify://apps/doran-back-in-stock/blocks/bis-inline-button/aeb93bd4-c112-4bfe-bfbd-9cd73686d06e",
+          "name": "Doran Back-in-stock (Inline Button)",
+          "settings": {
+            "custom_css": "",
+            "is_max_width": true,
+            "max_width": 44
           }
         },
         "delivery_iLH8jX": {
@@ -60,6 +66,32 @@
             "full_width": true,
             "show_quantity": true,
             "show_wishlist": true
+          }
+        },
+        "wishlist_plus_wishlist_pdp_button_HWNNfm": {
+          "type": "shopify://apps/wishlist-plus/blocks/wishlist-pdp-button/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+          "settings": {
+            "swym_atw_button_icon": "heart",
+            "swym_atw_icon_thickness": 1.7,
+            "swym_atw_display_btn_text": true,
+            "swym_button_position": "default",
+            "swym_atw_button_vertical_offset": 0,
+            "swym_atw_full_width": true,
+            "swym_atw_button_alignment": "center",
+            "swym_add_to_wishlist_color": "#ffffff",
+            "swym_added_to_wishlist_color": "#ffffff",
+            "swym_button_text_color": "#0f1f38",
+            "swym_atw_border_color": "#0f1f38",
+            "swym_atw_border_thickness": 1,
+            "swym_atw_button_border_radius": 0,
+            "swym_enable_hover_customization": false,
+            "swym_hover_add_to_wishlist_color": "#0f1f38",
+            "swym_hover_added_to_wishlist_color": "#0f1f38",
+            "swym_hover_button_text_color": "#ffffff",
+            "swym_hover_atw_border_color": "#000000",
+            "swym_hover_atw_border_thickness": 2,
+            "swym_hover_atw_button_border_radius": 0,
+            "swym_custom_css": ".atw-button .atw-button-text {font-weight: normal}"
           }
         },
         "trust_usps_dMe7Mk": {
@@ -104,11 +136,12 @@
         "rating_CMxGnn",
         "variant_picker_FRRdBk",
         "price_zBizDd",
-        "discount_mixer_countdown_block_RM9jfi",
         "rockit_sales_manager_timer_wMjnzc",
         "stock_P8dwNk",
+        "doran_back_in_stock_bis_inline_button_RrJJ7D",
         "delivery_iLH8jX",
         "atc_LyVFKC",
+        "wishlist_plus_wishlist_pdp_button_HWNNfm",
         "trust_usps_dMe7Mk",
         "trust_payments_Lra8px",
         "trust_identity_CTE9dt"
@@ -131,10 +164,10 @@
         "read_less_text": "",
         "width": "is-align",
         "padding_block": 4,
-        "background_color": "#f8f8f8",
-        "text_color": "#111111",
         "anchor": "product-information",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#f8f8f8",
+        "text_color": "#111111"
       }
     },
     "block_product_recommended_afRGwD": {
@@ -156,10 +189,10 @@
         "grid_columns_tablet": 3,
         "grid_columns_mobile": 1,
         "padding_block": 4,
-        "background_color": "#f8f8f8",
-        "text_color": "#111111",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#f8f8f8",
+        "text_color": "#111111"
       }
     },
     "17622440393afaba32": {
@@ -212,10 +245,10 @@
         "grid_columns_tablet": 3,
         "grid_columns_mobile": 2,
         "padding_block": 3,
-        "background_color": "#f8f8f8",
-        "text_color": "#111111",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#f8f8f8",
+        "text_color": "#111111"
       }
     },
     "product-blog": {
@@ -225,12 +258,12 @@
         "read_more_text": "",
         "width": "is-align",
         "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
         "background_color": "#f8f8f8",
         "text_color": "#111111",
         "knowledge_background_color": "#0f1f38",
-        "knowledge_text_color": "#ffffff",
-        "anchor": "",
-        "custom_class": ""
+        "knowledge_text_color": "#ffffff"
       }
     },
     "block_product_reviews_keNkJP": {
@@ -254,10 +287,10 @@
       "settings": {
         "width": "is-align",
         "padding_block": 4,
-        "background_color": "#f8f8f8",
-        "text_color": "#111111",
         "anchor": "reviews",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#f8f8f8",
+        "text_color": "#111111"
       }
     }
   },

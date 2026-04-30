@@ -7,6 +7,13 @@ Schema.org JSON-LD structured data for SEO.
 Renders:
 - Organization schema (all pages)
 - WebSite schema with SearchAction (homepage only)
+- Product schema via Shopify's native structured_data filter + extra
+  additionalProperty block uit Shopify Standard Product Taxonomy
+  category metafields (product pages only)
+
+Co-existeert bewust met Doran Product Reviews' eigen Product schema:
+Doran levert aggregateRating en review, Shopify native levert category,
+gtin en additionalProperty. Google merge't beide blocks via gedeeld @id.
 
 Include once in layout files.
 
@@ -47,4 +54,77 @@ USAGE:
 	}
 }
 </script>
+{%- endif -%}
+
+{%- if request.page_type == 'product' and product != blank -%}
+	{%- comment -%} Shopify native Product / ProductGroup schema {%- endcomment -%}
+	<script type="application/ld+json">
+		{{ product | structured_data }}
+	</script>
+
+	{%- comment -%}
+		Extra Product block met additionalProperty uit category metafields
+		(Shopify Standard Product Taxonomy, namespace product.metafields.shopify.*).
+		Gekoppeld via @id aan het Product-object hierboven zodat Google de
+		blocks samenvoegt tot één entity. Waarden worden gedereferenced via
+		een fallback-chain: label → name → display_name → handle.
+	{%- endcomment -%}
+
+	{%- capture product_additional_properties -%}
+		{%- assign first = true -%}
+		{%- for pair in product.metafields.shopify -%}
+			{%- assign mf_key = pair[0] -%}
+			{%- assign mf = pair[1] -%}
+			{%- if mf == blank or mf.value == blank -%}{%- continue -%}{%- endif -%}
+
+			{%- assign property_name = mf_key | replace: '_', ' ' | replace: '-', ' ' | capitalize -%}
+
+			{%- if mf.type contains 'list.' -%}
+				{%- for item in mf.value -%}
+					{%- if item.label != blank -%}
+						{%- assign property_value = item.label -%}
+					{%- elsif item.name != blank -%}
+						{%- assign property_value = item.name -%}
+					{%- elsif item.display_name != blank -%}
+						{%- assign property_value = item.display_name -%}
+					{%- elsif item.handle != blank -%}
+						{%- assign property_value = item.handle -%}
+					{%- else -%}
+						{%- capture property_value -%}{{ item }}{%- endcapture -%}
+						{%- assign property_value = property_value | strip -%}
+					{%- endif -%}
+					{%- if property_value == blank -%}{%- continue -%}{%- endif -%}
+					{%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+					{"@type":"PropertyValue","name":{{ property_name | json }},"value":{{ property_value | json }}}
+				{%- endfor -%}
+			{%- else -%}
+				{%- if mf.value.label != blank -%}
+					{%- assign property_value = mf.value.label -%}
+				{%- elsif mf.value.name != blank -%}
+					{%- assign property_value = mf.value.name -%}
+				{%- elsif mf.value.display_name != blank -%}
+					{%- assign property_value = mf.value.display_name -%}
+				{%- else -%}
+					{%- capture property_value -%}{{ mf.value }}{%- endcapture -%}
+					{%- assign property_value = property_value | strip -%}
+				{%- endif -%}
+				{%- if property_value == blank -%}{%- continue -%}{%- endif -%}
+				{%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+				{"@type":"PropertyValue","name":{{ property_name | json }},"value":{{ property_value | json }}}
+			{%- endif -%}
+		{%- endfor -%}
+	{%- endcapture -%}
+
+	{%- assign product_additional_properties = product_additional_properties | strip -%}
+
+	{%- if product_additional_properties != blank -%}
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org/",
+			"@id": {{ product.url | append: '#product' | json }},
+			"@type": "Product",
+			"additionalProperty": [{{ product_additional_properties }}]
+		}
+	</script>
+	{%- endif -%}
 {%- endif -%}

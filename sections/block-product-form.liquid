@@ -61,7 +61,7 @@ DEPENDENCIES:
 
 								{%- case block.type -%}
 									{%- when 'rating' -%}
-										{%- render 'html-product-rating', product: p, scroll_target: block.settings.scroll_target, show_count: block.settings.show_count, size: block.settings.size -%}
+										{%- render 'html-product-rating', product: p, scroll_target: block.settings.scroll_target, show_count: block.settings.show_count, show_brand: block.settings.show_brand, size: block.settings.size -%}
 
 									{%- when 'heading' -%}
 										{%- render 'html-product-heading', product: p, show_vendor: block.settings.show_vendor -%}
@@ -335,6 +335,13 @@ DEPENDENCIES:
 					"step": 2,
 					"default": 16,
 					"unit": "px"
+				},
+				{
+					"type": "checkbox",
+					"id": "show_brand",
+					"label": "Show brand",
+					"info": "Requires product metafield custom.product-brand-reference",
+					"default": false
 				}
 			]
 		},

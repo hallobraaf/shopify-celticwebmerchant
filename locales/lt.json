@@ -222,7 +222,13 @@
     "recent": "Naujausios paieškos"
   },
   "marketing": {
-    "products_heading": "Mūsų naujausi produktai"
+    "products_heading": "Mūsų naujausi produktai",
+    "countdown": {
+      "days": "Dienos",
+      "hours": "Valandos",
+      "minutes": "Minutės",
+      "seconds": "Sekundės"
+    }
   },
   "newsletter": {
     "heading": "Naujienlaiškis",

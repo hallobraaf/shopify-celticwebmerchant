@@ -14,11 +14,28 @@
   },
   "sections": {
     "header-top": {
+      "settings": {},
       "blocks": {
         "usp-1": {
           "settings": {
             "text": "Gratis boven € 75 (FR)",
             "title": "Gratis boven € 75 (FR)"
+          }
+        }
+      }
+    },
+    "block_header_callout_AGfLm9": {
+      "disabled": false,
+      "settings": {
+        "heading": "Les Médiévales de Rouen",
+        "countdown_end_date": "2026-05-14",
+        "subheading": "Encore"
+      },
+      "blocks": {
+        "button_y9x84q": {
+          "settings": {
+            "text": "Collection vêtements médiévaux",
+            "url": "shopify://collections/middeleeuwse-kleding"
           }
         }
       }

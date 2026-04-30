@@ -23,15 +23,6 @@
             "blog_show_author": false
           }
         },
-        "featured_image": {
-          "type": "featured_image",
-          "settings": {
-            "image_width": "contained",
-            "image_height": "adapt",
-            "focus_x": 50,
-            "focus_y": 20
-          }
-        },
         "content": {
           "type": "content",
           "settings": {}
@@ -46,17 +37,16 @@
       "block_order": [
         "back_link_tbay9G",
         "title",
-        "featured_image",
         "content",
         "share"
       ],
       "settings": {
+        "custom_class": "",
         "width": "is-align-small",
         "show_sidebar": false,
         "background_color": "#f8f8f8",
         "article_background": "#ffffff",
-        "text_color": "",
-        "custom_class": ""
+        "text_color": ""
       }
     },
     "block_marketing_cover_qcQaMG": {
@@ -101,6 +91,9 @@
       "settings": {
         "heading": "",
         "subheading": "",
+        "text_align": "center",
+        "max_articles": 4,
+        "show_fallback": true,
         "card_layout": "vertical",
         "show_image": true,
         "image_ratio": "portrait",
@@ -108,21 +101,18 @@
         "show_date": true,
         "show_excerpt": true,
         "show_cta": true,
-        "max_articles": 4,
-        "show_fallback": true,
         "width": "is-align-wide",
-        "text_align": "center",
         "columns_desktop": 4,
         "columns_tablet": 2,
         "columns_mobile": 2,
         "grid_gap": 0.5,
         "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
         "background_color": "#f8f8f8",
         "text_color": "#111111",
         "card_background_color": "#ffffff",
-        "card_text_color": "#111111",
-        "anchor": "",
-        "custom_class": ""
+        "card_text_color": "#111111"
       }
     },
     "block_marketing_cover_xGxRnh": {

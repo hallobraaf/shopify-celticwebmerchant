@@ -68,4 +68,19 @@
   {%- endif -%}
 </div>
 
-
+{%- comment -%} PayRules: check server-side via Liquid of cart item tag 'compliance:geenPayPal' aanwezig is {%- endcomment -%}
+{%- assign payrules_nopaypal = false -%}
+{%- for item in cart.items -%}
+  {%- if item.product.tags contains 'compliance:geenPayPal' -%}
+    {%- assign payrules_nopaypal = true -%}
+  {%- endif -%}
+{%- endfor -%}
+<script>
+  (function () {
+    if ({{ payrules_nopaypal | json }}) {
+      document.body.classList.add('theme-payrules-nopaypal');
+    } else {
+      document.body.classList.remove('theme-payrules-nopaypal');
+    }
+  })();
+</script>

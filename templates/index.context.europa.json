@@ -15,11 +15,22 @@
   "sections": {
     "block_marketing_cover_EyVVzr": {
       "settings": {
-        "video": null
+        "subheading": "Ostara Sale",
+        "heading": "Shop by era",
+        "image": "shopify://shop_images/1-EU-INTBanner_Stepppenvolkeren_Feb2026_3_55ad26a8-0f07-48a9-ae72-928dfbb43010.webp",
+        "focus_x": 10,
+        "overlay": "medium"
       },
-      "blocks": {}
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "url": "shopify://collections/tijdperk"
+          }
+        }
+      }
     },
     "block_marketing_media_text_mEgbKY": {
+      "settings": {},
       "blocks": {
         "image_text_aJBEwL": {
           "settings": {

@@ -236,7 +236,13 @@
     "recent": "Seneste søgninger"
   },
   "marketing": {
-    "products_heading": "Vores nyeste produkter"
+    "products_heading": "Vores nyeste produkter",
+    "countdown": {
+      "days": "Dage",
+      "hours": "Timer",
+      "minutes": "Minutter",
+      "seconds": "Sekunder"
+    }
   },
   "newsletter": {
     "heading": "Nyhedsbrev",

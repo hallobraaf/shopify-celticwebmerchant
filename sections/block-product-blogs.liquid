@@ -16,6 +16,7 @@ DEPENDENCIES:
 - Product metafields:
   - custom.product-blogpost-references
   - custom.product-knowledgebase-references
+  - custom.tips_tricks_references
 ============================================================================
 {%- endcomment -%}
 
@@ -36,11 +37,18 @@ DEPENDENCIES:
 		{%- if section.settings.knowledge_text_color != blank %}
 		--blogs-knowledge-text: {{ section.settings.knowledge_text_color }};
 		{%- endif %}
+		{%- if section.settings.tips_background_color != blank %}
+		--blogs-tips-bg: {{ section.settings.tips_background_color }};
+		{%- endif %}
+		{%- if section.settings.tips_text_color != blank %}
+		--blogs-tips-text: {{ section.settings.tips_text_color }};
+		{%- endif %}
 	}
 {% endstyle %}
 
 {%- assign blogpost_references = product.metafields.custom['product-blogpost-references'] -%}
 {%- assign knowledge_references = product.metafields.custom['product-knowledgebase-references'] -%}
+{%- assign tips_references = product.metafields.custom['tips_tricks_references'] -%}
 
 {%- liquid
 	assign heading_text = section.settings.heading
@@ -53,7 +61,7 @@ DEPENDENCIES:
 	endif
 -%}
 
-{%- if blogpost_references or knowledge_references -%}
+{%- if blogpost_references or knowledge_references or tips_references -%}
 	<div class="block-product-blogs__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor }}"{% endif %}>
 		<header class="block-product-blogs__header">
 			<h2 class="block-product-blogs__title">{{ heading_text }}</h2>
@@ -63,6 +71,7 @@ DEPENDENCIES:
 			{%- if blogpost_references -%}
 				<div class="block-product-blogs__articles-wrapper">
 					{%- for article_reference in blogpost_references.value -%}
+						{%- unless article_reference.article.value -%}{%- continue -%}{%- endunless -%}
 						{%- if forloop.first -%}
 							<article class="block-product-blogs__card block-product-blogs__card--featured">
 								<a href="{{ article_reference.article.value.url }}" aria-label="{{ article_reference.title | escape }}" class="block-product-blogs__card-link" target="_blank" rel="noopener"></a>
@@ -95,6 +104,7 @@ DEPENDENCIES:
 
 					<ul class="block-product-blogs__articles">
 						{%- for article_reference in blogpost_references.value offset: 1 -%}
+							{%- unless article_reference.article.value -%}{%- continue -%}{%- endunless -%}
 							<li class="block-product-blogs__item">
 								<article class="block-product-blogs__card block-product-blogs__card--article">
 									<a href="{{ article_reference.article.value.url }}" aria-label="{{ article_reference.title | escape }}" class="block-product-blogs__card-link" target="_blank" rel="noopener"></a>
@@ -131,8 +141,34 @@ DEPENDENCIES:
 			{%- if knowledge_references -%}
 				<ul class="block-product-blogs__knowledge">
 					{%- for article_reference in knowledge_references.value -%}
+						{%- unless article_reference.article.value -%}{%- continue -%}{%- endunless -%}
 						<li class="block-product-blogs__item">
 							<article class="block-product-blogs__card block-product-blogs__card--knowledge">
+								<a href="{{ article_reference.article.value.url }}" aria-label="{{ article_reference.title | escape }}" class="block-product-blogs__card-link" target="_blank" rel="noopener"></a>
+								<div class="block-product-blogs__card-content">
+									<h4 class="block-product-blogs__card-title">{{ article_reference.title }}</h4>
+									{%- if article_reference.excerpt -%}
+										<p class="block-product-blogs__card-excerpt">{{ article_reference.excerpt }}</p>
+									{%- endif -%}
+									{%- if article_reference.article.value -%}
+										<span class="block-product-blogs__card-cta">
+											<span>{{ read_more_text }}</span>
+											{%- render 'html-theme-icons', icon: 'arrow', size: 14 -%}
+										</span>
+									{%- endif -%}
+								</div>
+							</article>
+						</li>
+					{%- endfor -%}
+				</ul>
+			{%- endif -%}
+
+			{%- if tips_references -%}
+				<ul class="block-product-blogs__tips">
+					{%- for article_reference in tips_references.value -%}
+						{%- unless article_reference.article.value -%}{%- continue -%}{%- endunless -%}
+						<li class="block-product-blogs__item">
+							<article class="block-product-blogs__card block-product-blogs__card--tips">
 								<a href="{{ article_reference.article.value.url }}" aria-label="{{ article_reference.title | escape }}" class="block-product-blogs__card-link" target="_blank" rel="noopener"></a>
 								<div class="block-product-blogs__card-content">
 									<h4 class="block-product-blogs__card-title">{{ article_reference.title }}</h4>
@@ -244,12 +280,22 @@ DEPENDENCIES:
 			"label": "Knowledge card text"
 		},
 		{
+			"type": "color",
+			"id": "tips_background_color",
+			"label": "Tips & tricks card background"
+		},
+		{
+			"type": "color",
+			"id": "tips_text_color",
+			"label": "Tips & tricks card text"
+		},
+		{
 			"type": "header",
 			"content": "Howto"
 		},
 		{
 			"type": "paragraph",
-			"content": "Displays blog posts and knowledge base articles from product metafields (custom.product-blogpost-references, custom.product-knowledgebase-references)."
+			"content": "Displays blog posts, knowledge base and tips & tricks articles from product metafields (custom.product-blogpost-references, custom.product-knowledgebase-references, custom.tips_tricks_references)."
 		}
 	],
 	"presets": [

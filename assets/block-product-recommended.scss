@@ -43,4 +43,33 @@
       width: calc((100% - (var(--grid-columns-mobile, 2) - 1) * 0.2em) / var(--grid-columns-mobile, 2));
     }
   }
+
+  // Slider
+  &__slider {
+    position: relative;
+    overflow: hidden;
+
+    .swiper-wrapper {
+      align-items: stretch;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper-slide {
+      height: auto;
+      width: auto;
+    }
+
+    &.swiper--all-visible {
+      .swiper-wrapper {
+        justify-content: center;
+      }
+
+      .swiper-nav,
+      .swiper-pagination {
+        display: none;
+      }
+    }
+  }
 }

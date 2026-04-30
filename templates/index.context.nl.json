@@ -15,9 +15,22 @@
   "sections": {
     "block_marketing_cover_EyVVzr": {
       "settings": {
+        "subheading": "Ontdek alle festival essentials",
+        "heading": "Klaar voor Elfia?",
+        "text": "",
+        "image": "shopify://shop_images/Banner_Elfia_April2026.jpg",
+        "focus_x": 95,
+        "overlay": "medium",
         "text_alignment": "center"
       },
-      "blocks": {}
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "text": "Shop nu",
+            "url": "shopify://collections/elfia-haarzuilens-arcen"
+          }
+        }
+      }
     },
     "block_marketing_grid_93tkDC": {
       "settings": {},

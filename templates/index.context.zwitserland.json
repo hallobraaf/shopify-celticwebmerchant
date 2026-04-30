@@ -13,6 +13,30 @@
   },
   "parent": "index.json",
   "sections": {
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "image": "shopify://shop_images/CH_Banner_Bourgondische_Ridder_CH_Feb2026_2.webp",
+        "focus_x": 15,
+        "overlay": "medium"
+      },
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "url": "shopify://collections/tijdperk"
+          }
+        }
+      }
+    },
+    "block_marketing_grid_eKTaaA": {
+      "settings": {},
+      "blocks": {
+        "banner_gMVXQH": {
+          "settings": {
+            "image": "shopify://shop_images/DSC08369_8ae5245b-fdf8-47c9-9a10-bdea3dc19f25.jpg"
+          }
+        }
+      }
+    },
     "best-products": {
       "settings": {
         "collection": "middeleeuwse-kleding"
@@ -25,16 +49,6 @@
         "image_text_aJBEwL": {
           "settings": {
             "image": "shopify://shop_images/burgundian_knight1.jpg"
-          }
-        }
-      }
-    },
-    "block_marketing_grid_eKTaaA": {
-      "settings": {},
-      "blocks": {
-        "banner_gMVXQH": {
-          "settings": {
-            "image": "shopify://shop_images/DSC08369_8ae5245b-fdf8-47c9-9a10-bdea3dc19f25.jpg"
           }
         }
       }

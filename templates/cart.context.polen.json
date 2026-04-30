@@ -17,26 +17,27 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-27888292cca960adac24155ade071322": null,
+        "header-305989dcf644912712b8d52d348db5fd": null,
         "heading": "",
         "subheading": "",
-        "header-290ac215ffa2225613f13cde5c1f2fea": null,
+        "header-56da1a03af06d22b4dd9a431c0efd5f3": null,
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-c77f8fc865b2908ddf76d0b009b059f4": null,
+        "header-08803d3df22033df2b7911b52aecece3": null,
         "background_color": "",
         "text_color": "",
-        "header-6277f54cf36e634cb29467e426358e12": null,
-        "anchor": "",
-        "custom_class": ""
+        "header-40517f37dc871259492203ba5d74be7d": null,
+        "paragraph-21a09c4f16f3c26757ff77973af8f5c0": null
       },
       "blocks": {
         "banner_PJHLU": {
           "type": "banner",
           "disabled": false,
           "settings": {
-            "text": "Darmowa wysyłka przy zamówieniach powyżej 330 zł",
+            "text": "Darmowa wysyłka od 316 zł",
             "cta_text": "",
             "cta_url": "",
             "style": "promo",
@@ -48,11 +49,85 @@
         "banner_PJHLU"
       ],
       "name": "Banners"
+    },
+    "block_marketing_testimonials_jMRUC": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-1f28cfba75ceb3460f7b17da3890a8c4": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-393005fc128b962477151a2292738609": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-cb10dbfb87130db30a664d11015960e7": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-91b07443d2762554185f18b271878543": null,
+        "background_color": "",
+        "text_color": "",
+        "header-f5b9df0966459e0ab4fd4b02da6eaa38": null,
+        "paragraph-02a3356724f5cdd20af447b7c4d3ce4e": null
+      },
+      "blocks": {
+        "testimonial_im39y": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Good store, extra fast delivery. With a cross country delivery and glooming Xmas season I was able to get a package in a few days",
+            "author": "Jakub Przychodzen, PL",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_3XYYP": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Polecam na 100%, łatwy zakup, szybka wysyłka, pełen profesjonalizm. To mój pierwszy zakup,ale na pewno nie ostatni.",
+            "author": "Tomasz Badora, PL",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_nqkFP": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Great service ! Fastest delivery ! Great choice of items at stock ! Strongly recomend this store !",
+            "author": "Tomasz Skrobański, PL",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_im39y",
+        "testimonial_3XYYP",
+        "testimonial_nqkFP"
+      ],
+      "name": "Testimonials"
     }
   },
   "order": [
     "block_marketing_banners_Fcify",
     "cart-order",
-    "block_product_recommended_yfFAdg"
+    "block_marketing_products_QKemGE",
+    "block_marketing_testimonials_jMRUC"
   ]
 }

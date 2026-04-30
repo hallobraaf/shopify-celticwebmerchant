@@ -232,7 +232,13 @@
     "recent": "Búsquedas recientes"
   },
   "marketing": {
-    "products_heading": "Nuestros últimos productos"
+    "products_heading": "Nuestros últimos productos",
+    "countdown": {
+      "days": "Días",
+      "hours": "Horas",
+      "minutes": "Minutos",
+      "seconds": "Segundos"
+    }
   },
   "newsletter": {
     "heading": "Boletín",

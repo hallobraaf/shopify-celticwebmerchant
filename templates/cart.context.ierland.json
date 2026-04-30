@@ -17,26 +17,27 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-838774024620166387c67840fe7c9ff0": null,
+        "header-84dff487f57483a445ec28658a350a4d": null,
         "heading": "",
         "subheading": "",
-        "header-83785adf82d25c7d16b898514054c0c8": null,
+        "header-fa75f92b410c6d80fbe431b4cd4ec8cd": null,
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-c16701c28e4d3e56ea8161a637c3bf40": null,
+        "header-c0224b56e9b151bce16f53226035f93b": null,
         "background_color": "",
         "text_color": "",
-        "header-25b31440d6b9e47840d704c09498fc30": null,
-        "anchor": "",
-        "custom_class": ""
+        "header-62fa105b48b9fc787b0950e3713dbf66": null,
+        "paragraph-f910ae36f21b49b7ce553c4ac74c831b": null
       },
       "blocks": {
         "banner_A4LiF": {
           "type": "banner",
           "disabled": false,
           "settings": {
-            "text": "Free shipping for orders over €99,-",
+            "text": "Free shipping from €99",
             "cta_text": "",
             "cta_url": "",
             "style": "promo",
@@ -48,11 +49,85 @@
         "banner_A4LiF"
       ],
       "name": "Banners"
+    },
+    "block_marketing_testimonials_U7gPd": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-85f3391e09356eb1cafc7135952dc13e": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-c0694feab29f547b83980dd929e79917": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-323d6550e537777d178c571d83ecd1f4": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-48e9a38e8330fdb6956334988c217abb": null,
+        "background_color": "",
+        "text_color": "",
+        "header-4d2b3945e99751edb64ae4362d8a0943": null,
+        "paragraph-60bd887908f4b40f1d4c9539f8db66f3": null
+      },
+      "blocks": {
+        "testimonial_PxRNb": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "This is a quality item at a great price. It was a gift for my brother who is a bit of a history buff as the Gallowglasses are a part of our family history. He was delighted with it.",
+            "author": "Díarmuid Mac Suibhne, IE",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_AkwHW": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Good selection of clothing and items, every delivery I have had has arrived in good time.",
+            "author": "Piaras Séamus MacCallow Egerton, IE",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_WUEff": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Very good quality on everything I purchased. Much better than I expected as it was my first time to buy from the store. Prices were very competitive against other suppliers. I am glad to have found your website",
+            "author": "Brian Condron, IE",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_PxRNb",
+        "testimonial_AkwHW",
+        "testimonial_WUEff"
+      ],
+      "name": "Testimonials"
     }
   },
   "order": [
     "block_marketing_banners_ApYmH",
     "cart-order",
-    "block_product_recommended_yfFAdg"
+    "block_marketing_products_QKemGE",
+    "block_marketing_testimonials_U7gPd"
   ]
 }

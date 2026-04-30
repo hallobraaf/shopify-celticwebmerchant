@@ -71,6 +71,20 @@
     }
   }
 
+  // Tips & tricks list
+  &__tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.5em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 40em) {
+      grid-template-columns: 1fr;
+    }
+  }
+
   // Card base
   &__card {
     position: relative;
@@ -159,6 +173,16 @@
     &--knowledge {
       background-color: var(--blogs-knowledge-bg, #0f1f38);
       color: var(--blogs-knowledge-text, #ffffff);
+
+      .block-product-blogs__card-title {
+        font-size: 1em;
+      }
+    }
+
+    // Tips & tricks card
+    &--tips {
+      background-color: var(--blogs-tips-bg, #ffffff);
+      color: var(--blogs-tips-text, #111111);
 
       .block-product-blogs__card-title {
         font-size: 1em;

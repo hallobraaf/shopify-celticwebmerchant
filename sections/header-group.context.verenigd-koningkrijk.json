@@ -25,7 +25,12 @@
         "usp-2": {
           "settings": {
             "text": "Voor 19:30 verzonden (DPD, UPS)",
-            "title": "Voor 19:30 verzonden (DPD, UPS)",
+            "link": "",
+            "title": "Voor 19:30 verzonden (DPD, UPS)"
+          }
+        },
+        "usp-3": {
+          "settings": {
             "link": ""
           }
         },
@@ -33,12 +38,7 @@
           "settings": {
             "text": "Dagelijks vanaf EU naar UK",
             "link": "",
-            "icon": "heart"
-          }
-        },
-        "usp-3": {
-          "settings": {
-            "link": ""
+            "icon": "star"
           }
         }
       }

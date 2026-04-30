@@ -237,7 +237,13 @@
     "recent": "Recente zoekopdrachten"
   },
   "marketing": {
-    "products_heading": "Onze nieuwste producten"
+    "products_heading": "Onze nieuwste producten",
+    "countdown": {
+      "days": "Dagen",
+      "hours": "Uren",
+      "minutes": "Minuten",
+      "seconds": "Seconden"
+    }
   },
   "newsletter": {
     "heading": "Nieuwsbrief",

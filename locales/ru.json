@@ -222,7 +222,13 @@
     "recent": "Недавние запросы"
   },
   "marketing": {
-    "products_heading": "Наши новинки"
+    "products_heading": "Наши новинки",
+    "countdown": {
+      "days": "Дней",
+      "hours": "Часов",
+      "minutes": "Минут",
+      "seconds": "Секунд"
+    }
   },
   "newsletter": {
     "heading": "Рассылка",

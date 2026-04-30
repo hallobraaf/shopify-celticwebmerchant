@@ -17,26 +17,27 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-cde6c63c66f5b551f9e6ec77a27f6870": null,
+        "header-0a18a3f970815d612a5756fa9fdc8fda": null,
         "heading": "",
         "subheading": "",
-        "header-61fe2faf7a62ce2d2e0a9d0dd36cfbdd": null,
+        "header-a42f5203c35648c998a2fb26f8fce099": null,
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-c37d4f9845c5943ed1ef424e0b534bcd": null,
+        "header-5f0a2bf5e45096d4d2191b25cff5d0cc": null,
         "background_color": "",
         "text_color": "",
-        "header-4d1f98ac239ee7d6d6abb1ce0219c7b7": null,
-        "anchor": "",
-        "custom_class": ""
+        "header-a6a88b81aef1e6c61de4a3806e78af14": null,
+        "paragraph-354dabfd35edb92d6059335f40ffd970": null
       },
       "blocks": {
         "banner_q6fVr": {
           "type": "banner",
           "disabled": false,
           "settings": {
-            "text": "Spedizione gratuita per ordini superiori a 99 €",
+            "text": "Spedizione gratuita da 75 €",
             "cta_text": "",
             "cta_url": "",
             "style": "promo",
@@ -48,11 +49,85 @@
         "banner_q6fVr"
       ],
       "name": "Banners"
+    },
+    "block_marketing_testimonials_Cwh8X": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-4ddc118d52e402a2d7347182b0f5ca1b": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-c956d84414f1ccdad08f36923e5757e2": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-7383b2b65c53ee1fec2214e88ea12c98": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-6be8cb57240e339b257c123f3823d6bf": null,
+        "background_color": "",
+        "text_color": "",
+        "header-7eb238e454a58c3983fce5ebc8e25767": null,
+        "paragraph-ace3bd8a5d9070d8cfb7be314908a3de": null
+      },
+      "blocks": {
+        "testimonial_Qe7Dg": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Fatti 4 ordini in questo anno e tutto é andato al meglio. Ottima qualitá dei prodotti a prezzi accessibili, tempi di spedizione tutto sommato rapidi vista la distanza e servizio clienti disponibile e preciso.",
+            "author": "Simone Rabozzi, IT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_NmbX8": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Consegna puntuale. Come sempre il vero pregio di questo sito è la costante reperibilità di informazioni su disponibilità e spedizione.",
+            "author": "Luca Parente, IT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_ggQrw": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Vastissima scelta, trasparenza, ottime foto degli articoli, prodotti soddisfacenti e un'attenzione grandissima verso il cliente. Ho effettuato tanti ordini, in un due casi ci sono stati del piccoli problemi con gli articoli e il servizio clienti è stato disponibilissimo in tutto, infatti tutto si è risolto nel modo migliore e più soddisfacente per me. Consiglio vivamente di fare i vostri acquisti da CelticWebMerchant!",
+            "author": "Ylenia, IT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_Qe7Dg",
+        "testimonial_NmbX8",
+        "testimonial_ggQrw"
+      ],
+      "name": "Testimonials"
     }
   },
   "order": [
     "block_marketing_banners_9GPiW",
     "cart-order",
-    "block_product_recommended_yfFAdg"
+    "block_marketing_products_QKemGE",
+    "block_marketing_testimonials_Cwh8X"
   ]
 }

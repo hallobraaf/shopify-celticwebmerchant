@@ -5,14 +5,17 @@ BLOCK-PRODUCT-RECOMMENDED
 Display recommended products based on template context.
 
 FEATURES:
-- Product page: recommendations from current product metafield
-- Cart page: recommendations from all cart items
+- Product page: recommendations from custom.recommended-products metafield
+- Cart page: source controlled by cart_rec_mode variable (default/cart/combined)
 - Configurable product card display
-- Responsive grid layout
+- Grid or slider display mode (Swiper)
 
 DEPENDENCIES:
 - html-theme-card snippet
+- html-theme-icons snippet (for slider navigation)
+- Swiper.js (loaded conditionally for slider mode)
 - Product metafield: custom.recommended-products (list of product references)
+- Product metafield: custom.recommended-products-cart (list of product references, cart-specific)
 ============================================================================
 {%- endcomment -%}
 
@@ -36,6 +39,20 @@ DEPENDENCIES:
 		assign heading_text = 'product.recommended_heading' | t
 	endif
 
+	assign display_mode = section.settings.display_mode | default: 'grid'
+	assign is_slider = false
+	if display_mode == 'slider'
+		assign is_slider = true
+	endif
+
+	comment
+		Cart recommendation source:
+		'default'  = custom.recommended-products only
+		'cart'     = custom.recommended-products-cart only
+		'combined' = cart metafield first (priority), then fill with default metafield
+	endcomment
+	assign cart_rec_mode = 'combined'
+
 	assign recommended_product_ids = ''
 	assign max_products = section.settings.max_products
 	assign product_count = 0
@@ -55,7 +72,7 @@ DEPENDENCIES:
 					{%- endif -%}
 					{%- assign recommended_product_ids = recommended_product_ids | append: rec_product.id | append: ',' -%}
 					{%- assign product_count = product_count | plus: 1 -%}
-					<li class="block-product-recommended__item">
+					<li class="block-product-recommended__item{% if is_slider %} swiper-slide{% endif %}">
 						{%- render 'html-theme-card',
 							product: rec_product,
 							layout: section.settings.card_layout,
@@ -69,10 +86,11 @@ DEPENDENCIES:
 							show_rating: section.settings.show_rating,
 							show_vendor: section.settings.show_vendor,
 							show_price: true,
-							show_stock: true,
-							show_delivery: true,
+							show_stock: section.settings.show_stock,
+							show_delivery: section.settings.show_delivery,
 							show_badges: section.settings.show_badges,
-							quick_add: section.settings.quick_add
+							quick_add: section.settings.quick_add,
+							card_sizing: section.settings.card_sizing
 						-%}
 					</li>
 				{%- endunless -%}
@@ -80,44 +98,89 @@ DEPENDENCIES:
 		{%- endif -%}
 
 	{%- elsif template.name == 'cart' -%}
-		{%- comment -%} Cart page: get recommendations from all cart items {%- endcomment -%}
+		{%- comment -%} Cart page: recommendations from all cart items.
+			Source controlled by cart_rec_mode variable:
+			'default'  = custom.recommended-products only
+			'cart'     = custom.recommended-products-cart only
+			'combined' = cart metafield first (priority), then default metafield (fill)
+			Deduplication via recommended_product_ids prevents duplicates across metafields. {%- endcomment -%}
 		{%- for item in cart.items -%}
 			{%- if product_count >= max_products -%}
 				{%- break -%}
 			{%- endif -%}
-			{%- if item.product.metafields.custom.recommended-products.value -%}
-				{%- for rec_product in item.product.metafields.custom.recommended-products.value -%}
-					{%- if product_count >= max_products -%}
-						{%- break -%}
-					{%- endif -%}
-					{%- unless recommended_product_ids contains rec_product.id -%}
-						{%- if section.settings.hide_out_of_stock and rec_product.available == false -%}
-							{%- continue -%}
+			{%- if cart_rec_mode == 'cart' or cart_rec_mode == 'combined' -%}
+				{%- if item.product.metafields.custom.recommended-products-cart.value -%}
+					{%- for rec_product in item.product.metafields.custom.recommended-products-cart.value -%}
+						{%- if product_count >= max_products -%}
+							{%- break -%}
 						{%- endif -%}
-						{%- assign recommended_product_ids = recommended_product_ids | append: rec_product.id | append: ',' -%}
-						{%- assign product_count = product_count | plus: 1 -%}
-						<li class="block-product-recommended__item">
-							{%- render 'html-theme-card',
-								product: rec_product,
-								layout: section.settings.card_layout,
-								image_ratio: section.settings.image_ratio,
-								columns_desktop: section.settings.grid_columns,
-								columns_tablet: section.settings.grid_columns_tablet,
-								columns_mobile: section.settings.grid_columns_mobile,
-								columns_width: section.settings.width,
-								columns_gap: 0.2,
-								show_secondary_image: section.settings.show_secondary_image,
-								show_rating: section.settings.show_rating,
-								show_vendor: section.settings.show_vendor,
-								show_price: true,
-								show_stock: true,
-								show_delivery: true,
-								show_badges: section.settings.show_badges,
-								quick_add: section.settings.quick_add
-							-%}
-						</li>
-					{%- endunless -%}
-				{%- endfor -%}
+						{%- unless recommended_product_ids contains rec_product.id -%}
+							{%- if section.settings.hide_out_of_stock and rec_product.available == false -%}
+								{%- continue -%}
+							{%- endif -%}
+							{%- assign recommended_product_ids = recommended_product_ids | append: rec_product.id | append: ',' -%}
+							{%- assign product_count = product_count | plus: 1 -%}
+							<li class="block-product-recommended__item{% if is_slider %} swiper-slide{% endif %}">
+								{%- render 'html-theme-card',
+									product: rec_product,
+									layout: section.settings.card_layout,
+									image_ratio: section.settings.image_ratio,
+									columns_desktop: section.settings.grid_columns,
+									columns_tablet: section.settings.grid_columns_tablet,
+									columns_mobile: section.settings.grid_columns_mobile,
+									columns_width: section.settings.width,
+									columns_gap: 0.2,
+									show_secondary_image: section.settings.show_secondary_image,
+									show_rating: section.settings.show_rating,
+									show_vendor: section.settings.show_vendor,
+									show_price: true,
+									show_stock: section.settings.show_stock,
+									show_delivery: section.settings.show_delivery,
+									show_badges: section.settings.show_badges,
+									quick_add: section.settings.quick_add,
+									card_sizing: section.settings.card_sizing
+								-%}
+							</li>
+						{%- endunless -%}
+					{%- endfor -%}
+				{%- endif -%}
+			{%- endif -%}
+			{%- if cart_rec_mode == 'default' or cart_rec_mode == 'combined' -%}
+				{%- if item.product.metafields.custom.recommended-products.value -%}
+					{%- for rec_product in item.product.metafields.custom.recommended-products.value -%}
+						{%- if product_count >= max_products -%}
+							{%- break -%}
+						{%- endif -%}
+						{%- unless recommended_product_ids contains rec_product.id -%}
+							{%- if section.settings.hide_out_of_stock and rec_product.available == false -%}
+								{%- continue -%}
+							{%- endif -%}
+							{%- assign recommended_product_ids = recommended_product_ids | append: rec_product.id | append: ',' -%}
+							{%- assign product_count = product_count | plus: 1 -%}
+							<li class="block-product-recommended__item{% if is_slider %} swiper-slide{% endif %}">
+								{%- render 'html-theme-card',
+									product: rec_product,
+									layout: section.settings.card_layout,
+									image_ratio: section.settings.image_ratio,
+									columns_desktop: section.settings.grid_columns,
+									columns_tablet: section.settings.grid_columns_tablet,
+									columns_mobile: section.settings.grid_columns_mobile,
+									columns_width: section.settings.width,
+									columns_gap: 0.2,
+									show_secondary_image: section.settings.show_secondary_image,
+									show_rating: section.settings.show_rating,
+									show_vendor: section.settings.show_vendor,
+									show_price: true,
+									show_stock: section.settings.show_stock,
+									show_delivery: section.settings.show_delivery,
+									show_badges: section.settings.show_badges,
+									quick_add: section.settings.quick_add,
+									card_sizing: section.settings.card_sizing
+								-%}
+							</li>
+						{%- endunless -%}
+					{%- endfor -%}
+				{%- endif -%}
 			{%- endif -%}
 		{%- endfor -%}
 	{%- endif -%}
@@ -129,10 +192,112 @@ DEPENDENCIES:
 			<h2 class="block-product-recommended__heading">{{ heading_text }}</h2>
 		</header>
 
-		<ul class="block-product-recommended__grid" style="--grid-columns: {{ section.settings.grid_columns }}; --grid-columns-tablet: {{ section.settings.grid_columns_tablet }}; --grid-columns-mobile: {{ section.settings.grid_columns_mobile }};">
-			{{ recommended_products_html }}
-		</ul>
+		{%- if is_slider -%}
+			<div class="block-product-recommended__slider swiper" id="swiper-{{ section.id }}" style="--grid-gap: 0.2em;">
+				<ul class="swiper-wrapper" role="list">
+					{{ recommended_products_html }}
+				</ul>
+				{%- if section.settings.slider_navigation -%}
+					<button class="swiper-nav swiper-nav--prev swiper-nav--chevron" aria-label="{{ 'accessibility.previous' | t }}">
+						{%- render 'html-theme-icons', icon: 'chevron-left' -%}
+					</button>
+					<button class="swiper-nav swiper-nav--next swiper-nav--chevron" aria-label="{{ 'accessibility.next' | t }}">
+						{%- render 'html-theme-icons', icon: 'chevron-right' -%}
+					</button>
+				{%- endif -%}
+				{%- if section.settings.slider_pagination -%}
+					<div class="swiper-pagination"></div>
+				{%- endif -%}
+			</div>
+		{%- else -%}
+			<ul class="block-product-recommended__grid" role="list" style="--grid-columns: {{ section.settings.grid_columns }}; --grid-columns-tablet: {{ section.settings.grid_columns_tablet }}; --grid-columns-mobile: {{ section.settings.grid_columns_mobile }};">
+				{{ recommended_products_html }}
+			</ul>
+		{%- endif -%}
 	</div>
+{%- endif -%}
+
+{%- if is_slider -%}
+<script>
+	(function() {
+		function initRecommendedSwiper() {
+			const swiperEl = document.getElementById('swiper-{{ section.id }}');
+			if (!swiperEl || typeof Swiper === 'undefined') return;
+
+			if (swiperEl.swiper) swiperEl.swiper.destroy();
+
+			const fontSize = parseFloat(getComputedStyle(swiperEl).fontSize);
+			const gapPx = 0.2 * fontSize;
+
+			const config = {
+				slidesPerView: {{ section.settings.grid_columns_mobile | default: 2 }},
+				spaceBetween: gapPx,
+				{%- if section.settings.slider_navigation -%}
+				navigation: {
+					prevEl: swiperEl.querySelector('.swiper-nav--prev'),
+					nextEl: swiperEl.querySelector('.swiper-nav--next')
+				},
+				{%- endif -%}
+				{%- if section.settings.slider_pagination -%}
+				pagination: {
+					el: swiperEl.querySelector('.swiper-pagination'),
+					clickable: true
+				},
+				{%- endif -%}
+				{%- if section.settings.slider_autoplay -%}
+				autoplay: {
+					delay: {{ section.settings.slider_autoplay_speed | default: 5 | times: 1000 }},
+					disableOnInteraction: false,
+					pauseOnMouseEnter: true
+				},
+				rewind: true,
+				{%- endif -%}
+				breakpoints: {
+					640: {
+						slidesPerView: {{ section.settings.grid_columns_tablet | default: 3 }}
+					},
+					960: {
+						slidesPerView: {{ section.settings.grid_columns | default: 4 }}
+					}
+				},
+				on: {
+					init: updateSliderState,
+					resize: updateSliderState
+				}
+			};
+
+			function updateSliderState(swiper) {
+				const slidesCount = swiper.slides.length;
+				const slidesPerView = swiper.params.slidesPerView;
+				const allFit = slidesCount <= slidesPerView;
+
+				swiperEl.classList.toggle('swiper--all-visible', allFit);
+
+				if (allFit) {
+					if (swiper.autoplay && swiper.autoplay.running) {
+						swiper.autoplay.stop();
+					}
+				} else {
+					swiper.params.slidesPerGroup = Math.floor(slidesPerView);
+					{%- if section.settings.slider_autoplay -%}
+					if (swiper.autoplay && !swiper.autoplay.running) {
+						swiper.autoplay.start();
+					}
+					{%- endif -%}
+					swiper.update();
+				}
+			}
+
+			new Swiper(swiperEl, config);
+		}
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', initRecommendedSwiper);
+		} else {
+			initRecommendedSwiper();
+		}
+	})();
+</script>
 {%- endif -%}
 
 {% schema %}
@@ -175,6 +340,48 @@ DEPENDENCIES:
 		},
 		{
 			"type": "select",
+			"id": "display_mode",
+			"label": "Display mode",
+			"options": [
+				{ "value": "grid", "label": "Grid" },
+				{ "value": "slider", "label": "Slider" }
+			],
+			"default": "grid"
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_navigation",
+			"label": "Show navigation",
+			"info": "Slider only",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_pagination",
+			"label": "Show pagination",
+			"info": "Slider only",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "slider_autoplay",
+			"label": "Autoplay",
+			"info": "Slider only. Includes rewind.",
+			"default": false
+		},
+		{
+			"type": "range",
+			"id": "slider_autoplay_speed",
+			"label": "Autoplay speed",
+			"info": "Slider only",
+			"min": 2,
+			"max": 10,
+			"step": 1,
+			"default": 5,
+			"unit": "s"
+		},
+		{
+			"type": "select",
 			"id": "card_layout",
 			"label": "Card layout",
 			"options": [
@@ -182,6 +389,16 @@ DEPENDENCIES:
 				{ "value": "horizontal", "label": "Horizontal" }
 			],
 			"default": "vertical"
+		},
+		{
+			"type": "select",
+			"id": "card_sizing",
+			"label": "Card sizing",
+			"options": [
+				{ "value": "regular", "label": "Regular" },
+				{ "value": "smaller", "label": "Smaller" }
+			],
+			"default": "regular"
 		},
 		{
 			"type": "select",
@@ -218,6 +435,18 @@ DEPENDENCIES:
 			"type": "checkbox",
 			"id": "show_badges",
 			"label": "Show badges",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_stock",
+			"label": "Show stock status",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_delivery",
+			"label": "Show delivery date",
 			"default": true
 		},
 		{
@@ -312,7 +541,7 @@ DEPENDENCIES:
 		},
 		{
 			"type": "paragraph",
-			"content": "Product pages: shows custom.recommended-products metafield. Cart page: combines recommendations from all cart items."
+			"content": "Product pages: shows custom.recommended-products metafield. Cart page: combines custom.recommended-products-cart (priority) with custom.recommended-products (fill) from all cart items."
 		}
 	],
 	"presets": [

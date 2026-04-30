@@ -1,0 +1,297 @@
+{%- comment -%}
+============================================================================
+BLOCK-HEADER-CALLOUT
+============================================================================
+Dismissible callout bar for announcements, promotions, etc.
+Placed in header group but repositioned via JS to first child of <main>
+so it scrolls with the page content.
+
+FEATURES:
+- Heading and subheading text
+- Optional countdown timer (reuses html-marketing-countdown)
+- Multiple CTA buttons (blocks)
+- Dismissible with configurable hide duration (localStorage)
+- JS repositions from header to main for scroll behavior
+- Color customization
+
+DEPENDENCIES:
+- html-marketing-cta snippet
+- html-marketing-countdown snippet
+- html-theme-icons snippet
+- block-header-callout.min.css
+- block-header-callout.min.js
+============================================================================
+{%- endcomment -%}
+
+{{ 'block-header-callout.min.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+	assign has_content = false
+	if section.settings.heading != blank or section.settings.subheading != blank
+		assign has_content = true
+	endif
+
+	assign has_buttons = false
+	if section.blocks.size > 0
+		for block in section.blocks
+			if block.settings.url != blank
+				assign has_buttons = true
+				break
+			endif
+		endfor
+	endif
+-%}
+
+{%- if has_content or has_buttons -%}
+	{% style %}
+		#shopify-section-{{ section.id }}.block-header-callout {
+			{%- if section.settings.background_color != blank %}
+			--callout-bg: {{ section.settings.background_color }};
+			{%- endif %}
+			{%- if section.settings.text_color != blank %}
+			--callout-text: {{ section.settings.text_color }};
+			{%- endif %}
+		}
+	{% endstyle %}
+
+	<div
+		class="block-header-callout__content {{ section.settings.width }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"
+		{% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}"{% endif %}
+		data-callout
+		data-callout-id="{{ section.id }}"
+		data-callout-dismiss-days="{{ section.settings.dismiss_days }}"
+		hidden
+	>
+		<div class="header-callout header-callout--align-{{ section.settings.text_alignment }}">
+			<div class="header-callout__body">
+				{%- if section.settings.heading != blank -%}
+					<strong class="header-callout__heading">{{ section.settings.heading | escape }}</strong>
+				{%- endif -%}
+				{%- if section.settings.subheading != blank -%}
+					<span class="header-callout__subheading">{{ section.settings.subheading | escape }}</span>
+				{%- endif -%}
+
+				{%- if section.settings.show_countdown and section.settings.countdown_end_date != blank -%}
+					<span class="header-callout__countdown">
+						{%- render 'html-marketing-countdown',
+							end_date: section.settings.countdown_end_date,
+							message: section.settings.countdown_message,
+							style: 'minimal',
+							size: 'small',
+							alignment: 'center'
+						-%}
+					</span>
+				{%- endif -%}
+
+				{%- if has_buttons -%}
+					<span class="header-callout__buttons">
+						{%- for block in section.blocks -%}
+							{%- if block.settings.url != blank -%}
+								{%- render 'html-marketing-cta',
+									text: block.settings.text,
+									url: block.settings.url,
+									style: block.settings.style,
+									size: 'small',
+									button_color: block.settings.button_color,
+									button_text_color: block.settings.button_text_color
+								-%}
+							{%- endif -%}
+						{%- endfor -%}
+					</span>
+				{%- endif -%}
+			</div>
+
+			<button
+				type="button"
+				class="header-callout__close"
+				data-callout-close
+				aria-label="{{ 'accessibility.close' | t }}"
+			>
+				{%- render 'html-theme-icons', icon: 'close', size: 18 -%}
+			</button>
+		</div>
+	</div>
+{%- endif -%}
+
+<script src="{{ 'block-header-callout.min.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+	"name": "Callout bar",
+	"tag": "section",
+	"class": "block-header-callout",
+	"limit": 1,
+	"enabled_on": {
+		"groups": ["header"]
+	},
+	"settings": [
+		{
+			"type": "header",
+			"content": "Content"
+		},
+		{
+			"type": "text",
+			"id": "heading",
+			"label": "Heading"
+		},
+		{
+			"type": "text",
+			"id": "subheading",
+			"label": "Subheading"
+		},
+		{
+			"type": "header",
+			"content": "Countdown"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_countdown",
+			"label": "Show countdown timer",
+			"default": false
+		},
+		{
+			"type": "text",
+			"id": "countdown_end_date",
+			"label": "End date",
+			"info": "ISO format: 2025-12-31T23:59:59"
+		},
+		{
+			"type": "text",
+			"id": "countdown_message",
+			"label": "Expired message",
+			"info": "Shown when the countdown reaches zero"
+		},
+		{
+			"type": "header",
+			"content": "Layout"
+		},
+		{
+			"type": "select",
+			"id": "width",
+			"label": "Width",
+			"options": [
+				{ "value": "alignsmall", "label": "Narrow" },
+				{ "value": "align", "label": "Regular" },
+				{ "value": "alignwide", "label": "Wide" },
+				{ "value": "alignfull", "label": "Full" }
+			],
+			"default": "alignfull"
+		},
+		{
+			"type": "select",
+			"id": "text_alignment",
+			"label": "Text alignment",
+			"options": [
+				{ "value": "left", "label": "Left" },
+				{ "value": "center", "label": "Center" },
+				{ "value": "right", "label": "Right" }
+			],
+			"default": "center"
+		},
+		{
+			"type": "header",
+			"content": "Colors"
+		},
+		{
+			"type": "color",
+			"id": "background_color",
+			"label": "Background"
+		},
+		{
+			"type": "color",
+			"id": "text_color",
+			"label": "Text"
+		},
+		{
+			"type": "header",
+			"content": "Advanced"
+		},
+		{
+			"type": "range",
+			"id": "dismiss_days",
+			"label": "Hide after dismiss (days)",
+			"info": "How long the callout stays hidden after closing. Set to 0 for session only.",
+			"min": 0,
+			"max": 30,
+			"step": 1,
+			"default": 1
+		},
+		{
+			"type": "text",
+			"id": "anchor",
+			"label": "Anchor",
+			"info": "ID for scroll links (without #)"
+		},
+		{
+			"type": "text",
+			"id": "custom_class",
+			"label": "Custom class",
+			"info": "Add custom CSS class for styling"
+		},
+		{
+			"type": "header",
+			"content": "Howto"
+		},
+		{
+			"type": "paragraph",
+			"content": "Callout bar for announcements and promotions. Place in header group — JS moves it to top of main content so it scrolls with the page. Enable countdown for time-limited campaigns. Add button blocks for CTAs."
+		}
+	],
+	"blocks": [
+		{
+			"type": "button",
+			"name": "Button",
+			"settings": [
+				{
+					"type": "text",
+					"id": "text",
+					"label": "Button text",
+					"info": "Leave empty to use locale default"
+				},
+				{
+					"type": "url",
+					"id": "url",
+					"label": "Button link"
+				},
+				{
+					"type": "select",
+					"id": "style",
+					"label": "Button style",
+					"options": [
+						{ "value": "primary", "label": "Primary" },
+						{ "value": "secondary", "label": "Secondary" },
+						{ "value": "outline", "label": "Outline" }
+					],
+					"default": "secondary"
+				},
+				{
+					"type": "header",
+					"content": "Colors"
+				},
+				{
+					"type": "color",
+					"id": "button_color",
+					"label": "Button color"
+				},
+				{
+					"type": "color",
+					"id": "button_text_color",
+					"label": "Button text color"
+				}
+			]
+		}
+	],
+	"max_blocks": 3,
+	"presets": [
+		{
+			"name": "Callout bar",
+			"category": "Header",
+			"blocks": [
+				{
+					"type": "button"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

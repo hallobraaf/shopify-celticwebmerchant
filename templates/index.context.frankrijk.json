@@ -13,21 +13,26 @@
   },
   "parent": "index.json",
   "sections": {
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "image": "shopify://shop_images/1-FR_Banner_JoanneDarc_MiddeleeuwsFR_Feb2026_1.webp",
+        "focus_x": 50,
+        "focus_y": 25,
+        "overlay": "medium"
+      },
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "url": "shopify://collections/tijdperk"
+          }
+        }
+      }
+    },
     "best-products": {
       "settings": {
         "collection": "middeleeuwse-kleding"
       },
       "blocks": {}
-    },
-    "block_marketing_media_text_mEgbKY": {
-      "settings": {},
-      "blocks": {
-        "image_text_aJBEwL": {
-          "settings": {
-            "image": "shopify://shop_images/DSC05197_2.jpg"
-          }
-        }
-      }
     },
     "block_marketing_grid_93tkDC": {
       "settings": {},
@@ -35,6 +40,16 @@
         "banner_nPEhgz": {
           "settings": {
             "image": "shopify://shop_images/DSC00400.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_media_text_mEgbKY": {
+      "settings": {},
+      "blocks": {
+        "image_text_aJBEwL": {
+          "settings": {
+            "image": "shopify://shop_images/DSC05197_2.jpg"
           }
         }
       }

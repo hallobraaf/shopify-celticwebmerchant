@@ -222,7 +222,13 @@
     "recent": "Legutóbbi keresések"
   },
   "marketing": {
-    "products_heading": "Legújabb termékeink"
+    "products_heading": "Legújabb termékeink",
+    "countdown": {
+      "days": "Nap",
+      "hours": "Óra",
+      "minutes": "Perc",
+      "seconds": "Másodperc"
+    }
   },
   "newsletter": {
     "heading": "Hírlevél",

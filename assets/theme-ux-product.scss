@@ -60,6 +60,20 @@
     font-size: 0.875em;
     opacity: 0.7;
   }
+
+  &__brand {
+    font-size: 0.875em;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 }
 
 

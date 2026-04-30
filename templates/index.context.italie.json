@@ -13,22 +13,101 @@
   },
   "parent": "index.json",
   "sections": {
+    "block_marketing_testimonials_npjDe": {
+      "type": "block-marketing-testimonials",
+      "disabled": false,
+      "settings": {
+        "header-c2220a54970e2afd75c3084e67119b77": null,
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "header-f37120152f5afeb00b72b9a94551d84d": null,
+        "alignment": "center",
+        "quote_style": "boxed",
+        "display_mode": "grid",
+        "slider_navigation": true,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 5,
+        "header-33050299746997ccccc013e1026d4d6d": null,
+        "width": "is-align-wide",
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "grid_gap": 1.5,
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "header-1c383eb4a9b3754cf6e79c6b77b21bac": null,
+        "background_color": "",
+        "text_color": "",
+        "header-616fc689f590d81ba7f6051e92db32b6": null,
+        "paragraph-285a0374b1baa5427f0234d185303cd2": null
+      },
+      "blocks": {
+        "testimonial_Qx8AW": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Ordine arrivato secondo i tempi. Confezionato perfettamente. Si presenta di pregevole fattura e soprattutto fedele all immagine e alla descrizione. Continuerò sicuramente a comprare da voi. Complimenti",
+            "author": "Raffaele Nicolò Casaburi, IT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_DpY6Y": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "They are really so passionate about their products and historical and traditional items, not just only vendors, but like a way of life. I bought a replica, it arrived just in times, considering it was shipped from abroad to me, and the package showed no scratch at all, very professional, great care on preparation and shipping. If You register to the site, You earn points with every buy, they have always a discount or promotion: I was surprised also because they gifted me with a very amazing calendar. It's a \"themed\" calendar, month by month (photo with explanation), printed on gloss paper.",
+            "author": "Francesco Coco, IT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        },
+        "testimonial_gAjqD": {
+          "type": "testimonial",
+          "disabled": false,
+          "settings": {
+            "quote": "Consegna veloce, ho ordinato un secchio di legno perfetto, già usato nel mio primo laboratorio vetro soffiato medievale!!!!",
+            "author": "Nadia Festuccia, IT",
+            "author_title": "",
+            "author_image": null,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_Qx8AW",
+        "testimonial_DpY6Y",
+        "testimonial_gAjqD"
+      ],
+      "name": "Testimonials"
+    },
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "image": "shopify://shop_images/1-IT-ES_Banner_Tijdperk_Dec2025_4b87e494-32bb-4715-9083-68afa2b8cf94.webp",
+        "focus_x": 80,
+        "overlay": "medium"
+      },
+      "blocks": {
+        "button_nXdQMm": {
+          "settings": {
+            "url": "shopify://collections/tijdperk"
+          }
+        }
+      }
+    },
     "best-products": {
       "settings": {
         "collection": "middeleeuwse-kleding"
       },
       "blocks": {}
     },
-    "block_marketing_media_text_mEgbKY": {
-      "blocks": {
-        "image_text_aJBEwL": {
-          "settings": {
-            "image": "shopify://shop_images/Roman_aquilifer.jpg"
-          }
-        }
-      }
-    },
     "block_marketing_media_text_iDhD8j": {
+      "settings": {},
       "blocks": {
         "image_text_G9gzXM": {
           "settings": {
@@ -36,6 +115,36 @@
           }
         }
       }
+    },
+    "block_marketing_media_text_mEgbKY": {
+      "settings": {},
+      "blocks": {
+        "image_text_aJBEwL": {
+          "settings": {
+            "image": "shopify://shop_images/Roman_aquilifer.jpg"
+          }
+        }
+      }
     }
-  }
+  },
+  "order": [
+    "block_marketing_cover_EyVVzr",
+    "block_marketing_grid_eKTaaA",
+    "block_marketing_collections_KLibTG",
+    "best-products",
+    "block_marketing_grid_93tkDC",
+    "block_marketing_products_EaRW4A",
+    "block_marketing_products_pXat79",
+    "block_marketing_media_text_iDhD8j",
+    "17653968662b835c7e",
+    "block_marketing_articles_mcEqQJ",
+    "block_marketing_media_text_mEgbKY",
+    "block_marketing_articles_HAGXAT",
+    "block_marketing_media_text_eUmREH",
+    "block_marketing_articles_wJ9gkm",
+    "block_marketing_articles_qtkjtB",
+    "block_marketing_brands_small_gekrHy",
+    "1765396664e68351eb",
+    "block_marketing_testimonials_npjDe"
+  ]
 }

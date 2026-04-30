@@ -1,0 +1,107 @@
+/* ==========================================================================
+   BLOCK-HEADER-CALLOUT
+   Dismissible announcement/promo bar — repositioned to top of <main> via JS
+   ========================================================================== */
+
+.block-header-callout {
+  background-color: var(--callout-bg, #0f1f38);
+  color: var(--callout-text, #ffffff);
+
+  &__content {
+    // hidden by default, JS reveals after dismiss check
+  }
+
+  .header-callout {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 0.75em 1em;
+
+    &--align-left .header-callout__body {
+      justify-content: flex-start;
+    }
+
+    &--align-center .header-callout__body {
+      justify-content: center;
+    }
+
+    &--align-right .header-callout__body {
+      justify-content: flex-end;
+    }
+
+    &__body {
+      flex: 1 1 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5em 1em;
+    }
+
+    &__heading {
+      font-family: var(--theme-font-family-serif);
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    &__subheading {
+      font-size: 0.875em;
+      opacity: 0.85;
+    }
+
+    &__countdown {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.875em;
+      white-space: nowrap;
+    }
+
+    &__buttons {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+
+      .marketing-cta {
+        margin: 0;
+      }
+    }
+
+    &__close {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2em;
+      height: 2em;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 150ms ease;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+// Mobile: stack content
+@media (max-width: 40em) {
+  .block-header-callout .header-callout {
+    &__body {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &__buttons {
+      justify-content: center;
+    }
+  }
+}

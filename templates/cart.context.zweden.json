@@ -17,26 +17,27 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-d98862c9e0dc7728da208e8e92c95c23": null,
+        "header-65ec953799c96b6697ac12c48d30ba3f": null,
         "heading": "",
         "subheading": "",
-        "header-9ffa867c38084bc100bb641ce7f19002": null,
+        "header-380a612da87438a376ff4f339e55233e": null,
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-e7e8d6265eed8777925203661eb9933c": null,
+        "header-ce6cdd008d80f6e15cf1718b6c1e80e9": null,
         "background_color": "",
         "text_color": "",
-        "header-20bd526289c92ca0c05bdb1db1aacd3d": null,
-        "anchor": "",
-        "custom_class": ""
+        "header-99d0b72aaf05d0d8d71ef0d721106d0a": null,
+        "paragraph-ea5f96cc7de4fbfbf27d42007777b12e": null
       },
       "blocks": {
         "banner_6xwMg": {
           "type": "banner",
           "disabled": false,
           "settings": {
-            "text": "Fri frakt från 1070 kr.",
+            "text": "Fri frakt från 1070 kr",
             "cta_text": "",
             "cta_url": "",
             "style": "promo",
@@ -53,6 +54,6 @@
   "order": [
     "block_marketing_banners_FzfRq",
     "cart-order",
-    "block_product_recommended_yfFAdg"
+    "block_marketing_products_QKemGE"
   ]
 }

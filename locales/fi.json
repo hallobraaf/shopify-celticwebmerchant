@@ -15,7 +15,6 @@
     "no_items": "Ei tuotteita",
     "no_content": "Sisältöä ei ole saatavilla"
   },
-
   "product": {
     "add_to_cart": "Lisää ostoskoriin",
     "choose_options": "Valitse vaihtoehdot",
@@ -92,7 +91,6 @@
       "total_reviews": "arvosteluja yhteensä"
     }
   },
-
   "collection": {
     "title": "Kokoelma",
     "heading": "Kaikki kokoelmat",
@@ -140,7 +138,6 @@
       "date_desc": "Päivämäärä, uudesta vanhaan"
     }
   },
-
   "blog": {
     "title": "Blogi",
     "heading": "Uusimmat artikkelit",
@@ -167,7 +164,6 @@
       "moderated": "Kommenttisi lähetettiin. Julkaisemme sen pian."
     }
   },
-
   "pages": {
     "assist": {
       "title": "Apu ja tuki",
@@ -181,7 +177,6 @@
       "coming_soon": "Tulossa pian..."
     }
   },
-
   "cart": {
     "title": "Ostoskorisi",
     "heading": "Ostoskori",
@@ -210,7 +205,6 @@
     "item_added": "Tuote lisätty ostoskoriin",
     "quantity_error": "Voit lisätä vain {{ quantity }} tätä tuotetta."
   },
-
   "search": {
     "title": "Hakutulokset",
     "label": "Haku",
@@ -227,11 +221,15 @@
     "popular": "Suositut haut",
     "recent": "Viimeisimmät haut"
   },
-
   "marketing": {
-    "products_heading": "Uusimmat tuotteemme"
+    "products_heading": "Uusimmat tuotteemme",
+    "countdown": {
+      "days": "Päivää",
+      "hours": "Tuntia",
+      "minutes": "Minuuttia",
+      "seconds": "Sekuntia"
+    }
   },
-
   "newsletter": {
     "heading": "Uutiskirje",
     "label": "Sähköposti",
@@ -239,7 +237,6 @@
     "button": "Tilaa",
     "success": "Kiitos tilauksesta"
   },
-
   "contact": {
     "title": "Yhteystiedot",
     "form_title": "Yhteydenottolomake",
@@ -250,7 +247,6 @@
     "send": "Lähetä",
     "success": "Kiitos yhteydenotostasi. Otamme yhteyttä mahdollisimman pian."
   },
-
   "footer": {
     "service_heading": "Asiakaspalvelu",
     "service_text": "Asiakaspalvelutiimimme on valmis auttamaan. Tavoitat meidät puhelimitse, sähköpostitse ja chatissa.",
@@ -259,7 +255,6 @@
     "showroom_text": "Vieraile showroomissamme ja näe kaikki tuotteemme paikan päällä. Ajanvarauksella tai aukioloaikoina.",
     "showroom_link_text": "Varaa vierailusi"
   },
-
   "customer": {
     "account": "Tili",
     "log_in": "Kirjaudu sisään",
@@ -270,7 +265,6 @@
     "wishlist": "Toivelista",
     "no_orders": "Et ole vielä tehnyt tilauksia."
   },
-
   "giftcard": {
     "title": "Lahjakortti",
     "balance": "Tässä on {{ value }} lahjakorttisi kauppaan {{ shop }}!",
@@ -282,7 +276,6 @@
     "how_to_use": "Käytä lahjakortin koodia verkossa tai QR-koodia kaupassa",
     "shop_link": "Vieraile verkkokaupassa"
   },
-
   "accessibility": {
     "skip_to_content": "Siirry sisältöön",
     "close": "Sulje",
@@ -311,7 +304,6 @@
       "load": "Lataa video: {{ description }}"
     }
   },
-
   "localization": {
     "country": "Maa/alue",
     "language": "Kieli",
@@ -325,14 +317,12 @@
     "countries_found": "{{ count }} maata/aluetta löytyi",
     "info_text": "Hinnat ja toimituskulut voivat vaihdella valintasi mukaan."
   },
-
   "pagination": {
     "label": "Sivunumerointi",
     "previous": "Edellinen",
     "next": "Seuraava",
     "page": "Sivu {{ number }}"
   },
-
   "password": {
     "title": "Avataan pian",
     "heading": "Siirry kauppaan salasanalla:",
@@ -343,7 +333,6 @@
     "enter": "Lähetä",
     "owner_html": "Oletko kaupan omistaja? <a href=\"/admin\">Kirjaudu tästä</a>"
   },
-
   "error": {
     "404": {
       "title": "Sivua ei löytynyt",

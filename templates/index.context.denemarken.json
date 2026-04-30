@@ -13,20 +13,36 @@
     "market": "denemarken"
   },
   "sections": {
-    "block_marketing_media_text_eUmREH": {
+    "block_marketing_cover_EyVVzr": {
+      "settings": {
+        "image": "shopify://shop_images/1-DK-SEBanner_Viking_Eleanora_Feb2026_3.webp",
+        "focus_x": 50,
+        "overlay": "medium"
+      },
       "blocks": {
-        "image_text_xddkDV": {
+        "button_nXdQMm": {
           "settings": {
-            "image": "shopify://shop_images/Germanic1.jpg"
+            "url": "shopify://collections/tijdperk"
           }
         }
       }
     },
     "block_marketing_media_text_mEgbKY": {
+      "settings": {},
       "blocks": {
         "image_text_aJBEwL": {
           "settings": {
             "image": "shopify://shop_images/volva.jpg"
+          }
+        }
+      }
+    },
+    "block_marketing_media_text_eUmREH": {
+      "settings": {},
+      "blocks": {
+        "image_text_xddkDV": {
+          "settings": {
+            "image": "shopify://shop_images/Germanic1.jpg"
           }
         }
       }

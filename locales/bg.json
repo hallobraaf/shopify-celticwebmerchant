@@ -222,7 +222,13 @@
     "recent": "Скорошни търсения"
   },
   "marketing": {
-    "products_heading": "Нашите най-нови продукти"
+    "products_heading": "Нашите най-нови продукти",
+    "countdown": {
+      "days": "Дни",
+      "hours": "Часа",
+      "minutes": "Минути",
+      "seconds": "Секунди"
+    }
   },
   "newsletter": {
     "heading": "Бюлетин",

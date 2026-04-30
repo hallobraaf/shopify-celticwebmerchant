@@ -284,5 +284,13 @@
       "subtext": "404"
     },
     "general": "카트를 업데이트하는 중 오류가 발생했습니다. 다시 시도하십시오."
+  },
+  "marketing": {
+    "countdown": {
+      "days": "일",
+      "hours": "시간",
+      "minutes": "분",
+      "seconds": "초"
+    }
   }
 }

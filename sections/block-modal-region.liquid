@@ -4,210 +4,406 @@
   ============================================================================
 
   Purpose:
-  Modal for selecting language/region preferences.
-  Supports three optional levels via block types:
-  - "group"    block: main heading (e.g. "Europa") — optional
-  - "region"   block: sub-heading row (e.g. "Nederland")
-  - "language" block: inline pill belonging to the preceding region
-
-  All levels are optional and can be mixed freely:
-  - Flat:    Region → Language → Language
-  - Grouped: Group → Region → Language → Region → Language
-
-  Switching locale uses Shopify's native localization form, which correctly
-  handles translated URLs and preserves the current page path across all
-  markets and domains (.com, .co.uk).
-
-  Active state is determined by matching country_code + language_code
-  against Shopify's localization object.
-
+  Modal for selecting language and currency preferences.
+  Each block defines a language + currency combination.
+  
   Usage:
-  Add to footer-group.json. Trigger with data-modal-trigger="region-modal".
+  Add to footer-group.json or render directly in a template.
+  Add "Language" blocks to define available language/currency combinations.
 
-  Dependencies:
-  - theme-modal.js
-  - theme-ux.css
-  - html-theme-icons snippet
+  How it works:
+  - Each block has a language_code and country_code (for currency)
+  - Languages are deduplicated in the language selector
+  - Currencies are deduplicated in the currency selector
+  - Selecting a language auto-selects the first matching currency
+  - Selecting a currency auto-selects the first matching language
+
+  Toggle:
+  - use_blocks = false (default): originele selects voor taal + valuta (live)
+  - use_blocks = true:            nieuwe blok-gebaseerde regio/taal picker
 
   ============================================================================
 {%- endcomment -%}
 
 {%- liquid
-  assign show_trigger     = section.settings.show_trigger
-  assign modal_id         = section.settings.modal_id | default: 'region-modal'
+  assign use_blocks    = section.settings.use_blocks
+  assign show_language = section.settings.show_language_selector
+  assign show_currency = section.settings.show_currency_selector
+  assign auto_submit   = section.settings.auto_submit
+  assign show_trigger  = section.settings.show_trigger
+  assign modal_id      = section.settings.modal_id | default: 'region-modal'
+
   assign current_country  = localization.country.iso_code | downcase
   assign current_language = localization.language.iso_code | downcase
+  assign current_market   = localization.market.handle | downcase
+
+  comment
+    Collect language blocks
+  endcomment
+  assign language_blocks = section.blocks | where: 'type', 'language'
 -%}
 
-{%- comment -%} Trigger Button {%- endcomment -%}
-{%- if show_trigger -%}
-  <button
-    type="button"
+{%- if show_language or show_currency -%}
+<div class="block-modal-region-content" id="block-modal-region-{{ section.id }}">
+  
+  {%- if show_trigger -%}
+  {%- comment -%} Trigger Button {%- endcomment -%}
+  <button 
+    type="button" 
     class="block-modal-region__trigger"
     aria-haspopup="dialog"
+    data-region-trigger="{{ modal_id }}"
     data-modal-trigger="{{ modal_id }}"
   >
     <span class="block-modal-region__trigger-icon" aria-hidden="true">
-      {%- render 'html-theme-icons', icon: 'globe', size: 20 -%}
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 1.5C10 1.5 6 5 6 10C6 15 10 18.5 10 18.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 1.5C10 1.5 14 5 14 10C14 15 10 18.5 10 18.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M2 10H18" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M3.5 6H16.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M3.5 14H16.5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
     </span>
     <span class="block-modal-region__trigger-text">
-      {{ localization.language.endonym_name | capitalize }} | {{ localization.country.iso_code }}
+      {%- if show_language -%}
+        {{ localization.language.endonym_name | capitalize }}
+      {%- endif -%}
+      {%- if show_language and show_currency %} | {% endif -%}
+      {%- if show_currency -%}
+        {{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }}
+      {%- endif -%}
     </span>
   </button>
-{%- endif -%}
+  {%- endif -%}
 
-{%- comment -%} Modal {%- endcomment -%}
-<div
-  data-modal="{{ modal_id }}"
-  id="{{ modal_id }}"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="{{ modal_id }}-title"
-  hidden
->
-  <div data-modal-overlay></div>
+  {%- comment -%} Modal {%- endcomment -%}
+  <div
+    data-modal="{{ modal_id }}"
+    id="{{ modal_id }}"
+    class="block-modal-region"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="{{ modal_id }}-title"
+    hidden
+  >
+    <div data-modal-overlay></div>
 
-  <div class="theme-modal__content block-modal-region__content">
-    <header class="theme-modal__header">
-      <h2 class="theme-modal__title" id="{{ modal_id }}-title">
-        {{ 'localization.modal_heading' | t }}
-      </h2>
-      <button
-        type="button"
-        class="theme-modal__close"
-        data-modal-close
-        aria-label="{{ 'accessibility.close' | t }}"
-      >
-        {%- render 'html-theme-icons', icon: 'close', size: 20 -%}
-      </button>
-    </header>
+    <div class="theme-modal__content block-modal-region__content">
+      <header class="theme-modal__header">
+        <h2 class="theme-modal__title" id="{{ modal_id }}-title">
+          {%- if section.settings.modal_heading != blank -%}{{ section.settings.modal_heading }}{%- else -%}{{ 'localization.modal_heading' | t }}{%- endif -%}
+        </h2>
+        <button
+          type="button"
+          class="theme-modal__close"
+          data-modal-close
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {%- render 'html-theme-icons', icon: 'close', size: 20 -%}
+        </button>
+      </header>
 
-    <div class="theme-modal__body">
+      <div class="theme-modal__body">
 
-      {%- comment -%} Hidden form — submitted via JS on language click {%- endcomment -%}
-      {%- form 'localization', id: modal_id, class: 'block-modal-region__form' -%}
-        <input type="hidden" id="{{ modal_id }}-country-code"  name="country_code"  value="{{ current_country }}">
-        <input type="hidden" id="{{ modal_id }}-language-code" name="language_code" value="{{ current_language }}">
-      {%- endform -%}
+      {%- if use_blocks -%}
 
-      {%- if section.blocks.size > 0 -%}
-        <div class="block-modal-region__markets">
-          {%- liquid
-            assign in_group  = false
-            assign in_market = false
-          -%}
+        {%- comment -%} NIEUW: blok-gebaseerde regio/taal picker via hreflang navigatie {%- endcomment -%}
+        {%- if section.blocks.size > 0 -%}
+          <div class="block-modal-region__markets">
+            {%- liquid
+              assign in_group  = false
+              assign in_market = false
+            -%}
 
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
 
-              {%- when 'group' -%}
-                {%- comment -%} Close open region + group {%- endcomment -%}
-                {%- if in_market -%}</div></div>{%- assign in_market = false -%}{%- endif -%}
-                {%- if in_group -%}</div>{%- assign in_group = false -%}{%- endif -%}
-                {%- assign in_group = true -%}
-                <div class="block-modal-region__group" {{ block.shopify_attributes }}>
-                  {%- if block.settings.title != blank -%}
-                    <p class="block-modal-region__group-name">{{ block.settings.title }}</p>
-                  {%- endif -%}
+                {%- when 'group' -%}
+                  {%- if in_market -%}</div></div>{%- assign in_market = false -%}{%- endif -%}
+                  {%- if in_group -%}</div>{%- assign in_group = false -%}{%- endif -%}
+                  {%- assign in_group = true -%}
+                  <div class="block-modal-region__group" {{ block.shopify_attributes }}>
+                    {%- if block.settings.title != blank -%}
+                      <p class="block-modal-region__group-name">{{ block.settings.title }}</p>
+                    {%- endif -%}
 
-              {%- when 'region' -%}
-                {%- comment -%} Close open region only {%- endcomment -%}
-                {%- if in_market -%}</div></div>{%- endif -%}
-                {%- assign in_market = true -%}
-                <div class="block-modal-region__market" {{ block.shopify_attributes }}>
-                  {%- if block.settings.title != blank -%}
-                    <p class="block-modal-region__market-name">{{ block.settings.title }}</p>
-                  {%- endif -%}
-                  <div class="block-modal-region__languages">
+                {%- when 'region' -%}
+                  {%- if in_market -%}</div></div>{%- endif -%}
+                  {%- assign in_market = true -%}
+                  <div class="block-modal-region__market" {{ block.shopify_attributes }}>
+                    {%- if block.settings.title != blank -%}
+                      <p class="block-modal-region__market-name">{{ block.settings.title }}</p>
+                    {%- endif -%}
+                    <div class="block-modal-region__languages">
 
-              {%- when 'language' -%}
-                {%- liquid
-                  assign lang_label    = block.settings.label
-                  assign lang_country  = block.settings.country_code
-                  assign lang_language = block.settings.language_code
-                  assign is_active     = false
-                  if lang_country == current_country and lang_language == current_language
-                    assign is_active = true
-                  endif
-                -%}
-                {%- if lang_label != blank and lang_country != blank and lang_language != blank -%}
-                  {%- if is_active -%}
-                    <span
-                      class="block-modal-region__lang-btn is-active"
-                      aria-current="true"
-                      {{ block.shopify_attributes }}
-                    >{{ lang_label }}</span>
-                  {%- else -%}
+                {%- when 'language' -%}
+                  {%- liquid
+                    assign lang_label    = block.settings.label
+                    assign lang_language = block.settings.language_code | downcase | strip
+                    assign lang_region   = block.settings.region | downcase | strip
+                  -%}
+                  {%- if lang_label != blank and lang_language != blank -%}
                     <button
                       type="button"
                       class="block-modal-region__lang-btn"
-                      data-region-country="{{ lang_country }}"
-                      data-region-language="{{ lang_language }}"
-                      data-region-form="{{ modal_id }}"
+                      data-lang="{{ lang_language }}"
+                      data-region="{{ lang_region }}"
                       {{ block.shopify_attributes }}
                     >{{ lang_label }}</button>
                   {%- endif -%}
-                {%- endif -%}
 
-            {%- endcase -%}
-          {%- endfor -%}
+              {%- endcase -%}
+            {%- endfor -%}
 
-          {%- comment -%} Close remaining open tags {%- endcomment -%}
-          {%- if in_market -%}</div></div>{%- endif -%}
-          {%- if in_group -%}</div>{%- endif -%}
-        </div>
+            {%- if in_market -%}</div></div>{%- endif -%}
+            {%- if in_group -%}</div>{%- endif -%}
+          </div>
+        {%- endif -%}
+
+      {%- else -%}
+
+        {%- comment -%} OUD (live): selects voor taal + valuta {%- endcomment -%}
+        {%- form 'localization', id: modal_id, class: 'block-modal-region__form' -%}
+          <div class="block-modal-region__fields">
+            
+            {%- if show_language -%}
+              <div class="block-modal-region__field">
+                <label class="block-modal-region__label" for="{{ modal_id }}-language-select">
+                  {{ 'localization.language' | t | default: 'Taal' }}
+                </label>
+                {% render 'html-form-languages', id: modal_id, languages: language_blocks %}
+              </div>
+            {%- endif -%}
+
+            {%- if show_currency -%}
+              <div class="block-modal-region__field">
+                <label class="block-modal-region__label" for="{{ modal_id }}-country-select">
+                  {{ 'localization.currency' | t | default: 'Valuta' }}
+                </label>
+                {% render 'html-form-currencies', id: modal_id, languages: language_blocks %}
+              </div>
+            {%- endif -%}
+
+          </div>
+
+          {%- unless auto_submit -%}
+            <div class="block-modal-region__actions">
+              <button type="submit" class="block-modal-region__submit">
+                {%- if section.settings.submit_text != blank -%}{{ section.settings.submit_text }}{%- else -%}{{ 'localization.update_preferences' | t }}{%- endif -%}
+              </button>
+            </div>
+          {%- endunless -%}
+        {%- endform -%}
+
       {%- endif -%}
 
       {%- if section.settings.show_info_text -%}
         <p class="block-modal-region__info">
-          {{ 'localization.info_text' | t }}
+          {%- if section.settings.info_text != blank -%}{{ section.settings.info_text }}{%- else -%}{{ 'localization.info_text' | t }}{%- endif -%}
         </p>
       {%- endif -%}
 
-    </div>
-  </div>
+      </div>{%- comment -%} /theme-modal__body {%- endcomment -%}
+    </div>{%- comment -%} /theme-modal__content {%- endcomment -%}
+  </div>{%- comment -%} /data-modal {%- endcomment -%}
+
+  {%- comment -%} Store block mappings for JavaScript (originele variant) {%- endcomment -%}
+  {%- unless use_blocks -%}
+    {%- capture mappings_json -%}
+      {%- for block in language_blocks -%}
+        {%- assign lang_code = block.settings.language_code | downcase | strip -%}
+        {%- assign country_code = block.settings.country_code | upcase | strip -%}
+        {%- for country in localization.available_countries -%}
+          {%- if country.iso_code == country_code -%}
+            {"language":"{{ lang_code }}","country":"{{ country_code }}","currency":"{{ country.currency.iso_code }}"}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    <script type="application/json" id="block-modal-region-data-{{ section.id }}">
+      {"mappings":[{{ mappings_json }}]}
+    </script>
+  {%- endunless -%}
+
 </div>
+
+{{ 'block-modal-region.css' | asset_url | stylesheet_tag }}
 
 <script>
   (function() {
-    document.addEventListener('click', function(e) {
-      var btn = e.target.closest('[data-region-form]');
-      if (!btn) return;
+    const container = document.getElementById('block-modal-region-{{ section.id }}');
+    if (!container) return;
 
-      var formId   = btn.dataset.regionForm;
-      var country  = btn.dataset.regionCountry;
-      var language = btn.dataset.regionLanguage;
-      var form     = document.getElementById(formId);
-      if (!form) return;
+    const modal = container.querySelector('[data-modal]');
+    const closeButtons = container.querySelectorAll('[data-close-modal]');
+    const form = container.querySelector('.block-modal-region__form');
+    const useBlocks = {{ use_blocks | json }};
+    const autoSubmit = {{ auto_submit | json }};
 
-      form.querySelector('#' + formId + '-country-code').value  = country;
-      form.querySelector('#' + formId + '-language-code').value = language;
-      form.submit();
-    });
+    if (useBlocks) {
+      // Blokken variant: navigeer via hreflang lookup
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('[data-lang]');
+        if (!btn) return;
+
+        var lang   = (btn.dataset.lang   || '').toLowerCase().trim();
+        var region = (btn.dataset.region || '').toLowerCase().trim();
+
+        if (!lang) return;
+
+        var url = null;
+
+        // Stap 1: href pad matching op "/{lang}-{region}" (met of zonder trailing slash)
+        if (region) {
+          var prefix = '/' + lang + '-' + region;
+          var allLinks = document.querySelectorAll('link[rel="alternate"]');
+          for (var i = 0; i < allLinks.length; i++) {
+            var href = allLinks[i].getAttribute('href') || '';
+            var path = href.replace(/^https?:\/\/[^\/]+/, '');
+            if (path === prefix || path.indexOf(prefix + '/') === 0) {
+              url = href;
+              break;
+            }
+          }
+        }
+
+        // Stap 2: exacte hreflang match op "{lang}-{REGION}" — fallback als href pad niets oplevert
+        if (!url && region) {
+          var hreflangExact = document.querySelector('link[rel="alternate"][hreflang="' + lang + '-' + region.toUpperCase() + '"]');
+          if (hreflangExact) url = hreflangExact.getAttribute('href');
+        }
+
+        // Stap 3: alleen taal, geen region — match hreflang="{lang}" voor primaire market
+        if (!url && !region) {
+          var hreflangLang = document.querySelector('link[rel="alternate"][hreflang="' + lang + '"]');
+          if (hreflangLang) url = hreflangLang.getAttribute('href');
+        }
+
+        if (url) {
+          window.location.href = url;
+        } else {
+          console.warn('[block-modal-region] Geen hreflang gevonden voor lang="' + lang + '" region="' + region + '"');
+        }
+      });
+    } else {
+      // Originele variant: mapping tussen taal- en valutaselect
+      const currencySelect = container.querySelector('[name="country_code"]');
+      const languageSelect = container.querySelector('[name="language_code"]');
+
+      const dataEl = document.getElementById('block-modal-region-data-{{ section.id }}');
+      let mappings = [];
+      if (dataEl) {
+        try {
+          const data = JSON.parse(dataEl.textContent);
+          mappings = data.mappings || [];
+        } catch (e) {
+          console.error('Failed to parse region mappings:', e);
+        }
+      }
+
+      if (currencySelect && languageSelect && mappings.length > 0) {
+        languageSelect.addEventListener('change', (e) => {
+          const selectedLanguage = e.target.value.toLowerCase();
+          const mapping = mappings.find(m => m.language === selectedLanguage);
+          if (mapping) {
+            const option = currencySelect.querySelector(`option[data-currency="${mapping.currency}"]`);
+            if (option) currencySelect.value = option.value;
+          }
+        });
+
+        currencySelect.addEventListener('change', (e) => {
+          const selectedOption = e.target.options[e.target.selectedIndex];
+          const selectedCurrency = selectedOption.dataset.currency;
+          const mapping = mappings.find(m => m.currency === selectedCurrency);
+          if (mapping) {
+            const languageOption = languageSelect.querySelector(`option[value="${mapping.language}"]`);
+            if (languageOption) languageSelect.value = mapping.language;
+          }
+        });
+      }
+
+      if (autoSubmit && form) {
+        const selects = form.querySelectorAll('select');
+        selects.forEach(select => {
+          select.addEventListener('change', () => form.submit());
+        });
+      }
+    }
+
   })();
 </script>
-
-{{ 'block-modal-region.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Region modal",
   "tag": "section",
-  "class": "block-modal-region",
-  "limit": 1,
-  "enabled_on": {
-    "groups": ["footer"]
-  },
+  "class": "section-modal-region",
   "settings": [
     {
       "type": "header",
-      "content": "Content"
+      "content": "Trigger button"
     },
     {
       "type": "checkbox",
       "id": "show_trigger",
       "label": "Show trigger button",
+      "info": "Disable if using html-header-region snippet elsewhere",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "modal_id",
+      "label": "Modal ID",
+      "info": "Use this ID in html-header-region snippet to trigger this modal",
+      "default": "region-modal"
+    },
+    {
+      "type": "header",
+      "content": "Display options"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_blocks",
+      "label": "Gebruik blok-inhoud in modal",
+      "info": "Uit (standaard): originele taal- en valutaselects. Aan: nieuwe blok-gebaseerde regio/taal picker.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_language_selector",
+      "label": "Show language selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show currency selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_submit",
+      "label": "Auto-submit on change",
+      "info": "Automatically update when selection changes",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Modal content"
+    },
+    {
+      "type": "text",
+      "id": "modal_heading",
+      "label": "Modal heading"
+    },
+    {
+      "type": "text",
+      "id": "submit_text",
+      "label": "Submit button text"
     },
     {
       "type": "checkbox",
@@ -216,22 +412,9 @@
       "default": true
     },
     {
-      "type": "header",
-      "content": "Advanced"
-    },
-    {
-      "type": "text",
-      "id": "modal_id",
-      "label": "Modal ID",
-      "default": "region-modal"
-    },
-    {
-      "type": "header",
-      "content": "Howto"
-    },
-    {
-      "type": "paragraph",
-      "content": "Flat: Region → Language → Language. Grouped: Group → Region → Language → Region → Language. Group is optional."
+      "type": "textarea",
+      "id": "info_text",
+      "label": "Info text"
     }
   ],
   "blocks": [
@@ -267,40 +450,70 @@
           "type": "text",
           "id": "label",
           "label": "Label",
-          "placeholder": "Nederlands"
+          "placeholder": "Nederlands",
+          "info": "Wat de bezoeker ziet, bijv. 'Nederlands' of 'English'"
         },
         {
           "type": "text",
           "id": "language_code",
-          "label": "Language code",
+          "label": "Taalcode",
           "placeholder": "nl",
-          "info": "Lowercase. e.g. nl, de, fr, en"
+          "info": "Lowercase ISO 639-1 code, bijv. nl, en, de, fr"
         },
         {
           "type": "text",
-          "id": "country_code",
-          "label": "Country code",
-          "placeholder": "nl",
-          "info": "Lowercase. e.g. nl, be, de, fr, gb"
+          "id": "region",
+          "label": "Regio / market",
+          "placeholder": "eu",
+          "info": "Lowercase. Landcode (bijv. be, de) of market handle (bijv. eu). Leeg laten voor de primaire market."
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Region modal",
-      "category": "Modal",
+      "name": "Language & Currency",
       "blocks": [
-        { "type": "group",    "settings": { "title": "Europa" } },
-        { "type": "region",   "settings": { "title": "Nederland" } },
-        { "type": "language", "settings": { "label": "Nederlands", "language_code": "nl", "country_code": "nl" } },
-        { "type": "language", "settings": { "label": "English",    "language_code": "en", "country_code": "nl" } },
-        { "type": "region",   "settings": { "title": "Belgi\u00eb" } },
-        { "type": "language", "settings": { "label": "Nederlands", "language_code": "nl", "country_code": "be" } },
-        { "type": "language", "settings": { "label": "Fran\u00e7ais",   "language_code": "fr", "country_code": "be" } },
-        { "type": "group",    "settings": { "title": "Overig" } },
-        { "type": "region",   "settings": { "title": "United Kingdom" } },
-        { "type": "language", "settings": { "label": "English",    "language_code": "en", "country_code": "gb" } }
+        {
+          "type": "group",
+          "settings": { "title": "Europa" }
+        },
+        {
+          "type": "region",
+          "settings": { "title": "Nederland" }
+        },
+        {
+          "type": "language",
+          "settings": { "label": "Nederlands", "language_code": "nl", "region": "" }
+        },
+        {
+          "type": "language",
+          "settings": { "label": "English", "language_code": "en", "region": "" }
+        },
+        {
+          "type": "region",
+          "settings": { "title": "Belgi\u00eb" }
+        },
+        {
+          "type": "language",
+          "settings": { "label": "Nederlands", "language_code": "nl", "region": "be" }
+        },
+        {
+          "type": "language",
+          "settings": { "label": "Fran\u00e7ais", "language_code": "fr", "region": "be" }
+        },
+        {
+          "type": "region",
+          "settings": { "title": "Europa (overig)" }
+        },
+        {
+          "type": "language",
+          "settings": { "label": "Nederlands", "language_code": "nl", "region": "eu" }
+        },
+        {
+          "type": "language",
+          "settings": { "label": "English", "language_code": "en", "region": "eu" }
+        }
       ]
     }
   ]

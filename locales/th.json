@@ -222,7 +222,13 @@
     "recent": "การค้นหาล่าสุด"
   },
   "marketing": {
-    "products_heading": "สินค้าใหม่ล่าสุด"
+    "products_heading": "สินค้าใหม่ล่าสุด",
+    "countdown": {
+      "days": "วัน",
+      "hours": "ชั่วโมง",
+      "minutes": "นาที",
+      "seconds": "วินาที"
+    }
   },
   "newsletter": {
     "heading": "จดหมายข่าว",
