@@ -13,20 +13,20 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-1e1e83ad9bb47ce3ef15a85d11ce7864": null,
+        "header-addc5fbea3ad9a273f35c38160fcd80e": null,
         "heading": "",
         "subheading": "g",
-        "header-4af2a511fb99955f2661a614fc22bfbf": null,
+        "header-112f82b2e3b2bb62656a0b36d58ebbf0": null,
         "anchor": "",
         "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-71c27414bf68f6dc18dbb25b69041145": null,
+        "header-ffa86971928546f9dd682c9e79f1cf76": null,
         "background_color": "",
         "text_color": "",
-        "header-5d90a6ab51c4010852ae110315ef39e2": null,
-        "paragraph-1b6771b6bce948c63b94d6121fb9da53": null
+        "header-d7774ec5d09df2b9b1527af2f163a2cd": null,
+        "paragraph-7971886fc600df05c42e706eccdf567a": null
       },
       "blocks": {
         "banner_nPcdi": {
@@ -50,10 +50,10 @@
       "type": "block-marketing-products",
       "disabled": false,
       "settings": {
-        "header-4877000da2aef66ceefd2b0b9e4a3f73": null,
+        "header-298e7c6b48bbd27bc41d05fa751aff85": null,
         "collection": "altijd-nodig",
         "heading": "Always needed",
-        "header-c87e2f394083a7301464d978b1a6c33c": null,
+        "header-ffd153e1b45ed9c625aeb3e4923a0ae4": null,
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_secondary_image": false,
@@ -66,7 +66,7 @@
         "visible_rows": 1,
         "show_more_text": "",
         "show_less_text": "",
-        "header-35ac0ee9c97ddf8713152b693aad636e": null,
+        "header-521c9752de084d060b2a7f528a7ee9fb": null,
         "width": "is-align",
         "columns_desktop": 4,
         "columns_tablet": 3,
@@ -75,11 +75,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-693ba5396e35b594cb80baa820a429fd": null,
+        "header-e2fc3754eb33a39d0010638f6be594a9": null,
         "background_color": "",
         "text_color": "",
-        "header-5bf205930d06e0922fc0b40332131ba0": null,
-        "paragraph-90817e32fb9f5eb77fc6556eeb8f728f": null
+        "header-72c44766996d5810aab75be01536f6bc": null,
+        "paragraph-f6afb650bb55e3c88a0460ad43ce6a5c": null
       },
       "blocks": {},
       "block_order": [],
@@ -89,11 +89,11 @@
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-aa1d2caa42f9043599a3e06e8ad5d5aa": null,
+        "header-1a06ea3995c33c152ba7aea959c391bf": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-abf60696c2be9e456dd8badff529ebe6": null,
+        "header-6125a5c853da3652a9361286f4c4595a": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -101,7 +101,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-cb216a91283c388c6c3e5e45b16a06e8": null,
+        "header-b1deeebba640e8221b467a6d96309c38": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -110,11 +110,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-8253c97a9ff35a7c8dcc1c4bb5965eef": null,
+        "header-c08ba0565475f72885e19c503adcd8e5": null,
         "background_color": "",
         "text_color": "",
-        "header-e7d85a85d71d8f5861beb204a1228bc0": null,
-        "paragraph-83c54d7d577e7f3c61bd60a24918afcd": null
+        "header-cee584841049ca22c23df67a39998241": null,
+        "paragraph-3c66a39e8c787b9d2cfd3d3eeb69ad26": null
       },
       "blocks": {
         "testimonial_ffPBk": {
@@ -173,6 +173,7 @@
     "block_marketing_banners_qU3DG",
     "cart-order",
     "block_marketing_products_UALKY",
-    "block_marketing_testimonials_nXCwa"
+    "block_marketing_testimonials_nXCwa",
+    "block_marketing_media_text_tQPwtw"
   ]
 }

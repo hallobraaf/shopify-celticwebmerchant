@@ -13,15 +13,52 @@
   },
   "parent": "cart.json",
   "sections": {
+    "block_marketing_banners_3BVpE": {
+      "type": "block-marketing-banners",
+      "disabled": false,
+      "settings": {
+        "header-50d092885ca92b862b05e102d9454685": null,
+        "heading": "",
+        "subheading": "",
+        "header-d3a8ef653cf22da611ee52929df96355": null,
+        "anchor": "",
+        "custom_class": "",
+        "width": "is-align-wide",
+        "layout": "stacked",
+        "padding_block": 3,
+        "header-c389dd283cb0ed29144e631a0dd39fe4": null,
+        "background_color": "",
+        "text_color": "",
+        "header-218d9ab5b6af5e5c4e326909d0eb4e51": null,
+        "paragraph-1859784970ffd2969cdcaa8f16ec8d4d": null
+      },
+      "blocks": {
+        "banner_GwfXR": {
+          "type": "banner",
+          "disabled": false,
+          "settings": {
+            "text": "Gratis Versand ab CHF 140.–",
+            "cta_text": "",
+            "cta_url": "",
+            "style": "promo",
+            "dismissible": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_GwfXR"
+      ],
+      "name": "Banners"
+    },
     "block_marketing_testimonials_bjKMt": {
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-32aaee070f76530ed98335e8b5dd251b": null,
+        "header-29d1c822da428adc6138d1a96ea97a0e": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-af2c6c3b8fc04a4345ab65034b7f9672": null,
+        "header-4aa73e17c9976a264986192de20d3689": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -29,7 +66,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-7f61994478ee3dfa71e1b349e69c1c1a": null,
+        "header-01de3679b47e675e39d6fee7905d3e43": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -38,11 +75,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-74f936b9ad9d25ef5c4da81c6eb6181a": null,
+        "header-cd3428caa9702e798d5329af83081891": null,
         "background_color": "",
         "text_color": "",
-        "header-ae9fdcff17a5165d1fc15ec6d815718f": null,
-        "paragraph-35bd0ba5c23f33f8b7cb936462522267": null
+        "header-7badead5460ff95f9f43b9f0b88687d1": null,
+        "paragraph-9bc1faf3f4ad6d7d14179ec66a9ade92": null
       },
       "blocks": {
         "testimonial_RRVDV": {
@@ -85,49 +122,13 @@
         "testimonial_Dx6Jp"
       ],
       "name": "Testimonials"
-    },
-    "block_marketing_banners_3BVpE": {
-      "type": "block-marketing-banners",
-      "disabled": false,
-      "settings": {
-        "header-0ac51e04d97c874a305eadc410ad85cf": null,
-        "heading": "",
-        "subheading": "",
-        "header-c194d0d5a03b61ed8d3d0f0554433f1b": null,
-        "anchor": "",
-        "custom_class": "",
-        "width": "is-align-wide",
-        "layout": "stacked",
-        "padding_block": 3,
-        "header-e0fa28bbec030d5865ca5f335942006c": null,
-        "background_color": "",
-        "text_color": "",
-        "header-21942da13d4bd86b04877bd07465a886": null,
-        "paragraph-c17a0c6ae1a215e4a5200646ac7d530f": null
-      },
-      "blocks": {
-        "banner_GwfXR": {
-          "type": "banner",
-          "disabled": false,
-          "settings": {
-            "text": "Gratis Versand ab CHF 140.–",
-            "cta_text": "",
-            "cta_url": "",
-            "style": "promo",
-            "dismissible": false
-          }
-        }
-      },
-      "block_order": [
-        "banner_GwfXR"
-      ],
-      "name": "Banners"
     }
   },
   "order": [
     "block_marketing_banners_3BVpE",
     "cart-order",
     "block_marketing_products_QKemGE",
-    "block_marketing_testimonials_bjKMt"
+    "block_marketing_testimonials_bjKMt",
+    "block_marketing_media_text_tQPwtw"
   ]
 }

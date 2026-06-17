@@ -15,11 +15,11 @@
   "sections": {
     "block_marketing_cover_EyVVzr": {
       "settings": {
-        "subheading": "Ontdek alle festival essentials",
-        "heading": "Klaar voor Elfia?",
+        "subheading": "Maak je uitrusting compleet",
+        "heading": "Shop op tijdperk",
         "text": "",
-        "image": "shopify://shop_images/Banner_Elfia_April2026.jpg",
-        "focus_x": 95,
+        "image": "shopify://shop_images/1-NL-DEBanner_Tudor_Feb2026_1.jpg",
+        "focus_x": 85,
         "overlay": "medium",
         "text_alignment": "center"
       },
@@ -27,7 +27,7 @@
         "button_nXdQMm": {
           "settings": {
             "text": "Shop nu",
-            "url": "shopify://collections/elfia-haarzuilens-arcen"
+            "url": "shopify://collections/tijdperk"
           }
         }
       }

@@ -232,13 +232,7 @@
     "recent": "Letzte Suchanfragen"
   },
   "marketing": {
-    "products_heading": "Unsere neuesten Produkte",
-    "countdown": {
-      "days": "Tage",
-      "hours": "Stunden",
-      "minutes": "Minuten",
-      "seconds": "Sekunden"
-    }
+    "products_heading": "Unsere neuesten Produkte"
   },
   "newsletter": {
     "heading": "Newsletter",

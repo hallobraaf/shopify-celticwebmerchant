@@ -15,8 +15,10 @@
   "sections": {
     "block_marketing_cover_EyVVzr": {
       "settings": {
+        "subheading": "Maak je uitrusting compleet",
+        "heading": "Shop op tijdperk",
         "text": "",
-        "image": "shopify://shop_images/1-BE-Banner_Bourgondische_Ridder_Feb2026_3.webp",
+        "image": "shopify://shop_images/1-BE-Banner_Bourgondische_Ridder_Feb2026_3_7921c4ad-3a87-406e-b533-bd488bd16637.webp",
         "focus_x": 100
       },
       "blocks": {
@@ -28,6 +30,7 @@
       }
     },
     "block_marketing_grid_eKTaaA": {
+      "settings": {},
       "blocks": {
         "banner_PH6hGr": {
           "settings": {
@@ -62,9 +65,11 @@
       "settings": {
         "collection": "middeleeuwse-kleding",
         "heading": "Populaire kledij"
-      }
+      },
+      "blocks": {}
     },
     "block_marketing_grid_93tkDC": {
+      "settings": {},
       "blocks": {
         "banner_6PNJpD": {
           "settings": {
@@ -95,14 +100,17 @@
     "block_marketing_products_EaRW4A": {
       "settings": {
         "heading": "Onze populairste zwaarden"
-      }
+      },
+      "blocks": {}
     },
     "block_marketing_products_pXat79": {
       "settings": {
         "heading": "Populairste pantsers"
-      }
+      },
+      "blocks": {}
     },
     "block_marketing_media_text_iDhD8j": {
+      "settings": {},
       "blocks": {
         "image_text_G9gzXM": {
           "settings": {
@@ -113,6 +121,7 @@
       }
     },
     "block_marketing_media_text_mEgbKY": {
+      "settings": {},
       "blocks": {
         "image_text_aJBEwL": {
           "settings": {
@@ -124,9 +133,11 @@
     "block_marketing_articles_HAGXAT": {
       "settings": {
         "heading": "Deze blogs zijn nu populair bij anderen:"
-      }
+      },
+      "blocks": {}
     },
     "block_marketing_media_text_eUmREH": {
+      "settings": {},
       "blocks": {
         "image_text_xddkDV": {
           "settings": {
@@ -138,12 +149,14 @@
     "block_marketing_articles_wJ9gkm": {
       "settings": {
         "heading": "Tips & tricks:"
-      }
+      },
+      "blocks": {}
     },
     "block_marketing_articles_qtkjtB": {
       "settings": {
         "heading": "Doe mee aan onze challenges"
-      }
+      },
+      "blocks": {}
     }
   }
 }

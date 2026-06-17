@@ -1,0 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "featured_image_qUThkT": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "medium",
+            "focus_x": 50,
+            "focus_y": 45
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "featured_image_qUThkT",
+        "title",
+        "content"
+      ],
+      "settings": {
+        "width": "is-align-small"
+      }
+    },
+    "block_marketing_media_text_GBNete": {
+      "type": "block-marketing-media-text",
+      "blocks": {
+        "video_text_xKfUN9": {
+          "type": "video_text",
+          "settings": {
+            "heading": "Van ons magazijn tot aan je voordeur",
+            "text": "<p>Ben je benieuwd hoe jouw bestelling de weg naar huis vindt? In deze video nemen we je mee achter de schermen.</p><p>Wat je hier ziet is niet zomaar een opslagruimte; je kijkt naar de <strong>grootste collectie historische artikelen van Europa</strong>. Alles wat je ziet liggen, is direct klaar voor vertrek.</p><h3><strong>Waarom bestellen bij ons?</strong></h3><ul><li><strong>Direct uit eigen voorraad:</strong> Geen tussenpersonen, maar directe controle over elk zwaard, harnas of kledingstuk.</li><li><strong>Razendsnelle verzending:</strong> Omdat we alles vanuit ons eigen magazijn verwerken, kunnen we je pakket direct na bestelling klaarmaken voor verzending.</li><li><strong>Met zorg verpakt:</strong> Onze unieke collectie verdient een veilige reis. Ons team zorgt ervoor dat jouw historische aanwinsten met de grootste zorg worden ingepakt.<br/><br/>Jouw volgende aanwinst ligt klaar! Bestel voor 20:30 (CET) en we sturen het dezelfde dag nog op!</li></ul>",
+            "cta_text": "",
+            "cta_url": "",
+            "cta_style": "primary",
+            "video": "shopify://files/videos/shipping_V01.mp4",
+            "video_url": "",
+            "video_mode": "play",
+            "poster": "shopify://shop_images/Schermafbeelding_2026-04-22_140110.png",
+            "image_height": "square",
+            "focus_x": 50,
+            "focus_y": 50,
+            "image_position": "left",
+            "image_width": "50",
+            "vertical_alignment": "center",
+            "background_color": "",
+            "text_color": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_text_xKfUN9"
+      ],
+      "name": "Media & text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "width": "is-align-wide",
+        "padding_block": 0,
+        "anchor": "",
+        "custom_class": "",
+        "background_color": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "block_marketing_media_text_GBNete"
+  ]
+}

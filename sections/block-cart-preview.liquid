@@ -66,9 +66,6 @@
         {%- render 'html-cart-items',
           cart: cart,
           show_vendor: section.settings.show_vendor,
-          show_recommended: section.settings.show_recommended,
-          max_recommended: section.settings.max_recommended,
-          hide_out_of_stock: section.settings.hide_out_of_stock,
           compact: true
         -%}
       </div>
@@ -229,21 +226,26 @@
       });
     }
 
-    // Legacy API compatibility
+    // Public API. Always available regardless of settings.cart_type.
+    // The global CartAPI interceptor in theme-cart.js calls .open() when
+    // a form with data-cart-on-success="preview" is submitted. The cart
+    // icon also calls .open() / .toggle() directly. No section-level
+    // form interception or cart:add subscription — single source of
+    // truth lives in theme-cart.js.
     window.CartPreview = {
       open: function() {
+        if (disableOnCart && isCartPage) return;
         if (window.themeDrawer) window.themeDrawer.open('cart-drawer');
       },
       close: function() {
         if (window.themeDrawer) window.themeDrawer.close('cart-drawer');
       },
       toggle: function() {
-        if (window.themeDrawer) {
-          if (window.themeDrawer.isOpen('cart-drawer')) {
-            window.themeDrawer.close('cart-drawer');
-          } else {
-            window.themeDrawer.open('cart-drawer');
-          }
+        if (!window.themeDrawer) return;
+        if (window.themeDrawer.isOpen('cart-drawer')) {
+          window.themeDrawer.close('cart-drawer');
+        } else {
+          this.open();
         }
       }
     };
@@ -255,6 +257,7 @@
   "name": "Cart preview",
   "tag": "section",
   "class": "section-cart-preview",
+  "limit": 1,
   "enabled_on": {
     "groups": ["footer"]
   },
@@ -283,32 +286,6 @@
       "type": "checkbox",
       "id": "show_vendor",
       "label": "Show vendor",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Recommended products"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_recommended",
-      "label": "Show recommended products",
-      "info": "Display products from metafield custom.recommended-products under each cart item.",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "max_recommended",
-      "label": "Max recommended products",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "checkbox",
-      "id": "hide_out_of_stock",
-      "label": "Hide out of stock recommended products",
       "default": false
     },
     {

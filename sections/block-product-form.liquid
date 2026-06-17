@@ -50,7 +50,13 @@ DEPENDENCIES:
 				data-section-id="{{ section.id }}"
 				data-product-json="{{ p | json | escape }}">
 
-				<form action="{{ routes.cart_add_url }}" method="post" id="product-form-{{ section.id }}" class="block-product-form__fields" novalidate>
+				<form action="{{ routes.cart_add_url }}" method="post" id="product-form-{{ section.id }}" class="block-product-form__fields" novalidate
+					{%- if settings.cart_type != 'page' %}
+						data-cart-ajax
+						data-cart-on-success="{{ settings.cart_type }}"
+						data-product-handle="{{ p.handle }}"
+					{%- endif -%}
+				>
 					{%- assign first_variant_id = p.selected_or_first_available_variant.id -%}
 					<input type="hidden" name="id" value="{{ first_variant_id }}" data-variant-id>
 
@@ -149,12 +155,15 @@ DEPENDENCIES:
 			e.stopImmediatePropagation();
 			e.stopPropagation();
 
-			// Bepaal variant uit geselecteerde opties
+			// Bepaal variant uit geselecteerde opties.
+			// Dropdown <select data-option-select> heeft geen name (puur JS-control),
+			// dus die check eerst. Daarna FormData voor radios én hidden inputs
+			// (single-value opties worden als hidden gerenderd in html-product-variant_picker).
+			const fd = new FormData(form);
 			const options = (product.options || []).map((name, idx) => {
 				const select = wrapper.querySelector(`[data-option-select][data-option-index="${idx}"]`);
 				if (select) return select.value;
-				const radio = wrapper.querySelector(`input[name="options[${name}]"]:checked`);
-				return radio?.value || null;
+				return fd.get(`options[${name}]`);
 			});
 
 			const variant = product.variants?.find(v =>

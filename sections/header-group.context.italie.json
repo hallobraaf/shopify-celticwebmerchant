@@ -14,10 +14,10 @@
   "parent": "header-group.json",
   "sections": {
     "block_header_callout_AGfLm9": {
-      "disabled": false,
+      "disabled": true,
       "settings": {
-        "subheading": "Ancora",
         "heading": "Tuscany Medieval Festival",
+        "subheading": "Ancora",
         "countdown_end_date": "2026-05-08"
       },
       "blocks": {

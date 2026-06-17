@@ -1,0 +1,92 @@
+{%- comment -%}
+  ============================================================================
+  HTML-CART-CONFIRM-PRODUCT
+  ============================================================================
+  Compact confirmation card for the just-added product, shown at the top of
+  the cart-confirm drawer body.
+
+  PARAMETERS:
+  - product             : {Object} Product (required)
+  - variant             : {Object} Selected variant (optional, falls back to
+                          product.selected_or_first_available_variant)
+  - quantity            : {Number} Quantity added (default 1)
+  - show_variant_title  : {Boolean} Show variant label if non-default (default true)
+  - show_quantity       : {Boolean} Show quantity row (default true)
+  - show_price          : {Boolean} Show price (default true)
+  - image_size          : {String} 'small' | 'medium' (default 'medium')
+
+  USAGE:
+  {% render 'html-cart-confirm-product',
+    product: product,
+    variant: product.selected_or_first_available_variant,
+    quantity: 1
+  %}
+  ============================================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign p = product
+  assign v = variant | default: p.selected_or_first_available_variant
+  assign qty = quantity | default: 1
+  assign show_variant_title = show_variant_title | default: true
+  assign show_quantity = show_quantity | default: true
+  assign show_price = show_price | default: true
+  assign image_size = image_size | default: 'medium'
+
+  assign img = v.featured_image | default: p.featured_image
+  assign img_w = 96
+  if image_size == 'small'
+    assign img_w = 64
+  endif
+  comment
+    Compute 2x width for retina-quality src. Liquid does not allow inline math
+    inside filter arguments, so we precompute it here.
+  endcomment
+  assign img_w_2x = img_w | times: 2
+-%}
+
+{%- if p != blank -%}
+  <div class="cart-confirm-product cart-confirm-product--{{ image_size }}" data-cart-confirm-product>
+    {%- if img -%}
+      <a href="{{ p.url }}" class="cart-confirm-product__media" tabindex="-1" aria-hidden="true">
+        <img
+          src="{{ img | image_url: width: img_w_2x }}"
+          alt="{{ img.alt | default: p.title | escape }}"
+          width="{{ img_w }}"
+          height="{{ img_w | divided_by: img.aspect_ratio | ceil }}"
+          loading="lazy"
+          class="cart-confirm-product__image"
+        >
+      </a>
+    {%- endif -%}
+
+    <div class="cart-confirm-product__details">
+      <h3 class="cart-confirm-product__title">
+        <a href="{{ p.url }}">{{ p.title | escape }}</a>
+      </h3>
+
+      {%- if show_variant_title and p.has_only_default_variant == false and v.title != blank -%}
+        <p class="cart-confirm-product__variant">{{ v.title | escape }}</p>
+      {%- endif -%}
+
+      <div class="cart-confirm-product__meta">
+        {%- if show_quantity -%}
+          <span class="cart-confirm-product__quantity" data-cart-confirm-quantity>
+            {{ 'product.quantity.label' | t }}: {{ qty }}
+          </span>
+        {%- endif -%}
+
+        {%- if show_price and v.price != blank -%}
+          <span class="cart-confirm-product__price">
+            {%- if v.compare_at_price > v.price -%}
+              <s class="cart-confirm-product__price-compare">{{ v.compare_at_price | money }}</s>
+              <strong class="cart-confirm-product__price-sale">{{ v.price | money }}</strong>
+            {%- else -%}
+              {{ v.price | money }}
+            {%- endif -%}
+          </span>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

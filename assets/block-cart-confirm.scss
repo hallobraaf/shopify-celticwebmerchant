@@ -1,0 +1,167 @@
+/* ==========================================================================
+   BLOCK-CART-CONFIRM
+   Structural styles — all values are static
+   ========================================================================== */
+
+.block-cart-confirm {
+  &__content {
+    width: 100%;
+    max-width: 420px;
+
+    @media (max-width: 40em) {
+      max-width: 100%;
+    }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem;
+  }
+
+  &__footer {
+    flex-direction: column;
+  }
+
+  &__block {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__view-cart {
+    display: block;
+    margin-top: 0;
+    padding: 0.75rem 1.5rem;
+    background: var(--theme-color-green, #111);
+    border: 0px solid currentColor;
+    color: var(--theme-color-white, #fff);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 200ms ease, color 200ms ease;
+
+    &:hover {
+      background: var(--theme-color-green, #111);
+      color: var(--theme-color-white, #fff);
+      opacity: 0.9;
+    }
+  }
+}
+
+/* Confirmation product card */
+.cart-confirm-product {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--theme-color-grey, #f6f6f6);
+  border-radius: 4px;
+
+  &__media {
+    flex-shrink: 0;
+    display: block;
+    text-decoration: none;
+  }
+
+  &__image {
+    display: block;
+    width: 96px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  &--small &__image {
+    width: 64px;
+  }
+
+  &__details {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Just-added card text is sized one step up from the recommended items
+     below, so the primary "you added X" message is the visual anchor. */
+  &__title {
+    margin: 0 0 0.35rem;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    font-weight: 600;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__variant {
+    margin: 0 0 0.5rem;
+    font-size: 0.9375rem;
+    opacity: 0.7;
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.9375rem;
+  }
+
+  &__quantity {
+    opacity: 0.7;
+  }
+
+  &__price {
+    font-weight: 600;
+  }
+
+  &__price-compare {
+    opacity: 0.5;
+    margin-right: 0.25rem;
+  }
+
+  &__price-sale {
+    color: var(--theme-color-red, #c00);
+  }
+}
+
+/* Recommended list */
+.cart-confirm-recommended {
+  &__heading {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__item {
+    margin: 0;
+  }
+
+  /* Compact horizontal cards, scoped to this drawer only.
+     Overrides the theme-ux.scss base which sets .card--horizontal to
+     grid-template-columns: 35% 1fr. Fixed 64px image column gives a
+     predictable layout in this narrow drawer; other horizontal cards
+     elsewhere on the site keep their normal proportions. */
+  .card--horizontal {
+    grid-template-columns: 64px 1fr;
+  }
+}

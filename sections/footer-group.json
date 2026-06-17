@@ -80,7 +80,7 @@
           "settings": {
             "heading": "",
             "text": "<p>Bekijk eerst de veelgestelde vragen. Kom je er zelf niet uit? Vul het contactformulier in en we mailen je op werkdagen binnen 24 uur terug.</p>",
-            "link": "https://celticwebmerchant.zendesk.com/hc/en-us",
+            "link": "https://support.celticwebmerchant.com/hc",
             "link_text": ""
           }
         },
@@ -89,7 +89,7 @@
           "settings": {
             "heading": "",
             "text": "",
-            "link": "https://celticwebmerchant.zendesk.com/hc/en-us/articles/9296295226258-Showroom",
+            "link": "https://support.celticwebmerchant.com/hc/nl/articles/34940749980306-Waarom-is-de-showroom-niet-altijd-geopend-en-is-bezoek-op-aanvraag-mogelijk",
             "link_text": ""
           }
         },
@@ -663,20 +663,6 @@
             "region": "int"
           }
         },
-        "region_jjUjVB": {
-          "type": "region",
-          "settings": {
-            "title": "Oekraïne"
-          }
-        },
-        "language_nEQU9e": {
-          "type": "language",
-          "settings": {
-            "label": "Engels",
-            "language_code": "en",
-            "region": "int"
-          }
-        },
         "region_VgAzbU": {
           "type": "region",
           "settings": {
@@ -1199,8 +1185,6 @@
         "language_FR7Xr9",
         "region_zHEbBX",
         "language_7Wjiba",
-        "region_jjUjVB",
-        "language_nEQU9e",
         "region_VgAzbU",
         "language_GNq9pF",
         "language_76EmNK",
@@ -1295,8 +1279,50 @@
       ],
       "settings": {
         "show_view_cart": true,
-        "disable_on_cart": true
+        "disable_on_cart": true,
+        "show_vendor": false,
+        "show_recommended": false,
+        "max_recommended": 4,
+        "hide_out_of_stock": false
       }
+    },
+    "cart-confirm": {
+      "type": "block-cart-confirm",
+      "blocks": {
+        "confirmation": {
+          "type": "confirmation",
+          "settings": {
+            "show_variant_title": true,
+            "show_quantity": true,
+            "show_price": true,
+            "image_size": "medium"
+          }
+        },
+        "recommended": {
+          "type": "recommended",
+          "settings": {
+            "heading": "",
+            "max_products": 4,
+            "hide_out_of_stock": false,
+            "rec_mode": "combined",
+            "card_layout": "horizontal",
+            "card_sizing": "smaller",
+            "image_ratio": "square",
+            "show_secondary_image": false,
+            "show_rating": false,
+            "show_vendor": false,
+            "show_badges": true,
+            "show_stock": false,
+            "show_delivery": false,
+            "quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "confirmation",
+        "recommended"
+      ],
+      "settings": {}
     },
     "block_modal_share_naUyNL": {
       "type": "block-modal-share",
@@ -1353,6 +1379,7 @@
     "block_search_overlay_a6H9hj",
     "modal-region",
     "cart-preview",
+    "cart-confirm",
     "block_modal_share_naUyNL",
     "block_page_menu_GJpUfD",
     "block_embed_klaviyo_x89YJD"

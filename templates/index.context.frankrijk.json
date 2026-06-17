@@ -15,8 +15,8 @@
   "sections": {
     "block_marketing_cover_EyVVzr": {
       "settings": {
-        "image": "shopify://shop_images/1-FR_Banner_JoanneDarc_MiddeleeuwsFR_Feb2026_1.webp",
-        "focus_x": 50,
+        "image": "shopify://shop_images/laatkomers_banner.jpg",
+        "focus_x": 80,
         "focus_y": 25,
         "overlay": "medium"
       },

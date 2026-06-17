@@ -72,15 +72,15 @@
         "image_text_WayNrx": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/DSC01573.jpg",
-            "image_height": "adapt",
-            "focus_x": 50,
-            "focus_y": 50,
             "heading": "Onze expertise",
             "text": "<p>Celtic WebMerchant is een toonaangevende Europese specialist in historische reconstructies, authentieke replica’s, re-enactment, LARP en professioneel costuming. Met bijna 20 jaar ervaring ondersteunen wij:<br/></p><ul><li>Filmproducties en theaterprojecten<br/></li><li>Musea en living history tentoonstellingen<br/></li><li>Overheden en evenementenorganisaties<br/></li><li>Honderdduizenden particuliere klanten wereldwijd<br/></li></ul><p>Onze stylisten en historici zorgen voor museumwaardige outfits, historische reconstructies en complete karakteruitrustingen, van middeleeuwse krijgers tot vroegmoderne outfits en fantasypersonages. Elk project wordt met uiterste zorg en historische nauwkeurigheid uitgevoerd.<br/><br/><br/></p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "image": "shopify://shop_images/DSC04545_3d8d1540-1256-4a6f-b117-a506a6416a7f.jpg",
+            "image_height": "adapt",
+            "focus_x": 50,
+            "focus_y": 50,
             "image_position": "right",
             "image_width": "40",
             "vertical_alignment": "center",
@@ -101,10 +101,10 @@
         "text_align": "center",
         "width": "is-align",
         "padding_block": 3,
-        "background_color": "",
-        "text_color": "",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "",
+        "text_color": ""
       }
     },
     "block_marketing_features_xKmArY": {
@@ -114,6 +114,8 @@
         "heading": "Betrouwbaarheid & transparantie",
         "subheading": "",
         "text": "<p>Bij Celtic WebMerchant combineren we passie met professionaliteit:</p><ul><li><strong>Volledig legaal en geregistreerd bedrijf</strong>: KvK 87703211, BTW NL864375803B01, EORI NL864375803<br/></li><li><strong>Internationale aanwezigheid</strong>: 15 webwinkels in Europa en wereldwijd<br/></li><li><strong>Transparant en eerlijk team</strong>: Onze medewerkers, modellen en tijdelijke krachten worden altijd eerlijk betaald.<br/></li><li><strong>Inclusief en divers</strong>: Driekwart van ons team is neurodivers, met speciale aandacht voor mensen met ADHD en autisme.<br/></li></ul><p><br/>Bekijk ons <a href=\"/pages/portfolio\" title=\"Portfolio – Historische Reconstructies en Costuming\">portfolio</a> met samenwerkingen met musea, filmproducties en organisaties wereldwijd.<br/><br/></p>",
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
@@ -122,9 +124,7 @@
         "icon_style": "circle",
         "padding_block": 3,
         "background_color": "#f8f8f8",
-        "text_color": "#111111",
-        "anchor": "",
-        "custom_class": ""
+        "text_color": "#111111"
       }
     },
     "block_marketing_media_text_tbDn7D": {
@@ -133,15 +133,15 @@
         "image_text_fyxWK4": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/DSC09458_df169916-a621-42ee-b8ad-5f1054bbb869.jpg",
-            "image_height": "square",
-            "focus_x": 50,
-            "focus_y": 10,
             "heading": "Het Celtic WebMerchant-team",
             "text": "<p>Iedereen bij Celtic WebMerchant deelt een diepe passie voor geschiedenis, fantasy en creatieve expressie. Ons team combineert expertise in historische nauwkeurigheid, productie en styling, met liefde voor LARP, re-enactment, cosplay en fantasy. Wij ondersteunen jou om je verhaal tot leven te brengen met kennis, precisie en respect voor traditie.</p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "image": "shopify://shop_images/DSC09458_df169916-a621-42ee-b8ad-5f1054bbb869.jpg",
+            "image_height": "square",
+            "focus_x": 50,
+            "focus_y": 10,
             "image_position": "left",
             "image_width": "50",
             "vertical_alignment": "center",
@@ -154,15 +154,15 @@
         "image_text_agE7aH": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/Office_Celtic_WebMerchant.jpg",
-            "image_height": "adapt",
-            "focus_x": 0,
-            "focus_y": 50,
             "heading": "Onze organisatie & internationale positie",
             "text": "<p>Celtic WebMerchant is gevestigd in Nederland en beschikt over een fysieke showroom en magazijn in Sliedrecht. Vanuit hier bedienen wij dagelijks klanten in heel Europa en daarbuiten.</p><p>Wij verzenden wereldwijd en leveren structureel in landen als Frankrijk, België, het Verenigd koninkrijk, Duitsland, Oostenrijk, Denemarken, Zweden, Ierland, Polen, Italië, Spanje en Zwitserland. In vier dagen tijd verzenden wij gemiddeld naar 29 verschillende landen.</p><p>Waar veel historische webwinkels vanuit een hobby zijn ontstaan, hebben wij vanaf het begin gekozen voor een professionele bedrijfsstructuur. Dit betekent schaalbare logistiek, vaste samenwerkingen met internationale transporteurs en een organisatie die is ingericht op continuïteit en betrouwbaarheid.</p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "image": "shopify://shop_images/Office_Celtic_WebMerchant.jpg",
+            "image_height": "adapt",
+            "focus_x": 0,
+            "focus_y": 50,
             "image_position": "right",
             "image_width": "40",
             "vertical_alignment": "center",
@@ -172,18 +172,43 @@
             "button_text_color": ""
           }
         },
-        "image_text_z4MNFa": {
-          "type": "image_text",
+        "video_text_zkx47w": {
+          "type": "video_text",
           "settings": {
-            "image": "shopify://shop_images/Warehouse_Celticwebmerchant2.jpg",
-            "image_height": "square",
-            "focus_x": 50,
-            "focus_y": 50,
             "heading": "Logistiek & capaciteit",
             "text": "<p>Wij beschikken over een grote eigen voorraad, verdeeld over meerdere magazijnlocaties in dezelfde regio. Hierdoor kunnen wij dagelijks tussen de 600 en 700 pakketten verwerken en tot laat in de avond verzenden.</p><p>Wij werken met internationale vervoerders en zijn volledig bekend met Europese logistieke netwerken en sorteercentra. </p><p>Voor specifieke productgroepen, zoals blanke wapens, werken wij met gespecialiseerde verzendpartners. Voor het Verenigd Koninkrijk hebben wij bijvoorbeeld specifieke logistieke oplossingen ontwikkeld in samenwerking met UPS, afgestemd op de geldende regelgeving na Brexit.</p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "video": "shopify://files/videos/shipping_V01.mp4",
+            "video_url": "",
+            "video_mode": "play",
+            "poster": "shopify://shop_images/Schermafbeelding_2026-04-22_140110.png",
+            "image_height": "square",
+            "focus_x": 50,
+            "focus_y": 50,
+            "image_position": "left",
+            "image_width": "50",
+            "vertical_alignment": "center",
+            "background_color": "",
+            "text_color": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "image_text_z4MNFa": {
+          "type": "image_text",
+          "disabled": true,
+          "settings": {
+            "heading": "Logistiek & capaciteit",
+            "text": "<p>Wij beschikken over een grote eigen voorraad, verdeeld over meerdere magazijnlocaties in dezelfde regio. Hierdoor kunnen wij dagelijks tussen de 600 en 700 pakketten verwerken en tot laat in de avond verzenden.</p><p>Wij werken met internationale vervoerders en zijn volledig bekend met Europese logistieke netwerken en sorteercentra. </p><p>Voor specifieke productgroepen, zoals blanke wapens, werken wij met gespecialiseerde verzendpartners. Voor het Verenigd Koninkrijk hebben wij bijvoorbeeld specifieke logistieke oplossingen ontwikkeld in samenwerking met UPS, afgestemd op de geldende regelgeving na Brexit.</p>",
+            "cta_text": "",
+            "cta_url": "",
+            "cta_style": "primary",
+            "image": "shopify://shop_images/Warehouse_Celticwebmerchant2.jpg",
+            "image_height": "square",
+            "focus_x": 50,
+            "focus_y": 50,
             "image_position": "left",
             "image_width": "50",
             "vertical_alignment": "center",
@@ -196,15 +221,15 @@
         "image_text_y8tiFY": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/DSC07884.jpg",
-            "image_height": "square",
-            "focus_x": 50,
-            "focus_y": 0,
             "heading": "Expertise in Europese wetgeving",
             "text": "<p>Wij zijn gespecialiseerd in wapenwetgeving binnen Europa. Ons assortiment wordt actief aangepast op basis van nationale regelgeving. Hierdoor kunnen klanten in onder andere Duitsland, Oostenrijk en het Verenigd Koninkrijk veilig en conform wetgeving bestellen. Ook betaalplatforms, banken en verzekeringsmaatschappijen beoordelen ons als een betrouwbare partner binnen deze complexe productcategorie.</p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "image": "shopify://shop_images/DSC07884.jpg",
+            "image_height": "square",
+            "focus_x": 50,
+            "focus_y": 0,
             "image_position": "right",
             "image_width": "50",
             "vertical_alignment": "center",
@@ -217,15 +242,15 @@
         "image_text_qV83bK": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/Schermafbeelding_2026-02-23_212351_f875f37e-a7f9-4e80-b52f-461a75a4311c.png",
-            "image_height": "adapt",
-            "focus_x": 50,
-            "focus_y": 50,
             "heading": "Team & vakkennis",
             "text": "<p>Ons team bestaat uit zeven vaste medewerkers met een achtergrond in reenactment, LARP, historische studie en ambacht.</p><p>Wij begrijpen de culturele en historische waarde van onze producten. Of een klant nu historisch correct wil reconstrueren of een fantasy-karakter wil vormgeven, wij ondersteunen dit met inhoudelijke kennis.</p><p>Via onze blogs, community-pagina’s en kennisartikelen delen wij actief historische context. Wij zien onze producten niet als modeartikelen, maar als dragers van cultureel erfgoed.</p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "image": "shopify://shop_images/Schermafbeelding_2026-02-23_212351_f875f37e-a7f9-4e80-b52f-461a75a4311c.png",
+            "image_height": "adapt",
+            "focus_x": 50,
+            "focus_y": 50,
             "image_position": "left",
             "image_width": "50",
             "vertical_alignment": "center",
@@ -239,6 +264,7 @@
       "block_order": [
         "image_text_fyxWK4",
         "image_text_agE7aH",
+        "video_text_zkx47w",
         "image_text_z4MNFa",
         "image_text_y8tiFY",
         "image_text_qV83bK"
@@ -250,10 +276,10 @@
         "text_align": "center",
         "width": "is-align-wide",
         "padding_block": 2,
-        "background_color": "#243406",
-        "text_color": "#ffffff",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#243406",
+        "text_color": "#ffffff"
       }
     },
     "block_marketing_features_htmqdU": {
@@ -263,6 +289,8 @@
         "heading": "Gemeenschap & impact",
         "subheading": "",
         "text": "<p>Zonder gespecialiseerde leveranciers ontstaat er een tekort aan authentiek materiaal voor historische representaties. Dit was bijvoorbeeld zichtbaar in het Verenigd Koninkrijk in de eerste jaren na Brexit, toen de beschikbaarheid van historisch materiaal sterk afnam.</p><p>Wij maken cultureel erfgoed toegankelijk en betaalbaar voor een breed publiek. Voor veel mensen is reenactment en historische identiteit geen hobby, maar een levensstijl die verbonden is met familiegeschiedenis, sociale activiteiten en soms religieuze tradities.</p>",
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
@@ -271,9 +299,7 @@
         "icon_style": "circle",
         "padding_block": 3,
         "background_color": "#f8f8f8",
-        "text_color": "#111111",
-        "anchor": "",
-        "custom_class": ""
+        "text_color": "#111111"
       }
     },
     "block_marketing_media_usps_KHYea7": {
@@ -343,14 +369,14 @@
         "media_width": "40",
         "vertical_alignment": "center",
         "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
         "background_color": "",
         "text_color": "",
         "icon_background": "",
         "icon_color": "",
         "button_color": "",
-        "button_text_color": "",
-        "anchor": "",
-        "custom_class": ""
+        "button_text_color": ""
       }
     },
     "block_marketing_features_YnqkJ4": {
@@ -360,6 +386,8 @@
         "heading": "Onze oprichting (2006)",
         "subheading": "",
         "text": "<p>Vanaf 2006 hebben wij geïnvesteerd in eigen voorraad, internationale logistieke samenwerkingen en specialistische kennis van Europese wetgeving rondom wapens en replica’s. Deze combinatie van passie en professionele organisatie heeft ervoor gezorgd dat wij zijn uitgegroeid tot een vaste speler binnen de Europese markt.</p><p>Wat begon als een duidelijke ambitie is in bijna twintig jaar uitgegroeid tot een organisatie die dagelijks honderden pakketten verzendt naar klanten in heel Europa. Onze Nederlandse basis vormt daarbij nog altijd het hart van onze operatie.<br/></p><p></p><h3><strong>Bedrijfsgegevens: </strong></h3><p>Celtic WebMerchant BV<br/>Marisstraat 8a<br/>3364 AZ Sliedrecht<br/>Nederland<br/><br/>BTW-nummer: NL864375803B01<br/>EORI-nummer: NL864375803<br/>KvK-nummer: <a href=\"https://www.kvk.nl/bestellen/#/87703211000035123672?origin=search\" target=\"_blank\" title=\"https://www.kvk.nl/bestellen/#/87703211000035123672?origin=search\">87703211</a></p>",
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
@@ -368,9 +396,7 @@
         "icon_style": "circle",
         "padding_block": 3,
         "background_color": "#f8f8f8",
-        "text_color": "#111111",
-        "anchor": "",
-        "custom_class": ""
+        "text_color": "#111111"
       }
     },
     "block_marketing_media_text_tLzKWM": {
@@ -379,15 +405,15 @@
         "image_text_hj8dqw": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/DSC04192.jpg",
-            "image_height": "adapt",
-            "focus_x": 50,
-            "focus_y": 50,
             "heading": "Klantbeoordelingen en vertrouwen",
             "text": "<p>De ervaringen van onze klanten vormen de basis van alles wat wij doen. Met tienduizenden geverifieerde beoordelingen op onafhankelijke platforms is Celtic WebMerchant uitgegroeid tot een vertrouwde partner voor re-enactors, musea, filmproducties en historische liefhebbers wereldwijd.</p><p>Wij worden beoordeeld met:</p><ul><li>9,2 / 10 op <a href=\"https://www.valuedshops.com/webshop/Celtic-WebMerchant_1201731\" target=\"_blank\" title=\"https://www.valuedshops.com/webshop/Celtic-WebMerchant_1201731\">WebwinkelKeur </a>— gebaseerd op meer dan 20.000 geverifieerde reviews<br/></li><li>9,2 / 10 op <a href=\"https://www.google.com/maps/place/Celtic+Webmerchant+webshop/@51.8315026,4.7553517,17z/data=!4m8!3m7!1s0x47c6823d6a32e1b3:0x9dcf196fe31c580!8m2!3d51.8315026!4d4.7553517!9m1!1b1!16s%2Fg%2F11h50mn9bt?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D\" target=\"_blank\">Google Reviews</a> — gebaseerd op meer dan 1.000 klantbeoordelingen<br/></li><li>9,0 / 10 op <a href=\"https://nl.trustpilot.com/review/celticwebmerchant.com\" target=\"_blank\">Trustpilot</a> — gebaseerd op meer dan 450 onafhankelijke reviews<br/></li></ul><p>Deze beoordelingen weerspiegelen onze voortdurende inzet voor kwaliteit, historische nauwkeurigheid en betrouwbare service. Onze klanten variëren van individuele re-enactors en LARP-spelers tot musea, educatieve instellingen, filmproducties en evenementenorganisaties in heel Europa en daarbuiten.</p><p>Bekijk onze volledige beoordelingen op <a href=\"https://www.valuedshops.com/webshop/Celtic-WebMerchant_1201731\" target=\"_blank\">WebwinkelKeur</a>, <a href=\"https://www.google.com/maps/place/Celtic+Webmerchant+webshop/@51.8315026,4.7553517,17z/data=!4m8!3m7!1s0x47c6823d6a32e1b3:0x9dcf196fe31c580!8m2!3d51.8315026!4d4.7553517!9m1!1b1!16s%2Fg%2F11h50mn9bt?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D\" target=\"_blank\">Google</a> en <a href=\"https://nl.trustpilot.com/review/celticwebmerchant.com\" target=\"_blank\">Trustpilot</a>, of lees ervaringen van klanten direct op onze productpagina’s.</p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "image": "shopify://shop_images/DSC04192.jpg",
+            "image_height": "adapt",
+            "focus_x": 50,
+            "focus_y": 50,
             "image_position": "left",
             "image_width": "40",
             "vertical_alignment": "center",
@@ -408,10 +434,10 @@
         "text_align": "center",
         "width": "is-align-wide",
         "padding_block": 3,
-        "background_color": "",
-        "text_color": "",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "",
+        "text_color": ""
       }
     },
     "block_marketing_media_text_iHG46n": {
@@ -420,15 +446,15 @@
         "image_text_hp3Mah": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/DSC03356_9f296909-d931-4b5f-b62c-2d88da0568b4.jpg",
-            "image_height": "adapt",
-            "focus_x": 50,
-            "focus_y": 50,
             "heading": "Onze missie",
             "text": "<p>Bij Celtic WebMerchant geloven we dat een mens zonder geschiedenis is als een boom zonder wortels. Door ons verleden te begrijpen, kunnen we ons moderne leven verrijken, creatiever zijn en met meer doel en betekenis leven. LARP, re-enactment, living history, cosplay en fantasy bieden een ontsnapping aan de routine van het moderne leven – een kans om opnieuw verbinding te maken met de manier waarop onze voorouders leefden. Deze activiteiten brengen ons dichter bij verhalen, eeuwenoude tradities en de natuur, en stimuleren creativiteit en zelfexpressie.</p><p>Wereldbouw (world-building) en mythische verhalen zijn al eeuwenlang onderdeel van menselijke cultuur. Onze voorouders creëerden mythen en legenden, van de Edda tot Beowulf, om hun wereld te begrijpen. Tegenwoordig bouwen we voort op deze tradities in fantasy, rollenspellen en historische recreaties, waarbij historische nauwkeurigheid en creatieve vrijheid hand in hand gaan.</p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "image": "shopify://shop_images/DSC03356_9f296909-d931-4b5f-b62c-2d88da0568b4.jpg",
+            "image_height": "adapt",
+            "focus_x": 50,
+            "focus_y": 50,
             "image_position": "right",
             "image_width": "40",
             "vertical_alignment": "center",
@@ -449,10 +475,10 @@
         "text_align": "center",
         "width": "is-align-wide",
         "padding_block": 3,
-        "background_color": "#f8f8f8",
-        "text_color": "",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#f8f8f8",
+        "text_color": ""
       }
     },
     "block_marketing_features_CpBwri": {
@@ -462,6 +488,8 @@
         "heading": "Waarom wij #HistoryRebels zijn",
         "subheading": "",
         "text": "<p>Wij combineren <strong>historische expertise</strong> met <strong>creatieve vrijheid</strong>. Bij Celtic WebMerchant bieden we alles wat je nodig hebt om jouw verhaal tot leven te brengen – van historische replica’s en museumwaardige outfits tot fantasyaccessoires en LARP-kostuums. Iedereen kan zijn eigen karakter vormgeven, of je nu diepgaand Vikinggeschiedenis hebt bestudeerd of een eigen interpretatie van een personage wilt creëren.</p><p>Sluit je aan bij meer dan <strong>80.000 History Rebels wereldwijd</strong> die hun reis al zijn begonnen!</p>",
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
@@ -470,9 +498,7 @@
         "icon_style": "circle",
         "padding_block": 3,
         "background_color": "#243406",
-        "text_color": "#ffffff",
-        "anchor": "",
-        "custom_class": ""
+        "text_color": "#ffffff"
       }
     },
     "block_marketing_features_Nn66WQ": {
@@ -531,6 +557,8 @@
         "heading": "Onze kernwaarden",
         "subheading": "",
         "text": "",
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align-small",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -539,9 +567,7 @@
         "icon_style": "circle",
         "padding_block": 3,
         "background_color": "#ffffff",
-        "text_color": "#000000",
-        "anchor": "",
-        "custom_class": ""
+        "text_color": "#000000"
       }
     },
     "block_marketing_features_Gk36kf": {
@@ -551,6 +577,8 @@
         "heading": "Sluit je aan bij de #HistoryRebels",
         "subheading": "",
         "text": "<p>Of je nu een historische reenactor bent, LARP-speler, fantasyfanaat of museumprofessional: bij Celtic WebMerchant vind je alles om je karakter en verhaal vorm te geven. Ontdek ons <a href=\"/pages/portfolio\" title=\"Portfolio – Historische Reconstructies en Costuming\"><strong>portfolio</strong></a>, bekijk onze <a href=\"/collections/tijdperk\" title=\"Tijdperk\"><strong>historische reconstructies</strong></a><strong> en </strong><a href=\"/collections/fantasy-larp-kleding\" title=\"Fantasy & festival kleding\"><strong>fantasy collecties</strong></a>, en begin jouw reis als #HistoryRebel vandaag nog!</p>",
+        "anchor": "",
+        "custom_class": "",
         "width": "is-align",
         "columns_desktop": 3,
         "columns_tablet": 2,
@@ -559,9 +587,7 @@
         "icon_style": "circle",
         "padding_block": 2,
         "background_color": "#f8f8f8",
-        "text_color": "#000000",
-        "anchor": "",
-        "custom_class": ""
+        "text_color": "#000000"
       }
     },
     "block_marketing_media_text_GXX7TD": {
@@ -570,17 +596,17 @@
         "video_text_C3eLTh": {
           "type": "video_text",
           "settings": {
+            "heading": "",
+            "text": "<p>In deze video vertellen Patrick, Nienke en Judith hoe Celtic Webmerchant is ontstaan. Wat begon als een gedeelde passie voor geschiedenis en vakmanschap groeide uit tot een internationaal merk met een sterke community. In het interview nemen zij je mee terug naar het begin en geven ze een kijkje achter de schermen. <br/></p>",
+            "cta_text": "",
+            "cta_url": "",
+            "cta_style": "primary",
             "video_url": "https://youtu.be/1LQClpWWBVE",
             "video_mode": "play",
             "poster": "shopify://shop_images/Schermafbeelding_2026-02-23_212009_2aaa9aef-00a1-4628-bcff-aa11bf23fa3f.png",
             "image_height": "fill",
             "focus_x": 50,
             "focus_y": 50,
-            "heading": "",
-            "text": "<p>In deze video vertellen Patrick, Nienke en Judith hoe Celtic Webmerchant is ontstaan. Wat begon als een gedeelde passie voor geschiedenis en vakmanschap groeide uit tot een internationaal merk met een sterke community. In het interview nemen zij je mee terug naar het begin en geven ze een kijkje achter de schermen. <br/></p>",
-            "cta_text": "",
-            "cta_url": "",
-            "cta_style": "primary",
             "image_position": "right",
             "image_width": "50",
             "vertical_alignment": "center",
@@ -593,15 +619,15 @@
         "image_text_7BMn4j": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/DSC01508_b4afdc2d-fe79-47f5-8660-b3930ee3b92e.jpg",
-            "image_height": "portrait",
-            "focus_x": 50,
-            "focus_y": 50,
             "heading": "Patrick Gilbers – CEO & Creative Director, Celtic WebMerchant",
             "text": "<p>Patrick Gilbers is oprichter en CEO van Celtic WebMerchant, waar hij tevens als Creative en Artistic Director fungeert. Met bijna twintig jaar ervaring in historische research en culturele herbeleving, leidt hij het team in het ontwikkelen van hoogwaardige historische wapens, LARP‑gear en reenactment‑producten. Gedreven door passie voor erfgoed, gemeenschapswaarden en respect voor voorouders, zet Patrick zich in voor een authentieke ervaring en een betrokken wereldwijde community van gelijkgestemden. Zijn leiderschap combineert expertise in historische nauwkeurigheid met een diepgewortelde toewijding aan kwaliteit, duurzaamheid en klantenvertrouwen.<br/><br/></p>",
             "cta_text": "",
             "cta_url": "",
             "cta_style": "primary",
+            "image": "shopify://shop_images/DSC01508_b4afdc2d-fe79-47f5-8660-b3930ee3b92e.jpg",
+            "image_height": "portrait",
+            "focus_x": 50,
+            "focus_y": 50,
             "image_position": "left",
             "image_width": "50",
             "vertical_alignment": "center",
@@ -614,15 +640,15 @@
         "image_text_NfDRJN": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/DSC08104_49470682-d8eb-4380-a013-e8f8cd52f22a.jpg",
-            "image_height": "portrait",
-            "focus_x": 50,
-            "focus_y": 50,
             "heading": "Nienke Valk – CFO & Marketing Director, Celtic WebMerchant",
             "text": "<p>Nienke Valk is CFO van Celtic WebMerchant en verantwoordelijk voor financiën marketing en klantbeleving. Met een multidisciplinaire academische achtergrond in kunstgeschiedenis en Midden-Oosten Studies (MA, Universiteit van Amsterdam) brengt zij zowel diepgaande historische kennis als strategisch leiderschap naar het bedrijf.<br/><br/>Haar expertise in historische manuscripten, middeleeuwse en post-middeleeuwse codices en materiële cultuur ondersteunt de ontwikkeling van authentieke producten voor LARP, reenactment en cosplay. Zij heeft daarnaast gewerkt met historische manuscripten in de John Rylands Library in Manchester. Sinds 2022 leidt zij als General Director Celtic WebMerchant BV en InterCeltic BV, waarbij zij academische nauwkeurigheid combineert met internationale e-commerce ervaring en klantgerichte strategieën.</p><p>Nienke heeft kennis van meerdere moderne en klassieke talen, wat haar in staat stelt een wereldwijde community van klanten en historisch geïnteresseerden te verbinden.</p>",
             "cta_text": "Zie publicaties",
             "cta_url": "https://uva.academia.edu/NienkeValk",
             "cta_style": "primary",
+            "image": "shopify://shop_images/DSC08104_49470682-d8eb-4380-a013-e8f8cd52f22a.jpg",
+            "image_height": "portrait",
+            "focus_x": 50,
+            "focus_y": 50,
             "image_position": "right",
             "image_width": "50",
             "vertical_alignment": "center",
@@ -635,15 +661,15 @@
         "image_text_8B7jgW": {
           "type": "image_text",
           "settings": {
-            "image": "shopify://shop_images/DSCF6466.jpg",
-            "image_height": "portrait",
-            "focus_x": 50,
-            "focus_y": 50,
             "heading": "Judith Schoen – Commercial Director, Technical Director & HR Director",
             "text": "<p>Judith Schoen is medeoprichter en directeur bij Celtic WebMerchant, verantwoordelijk voor verkoop, webshopbeheer, IT en personeelsontwikkeling. Ze combineert strategisch leiderschap met operationele expertise, waardoor de webshop en IT-systemen optimaal functioneren en een sterke, betrokken bedrijfscultuur wordt bevorderd.</p><p>Met een academische achtergrond in Celtic Studies en Medieval, Ancient and Renaissance Studies (MA, Universiteit Utrecht), heeft Judith diepgaande kennis van historische culturen en middeleeuwse literatuur. Haar onderzoek en publicaties, zoals <em>Orcain catrach Mael Milscothaig</em>, ondersteunen de ontwikkeling van authentieke historische en fantasy‑producten voor LARP, re-enactment en cosplay.</p><p>Dankzij haar meertaligheid en internationale ervaring kan Judith een wereldwijde community van klanten en historisch geïnteresseerden verbinden en ondersteunen. Onder haar leiding blijft Celtic WebMerchant een betrouwbare Europese specialist in historische reconstructies, re-enactment, LARP en professioneel costuming.</p>",
             "cta_text": "Zie publicaties",
             "cta_url": "https://uu.academia.edu/JudithSchoen",
             "cta_style": "primary",
+            "image": "shopify://shop_images/DSCF6466.jpg",
+            "image_height": "portrait",
+            "focus_x": 50,
+            "focus_y": 50,
             "image_position": "left",
             "image_width": "50",
             "vertical_alignment": "center",
@@ -667,10 +693,10 @@
         "text_align": "center",
         "width": "is-align-wide",
         "padding_block": 3,
-        "background_color": "#243406",
-        "text_color": "#ffffff",
         "anchor": "",
-        "custom_class": ""
+        "custom_class": "",
+        "background_color": "#243406",
+        "text_color": "#ffffff"
       }
     }
   },

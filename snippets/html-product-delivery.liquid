@@ -58,7 +58,15 @@
     for ref in delivery_refs
       assign ref_condition = ref.type.value.condition
       assign ref_title = ref.title.value
-      
+
+      # Shopify-pleister: bij metaobject-velden met Translations aan retourneert
+      # `.value` in de bron-locale soms "Translation missing: <locale>.<source>"
+      # in plaats van de literal source. Strip die prefix als ie verschijnt.
+      assign missing_prefix = 'Translation missing: ' | append: request.locale.iso_code | append: '.'
+      if ref_title contains missing_prefix
+        assign ref_title = ref_title | remove_first: missing_prefix
+      endif
+
       case ref_condition
         when 'in-stock'
           assign in_stock_message = ref_title

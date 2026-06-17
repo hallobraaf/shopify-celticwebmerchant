@@ -114,7 +114,11 @@
 
   /**
    * Example: Cart Drawer Trigger
-   * Opens cart preview when items are added
+   * NOTE: Cart-confirm drawer (block-cart-confirm) handles its own auto-open
+   * on cart:add. Cart-preview is intentionally manual-only (cart icon click)
+   * to avoid two drawers competing for the same event.
+   * This class is kept as a no-op for backwards-compatibility with any
+   * existing instantiation; it does NOT subscribe to cart:add anymore.
    */
   class CartDrawerTrigger {
 	constructor() {
@@ -122,14 +126,14 @@
 	}
 
 	init() {
-	  if (!window.CartEvents) return;
-
-	  // Open drawer when item is added (optional)
-	  window.CartEvents.subscribe('cart:add', (data) => {
-		if (window.CartPreview) {
-		  window.CartPreview.open();
-		}
-	  });
+	  // Intentionally empty. See note above.
+	  // If you want to restore the old behavior (cart-preview opens on add),
+	  // uncomment the block below — but disable block-cart-confirm first.
+	  //
+	  // if (!window.CartEvents) return;
+	  // window.CartEvents.subscribe('cart:add', (data) => {
+	  //   if (window.CartPreview) window.CartPreview.open();
+	  // });
 	}
   }
 

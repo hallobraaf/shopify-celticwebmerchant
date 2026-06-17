@@ -225,6 +225,31 @@
       "oAP" : "\/AbsaraSansPro-Regular.woff2",
       "oF" : 0
     },
+    "\/block-cart-confirm.min.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/block-cart-confirm.min-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
+    "\/block-cart-confirm.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/block-cart-confirm.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
     "\/block-cart-order.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -233,7 +258,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-cart-order.min.css",
+      "oAP" : "\/block-cart-order.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -246,7 +271,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-cart-preview.min.css",
+      "oAP" : "\/block-cart-preview.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -271,7 +296,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-collection-banners.min.css",
+      "oAP" : "\/block-collection-banners.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -296,7 +321,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-collection-bottom.min.css",
+      "oAP" : "\/block-collection-bottom.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -321,7 +346,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-collection-info.min.css",
+      "oAP" : "\/block-collection-info.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -357,7 +382,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-collection-products.min.css",
+      "oAP" : "\/block-collection-products.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -382,7 +407,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-collection-top.min.css",
+      "oAP" : "\/block-collection-top.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -407,7 +432,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-footer-copyright.min.css",
+      "oAP" : "\/block-footer-copyright.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -432,7 +457,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-footer-links.min.css",
+      "oAP" : "\/block-footer-links.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -457,7 +482,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-footer-payments.min.css",
+      "oAP" : "\/block-footer-payments.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -482,7 +507,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-footer-service.min.css",
+      "oAP" : "\/block-footer-service.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -518,7 +543,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-footer-usps.min.css",
+      "oAP" : "\/block-footer-usps.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -554,7 +579,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-header-bottom.min.css",
+      "oAP" : "\/block-header-bottom.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -590,7 +615,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-header-callout.min.css",
+      "oAP" : "\/block-header-callout.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -615,7 +640,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-header-middle.min.css",
+      "oAP" : "\/block-header-middle.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -640,7 +665,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-header-product.min.css",
+      "oAP" : "\/block-header-product.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -665,7 +690,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-header-top.min.css",
+      "oAP" : "\/block-header-top.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -690,7 +715,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-loyalty-account.min.css",
+      "oAP" : "\/block-loyalty-account.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -715,7 +740,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-loyalty-login.min.css",
+      "oAP" : "\/block-loyalty-login.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -740,7 +765,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-articles-related.min.css",
+      "oAP" : "\/block-marketing-articles-related.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -765,7 +790,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-articles.min.css",
+      "oAP" : "\/block-marketing-articles.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -790,7 +815,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-banners.min.css",
+      "oAP" : "\/block-marketing-banners.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -815,7 +840,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-blogs.min.css",
+      "oAP" : "\/block-marketing-blogs.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -840,7 +865,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-brands-small.min.css",
+      "oAP" : "\/block-marketing-brands-small.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -865,7 +890,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-brands.min.css",
+      "oAP" : "\/block-marketing-brands.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -890,7 +915,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-collections.min.css",
+      "oAP" : "\/block-marketing-collections.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -915,7 +940,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-cover.min.css",
+      "oAP" : "\/block-marketing-cover.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -940,7 +965,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-faq.min.css",
+      "oAP" : "\/block-marketing-faq.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -965,7 +990,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-features.min.css",
+      "oAP" : "\/block-marketing-features.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -990,7 +1015,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-gallery.min.css",
+      "oAP" : "\/block-marketing-gallery.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1015,7 +1040,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-grid.min.css",
+      "oAP" : "\/block-marketing-grid.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1040,7 +1065,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-media-text.min.css",
+      "oAP" : "\/block-marketing-media-text.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1065,7 +1090,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-media-usps.min.css",
+      "oAP" : "\/block-marketing-media-usps.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1101,7 +1126,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-products.min.css",
+      "oAP" : "\/block-marketing-products.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1126,7 +1151,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-promo.min.css",
+      "oAP" : "\/block-marketing-promo.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1151,7 +1176,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-marketing-testimonials.min.css",
+      "oAP" : "\/block-marketing-testimonials.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1176,7 +1201,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-modal-region.min.css",
+      "oAP" : "\/block-modal-region.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1212,7 +1237,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-modal-share.min.css",
+      "oAP" : "\/block-modal-share.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1237,7 +1262,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-page-breadcrumbs.min.css",
+      "oAP" : "\/block-page-breadcrumbs.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1273,7 +1298,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-page-menu.min.css",
+      "oAP" : "\/block-page-menu.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1298,7 +1323,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-product-blogs.min.css",
+      "oAP" : "\/block-product-blogs.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1323,7 +1348,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-product-discovery.min.css",
+      "oAP" : "\/block-product-discovery.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1348,7 +1373,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-product-form.min.css",
+      "oAP" : "\/block-product-form.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1384,7 +1409,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-product-information.min.css",
+      "oAP" : "\/block-product-information.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1409,7 +1434,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-product-recommended.min.css",
+      "oAP" : "\/block-product-recommended.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1434,7 +1459,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-product-reviews.min.css",
+      "oAP" : "\/block-product-reviews.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1459,7 +1484,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-search-form.min.css",
+      "oAP" : "\/block-search-form.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1484,7 +1509,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/block-search-overlay.min.css",
+      "oAP" : "\/block-search-overlay.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1531,7 +1556,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-404.min.css",
+      "oAP" : "\/main-404.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1556,7 +1581,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-account-activate.min.css",
+      "oAP" : "\/main-account-activate.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1592,7 +1617,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-account-addresses.min.css",
+      "oAP" : "\/main-account-addresses.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1617,7 +1642,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-account-login.min.css",
+      "oAP" : "\/main-account-login.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1642,7 +1667,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-account-order.min.css",
+      "oAP" : "\/main-account-order.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1667,7 +1692,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-account-register.min.css",
+      "oAP" : "\/main-account-register.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1692,7 +1717,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-account-reset.min.css",
+      "oAP" : "\/main-account-reset.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1717,7 +1742,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-account.min.css",
+      "oAP" : "\/main-account.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1742,7 +1767,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-article.min.css",
+      "oAP" : "\/main-article.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1767,7 +1792,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-blog.min.css",
+      "oAP" : "\/main-blog.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1792,7 +1817,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-collection-list.min.css",
+      "oAP" : "\/main-collection-list.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1817,7 +1842,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-page-assist.min.css",
+      "oAP" : "\/main-page-assist.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1842,7 +1867,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-page-blogs.min.css",
+      "oAP" : "\/main-page-blogs.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1867,7 +1892,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-page-toki.min.css",
+      "oAP" : "\/main-page-toki.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1892,7 +1917,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-page.min.css",
+      "oAP" : "\/main-page.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1917,7 +1942,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-password.min.css",
+      "oAP" : "\/main-password.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -1942,10 +1967,21 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/main-policy.min.css",
+      "oAP" : "\/main-policy.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
+    },
+    "\/theme-cart-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/theme-cart-min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
     },
     "\/theme-cart.js" : {
       "bF" : 0,
@@ -1965,6 +2001,17 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/theme-cart.min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/theme-cart.usage-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/theme-cart.usage-min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -2155,7 +2202,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ui.min.css",
+      "oAP" : "\/theme-ui.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -2180,7 +2227,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux-apps.min.css",
+      "oAP" : "\/theme-ux-apps.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -2205,7 +2252,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux-cart.min.css",
+      "oAP" : "\/theme-ux-cart.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -2230,7 +2277,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux-collection.min.css",
+      "oAP" : "\/theme-ux-collection.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -2255,7 +2302,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux-forms.min.css",
+      "oAP" : "\/theme-ux-forms.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -2280,7 +2327,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux-header.min.css",
+      "oAP" : "\/theme-ux-header.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -2305,7 +2352,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux-marketing.min.css",
+      "oAP" : "\/theme-ux-marketing.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -2330,21 +2377,9 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux-product.min.css",
+      "oAP" : "\/theme-ux-product.css",
       "oF" : 0,
       "oS" : 0,
-      "pg" : 0
-    },
-    "\/theme-ux.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/theme-ux-min.css",
-      "oF" : 0,
       "pg" : 0
     },
     "\/theme-ux.js" : {
@@ -2357,18 +2392,6 @@
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
-    },
-    "\/theme-ux.min-min.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/theme-ux.min-min-min.css",
-      "oF" : 0,
-      "pg" : 0
     },
     "\/theme-ux.min.css" : {
       "aP" : 1,
@@ -2401,7 +2424,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 0,
-      "oAP" : "\/theme-ux.min.css",
+      "oAP" : "\/theme-ux.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0
@@ -3878,7 +3901,7 @@
     },
     "languageDefaultsSASS" : {
       "autoOutputAction" : 0,
-      "autoOutputPathFilenamePattern" : "*.min.css",
+      "autoOutputPathFilenamePattern" : "*.css",
       "autoOutputPathRelativePath" : "..\/css",
       "autoOutputPathReplace1" : "sass",
       "autoOutputPathReplace2" : "css",

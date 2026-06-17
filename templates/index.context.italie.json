@@ -17,11 +17,11 @@
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-c2220a54970e2afd75c3084e67119b77": null,
+        "header-293e658733f2ee87ef9da1954c517c60": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-f37120152f5afeb00b72b9a94551d84d": null,
+        "header-a56d2a154cc3967a27655302b4f6e32a": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -29,7 +29,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-33050299746997ccccc013e1026d4d6d": null,
+        "header-fa29e684261cf97cbb21939922e424e5": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -38,11 +38,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-1c383eb4a9b3754cf6e79c6b77b21bac": null,
+        "header-77eca43e091ed5ea8ff1619d798a5be7": null,
         "background_color": "",
         "text_color": "",
-        "header-616fc689f590d81ba7f6051e92db32b6": null,
-        "paragraph-285a0374b1baa5427f0234d185303cd2": null
+        "header-b530845b45a61032e256378282e47e94": null,
+        "paragraph-670478bd7941a9fed5e5f2dc8e59018c": null
       },
       "blocks": {
         "testimonial_Qx8AW": {
@@ -88,8 +88,8 @@
     },
     "block_marketing_cover_EyVVzr": {
       "settings": {
-        "image": "shopify://shop_images/1-IT-ES_Banner_Tijdperk_Dec2025_4b87e494-32bb-4715-9083-68afa2b8cf94.webp",
-        "focus_x": 80,
+        "image": "shopify://shop_images/1-IT-ES_Banner_Tijdperk_Dec2025_87755b7a-8b4c-4d05-b87c-c480296565e4.webp",
+        "focus_x": 85,
         "overlay": "medium"
       },
       "blocks": {
@@ -144,7 +144,6 @@
     "block_marketing_articles_wJ9gkm",
     "block_marketing_articles_qtkjtB",
     "block_marketing_brands_small_gekrHy",
-    "1765396664e68351eb",
     "block_marketing_testimonials_npjDe"
   ]
 }

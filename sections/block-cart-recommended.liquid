@@ -1,0 +1,353 @@
+{%- comment -%}
+  ============================================================================
+  BLOCK-CART-RECOMMENDED
+  ============================================================================
+
+  Purpose:
+  Generic, event-driven recommended-products drawer. A single instance lives in
+  the footer group; any surface can open it for a given product. Modeled on
+  block-cart-confirm but WITHOUT the confirmation ("just added") block, and
+  locked to the cart-flow metafield only (cart_rec_mode: 'cart').
+
+  Public API (registered by this section's script):
+  - window.Recommended.open(handle)   — fetch (cached) this product's
+      recommended-products-cart, inject, open drawer. No-op when the product
+      has no such recommendations (emits 'recommended:empty').
+  - window.Recommended.close()
+  - DOM event hook: document.dispatchEvent(new CustomEvent('recommended:open',
+      { detail: { handle: '<product-handle>' } }))
+  - Delegated trigger: any element with data-recommended-open="<handle>".
+
+  Events dispatched:
+  - 'recommended:opened' { handle }  — drawer opened with content
+  - 'recommended:empty'  { handle }  — no recommendations, drawer not opened
+
+  Contract note:
+  The fetch uses /products/{handle}?section_id={this}, so callers pass the
+  product HANDLE (always available in Liquid contexts), not the id alone.
+
+  Render flow:
+  - On normal render the drawer shell emits with an empty body.
+  - On window.Recommended.open(handle), JS fetches the section re-rendered in
+    that product's context, extracts [data-recommended-body], and swaps it in.
+
+  Dependencies:
+  - theme-drawer.js (window.themeDrawer)
+  - html-cart-confirm-recommended snippet (content engine)
+  - html-theme-card snippet (via recommended snippet)
+  - html-theme-icons snippet
+  ============================================================================
+{%- endcomment -%}
+
+<div
+  class="block-recommended"
+  id="recommended-drawer"
+  data-drawer="recommended-drawer"
+  data-drawer-position="right"
+  data-recommended-section="{{ section.id }}"
+  role="dialog"
+  aria-modal="true"
+  aria-label="{{ 'product.recommended_heading' | t }}"
+  hidden
+>
+  <div class="block-recommended__overlay" data-drawer-overlay></div>
+
+  <div class="block-recommended__content theme-drawer__content">
+    <div class="block-recommended__header theme-drawer__header">
+      <h2 class="block-recommended__title theme-drawer__title">
+        {{ section.settings.heading | default: 'product.recommended_heading' | t }}
+      </h2>
+      <button
+        class="block-recommended__close theme-drawer__close"
+        type="button"
+        aria-label="{{ 'accessibility.close' | t }}"
+        data-drawer-close
+      >
+        {%- render 'html-theme-icons', icon: 'close', size: 24 -%}
+      </button>
+    </div>
+
+    {%- comment -%}
+      Body — empty on normal render, filled server-side during the
+      section_id fetch on /products/{handle} (product context available).
+    {%- endcomment -%}
+    <div
+      class="block-recommended__body theme-drawer__body"
+      data-recommended-body
+      data-section-id="{{ section.id }}"
+    >
+      {%- if product != blank -%}
+        {%- render 'html-cart-confirm-recommended',
+          product: product,
+          heading: section.settings.heading,
+          max_products: section.settings.max_products,
+          hide_out_of_stock: section.settings.hide_out_of_stock,
+          cart_rec_mode: 'cart',
+          card_layout: section.settings.card_layout,
+          card_sizing: section.settings.card_sizing,
+          image_ratio: section.settings.image_ratio,
+          show_secondary_image: section.settings.show_secondary_image,
+          show_rating: section.settings.show_rating,
+          show_vendor: section.settings.show_vendor,
+          show_badges: section.settings.show_badges,
+          show_stock: section.settings.show_stock,
+          show_delivery: section.settings.show_delivery,
+          quick_add: section.settings.quick_add
+        -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .block-recommended__content {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .block-recommended__body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem;
+  }
+
+  /* The drawer header already carries the heading; suppress the snippet's
+     own heading so we don't show it twice. */
+  .block-recommended .cart-confirm-recommended__heading {
+    display: none;
+  }
+
+  .block-recommended .cart-confirm-recommended__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .block-recommended .cart-confirm-recommended__item {
+    margin: 0;
+  }
+
+  /* Compact horizontal cards tuned for the narrow drawer (~420px): fixed
+     64px image column so the text gets the rest. Scoped to this drawer only. */
+  .block-recommended .card--horizontal {
+    grid-template-columns: 64px 1fr;
+  }
+
+  @media (max-width: 40em) {
+    .block-recommended__content {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const sectionEl = document.querySelector('[data-recommended-section="{{ section.id }}"]');
+    if (!sectionEl) return;
+
+    const bodyEl = sectionEl.querySelector('[data-recommended-body]');
+    const sectionId = '{{ section.id }}';
+    const cache = {};
+
+    /**
+     * Fetch this section re-rendered in a product's context and return the
+     * body innerHTML. Returns:
+     *   string (non-empty) — recommendations present
+     *   ''                 — product has no recommended-products-cart
+     *   null               — fetch/parse failed
+     */
+    function fetchBody(handle) {
+      const params = new URLSearchParams({ section_id: sectionId });
+      return fetch('/products/' + encodeURIComponent(handle) + '?' + params.toString(), {
+        headers: { 'Accept': 'text/html' }
+      })
+        .then(function(res) { return res.ok ? res.text() : null; })
+        .then(function(html) {
+          if (html == null) return null;
+          const parsed = new DOMParser().parseFromString(html, 'text/html');
+          const newBody = parsed.querySelector('[data-recommended-body][data-section-id="' + sectionId + '"]');
+          if (!newBody) return null;
+          // The recommended snippet only emits .cart-confirm-recommended when
+          // it has items; absence means "no recommendations for this product".
+          if (!newBody.querySelector('.cart-confirm-recommended')) return '';
+          return newBody.innerHTML;
+        })
+        .catch(function() { return null; });
+    }
+
+    window.Recommended = {
+      open: function(handle) {
+        if (!handle || !bodyEl) return;
+        const cached = cache[handle];
+        const run = (cached !== undefined)
+          ? Promise.resolve(cached)
+          : fetchBody(handle).then(function(html) { cache[handle] = html; return html; });
+
+        run.then(function(html) {
+          if (!html) {
+            // null (failed) or '' (no recommendations) — don't open.
+            document.dispatchEvent(new CustomEvent('recommended:empty', { detail: { handle: handle } }));
+            return;
+          }
+          bodyEl.innerHTML = html;
+          if (window.themeDrawer) window.themeDrawer.open('recommended-drawer');
+          if (window.themeLazy && typeof window.themeLazy.scan === 'function') {
+            try { window.themeLazy.scan(bodyEl); } catch (_) {}
+          }
+          document.dispatchEvent(new CustomEvent('recommended:opened', { detail: { handle: handle } }));
+        });
+      },
+      close: function() {
+        if (window.themeDrawer) window.themeDrawer.close('recommended-drawer');
+      }
+    };
+
+    // Event hook — any surface can request an open without coupling.
+    document.addEventListener('recommended:open', function(e) {
+      if (e && e.detail && e.detail.handle) window.Recommended.open(e.detail.handle);
+    });
+
+    // Delegated trigger — any element with data-recommended-open="<handle>".
+    document.addEventListener('click', function(e) {
+      const trigger = e.target.closest('[data-recommended-open]');
+      if (!trigger) return;
+      e.preventDefault();
+      window.Recommended.open(trigger.getAttribute('data-recommended-open'));
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Recommended drawer",
+  "tag": "section",
+  "class": "section-recommended",
+  "limit": 1,
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Howto"
+    },
+    {
+      "type": "paragraph",
+      "content": "Event-driven drawer. Place once in the footer. Opens for a product via window.Recommended.open(handle), a 'recommended:open' event, or any element with data-recommended-open=\"<handle>\". Shows custom.recommended-products-cart only; no-op when a product has none."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave empty to use locale default (product.recommended_heading)"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "Maximum products",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_out_of_stock",
+      "label": "Hide out of stock products",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Card"
+    },
+    {
+      "type": "select",
+      "id": "card_layout",
+      "label": "Card layout",
+      "options": [
+        { "value": "horizontal", "label": "Horizontal" },
+        { "value": "vertical",   "label": "Vertical" }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "select",
+      "id": "card_sizing",
+      "label": "Card sizing",
+      "options": [
+        { "value": "smaller", "label": "Smaller" },
+        { "value": "regular", "label": "Regular" }
+      ],
+      "default": "smaller"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        { "value": "square",    "label": "Square (1:1)" },
+        { "value": "portrait",  "label": "Portrait (2:3)" },
+        { "value": "landscape", "label": "Landscape (3:2)" },
+        { "value": "adapt",     "label": "Adapt (original)" }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "label": "Show secondary image on hover",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badges",
+      "label": "Show badges",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stock",
+      "label": "Show stock status",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery",
+      "label": "Show delivery date",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "quick_add",
+      "label": "Show quick add button",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recommended drawer",
+      "category": "Cart"
+    }
+  ]
+}
+{% endschema %}

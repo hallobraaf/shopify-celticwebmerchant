@@ -108,21 +108,26 @@
         "type": "select",
         "id": "cart_type",
         "label": "Cart type",
+        "info": "Page = native redirect to /cart. Preview = AJAX add + open mini-cart drawer. Confirmation = AJAX add + open confirm drawer (just-added + recommended). Checked = AJAX add + button checkmark only, no drawer.",
         "options": [
-          {
-            "value": "drawer",
-            "label": "Drawer"
-          },
           {
             "value": "page",
             "label": "Page"
           },
           {
-            "value": "notification",
-            "label": "Notification"
+            "value": "preview",
+            "label": "Preview"
+          },
+          {
+            "value": "confirmation",
+            "label": "Confirmation"
+          },
+          {
+            "value": "checked",
+            "label": "Checked"
           }
         ],
-        "default": "drawer"
+        "default": "page"
       }
     ]
   },
@@ -146,6 +151,13 @@
         "label": "Show tax notice",
         "default": false,
         "info": "Display 'Incl. VAT' or 'Excl. VAT' based on market settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "price_hide_zero_cents",
+        "label": "Hide cents on whole prices",
+        "default": false,
+        "info": "Show €25 instead of €25,00 when a price has no cents. Applies to current and compare-at prices."
       },
       {
         "type": "header",
@@ -207,6 +219,57 @@
         "id": "social_linkedin_link",
         "label": "LinkedIn",
         "info": "https://linkedin.com/company/shopname"
+      }
+    ]
+  },
+  {
+    "name": "Translations",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Timing"
+      },
+      {
+        "type": "paragraph",
+        "content": "Labels for the countdown timer component (header callout, marketing promo)."
+      },
+      {
+        "type": "text",
+        "id": "t_timing_days",
+        "label": "Days",
+        "default": "Days"
+      },
+      {
+        "type": "text",
+        "id": "t_timing_hours",
+        "label": "Hours",
+        "default": "Hours"
+      },
+      {
+        "type": "text",
+        "id": "t_timing_minutes",
+        "label": "Minutes",
+        "default": "Minutes"
+      },
+      {
+        "type": "text",
+        "id": "t_timing_seconds",
+        "label": "Seconds",
+        "default": "Seconds"
+      },
+      {
+        "type": "header",
+        "content": "Cart"
+      },
+      {
+        "type": "paragraph",
+        "content": "Label for the recommended-products button on cart items."
+      },
+      {
+        "type": "text",
+        "id": "t_cart_recs_trigger",
+        "label": "Recommended products button",
+        "default": "View matching products"
       }
     ]
   }

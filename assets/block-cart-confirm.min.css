@@ -1,0 +1,144 @@
+@charset "UTF-8";
+/* ==========================================================================
+   BLOCK-CART-CONFIRM
+   Structural styles — all values are static
+   ========================================================================== */
+.block-cart-confirm__content {
+  width: 100%;
+  max-width: 420px;
+}
+@media (max-width: 40em) {
+  .block-cart-confirm__content {
+    max-width: 100%;
+  }
+}
+.block-cart-confirm__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem;
+}
+.block-cart-confirm__footer {
+  flex-direction: column;
+}
+.block-cart-confirm__block {
+  margin-bottom: 1.5rem;
+}
+.block-cart-confirm__block:last-child {
+  margin-bottom: 0;
+}
+.block-cart-confirm__view-cart {
+  display: block;
+  margin-top: 0;
+  padding: 0.75rem 1.5rem;
+  background: var(--theme-color-green, #111);
+  border: 0px solid currentColor;
+  color: var(--theme-color-white, #fff);
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.block-cart-confirm__view-cart:hover {
+  background: var(--theme-color-green, #111);
+  color: var(--theme-color-white, #fff);
+  opacity: 0.9;
+}
+
+/* Confirmation product card */
+.cart-confirm-product {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--theme-color-grey, #f6f6f6);
+  border-radius: 4px;
+  /* Just-added card text is sized one step up from the recommended items
+     below, so the primary "you added X" message is the visual anchor. */
+}
+.cart-confirm-product__media {
+  flex-shrink: 0;
+  display: block;
+  text-decoration: none;
+}
+.cart-confirm-product__image {
+  display: block;
+  width: 96px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.cart-confirm-product--small .cart-confirm-product__image {
+  width: 64px;
+}
+.cart-confirm-product__details {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.cart-confirm-product__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.cart-confirm-product__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.cart-confirm-product__title a:hover {
+  text-decoration: underline;
+}
+.cart-confirm-product__variant {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  opacity: 0.7;
+}
+.cart-confirm-product__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9375rem;
+}
+.cart-confirm-product__quantity {
+  opacity: 0.7;
+}
+.cart-confirm-product__price {
+  font-weight: 600;
+}
+.cart-confirm-product__price-compare {
+  opacity: 0.5;
+  margin-right: 0.25rem;
+}
+.cart-confirm-product__price-sale {
+  color: var(--theme-color-red, #c00);
+}
+
+/* Recommended list */
+.cart-confirm-recommended {
+  /* Compact horizontal cards, scoped to this drawer only.
+     Overrides the theme-ux.scss base which sets .card--horizontal to
+     grid-template-columns: 35% 1fr. Fixed 64px image column gives a
+     predictable layout in this narrow drawer; other horizontal cards
+     elsewhere on the site keep their normal proportions. */
+}
+.cart-confirm-recommended__heading {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.cart-confirm-recommended__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cart-confirm-recommended__item {
+  margin: 0;
+}
+.cart-confirm-recommended .card--horizontal {
+  grid-template-columns: 64px 1fr;
+}

@@ -17,11 +17,11 @@
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-a8ae6b19da1d593db324b3b913a2bb00": null,
+        "header-623a4d7e67796c972672e277ce887670": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-1ce0ae65c7ca413a526d7c8c464fa6d8": null,
+        "header-c478c9f85f95b6304d20a4ad055a3a7e": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -29,7 +29,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-ead9e888644edd27ca2cc350b19a7792": null,
+        "header-431d194999dc1e2819a2308f08584987": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -38,11 +38,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-711911bd90560bdf119d693861c36c6e": null,
+        "header-e77c55f6c658a43ed664ce2aa85c2f0d": null,
         "background_color": "",
         "text_color": "",
-        "header-dd17eec0c2e4aba0ed1f2029d1da47e8": null,
-        "paragraph-d4cd6190c82b737b9d8eb1dac5ff423d": null
+        "header-e880f6cd76aad829a8bfb36a2abc546e": null,
+        "paragraph-bd868c9285c1081155e407d92ad8b93d": null
       },
       "blocks": {
         "testimonial_fFDRz": {
@@ -90,8 +90,8 @@
       "settings": {
         "subheading": "Ostara Sale",
         "heading": "",
-        "image": "shopify://shop_images/1-UK_Banner_GBPantser1_Feb2026.webp",
-        "focus_x": 85,
+        "image": "shopify://shop_images/1-UK_Banner_GBPantser1_Feb2026_285092cb-87fe-4118-bc51-4147f2e03cd6.webp",
+        "focus_x": 90,
         "overlay": "medium"
       },
       "blocks": {
@@ -141,7 +141,6 @@
     "block_marketing_articles_wJ9gkm",
     "block_marketing_articles_qtkjtB",
     "block_marketing_brands_small_gekrHy",
-    "1765396664e68351eb",
     "block_marketing_testimonials_mhpAE"
   ]
 }

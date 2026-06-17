@@ -13,20 +13,20 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-468f5c640e66ab0575bbfd1c1ff99a43": null,
+        "header-5bf8be3a4409a2750b614f34bc856727": null,
         "heading": "",
         "subheading": "",
-        "header-77e6b5c88377b4d9b545d46a5f5b8ae7": null,
+        "header-ee5511c5533f374c051137122ad6dcf0": null,
         "anchor": "",
         "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-08195c1218d66b4405bfaf7d945a4d4a": null,
+        "header-e02b6bc3df567ad87671a830776139af": null,
         "background_color": "",
         "text_color": "",
-        "header-40fd3f5c00811f233a75a4e1fdcf094b": null,
-        "paragraph-d880ec1a446bd5e5470e80516e78c1e4": null
+        "header-22462cf686e2d0ab53926893b24d9fec": null,
+        "paragraph-cfe49420e632e0423649abfc7df10112": null
       },
       "blocks": {
         "banner_PFHWz": {
@@ -50,10 +50,10 @@
       "type": "block-marketing-products",
       "disabled": false,
       "settings": {
-        "header-e8e86643185c40cc6db5e8b47630d2c1": null,
+        "header-c47a5f541b4eebf773f4204d81713e8f": null,
         "collection": "altijd-nodig",
         "heading": "Altijd nodig",
-        "header-bb87efd973dabd421153b754be66075b": null,
+        "header-f1b9be8c2ae5cb12014c1509d4c4d62d": null,
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_secondary_image": false,
@@ -66,7 +66,7 @@
         "visible_rows": 1,
         "show_more_text": "",
         "show_less_text": "",
-        "header-9d72a0bb0bb3a2d8db9a9bca72568902": null,
+        "header-681eba7da047626504b53b485f44a922": null,
         "width": "is-align",
         "columns_desktop": 4,
         "columns_tablet": 3,
@@ -75,11 +75,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-f013c29a779566559ef6cd3c31711fe6": null,
+        "header-1bfa7e15f78545d163d14840e1fa1d97": null,
         "background_color": "",
         "text_color": "",
-        "header-0838af0dac8e2eff2f24cc43e9f23a1f": null,
-        "paragraph-85a2e386037069ef191af1307ee28bad": null
+        "header-6a2bb8e88c6110c85fce00da9017d9bb": null,
+        "paragraph-ef7a44d674b0f236658ff07af0ce1c1d": null
       },
       "blocks": {},
       "block_order": [],
@@ -89,11 +89,11 @@
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-322513046bc9b32dece11f08f76d8c3d": null,
+        "header-788b09b347e0d2800694a73ed11b85a7": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-a6eec816dcfbd6e85eef9347a4da1668": null,
+        "header-087397acd950710e349c9a226ed89442": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -101,7 +101,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-90eaf5edc84a28d808245ee23fcf3e0d": null,
+        "header-2ebefe79489ee13e4689821771473672": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -110,11 +110,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-91de7059ce313cbc0b63947a44302781": null,
+        "header-0cde6d1f899afc566a8525ece4b911f5": null,
         "background_color": "",
         "text_color": "",
-        "header-26541247334a1020d355ccb2952896d6": null,
-        "paragraph-69c548dbe885101aa3bd9f16effa7d71": null
+        "header-ff059665e5f7932a258adb481ea85bf5": null,
+        "paragraph-ee79c852c1a40680ac37d9c0fef8a40c": null
       },
       "blocks": {
         "testimonial_Drpr8": {
@@ -173,6 +173,7 @@
     "block_marketing_banners_aL3Qr",
     "cart-order",
     "block_marketing_products_UJAdR",
-    "block_marketing_testimonials_Wy9RM"
+    "block_marketing_testimonials_Wy9RM",
+    "block_marketing_media_text_tQPwtw"
   ]
 }

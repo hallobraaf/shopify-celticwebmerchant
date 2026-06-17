@@ -28,8 +28,8 @@
       ],
       "name": "Cover",
       "settings": {
-        "subheading": "Ontdek de nieuwe Celtic WebMerchant",
-        "heading": "Shop op tijdperk!",
+        "subheading": "Alleen vandaag",
+        "heading": "Koninklijke kortingen",
         "text": "",
         "image": "shopify://shop_images/1-NL-DEBanner_Tudor_Feb2026_1.webp",
         "focus_x": 80,
@@ -53,9 +53,9 @@
           "settings": {
             "label": "",
             "heading": "Tribe Sale: alleen voor leden",
-            "text": "<p>Koken & bestek</p>",
+            "text": "<p>Fakkels, vuurkorven & lantaarns</p>",
             "link_url": "shopify://collections/tribe-sale-members-only",
-            "image": "shopify://shop_images/DSC03391.webp",
+            "image": "shopify://shop_images/file_7bf7664a-8f6c-4bdf-99c5-bd96e83b08e2.webp",
             "focus_x": 50,
             "focus_y": 50,
             "overlay": "medium",
@@ -888,17 +888,6 @@
         "button_color": "",
         "button_text_color": ""
       }
-    },
-    "1765396664e68351eb": {
-      "type": "apps",
-      "settings": {
-        "width": "align",
-        "padding_block": 0,
-        "background_color": "#ffffff",
-        "text_color": "#111111",
-        "anchor": "",
-        "custom_class": ""
-      }
     }
   },
   "order": [
@@ -917,7 +906,6 @@
     "block_marketing_media_text_eUmREH",
     "block_marketing_articles_wJ9gkm",
     "block_marketing_articles_qtkjtB",
-    "block_marketing_brands_small_gekrHy",
-    "1765396664e68351eb"
+    "block_marketing_brands_small_gekrHy"
   ]
 }

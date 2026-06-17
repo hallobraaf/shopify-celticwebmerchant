@@ -17,20 +17,20 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-84dff487f57483a445ec28658a350a4d": null,
+        "header-105c25599e91b521c85a88d4b9491f69": null,
         "heading": "",
         "subheading": "",
-        "header-fa75f92b410c6d80fbe431b4cd4ec8cd": null,
+        "header-7f7b374bf8a394727d75a4dc07da7428": null,
         "anchor": "",
         "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-c0224b56e9b151bce16f53226035f93b": null,
+        "header-f7d9df92e2df38b3d601d9d04fa6ab95": null,
         "background_color": "",
         "text_color": "",
-        "header-62fa105b48b9fc787b0950e3713dbf66": null,
-        "paragraph-f910ae36f21b49b7ce553c4ac74c831b": null
+        "header-8f2e9c544c2b8e17fdfb8d71289a84d7": null,
+        "paragraph-b89c894fd8c88dba3265baa3c505dee7": null
       },
       "blocks": {
         "banner_A4LiF": {
@@ -54,11 +54,11 @@
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-85f3391e09356eb1cafc7135952dc13e": null,
+        "header-226f6e352ba47fa6d39b9fe150d79024": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-c0694feab29f547b83980dd929e79917": null,
+        "header-38061c90be4a375e0403e2de415b67ae": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -66,7 +66,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-323d6550e537777d178c571d83ecd1f4": null,
+        "header-27208fdf5b9aed9caf09b74f747da4f7": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -75,11 +75,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-48e9a38e8330fdb6956334988c217abb": null,
+        "header-74361dc4abe42ad63c38b7db5e23e6b9": null,
         "background_color": "",
         "text_color": "",
-        "header-4d2b3945e99751edb64ae4362d8a0943": null,
-        "paragraph-60bd887908f4b40f1d4c9539f8db66f3": null
+        "header-653a6ce0f171562d4ba205369f9b2706": null,
+        "paragraph-d67105099321c00b63bd718dfdd24c01": null
       },
       "blocks": {
         "testimonial_PxRNb": {
@@ -128,6 +128,7 @@
     "block_marketing_banners_ApYmH",
     "cart-order",
     "block_marketing_products_QKemGE",
-    "block_marketing_testimonials_U7gPd"
+    "block_marketing_testimonials_U7gPd",
+    "block_marketing_media_text_tQPwtw"
   ]
 }

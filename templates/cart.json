@@ -48,8 +48,8 @@
         "show_continue_shopping": true,
         "show_vendor": false,
         "show_recommended": false,
-        "max_recommended": 3,
-        "hide_out_of_stock": false,
+        "max_recommended": 2,
+        "hide_out_of_stock": true,
         "width": "is-align-full",
         "padding_block": 2,
         "background_color": "#f8f8f8",
@@ -85,10 +85,115 @@
         "background_color": "",
         "text_color": ""
       }
+    },
+    "block_marketing_media_text_tQPwtw": {
+      "type": "block-marketing-media-text",
+      "blocks": {
+        "video_text_8EQ9Yj": {
+          "type": "video_text",
+          "settings": {
+            "heading": "Achter de schermen. Direct leverbaar bij Celtic WebMerchant",
+            "text": "<p>Bij ons vind je de grootste collectie van Europa, direct uit eigen voorraad leverbaar. Geen tussenpersonen of verre verzendlocaties. Alles wat je in de winkelwagen op voorraad ziet liggen, bevindt zich fysiek in ons eigen magazijn.</p><h5><strong><br/>Waarom je met een gerust hart kunt bestellen:</strong></h5><ul><li><strong>Uit eigen voorraad geleverd:</strong> In de video hiernaast krijg je een uniek kijkje achter de schermen van ons magazijn.</li><li><strong>Snel en betrouwbaar:</strong> Doordat we vanuit ons eigen magazijn verzenden, hebben we volledige controle over de kwaliteit en de snelheid van je levering.</li><li><strong>Passie voor het vak:</strong> Wij delen dezelfde levensstijl. Elk pakket wordt met zorg behandeld door een team dat net zo enthousiast is over onze collectie als jijzelf. </li></ul>",
+            "cta_text": "",
+            "cta_url": "",
+            "cta_style": "primary",
+            "video": "shopify://files/videos/20260415_Magazijn_V01.mp4",
+            "video_url": "",
+            "video_mode": "play",
+            "poster": "shopify://shop_images/Schermafbeelding_2026-04-22_140110.png",
+            "image_height": "square",
+            "focus_x": 50,
+            "focus_y": 50,
+            "image_position": "left",
+            "image_width": "40",
+            "vertical_alignment": "center",
+            "background_color": "",
+            "text_color": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_text_8EQ9Yj"
+      ],
+      "name": "Media & text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "text_align": "center",
+        "width": "is-align",
+        "padding_block": 3,
+        "anchor": "",
+        "custom_class": "",
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "1777973870e7ac98db": {
+      "type": "apps",
+      "blocks": {
+        "shop_the_look_shop_the_look_static_FQrCmL": {
+          "type": "shopify://apps/shop-the-look/blocks/shop-the-look-static/36dde5f1-9b4e-442e-b806-01ba76d9468d",
+          "settings": {
+            "product": "middeleeuwse-rok-melisende-rood",
+            "template": "inpage",
+            "title": "Shop the look",
+            "customCss": ""
+          }
+        }
+      },
+      "block_order": [
+        "shop_the_look_shop_the_look_static_FQrCmL"
+      ],
+      "settings": {
+        "width": "is-align",
+        "padding_block": 0,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
+    },
+    "17779933598b5852ea": {
+      "type": "apps",
+      "blocks": {
+        "shop_the_look_shop_the_look_gFTHDK": {
+          "type": "shopify://apps/shop-the-look/blocks/shop-the-look/36dde5f1-9b4e-442e-b806-01ba76d9468d",
+          "settings": {
+            "use_theme_settings": true,
+            "heading_size": 14,
+            "heading_color": "",
+            "title_size": 14,
+            "title_color": "",
+            "price_size": 14,
+            "price_color": "",
+            "button_color": "#000000",
+            "button_hover_color": "",
+            "button_height": 30,
+            "button_padding_x": 10,
+            "button_border_radius": 0
+          }
+        }
+      },
+      "block_order": [
+        "shop_the_look_shop_the_look_gFTHDK"
+      ],
+      "settings": {
+        "width": "is-align",
+        "padding_block": 0,
+        "background_color": "#ffffff",
+        "text_color": "#111111",
+        "anchor": "",
+        "custom_class": ""
+      }
     }
   },
   "order": [
     "cart-order",
-    "block_marketing_products_QKemGE"
+    "block_marketing_products_QKemGE",
+    "block_marketing_media_text_tQPwtw",
+    "1777973870e7ac98db",
+    "17779933598b5852ea"
   ]
 }

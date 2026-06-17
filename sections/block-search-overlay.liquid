@@ -82,6 +82,7 @@ DEPENDENCIES:
 			"moneyFormat": {{ shop.money_format | json }},
 			"showComparePrice": {{ settings.price_show_compare | default: true | json }},
 			"showTaxNotice": {{ settings.price_show_tax_notice | default: false | json }},
+			"hideZeroCents": {{ settings.price_hide_zero_cents | default: false | json }},
 			"taxIncluded": {{ cart.taxes_included | json }},
 			"strings": {
 				"noResults": {{ 'search.no_results' | t | json }},

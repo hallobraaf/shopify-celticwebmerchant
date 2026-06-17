@@ -17,20 +17,20 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-6daff88be58234421ad70a2722d8c693": null,
+        "header-27a6cd7a8c1f2499eca481ee5fedc94a": null,
         "heading": "",
         "subheading": "",
-        "header-a2195be74fb20416161663feaba5ad5b": null,
+        "header-2697ddd6ab1db65f2d5364c87aed8962": null,
         "anchor": "",
         "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-5dfe71774b2b6792e86bd6a29c9938c8": null,
+        "header-a38ece2f98b44eca1cbb851507ce31f9": null,
         "background_color": "",
         "text_color": "",
-        "header-020678465be450cfa82df3e3c825fe93": null,
-        "paragraph-f4ca15717f5f68a94a7eb1cfe57a6ddb": null
+        "header-55b44627424a8843760507529538b4dc": null,
+        "paragraph-7e06f5ea13da3d1f65d5c55b78a1e058": null
       },
       "blocks": {
         "banner_Tt47j": {
@@ -54,10 +54,10 @@
       "type": "block-marketing-products",
       "disabled": false,
       "settings": {
-        "header-92233f68bc204407552b4b49a0578302": null,
+        "header-14f72c6f100cd14b4cab3487d1d1fa30": null,
         "collection": "altijd-nodig",
         "heading": "Altijd nodig!",
-        "header-b79fdec5067e65dedef288e1ff7504a0": null,
+        "header-28462d935aeb41b5758fe00dddb91a1f": null,
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_secondary_image": false,
@@ -70,7 +70,7 @@
         "visible_rows": 1,
         "show_more_text": "",
         "show_less_text": "",
-        "header-e636b2e02a26f89c8ac125e3da45020a": null,
+        "header-fbfb91ab288ff4af8911b816ff637005": null,
         "width": "is-align-wide",
         "columns_desktop": 4,
         "columns_tablet": 3,
@@ -79,11 +79,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-29b75b07e61c293c650b43ecfca0c8bc": null,
+        "header-0806647f3a1bb9591b5e3bd91d3a6588": null,
         "background_color": "",
         "text_color": "",
-        "header-e80e37f9b33e41ef037fae4f2b60f7b7": null,
-        "paragraph-6a9283129e8fcf01182b004107a6621f": null
+        "header-5706f584a732dcfca7ef79e022533f4e": null,
+        "paragraph-2ae45298f5ea80bcb03682b905cb7e5d": null
       },
       "blocks": {},
       "block_order": [],
@@ -93,11 +93,11 @@
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-702b981342d0b23406dd9308f34aa3df": null,
+        "header-783cd8d748f912fe0bdcddb64b4f1f6c": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-81469ae2ff06f31792eeabd01f065840": null,
+        "header-c879fa7ae8217e9ea410f485658876bc": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -105,7 +105,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-54f35c1e3a67be0341602030ee517d9e": null,
+        "header-fbe1d34fd7dd7a7a35dd19d021cb15a4": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -114,11 +114,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-d7f821a682d17539078fae00f3d687d3": null,
+        "header-e02517ca3da18d317fcb9e2430a3884a": null,
         "background_color": "",
         "text_color": "",
-        "header-d512c516fa707fae99b28d9f3d3302fb": null,
-        "paragraph-24e3361548adde55cfc418f550067ce9": null
+        "header-50ce91e5de45c15f7fbd91c50dcf6338": null,
+        "paragraph-2d8092745bacd74b7d2400d397c80b11": null
       },
       "blocks": {
         "testimonial_UA9Ft": {
@@ -167,6 +167,7 @@
     "block_marketing_banners_9m79i",
     "cart-order",
     "block_marketing_products_FR9qz",
-    "block_marketing_testimonials_mpA4Y"
+    "block_marketing_testimonials_mpA4Y",
+    "block_marketing_media_text_tQPwtw"
   ]
 }

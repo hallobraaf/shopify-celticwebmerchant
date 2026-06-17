@@ -232,7 +232,13 @@ DEPENDENCIES:
 
 		{%- if quick_add -%}
 			<div class="card__actions">
-				{%- render 'html-button-order', product: p, variant_behavior: quick_add_behavior, show_icon: true, button_style: 'primary' -%}
+				{%- render 'html-button-order',
+					product: p,
+					variant_behavior: quick_add_behavior,
+					on_success: quick_add_on_success,
+					show_icon: true,
+					button_style: 'primary'
+				-%}
 			</div>
 		{%- endif -%}
 	</div>

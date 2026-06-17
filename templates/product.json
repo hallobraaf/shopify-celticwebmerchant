@@ -154,6 +154,39 @@
         "text_color": "#111111"
       }
     },
+    "block_product_recommended_afRGwD": {
+      "type": "block-product-recommended",
+      "name": "Recommended products",
+      "settings": {
+        "heading": "",
+        "max_products": 8,
+        "hide_out_of_stock": true,
+        "display_mode": "slider",
+        "slider_navigation": false,
+        "slider_pagination": false,
+        "slider_autoplay": false,
+        "slider_autoplay_speed": 2,
+        "card_layout": "horizontal",
+        "card_sizing": "smaller",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_rating": false,
+        "show_vendor": false,
+        "show_badges": false,
+        "show_stock": false,
+        "show_delivery": false,
+        "quick_add": true,
+        "width": "is-align",
+        "grid_columns": 4,
+        "grid_columns_tablet": 2,
+        "grid_columns_mobile": 2,
+        "padding_block": 2,
+        "anchor": "",
+        "custom_class": "",
+        "background_color": "#f8f8f8",
+        "text_color": "#111111"
+      }
+    },
     "product-information": {
       "type": "block-product-information",
       "settings": {
@@ -165,31 +198,6 @@
         "width": "is-align",
         "padding_block": 4,
         "anchor": "product-information",
-        "custom_class": "",
-        "background_color": "#f8f8f8",
-        "text_color": "#111111"
-      }
-    },
-    "block_product_recommended_afRGwD": {
-      "type": "block-product-recommended",
-      "name": "Recommended products",
-      "settings": {
-        "heading": "",
-        "max_products": 4,
-        "hide_out_of_stock": true,
-        "card_layout": "horizontal",
-        "image_ratio": "portrait",
-        "show_secondary_image": false,
-        "show_rating": false,
-        "show_vendor": false,
-        "show_badges": true,
-        "quick_add": true,
-        "width": "is-align-full",
-        "grid_columns": 6,
-        "grid_columns_tablet": 3,
-        "grid_columns_mobile": 1,
-        "padding_block": 4,
-        "anchor": "",
         "custom_class": "",
         "background_color": "#f8f8f8",
         "text_color": "#111111"
@@ -263,7 +271,9 @@
         "background_color": "#f8f8f8",
         "text_color": "#111111",
         "knowledge_background_color": "#0f1f38",
-        "knowledge_text_color": "#ffffff"
+        "knowledge_text_color": "#ffffff",
+        "tips_background_color": "",
+        "tips_text_color": ""
       }
     },
     "block_product_reviews_keNkJP": {
@@ -296,8 +306,8 @@
   },
   "order": [
     "product-form",
-    "product-information",
     "block_product_recommended_afRGwD",
+    "product-information",
     "17622440393afaba32",
     "product-discovery",
     "product-blog",

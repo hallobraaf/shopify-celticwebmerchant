@@ -362,10 +362,12 @@
 
     &:hover:not([disabled]) { background-color: var(--theme-color-green-dark, #16a34a); }
 
-    &[disabled] {
-      background-color: var(--theme-color-orange, #f59e0b);
-      cursor: not-allowed;
-    }
+    /* Disabled state intentionally has no color override — relies on the
+       global :disabled / [disabled] rule in theme-ui.scss which applies
+       opacity: 0.5 + cursor: not-allowed. Keeps the brand-green intact
+       while clearly signalling un-actionable state. Same pattern as
+       cart-quantity, cart-payments, swiper-nav and other disabled states
+       across the theme. */
   }
 
   // Notify: back in stock

@@ -243,6 +243,9 @@
       "hours": "Uren",
       "minutes": "Minuten",
       "seconds": "Seconden"
+    },
+    "cart_confirm": {
+      "heading": "Toegevoegd aan winkelwagen"
     }
   },
   "newsletter": {

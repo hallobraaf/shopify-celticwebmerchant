@@ -17,11 +17,11 @@
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-3250abbd3b6464c039ce4d57ceab5b13": null,
+        "header-d5eba46f5239a2f7c9d34c7838db1222": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-472b7171a5a211efa0a4e19e8a2e7be0": null,
+        "header-251c1b339448fa40f94b5930f62f88ae": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -29,7 +29,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-7b2ea2bf37dccdc49cb94025ae10cc34": null,
+        "header-2bebbf5f5ac8bb3d98ef4ee21dfad5d3": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -38,11 +38,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-ecd7f9d5c14643851fdef0bd477e85cb": null,
+        "header-f2d5d0fa89954a183b148c56dd34ad58": null,
         "background_color": "",
         "text_color": "",
-        "header-e52aa77f98755cf9601601a7ba242805": null,
-        "paragraph-c64050782f7e8f4fd9ccd2635f153e5a": null
+        "header-2baf0d5c710a48b11d8782cc08fcbe6b": null,
+        "paragraph-0500e96f545d7f5d1cc97487e2b79c21": null
       },
       "blocks": {
         "testimonial_zyBY8": {
@@ -88,8 +88,8 @@
     },
     "block_marketing_cover_EyVVzr": {
       "settings": {
-        "image": "shopify://shop_images/1-IT-ES_Banner_Tijdperk_Dec2025_4b87e494-32bb-4715-9083-68afa2b8cf94.webp",
-        "focus_x": 80,
+        "image": "shopify://shop_images/1-IT-ES_Banner_Tijdperk_Dec2025_a7e84fcf-ad5f-492c-be65-b7e6dde04298.webp",
+        "focus_x": 85,
         "overlay": "medium"
       },
       "blocks": {
@@ -154,7 +154,6 @@
     "block_marketing_articles_wJ9gkm",
     "block_marketing_articles_qtkjtB",
     "block_marketing_brands_small_gekrHy",
-    "1765396664e68351eb",
     "block_marketing_testimonials_CkLFt"
   ]
 }

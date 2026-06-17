@@ -15,7 +15,7 @@
   "sections": {
     "block_marketing_cover_EyVVzr": {
       "settings": {
-        "image": "shopify://shop_images/1-DK-SEBanner_Viking_Eleanora_Feb2026_3.webp",
+        "image": "shopify://shop_images/1-DK-SEBanner_Viking_Eleanora_Feb2026_3.jpg",
         "focus_x": 50,
         "overlay": "medium"
       },
@@ -32,7 +32,7 @@
       "blocks": {
         "image_text_aJBEwL": {
           "settings": {
-            "image": "shopify://shop_images/volva.jpg"
+            "image": "shopify://shop_images/DSC09422_afe7daf0-3955-47dc-999e-430f34f9fe84.jpg"
           }
         }
       }

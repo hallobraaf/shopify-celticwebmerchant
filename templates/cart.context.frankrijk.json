@@ -13,20 +13,20 @@
       "type": "block-marketing-banners",
       "disabled": false,
       "settings": {
-        "header-e896acc368613ff721ebf8825edfe8cd": null,
+        "header-2f31e6c003b3b0b0f4186af4f830563a": null,
         "heading": "",
         "subheading": "",
-        "header-1b907f5a8415bc63710a5dc5b2dd2ab6": null,
+        "header-cacbcd4073e79480d2113063efc49654": null,
         "anchor": "",
         "custom_class": "",
         "width": "is-align-wide",
         "layout": "stacked",
         "padding_block": 3,
-        "header-35119cb621aa6f1d34f465cff62210b1": null,
+        "header-7186a0686efdb582a6469c539df28440": null,
         "background_color": "",
         "text_color": "",
-        "header-8df4918f87628e4a709486f4412a0f40": null,
-        "paragraph-7c8706612f765f47d977ba8780d10a0b": null
+        "header-22230c7c96e3f33f5a0351a2ccc9eecf": null,
+        "paragraph-1449a8786a12a6c9312ea0ec6a2b489b": null
       },
       "blocks": {
         "banner_xkBD6": {
@@ -50,10 +50,10 @@
       "type": "block-marketing-products",
       "disabled": false,
       "settings": {
-        "header-f7c262aee80942e9f51a449f2150fcab": null,
+        "header-a73fc589f01635667805f732ce7402f9": null,
         "collection": "altijd-nodig",
         "heading": "Toujours nécessaire",
-        "header-ad1d6fa3cbb90a17a2b3d6bc20a798af": null,
+        "header-9be32763f87b695c3441a59b054fb960": null,
         "card_layout": "vertical",
         "image_ratio": "portrait",
         "show_secondary_image": false,
@@ -66,7 +66,7 @@
         "visible_rows": 1,
         "show_more_text": "",
         "show_less_text": "",
-        "header-8b9542654079a21e0e231195ffbc15d0": null,
+        "header-25c3a4cd93485b874278ba225b66b8af": null,
         "width": "is-align",
         "columns_desktop": 4,
         "columns_tablet": 3,
@@ -75,11 +75,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-053bccfa16272df80950711f39094e15": null,
+        "header-68cd26b60ec9ecd243b14c9ebcdfea0a": null,
         "background_color": "",
         "text_color": "",
-        "header-c98429f2031bf4e7f59881dadf5dc719": null,
-        "paragraph-883cd3ad55fff3f60a05b7daeeeccbf4": null
+        "header-6ae15dcc70745095dbe88b39450cd52d": null,
+        "paragraph-209a28ce2ed59df7e850ab0b4cf2f07f": null
       },
       "blocks": {},
       "block_order": [],
@@ -89,11 +89,11 @@
       "type": "block-marketing-testimonials",
       "disabled": false,
       "settings": {
-        "header-4e4ec48ebc783ad1c9e45df8692241b4": null,
+        "header-2eef0c7378a5e52445aa74b5b6e6571d": null,
         "heading": "",
         "subheading": "",
         "text_align": "center",
-        "header-087d45d4bc1c0f110b96532f75bdb2ff": null,
+        "header-3489a5f5105303c82ca89237a356ca76": null,
         "alignment": "center",
         "quote_style": "boxed",
         "display_mode": "grid",
@@ -101,7 +101,7 @@
         "slider_pagination": false,
         "slider_autoplay": false,
         "slider_autoplay_speed": 5,
-        "header-099f0e5115394819c6661e909496d2f2": null,
+        "header-9e6f1acb83eabada105bc06eca8b8656": null,
         "width": "is-align-wide",
         "columns_desktop": 2,
         "columns_tablet": 2,
@@ -110,11 +110,11 @@
         "padding_block": 3,
         "anchor": "",
         "custom_class": "",
-        "header-b74e33b9219a3d22acce247260a8e031": null,
+        "header-51eaf3df8ff46d34840f139797d02eb7": null,
         "background_color": "",
         "text_color": "",
-        "header-cbfa0b63dcd48120412ac82d2c45c92a": null,
-        "paragraph-6647cd3c31d8d898492a8c93b131c8b1": null
+        "header-25b1cbeb2e2d1df9ccdbc243401949f1": null,
+        "paragraph-a7d03f4f526619d95e83c3ac9089056c": null
       },
       "blocks": {
         "testimonial_C7Lyd": {
@@ -173,6 +173,7 @@
     "block_marketing_banners_YBJBC",
     "cart-order",
     "block_marketing_products_RG4BG",
-    "block_marketing_testimonials_tAYta"
+    "block_marketing_testimonials_tAYta",
+    "block_marketing_media_text_tQPwtw"
   ]
 }

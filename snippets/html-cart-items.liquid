@@ -7,22 +7,22 @@
   PARAMETERS:
   - cart: {Object} Cart object (required)
   - show_vendor: {Boolean} Show vendor name (default: false)
-  - show_recommended: {Boolean} Show recommended products per item (default: false)
-  - max_recommended: {Number} Max recommended products per item (default: 4)
-  - hide_out_of_stock: {Boolean} Hide out of stock recommended products (default: false)
+  - show_recommended: {Boolean} Show the recommended-products trigger button
+                       per item, when the product has a custom.recommended-products-cart
+                       metafield (default: false). Opens the global Recommended
+                       drawer (section: block-cart-recommended).
   - compact: {Boolean} Use compact layout (default: false)
 
   DEPENDENCIES:
   - theme-cart.js (cart-quantity-input, cart-remove-button, cart-add-button)
   - theme-ux-cart.min.css
+  - block-cart-recommended section (window.Recommended / data-recommended-open)
 
   USAGE:
-  {% render 'html-cart-items', 
-    cart: cart, 
+  {% render 'html-cart-items',
+    cart: cart,
     show_vendor: true,
     show_recommended: true,
-    max_recommended: 4,
-    hide_out_of_stock: false,
     compact: false
   %}
   ============================================================================
@@ -31,8 +31,6 @@
 {%- liquid
   assign show_vendor = show_vendor | default: false
   assign show_recommended = show_recommended | default: false
-  assign max_recommended = max_recommended | default: 4
-  assign hide_out_of_stock = hide_out_of_stock | default: false
   assign compact = compact | default: false
 -%}
 
@@ -198,63 +196,33 @@
         </div>
 
         {%- comment -%} ================= RECOMMENDED PRODUCTS ================= {%- endcomment -%}
-        {%- if show_recommended and item.product.metafields.custom.recommended-products.value -%}
-          <div class="cart-item-recs">
-            <button type="button" class="cart-item-recs__nav cart-item-recs__nav--prev" aria-label="{{ 'accessibility.previous' | t }}" hidden>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M15.7,18.7l-6-6c-0.4-0.4-0.4-1,0-1.4l6-6c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4L11.8,12l5.3,5.3c0.4,0.4,0.4,1,0,1.4C16.7,19.1,16.1,19.1,15.7,18.7z"/></svg>
+        {%- if show_recommended -%}
+          {%- assign cart_recs = item.product.metafields.custom['recommended-products-cart'].value -%}
+          {%- if cart_recs != blank and cart_recs.size > 0 -%}
+            <button
+              type="button"
+              class="cart-item-recs-trigger"
+              data-recommended-open="{{ item.product.handle }}"
+              aria-haspopup="dialog"
+            >
+              <span class="cart-item-recs-trigger__teaser" aria-hidden="true">
+                {%- for rec in cart_recs limit: 3 -%}
+                  {%- if rec.featured_image -%}
+                    <img
+                      class="cart-item-recs-trigger__thumb"
+                      src="{{ rec.featured_image | image_url: width: 64 }}"
+                      width="24"
+                      height="24"
+                      alt=""
+                      loading="lazy"
+                    >
+                  {%- endif -%}
+                {%- endfor -%}
+              </span>
+              <span class="cart-item-recs-trigger__label">{{ settings.t_cart_recs_trigger | default: 'View matching products' }}</span>
+              {%- render 'html-theme-icons', icon: 'chevron-right', size: 16 -%}
             </button>
-            <div class="cart-item-recs__slider">
-              {%- for rec in item.product.metafields.custom.recommended-products.value limit: max_recommended -%}
-                {%- if hide_out_of_stock and rec.available == false -%}
-                  {%- continue -%}
-                {%- endif -%}
-                {%- if rec.available -%}
-                  <div class="cart-item-recs__item">
-                    <a href="{{ rec.url }}" class="cart-item-recs__link">
-                      {%- if rec.featured_image -%}
-                        <img
-                          src="{{ rec.featured_image | image_url: width: 80 }}"
-                          alt="{{ rec.featured_image.alt | default: rec.title | escape }}"
-                          width="40"
-                          height="40"
-                          loading="lazy"
-                          class="cart-item-recs__image"
-                        >
-                      {%- endif -%}
-                      <div class="cart-item-recs__info">
-                        <span class="cart-item-recs__title">{{ rec.title }}</span>
-                        <span class="cart-item-recs__price">{{ rec.price | money }}</span>
-                      </div>
-                    </a>
-                    {%- if rec.has_only_default_variant -%}
-                      <cart-add-button
-                        class="cart-item-recs__add"
-                        data-variant-id="{{ rec.selected_or_first_available_variant.id }}"
-                      >
-                        <button
-                          type="button"
-                          aria-label="{{ 'cart.add' | t }}: {{ rec.title | escape }}"
-                        >
-                          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-                            <path d="M19,11h-6V5c0-0.6-0.4-1-1-1s-1,0.4-1,1v6H5c-0.6,0-1,0.4-1,1s0.4,1,1,1h6v6c0,0.6,0.4,1,1,1s1-0.4,1-1v-6h6c0.6,0,1-0.4,1-1S19.6,11,19,11z"/>
-                          </svg>
-                        </button>
-                      </cart-add-button>
-                    {%- else -%}
-                      <a href="{{ rec.url }}" class="cart-item-recs__add cart-item-recs__add--link" aria-label="{{ 'product.view' | t }}: {{ rec.title | escape }}">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-                          <path d="M18,6L18,6c0-0.6-0.4-1-1-1H7c-0.6,0-1,0.4-1,1v0c0,0.6,0.4,1,1,1h7.6l-9.3,9.3c-0.4,0.4-0.4,1,0,1.4c0.4,0.4,1,0.4,1.4,0L16,8.4V16c0,0.6,0.4,1,1,1s1-0.4,1-1V7C18,6.4,18,6.2,18,6z"/>
-                        </svg>
-                      </a>
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
-            <button type="button" class="cart-item-recs__nav cart-item-recs__nav--next" aria-label="{{ 'accessibility.next' | t }}" hidden>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8.3,18.7c-0.4-0.4-0.4-1,0-1.4l5.3-5.3L8.3,6.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l6,6c0.4,0.4,0.4,1,0,1.4l-6,6C9.3,19.1,8.7,19.1,8.3,18.7z"/></svg>
-            </button>
-          </div>
+          {%- endif -%}
         {%- endif -%}
       </article>
     {%- endfor -%}
@@ -264,74 +232,3 @@
     <p>{{ 'cart.empty' | t }}</p>
   </div>
 {%- endif -%}
-
-<script>
-  (function() {
-    function initRecsSlider(container) {
-      const slider = container.querySelector('.cart-item-recs__slider');
-      const prevBtn = container.querySelector('.cart-item-recs__nav--prev');
-      const nextBtn = container.querySelector('.cart-item-recs__nav--next');
-      const items = slider.querySelectorAll('.cart-item-recs__item');
-      
-      if (!slider || !prevBtn || !nextBtn || items.length === 0) return;
-
-      function update() {
-        const hasOverflow = slider.scrollWidth > slider.clientWidth + 1;
-        const atStart = slider.scrollLeft <= 1;
-        const atEnd = slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - 1;
-        
-        prevBtn.hidden = !hasOverflow || atStart;
-        nextBtn.hidden = !hasOverflow || atEnd;
-      }
-
-      function getNextItem(direction) {
-        const itemsArray = [...items];
-        
-        if (direction === 'next') {
-          for (const item of itemsArray) {
-            if (item.offsetLeft > slider.scrollLeft + 1) {
-              return item;
-            }
-          }
-        } else {
-          let target = null;
-          for (const item of itemsArray) {
-            if (item.offsetLeft < slider.scrollLeft) {
-              target = item;
-            }
-          }
-          return target;
-        }
-        return null;
-      }
-
-      prevBtn.addEventListener('click', () => {
-        const target = getNextItem('prev');
-        slider.scrollTo({ left: target ? target.offsetLeft : 0, behavior: 'smooth' });
-      });
-
-      nextBtn.addEventListener('click', () => {
-        const target = getNextItem('next');
-        if (target) slider.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
-      });
-
-      slider.addEventListener('scroll', update);
-      
-      // Use ResizeObserver to detect when container becomes visible
-      new ResizeObserver(update).observe(slider);
-    }
-
-    function initAllSliders() {
-      document.querySelectorAll('.cart-item-recs:not([data-init])').forEach(container => {
-        container.dataset.init = '';
-        initRecsSlider(container);
-      });
-    }
-
-    initAllSliders();
-
-    if (window.CartEvents) {
-      window.CartEvents.subscribe('cart:loaded', initAllSliders);
-    }
-  })();
-</script>

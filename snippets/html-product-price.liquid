@@ -44,6 +44,7 @@ PARAMETERS:
   endif
 	assign extra_class = class | default: ''
 	assign currency_symbol = cart.currency.symbol | default: localization.country.currency.symbol | default: '€'
+	assign hide_zero_cents = settings.price_hide_zero_cents | default: false
 -%}
 
 {%- if show and product -%}
@@ -112,8 +113,10 @@ PARAMETERS:
 				<span class="price">
 					<span class="valuta">{{ currency_symbol }}</span>
 					<span class="before_seperator">{{ before }}</span>
-					<span class="seperator">{{ dec_sep }}</span>
-					<span class="after_seperator">{{ after }}</span>
+					{%- unless hide_zero_cents and after == '00' -%}
+						<span class="seperator">{{ dec_sep }}</span>
+						<span class="after_seperator">{{ after }}</span>
+					{%- endunless -%}
 				</span>
 			</span>
 			
@@ -143,8 +146,10 @@ PARAMETERS:
 					<span class="price">
 						<span class="valuta">{{ currency_symbol }}</span>
 						<span class="before_seperator">{{ before_compare }}</span>
-						<span class="seperator">{{ dec_sep_compare }}</span>
-						<span class="after_seperator">{{ after_compare }}</span>
+						{%- unless hide_zero_cents and after_compare == '00' -%}
+							<span class="seperator">{{ dec_sep_compare }}</span>
+							<span class="after_seperator">{{ after_compare }}</span>
+						{%- endunless -%}
 					</span>
 				</span>
 			{%- endif -%}

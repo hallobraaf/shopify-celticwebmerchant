@@ -462,6 +462,139 @@ class CartAPI {
       throw error;
     }
   }
+
+  /**
+   * Attribute-driven add-to-cart form interceptor.
+   *
+   * Forms opt in via `data-cart-ajax`. Forms without it submit natively
+   * (browser POST + redirect) — that is the `page` mode for the main
+   * product form. The interceptor reads two attributes per form:
+   *
+   *   data-cart-ajax              required to be intercepted
+   *   data-cart-on-success="..."  one of: preview | confirmation | checked
+   *   data-product-handle="..."   only used when on-success = confirmation
+   *                               (so cart-confirm can fetch fresh body)
+   *
+   * On success the interceptor:
+   *   1. Calls CartAPI.add() with form data (single-item payload)
+   *   2. Manages submit-button states (is-loading → is-success / is-error)
+   *      using classes that html-button-order's CSS already styles, so the
+   *      vinkje / kruis badges show automatically.
+   *   3. Dispatches the requested success behavior:
+   *        preview      → window.CartPreview.open() (mini-cart drawer)
+   *        confirmation → window.CartConfirm.openWithProduct(handle, variantId, qty)
+   *        checked      → no further action; vinkje state is the feedback
+   *
+   * Failure fallback: if AJAX throws, the form is submitted natively so
+   * the customer is never stuck.
+   *
+   * Idempotent: safe to call multiple times — listener is attached once
+   * via _formsIntercepted. Auto-activated by initializeCart() at the
+   * bottom of this file; sections do not need to call this explicitly.
+   *
+   * Form data shape supported:
+   *   - id (variant id), quantity
+   *   - properties[Foo] (line item properties)
+   *   - selling_plan
+   *   - Any other fields posted to /cart/add are forwarded as-is
+   */
+  interceptForms() {
+    if (this._formsIntercepted) return;
+    this._formsIntercepted = true;
+
+    document.addEventListener('submit', async (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement)) return;
+      if (!form.hasAttribute('data-cart-ajax')) return;
+
+      event.preventDefault();
+
+      const onSuccess = form.dataset.cartOnSuccess || 'checked';
+      const productHandle = form.dataset.productHandle || null;
+      const button = form.querySelector('[type="submit"]');
+
+      // Build payload from form data, preserving nested properties[]
+      const formData = new FormData(form);
+      const payload = {};
+      const properties = {};
+      for (const [key, value] of formData.entries()) {
+        const propMatch = key.match(/^properties\[(.+)\]$/);
+        if (propMatch) {
+          properties[propMatch[1]] = value;
+        } else {
+          payload[key] = value;
+        }
+      }
+      if (Object.keys(properties).length > 0) {
+        payload.properties = properties;
+      }
+
+      // Universal: enter loading state
+      this._setButtonState(button, 'loading');
+
+      let cartData;
+      try {
+        cartData = await window.CartAPI.add(payload);
+      } catch (err) {
+        console.error('[CartAPI.interceptForms] AJAX add failed:', err);
+        this._setButtonState(button, 'error');
+        // Native fallback so customer is not stuck
+        if (button) button.disabled = false;
+        try { form.submit(); } catch (_) {}
+        return;
+      }
+
+      // Universal: enter success state (vinkje)
+      this._setButtonState(button, 'success');
+
+      // Dispatch on-success behavior
+      try {
+        if (onSuccess === 'preview' && window.CartPreview && typeof window.CartPreview.open === 'function') {
+          window.CartPreview.open();
+        } else if (onSuccess === 'confirmation' && window.CartConfirm && typeof window.CartConfirm.openWithProduct === 'function') {
+          const variantId = formData.get('id');
+          const qty = parseInt(formData.get('quantity'), 10) || 1;
+          window.CartConfirm.openWithProduct(productHandle, variantId, qty);
+        }
+        // 'checked' → vinkje only, nothing else
+      } catch (err) {
+        console.error('[CartAPI.interceptForms] on-success dispatch failed:', err);
+      }
+    });
+  }
+
+  /**
+   * Apply loading / success / error state classes to a submit button.
+   * Aligned with html-button-order's CSS conventions:
+   *   .is-loading                — pending state
+   *   .is-success + badge--success — vinkje shown for 2s
+   *   .is-error   + badge--error   — kruis shown for 2s
+   *
+   * @private
+   */
+  _setButtonState(button, state) {
+    if (!button) return;
+    button.classList.remove('is-loading', 'is-success', 'is-error');
+
+    if (state === 'loading') {
+      button.classList.add('is-loading');
+      button.disabled = true;
+      return;
+    }
+
+    if (state === 'success' || state === 'error') {
+      button.classList.add(state === 'success' ? 'is-success' : 'is-error');
+      // Re-enable + clear after 2s so the next click is clean
+      setTimeout(() => {
+        button.classList.remove('is-success', 'is-error');
+        button.disabled = false;
+      }, 2000);
+      return;
+    }
+
+    // 'idle' or unknown — clear loading + re-enable
+    button.disabled = false;
+  }
 }
 
 // Global cart API
@@ -761,18 +894,13 @@ function initializeCart() {
     updateCartCount(data.cart.item_count);
   });
 
-  // Auto-open cart preview when item is added (outside cart page)
-  window.CartEvents.subscribe('cart:add', (data) => {
-    const isCartPage = window.location.pathname === '/cart' || window.location.pathname.includes('/cart');
-    
-    // Open cart preview if not on cart page and CartPreview is available
-    if (!isCartPage && window.CartPreview && typeof window.CartPreview.open === 'function') {
-      // Small delay to ensure cart has updated
-      setTimeout(() => {
-        window.CartPreview.open();
-      }, 300);
-    }
-  });
+  // Auto-activate the form interceptor. Forms opt in via data-cart-ajax;
+  // forms without it (e.g. main product form when settings.cart_type=page)
+  // submit natively. The interceptor itself decides on-success behavior
+  // based on each form's data-cart-on-success attribute.
+  if (window.CartAPI && typeof window.CartAPI.interceptForms === 'function') {
+    window.CartAPI.interceptForms();
+  }
   
   // Helper function to update cart count badges
   function updateCartCount(count) {

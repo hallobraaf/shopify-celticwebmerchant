@@ -562,7 +562,12 @@
       const parts = amount.split('.');
       const before = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
       const after = parts[1];
-      
+
+      // Hide cents on whole prices when enabled (mirrors html-product-price)
+      if (this.config.hideZeroCents && after === '00') {
+        return `<span class="price"><span class="valuta">€</span><span class="before_seperator">${before}</span></span>`;
+      }
+
       // Return same structure as html-product-price
       return `<span class="price"><span class="valuta">€</span><span class="before_seperator">${before}</span><span class="seperator">,</span><span class="after_seperator">${after}</span></span>`;
     },

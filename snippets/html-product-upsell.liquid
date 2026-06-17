@@ -60,7 +60,7 @@
             <span class="product-upsell__title">{{ variant.title }}</span>
             
             <span class="product-upsell__price">
-              {%- render 'helper-price-formatted', amount: variant.price -%}
+              {%- render 'html-product-price', product: upsell_product, variant: variant, show_compare: false, show_unit_price: false -%}
             </span>
           </label>
         </li>

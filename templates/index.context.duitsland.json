@@ -15,7 +15,7 @@
   "sections": {
     "block_marketing_cover_EyVVzr": {
       "settings": {
-        "image": "shopify://shop_images/1-NL-DEBanner_Tudor_Feb2026_1_1.webp",
+        "image": "shopify://shop_images/1-NL-DEBanner_Tudor_Feb2026_1_c646dee4-2057-41e0-bf79-4a94d3b062be.jpg",
         "focus_x": 85,
         "overlay": "medium"
       },
@@ -58,7 +58,6 @@
     "block_marketing_articles_wJ9gkm",
     "block_marketing_media_text_eUmREH",
     "block_marketing_articles_qtkjtB",
-    "block_marketing_brands_small_gekrHy",
-    "1765396664e68351eb"
+    "block_marketing_brands_small_gekrHy"
   ]
 }

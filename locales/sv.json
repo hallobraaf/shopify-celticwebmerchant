@@ -232,13 +232,7 @@
     "recent": "Senaste sökningar"
   },
   "marketing": {
-    "products_heading": "Våra senaste produkter",
-    "countdown": {
-      "days": "Dagar",
-      "hours": "Timmar",
-      "minutes": "Minuter",
-      "seconds": "Sekunder"
-    }
+    "products_heading": "Våra senaste produkter"
   },
   "newsletter": {
     "heading": "Nyhetsbrev",

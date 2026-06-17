@@ -1,0 +1,174 @@
+{%- comment -%}
+  ============================================================================
+  HTML-CART-CONFIRM-RECOMMENDED
+  ============================================================================
+  Stacked single-column list of recommended products for the cart-confirm
+  drawer. Source is a single product (the just-added one), not aggregated
+  across the cart. Renders via html-theme-card with horizontal+smaller defaults
+  tuned for narrow drawer width (~420px).
+
+  METAFIELDS (two parallel lists, semantically distinct):
+  - product.metafields.custom['recommended-products']      → general curation
+                                                           (you might also like)
+  - product.metafields.custom['recommended-products-cart'] → cart-flow curation
+                                                           (frequently bought
+                                                           with / accessories)
+
+  cart_rec_mode controls which metafield(s) are sourced:
+    'default'  → recommended-products only
+    'cart'     → recommended-products-cart only
+    'combined' → cart metafield first (priority), fill remaining slots with
+                 default metafield. Dedup by product id across both lists.
+
+  PARAMETERS:
+  - product              : {Object} Source product (required)
+  - heading              : {String} Optional override; falls back to locale key
+  - max_products         : {Number} Maximum items (default 4)
+  - hide_out_of_stock    : {Boolean} Skip unavailable products (default false)
+  - cart_rec_mode        : 'default' | 'cart' | 'combined' (default 'combined')
+  - card_layout          : 'vertical' | 'horizontal' (default 'horizontal')
+  - card_sizing          : 'regular' | 'smaller' (default 'smaller')
+  - image_ratio          : 'adapt' | 'portrait' | 'square' | 'landscape' (default 'square')
+  - show_secondary_image : {Boolean} (default false)
+  - show_rating          : {Boolean} (default false)
+  - show_vendor          : {Boolean} (default false)
+  - show_badges          : {Boolean} (default true)
+  - show_stock           : {Boolean} (default false)
+  - show_delivery        : {Boolean} (default false)
+  - quick_add            : {Boolean} (default true)
+
+  DEPENDENCIES:
+  - html-theme-card snippet
+  ============================================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign p = product
+  assign max_products = max_products | default: 4
+  assign hide_out_of_stock = hide_out_of_stock | default: false
+  assign cart_rec_mode = cart_rec_mode | default: 'combined'
+  assign card_layout = card_layout | default: 'horizontal'
+  assign card_sizing = card_sizing | default: 'smaller'
+  assign image_ratio = image_ratio | default: 'square'
+  assign show_secondary_image = show_secondary_image | default: false
+  assign show_rating = show_rating | default: false
+  assign show_vendor = show_vendor | default: false
+  assign show_badges = show_badges | default: true
+  assign show_stock = show_stock | default: false
+  assign show_delivery = show_delivery | default: false
+  if quick_add == nil
+    assign quick_add = true
+  endif
+
+  assign heading_text = heading
+  if heading_text == blank
+    assign heading_text = 'product.recommended_heading' | t
+  endif
+
+  assign recs_default = p.metafields.custom['recommended-products'].value
+  assign recs_cart = p.metafields.custom['recommended-products-cart'].value
+
+  comment
+    seen_ids tracks product ids already rendered, preventing duplicates when
+    'combined' mode pulls from both metafields.
+  endcomment
+  assign seen_ids = ''
+  assign rendered_count = 0
+-%}
+
+{%- capture rec_items_html -%}
+  {%- comment -%} Pass 1: cart-specific (priority in 'cart' and 'combined' modes) {%- endcomment -%}
+  {%- if cart_rec_mode == 'cart' or cart_rec_mode == 'combined' -%}
+    {%- if recs_cart != blank and recs_cart.size > 0 -%}
+      {%- for rec in recs_cart -%}
+        {%- if rendered_count >= max_products -%}
+          {%- break -%}
+        {%- endif -%}
+        {%- assign id_marker = ',' | append: rec.id | append: ',' -%}
+        {%- if seen_ids contains id_marker -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- if hide_out_of_stock and rec.available == false -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- assign seen_ids = seen_ids | append: id_marker -%}
+        {%- assign rendered_count = rendered_count | plus: 1 -%}
+        <li class="cart-confirm-recommended__item">
+          {%- render 'html-theme-card',
+            product: rec,
+            type: 'product',
+            layout: card_layout,
+            image_ratio: image_ratio,
+            columns_desktop: 1,
+            columns_tablet: 1,
+            columns_mobile: 1,
+            columns_width: 'is-align-narrow',
+            columns_gap: 0,
+            show_secondary_image: show_secondary_image,
+            show_rating: show_rating,
+            show_vendor: show_vendor,
+            show_price: true,
+            show_stock: show_stock,
+            show_delivery: show_delivery,
+            show_badges: show_badges,
+            quick_add: quick_add,
+            quick_add_on_success: 'checked',
+            card_sizing: card_sizing
+          -%}
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- comment -%} Pass 2: default recommendations (only in 'default' and 'combined' modes) {%- endcomment -%}
+  {%- if cart_rec_mode == 'default' or cart_rec_mode == 'combined' -%}
+    {%- if recs_default != blank and recs_default.size > 0 -%}
+      {%- for rec in recs_default -%}
+        {%- if rendered_count >= max_products -%}
+          {%- break -%}
+        {%- endif -%}
+        {%- assign id_marker = ',' | append: rec.id | append: ',' -%}
+        {%- if seen_ids contains id_marker -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- if hide_out_of_stock and rec.available == false -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- assign seen_ids = seen_ids | append: id_marker -%}
+        {%- assign rendered_count = rendered_count | plus: 1 -%}
+        <li class="cart-confirm-recommended__item">
+          {%- render 'html-theme-card',
+            product: rec,
+            type: 'product',
+            layout: card_layout,
+            image_ratio: image_ratio,
+            columns_desktop: 1,
+            columns_tablet: 1,
+            columns_mobile: 1,
+            columns_width: 'is-align-narrow',
+            columns_gap: 0,
+            show_secondary_image: show_secondary_image,
+            show_rating: show_rating,
+            show_vendor: show_vendor,
+            show_price: true,
+            show_stock: show_stock,
+            show_delivery: show_delivery,
+            show_badges: show_badges,
+            quick_add: quick_add,
+            quick_add_on_success: 'checked',
+            card_sizing: card_sizing
+          -%}
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if rec_items_html != blank -%}
+  <div class="cart-confirm-recommended" data-cart-confirm-recommended>
+    <h3 class="cart-confirm-recommended__heading">{{ heading_text }}</h3>
+    <ul class="cart-confirm-recommended__list" role="list">
+      {{ rec_items_html }}
+    </ul>
+  </div>
+{%- endif -%}

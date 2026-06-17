@@ -59,8 +59,6 @@
               cart: cart,
               show_vendor: section.settings.show_vendor,
               show_recommended: section.settings.show_recommended,
-              max_recommended: section.settings.max_recommended,
-              hide_out_of_stock: section.settings.hide_out_of_stock,
               compact: false
             -%}
           </div>
@@ -272,23 +270,8 @@
     {
       "type": "checkbox",
       "id": "show_recommended",
-      "label": "Show recommended products",
-      "info": "Display products from metafield custom.recommended-products under each cart item.",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "max_recommended",
-      "label": "Max recommended products",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "checkbox",
-      "id": "hide_out_of_stock",
-      "label": "Hide out of stock recommended products",
+      "label": "Show recommended products button",
+      "info": "Adds a button per cart item (when the product has a custom.recommended-products-cart metafield) that opens the Recommended drawer. Requires the 'Recommended drawer' section in the footer.",
       "default": false
     },
     {

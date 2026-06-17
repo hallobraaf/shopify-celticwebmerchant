@@ -4,27 +4,49 @@
   ============================================================================
 
   Purpose:
-  Renders an add-to-cart button with smart behavior based on product availability
-  and variant complexity. Integrates with CartAPI for live cart updates.
-  
+  Renders an add-to-cart button (or link to PDP for variant-products) for
+  quick-add contexts. Submit handling is delegated to the global CartAPI
+  interceptor in theme-cart.js — this snippet only emits the form HTML and
+  attaches the right data-cart-* attributes for the interceptor to read.
+
   Usage:
   {% render 'html-button-order', product: product %}
   {% render 'html-button-order', product: product, variant_behavior: 'link' %}
+  {% render 'html-button-order', product: product, on_success: 'checked' %}
 
   Parameters:
   - product: {Object} Product object (required)
   - variant: {Object} Specific variant to add (optional, defaults to selected_or_first_available_variant)
   - quantity: {Number} Quantity to add (default: 1)
   - variant_behavior: {String} Behavior for products with variants:
-      - 'add': Always add selected variant directly (default)
-      - 'link': Link to product page if multiple variants exist
+      - 'link': Link to product page so customer can choose (DEFAULT).
+        This is the right default because the theme has no quick variant
+        picker on cards — without one, "add" would blind-add the default
+        variant which is rarely what the customer wanted.
+      - 'add':  Always add selected variant directly. Pass explicitly when
+        you DO want blind-add (e.g., on a context where the variant choice
+        is already made elsewhere).
+  - on_success: {String} Post-add behavior, drives data-cart-on-success.
+      One of: 'preview' | 'confirmation' | 'checked' | 'page'.
+      Default: settings.cart_type. Pass 'checked' explicitly to suppress
+      drawer-opening (e.g., quick-add inside cart-confirm drawer to avoid
+      recursive reopen). Pass 'page' to skip AJAX entirely (native submit).
   - show_icon: {Boolean} Show cart icon (default: true)
   - class: {String} Additional CSS classes (optional)
   - button_style: {String} 'primary' | 'secondary' | 'minimal' (default: 'primary')
 
+  How submission flows:
+  1. User clicks submit → submit event bubbles to document
+  2. theme-cart.js's interceptor reads data-cart-ajax (skip if absent)
+  3. Interceptor reads data-cart-on-success and data-product-handle
+  4. AJAX add via CartAPI.add(); button-state classes (is-loading/success/error)
+     are applied universally by the interceptor
+  5. On success the interceptor dispatches to CartPreview / CartConfirm based
+     on on_success. 'checked' = no drawer, vinkje on the button is the feedback.
+
   Dependencies:
   - html-theme-icons snippet
-  - CartAPI/CartEvents for cart integration
+  - theme-cart.js (CartAPI.interceptForms is auto-activated on DOMContentLoaded)
 
   ============================================================================
 {%- endcomment -%}
@@ -33,21 +55,31 @@
   assign p = product
   assign v = variant | default: p.selected_or_first_available_variant
   assign qty = quantity | default: 1
-  assign variant_behavior = variant_behavior | default: 'add'
+  assign variant_behavior = variant_behavior | default: 'link'
+  assign on_success = on_success | default: settings.cart_type
   assign show_icon = show_icon | default: true
   assign additional_class = class | default: ''
   assign button_style = button_style | default: 'primary'
-  
+
   assign has_variants = false
   if p.variants.size > 1
     assign has_variants = true
   endif
-  
+
   assign should_link = false
   if has_variants and variant_behavior == 'link'
     assign should_link = true
   endif
-  
+
+  comment
+    AJAX is enabled for all on_success values except 'page'.
+    'page' explicitly opts out → native form submit, browser redirects to /cart.
+  endcomment
+  assign use_ajax = true
+  if on_success == 'page'
+    assign use_ajax = false
+  endif
+
   assign unique_id = p.id | append: '-' | append: 'now' | date: '%s%N'
 -%}
 
@@ -67,11 +99,16 @@
       </span>
     </a>
   {%- else -%}
-    <form 
-      method="post" 
-      action="{{ routes.cart_add_url }}" 
+    <form
+      method="post"
+      action="{{ routes.cart_add_url }}"
       class="button-order__form"
       data-button-order-form="{{ unique_id }}"
+      {% if use_ajax %}
+        data-cart-ajax
+        data-cart-on-success="{{ on_success }}"
+        data-product-handle="{{ p.handle }}"
+      {% endif %}
     >
       <input type="hidden" name="id" value="{{ v.id }}">
       <input type="hidden" name="quantity" value="{{ qty }}">
@@ -97,68 +134,14 @@
         </span>
       </button>
     </form>
-    
-    <script>
-      (function() {
-        var form = document.querySelector('[data-button-order-form="{{ unique_id }}"]');
-        if (!form) return;
-        
-        form.addEventListener('submit', async function(e) {
-          e.preventDefault();
-          
-          var button = this.querySelector('[data-button-order-add]');
-          var variantId = this.querySelector('input[name="id"]').value;
-          var quantity = parseInt(this.querySelector('input[name="quantity"]').value) || 1;
-          
-          button.classList.add('is-loading');
-          button.disabled = true;
-          
-          try {
-            var cartData;
-            
-            if (window.CartAPI && typeof window.CartAPI.add === 'function') {
-              cartData = await window.CartAPI.add({
-                items: [{ id: parseInt(variantId), quantity: quantity }]
-              });
-            } else {
-              var response = await fetch(window.Shopify.routes.root + 'cart/add.js', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ items: [{ id: variantId, quantity: quantity }] })
-              });
-              
-              if (!response.ok) throw new Error('Failed to add to cart');
-              
-              var cartResponse = await fetch(window.Shopify.routes.root + 'cart.js');
-              cartData = await cartResponse.json();
-              
-              if (window.CartEvents) {
-                window.CartEvents.publish('cart:update', { cart: cartData, action: 'add' });
-              }
-            }
-            
-            button.classList.remove('is-loading');
-            button.classList.add('is-success');
-            
-            setTimeout(function() {
-              button.classList.remove('is-success');
-              button.disabled = false;
-            }, 2000);
-            
-          } catch (error) {
-            console.error('Error adding to cart:', error);
-            
-            button.classList.remove('is-loading');
-            button.classList.add('is-error');
-            
-            setTimeout(function() {
-              button.classList.remove('is-error');
-              button.disabled = false;
-            }, 2000);
-          }
-        });
-      })();
-    </script>
+    {%- comment -%}
+      No inline submit handler. The global CartAPI.interceptForms() in
+      theme-cart.js reads data-cart-ajax / data-cart-on-success on this
+      form and handles the entire flow: AJAX add, button states (is-loading
+      / is-success / is-error which the CSS below already styles), and
+      drawer dispatch. Forms without data-cart-ajax (on_success='page')
+      submit natively — browser redirects to /cart.
+    {%- endcomment -%}
   {%- endif -%}
 
 {%- else -%}
