@@ -46,3 +46,6 @@ private/
 private/*
 .private/
 .private/*
+# LOKAAL / GEVOELIG — niet syncen #
+######################
+.claude/
